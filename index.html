@@ -45,7 +45,7 @@ h1 .dim{color:var(--text3);}
 .t-dot.y{background:var(--amber);}
 .t-dot.g{background:var(--green);}
 .terminal-title{font-size:11px;color:var(--text3);margin-left:8px;}
-.terminal-body{padding:20px;line-height:1.9;height:220px;overflow:hidden;}
+.terminal-body{padding:20px;line-height:1.9;min-height:200px;}
 .t-line{margin-bottom:2px;}
 .t-prompt{color:var(--accent);}
 .t-cmd{color:var(--text);}
@@ -468,9 +468,9 @@ document.querySelectorAll('.fade-in').forEach(function(el){
         d.innerHTML='<span class="t-out '+(l.cls||'')+'" id="tc'+li+'"></span>';
       }
       t.appendChild(d);
-      // add cursor to new line
-      var el=document.getElementById('tc'+li);
-      if(el) addCursor(el);
+      // slight delay before adding cursor to new line — smoother transition
+      var elTemp=document.getElementById('tc'+li);
+      if(elTemp) setTimeout(function(){ addCursor(elTemp); }, 60);
     }
     var el=document.getElementById('tc'+li);
     if(!el){li++;ci=0;setTimeout(run,50);return;}
