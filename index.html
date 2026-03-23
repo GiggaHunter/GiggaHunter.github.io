@@ -422,9 +422,9 @@ const fo=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersect
 document.querySelectorAll('.fade-in').forEach(el=>fo.observe(el));
 
 // Terminal typewriter
-const lines=[
-  {type:'cmd',text:'tshark -r 2024-09-04.pcap -Y "http.request"'},
-  {type:'out',text:'→ Filtering HTTP requests...',cls:'t-green'},
+var termLines=[
+  {type:'cmd',text:'wireshark -r 2024-09-04.pcap'},
+  {type:'out',text:'→ Opening capture file...',cls:'t-green'},
   {type:'cmd',text:'ip.src == 172.17.0.99 && http'},
   {type:'out',text:'57 packets matched filter'},
   {type:'out',text:'⚠ POST /foots.php → 79.124.78.197',cls:'t-amber'},
@@ -434,25 +434,36 @@ const lines=[
   {type:'out',text:'✗ DESKTOP-RNVO9AT — COMPROMISED',cls:'t-red'},
   {type:'cmd',text:'_'},
 ];
-const term=document.getElementById('terminal-output');
-let li=0,ci=0;
+var termEl=document.getElementById('terminal-output');
+var tli=0,tci=0;
 function typeNext(){
-  if(!term)return;
-  if(li>=lines.length){li=0;term.innerHTML='';setTimeout(typeNext,2000);return;}
-  const l=lines[li];
-  if(ci===0){
-    const el=document.createElement('div');
-    el.className='t-line';
-    el.innerHTML=l.type==='cmd'
-      ?`<span class="t-prompt">$ </span><span class="t-cmd" id="tl${li}"></span>`
-      :`<span class="t-out ${l.cls||''}" id="tl${li}"></span>`;
-    term.appendChild(el);
+  if(!termEl) return;
+  if(tli>=termLines.length){
+    tli=0; tci=0;
+    termEl.innerHTML='';
+    setTimeout(typeNext,2000);
+    return;
   }
-  const el=document.getElementById('tl'+li);
-  if(ci<l.text.length){el.textContent+=l.text[ci];ci++;setTimeout(typeNext,l.type==='cmd'?38:14);}
-  else{li++;ci=0;setTimeout(typeNext,li===lines.length?2500:l.type==='cmd'?220:90);}
+  var l=termLines[tli];
+  if(tci===0){
+    var div=document.createElement('div');
+    div.className='t-line';
+    div.innerHTML=l.type==='cmd'
+      ?'<span class="t-prompt">$ </span><span class="t-cmd" id="tl'+tli+'"></span>'
+      :'<span class="t-out '+(l.cls||'')+'" id="tl'+tli+'"></span>';
+    termEl.appendChild(div);
+  }
+  var el=document.getElementById('tl'+tli);
+  if(el && tci<l.text.length){
+    el.textContent+=l.text[tci];
+    tci++;
+    setTimeout(typeNext, l.type==='cmd'?40:16);
+  } else {
+    tli++; tci=0;
+    setTimeout(typeNext, tli===termLines.length?2500:l.type==='cmd'?240:100);
+  }
 }
-setTimeout(typeNext,900);
+window.addEventListener('load', function(){ setTimeout(typeNext,600); });
 
 // Chain tabs
 function switchChain(id,btn){
