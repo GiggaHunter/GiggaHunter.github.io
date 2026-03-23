@@ -145,7 +145,8 @@ footer{position:relative;z-index:1;border-top:1px solid var(--border);padding:36
 .fade-in{opacity:1;transform:translateY(0);transition:opacity 0.6s ease,transform 0.6s ease;}
 
 @media(max-width:1100px){.hero-terminal{display:none;}.hero-content{max-width:100%;}.hero{padding:120px 40px 60px;}section{padding:70px 40px;}nav{padding:0 24px;}.nav-links{gap:16px;}footer{padding:28px 40px;}}
-@media(max-width:768px){.exercises-grid,.tools-grid,.method-grid{grid-template-columns:1fr;}.chain-panel.active{grid-template-columns:1fr;}.chain-meta-grid{grid-template-columns:1fr;}.hero-stats{gap:20px;}h2{font-size:26px;}h1{font-size:36px;}.nav-links{display:none;}footer{flex-direction:column;gap:12px;text-align:center;}.footer-right{flex-direction:column;gap:6px;align-items:center;}}
+@media(max-width:768px){.exercises-grid,.tools-grid,.method-grid{grid-template-columns:1fr;}.chain-panel.active{grid-template-columns:1fr;}.chain-meta-grid{grid-template-columns:1fr;}.hero-stats{gap:20px;}h2{font-size:26px;}h1{font-size:36px;}.nav-links{display:none;}footer{flex-direction:column;gap:12px;text-align:center;}.footer-right{flex-direction:column;gap:6px;align-items:center;}.chain-svg-wrap{overflow-x:hidden;}#chain-tooltip{display:none!important;}}
+html,body{max-width:100%;overflow-x:hidden;}
 </style>
 </head>
 <body>
@@ -456,6 +457,11 @@ function hideTip(){
   var tip=document.getElementById('chain-tooltip');
   tip.style.display='none';
 }
+// Hide tooltip when clicking anywhere on mobile
+document.addEventListener('click',function(e){
+  if(!e.target.closest('.chain-node')) hideTip();
+});
+document.addEventListener('scroll',function(){ hideTip(); });
 
 // IOC Filter
 function filterIOC(ex,btn){
