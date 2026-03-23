@@ -45,7 +45,7 @@ h1 .dim{color:var(--text3);}
 .t-dot.y{background:var(--amber);}
 .t-dot.g{background:var(--green);}
 .terminal-title{font-size:11px;color:var(--text3);margin-left:8px;}
-.terminal-body{padding:20px;line-height:1.9;min-height:200px;}
+.terminal-body{padding:20px;line-height:1.9;height:220px;overflow:hidden;}
 .t-line{margin-bottom:2px;}
 .t-prompt{color:var(--accent);}
 .t-cmd{color:var(--text);}
@@ -454,7 +454,7 @@ document.querySelectorAll('.fade-in').forEach(function(el){
           t.style.opacity='1';
           setTimeout(run,500);
         },1200);
-      },10000);
+      },5000);
       return;
     }
     var l=lines[li];
