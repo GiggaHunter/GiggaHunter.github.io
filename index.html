@@ -145,7 +145,29 @@ footer{position:relative;z-index:1;border-top:1px solid var(--border);padding:36
 .fade-in{opacity:1;transform:translateY(0);transition:opacity 0.6s ease,transform 0.6s ease;}
 
 @media(max-width:1100px){.hero-terminal{display:none;}.hero-content{max-width:100%;}.hero{padding:120px 40px 60px;}section{padding:70px 40px;}nav{padding:0 24px;}.nav-links{gap:16px;}footer{padding:28px 40px;}}
-@media(max-width:768px){.exercises-grid,.tools-grid,.method-grid{grid-template-columns:1fr;}.chain-panel.active{grid-template-columns:1fr;}.chain-meta-grid{grid-template-columns:1fr;}.hero-stats{gap:20px;}h2{font-size:26px;}h1{font-size:36px;}.nav-links{display:none;}footer{flex-direction:column;gap:12px;text-align:center;}.footer-right{flex-direction:column;gap:6px;align-items:center;}.ioc-table th:last-child,.ioc-table td:last-child{display:none;}.ioc-table td{font-size:11px;padding:10px 10px;word-break:break-all;}.ioc-table th{padding:10px 10px;font-size:9px;}.ioc-val{font-size:11px;}}
+@media(max-width:768px){
+  .exercises-grid,.tools-grid,.method-grid{grid-template-columns:1fr;}
+  .chain-panel.active{grid-template-columns:1fr;}
+  .chain-meta-grid{grid-template-columns:1fr;}
+  .hero-stats{gap:20px;}
+  h2{font-size:26px;}
+  h1{font-size:36px;}
+  .nav-links{display:none;}
+  footer{flex-direction:column;gap:12px;text-align:center;}
+  .footer-right{flex-direction:column;gap:6px;align-items:center;}
+  #chain-tooltip{display:none!important;}
+  .chain-node .hover-only{display:none;}
+  .ioc-table thead{display:none;}
+  .ioc-table tr{display:block;background:var(--bg3);border:1px solid var(--border);border-radius:4px;margin-bottom:12px;padding:16px;}
+  .ioc-table tr.hidden{display:none;}
+  .ioc-table td{display:block;padding:4px 0;border:none;font-size:12px;}
+  .ioc-table td::before{content:attr(data-label);display:block;font-size:10px;color:var(--text3);letter-spacing:0.08em;margin-bottom:2px;}
+  .ioc-val{font-size:13px;}
+  .ioc-table td:last-child{display:none;}
+  section{padding:60px 20px;}
+  nav{padding:0 16px;}
+  .chain-svg-wrap{padding:16px;}
+}
 html,body{max-width:100%;overflow-x:hidden;}
 </style>
 </head>
@@ -349,9 +371,9 @@ html,body{max-width:100%;overflow-x:hidden;}
   <table class="ioc-table">
     <thead><tr><th>INDICATOR</th><th>TYPE</th><th>ROLE</th><th>EXERCISE</th></tr></thead>
     <tbody>
-      <tr data-ex="2024-09-04"><td class="ioc-val">79.124.78.197</td><td><span class="ex-badge badge-critical">IP</span></td><td class="ioc-role">C2 Server — MODILOADER beaconing (POST /foots.php)</td><td class="ioc-ex">2024-09-04</td></tr>
-      <tr data-ex="2024-09-04"><td class="ioc-val">bellantonicioccolato.it</td><td><span class="ex-badge badge-high">DOMAIN</span></td><td class="ioc-role">Initial infection vector — compromised Italian website</td><td class="ioc-ex">2024-09-04</td></tr>
-      <tr data-ex="2024-09-04"><td class="ioc-val">46.254.34.201</td><td><span class="ex-badge badge-high">IP</span></td><td class="ioc-role">Hosting IP for initial infection vector (Italy)</td><td class="ioc-ex">2024-09-04</td></tr>
+      <tr data-ex="2024-09-04"><td class="ioc-val" data-label="INDICATOR">79.124.78.197</td><td data-label="TYPE"><span class="ex-badge badge-critical">IP</span></td><td class="ioc-role" data-label="ROLE">C2 Server — MODILOADER beaconing (POST /foots.php)</td><td class="ioc-ex" data-label="EXERCISE">2024-09-04</td></tr>
+      <tr data-ex="2024-09-04"><td class="ioc-val" data-label="INDICATOR">bellantonicioccolato.it</td><td data-label="TYPE"><span class="ex-badge badge-high">DOMAIN</span></td><td class="ioc-role" data-label="ROLE">Initial infection vector — compromised Italian website</td><td class="ioc-ex" data-label="EXERCISE">2024-09-04</td></tr>
+      <tr data-ex="2024-09-04"><td class="ioc-val" data-label="INDICATOR">46.254.34.201</td><td data-label="TYPE"><span class="ex-badge badge-high">IP</span></td><td class="ioc-role" data-label="ROLE">Hosting IP for initial infection vector (Italy)</td><td class="ioc-ex" data-label="EXERCISE">2024-09-04</td></tr>
     </tbody>
   </table>
 </section>
