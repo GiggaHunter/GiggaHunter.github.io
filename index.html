@@ -413,15 +413,15 @@ document.querySelectorAll('.fade-in').forEach(function(el){
 // Terminal typewriter
 (function(){
   var lines=[
-    {type:'cmd',text:'wireshark -r 2024-09-04.pcap'},
-    {type:'out',text:'Opening capture file...',cls:'t-green'},
-    {type:'cmd',text:'ip.src == 172.17.0.99 and http'},
-    {type:'out',text:'57 packets matched filter'},
-    {type:'out',text:'WARNING: POST /foots.php -> 79.124.78.197',cls:'t-amber',pause:800},
-    {type:'out',text:'WARNING: Repeated beaconing detected',cls:'t-amber',pause:800},
-    {type:'cmd',text:'// Analyze User-Agent'},
-    {type:'out',text:'MSIE 7.0 on Windows 10 = IMPOSSIBLE',cls:'t-red',pause:1200},
-    {type:'out',text:'COMPROMISED: DESKTOP-RNVO9AT',cls:'t-red',pause:1500},
+    {type:'cmd',text:'wireshark -r 2024-09-04.pcap', pause:400},
+    {type:'out',text:'Opening capture file...',cls:'t-green', pause:300},
+    {type:'cmd',text:'ip.src == 172.17.0.99 and http', pause:400},
+    {type:'out',text:'57 packets matched filter', pause:300},
+    {type:'out',text:'WARNING: POST /foots.php -> 79.124.78.197',cls:'t-amber', pause:900},
+    {type:'out',text:'WARNING: Repeated beaconing detected',cls:'t-amber', pause:900},
+    {type:'cmd',text:'// Analyze User-Agent', pause:500},
+    {type:'out',text:'MSIE 7.0 on Windows 10 = IMPOSSIBLE',cls:'t-red', pause:1300},
+    {type:'out',text:'COMPROMISED: DESKTOP-RNVO9AT',cls:'t-red', pause:1800},
   ];
   var t=document.getElementById('terminal-output');
   if(!t) return;
@@ -478,12 +478,11 @@ document.querySelectorAll('.fade-in').forEach(function(el){
       addCursor(el);
       setTimeout(run,l.type==='cmd'?48:22);
     } else {
-      // line done — cursor blinks for a moment then next line
-      var pauseTime = l.pause || (l.type==='cmd' ? 500 : 200);
+      // line done — use line's pause value for dramatic effect
       setTimeout(function(){
         li++; ci=0;
-        setTimeout(run, l.type==='cmd'?320:140);
-      }, pauseTime);
+        setTimeout(run, 80);
+      }, l.pause || 400);
     }
   }
   setTimeout(run,1000);
