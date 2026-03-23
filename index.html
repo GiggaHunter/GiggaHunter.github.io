@@ -431,6 +431,7 @@ document.querySelectorAll('.fade-in').forEach(function(el){
     var c=document.createElement('span');
     c.className='t-cursor';
     c.id='term-cursor';
+    c.style.opacity='1';
     el.appendChild(c);
   }
 
@@ -478,7 +479,9 @@ document.querySelectorAll('.fade-in').forEach(function(el){
       addCursor(el);
       setTimeout(run,l.type==='cmd'?48:22);
     } else {
-      // line done — use line's pause value for dramatic effect
+      // line done — fade cursor out smoothly then pause
+      var c=document.getElementById('term-cursor');
+      if(c){ c.style.transition='opacity 0.15s'; c.style.opacity='0'; }
       setTimeout(function(){
         li++; ci=0;
         setTimeout(run, 80);
