@@ -427,7 +427,18 @@ document.querySelectorAll('.fade-in').forEach(function(el){
   if(!t) return;
   var li=0,ci=0;
   function run(){
-    if(li>=lines.length){li=0;ci=0;t.innerHTML='';setTimeout(run,2500);return;}
+    if(li>=lines.length){
+      t.style.transition='opacity 1.2s';
+      t.style.opacity='0';
+      setTimeout(function(){
+        li=0; ci=0;
+        t.innerHTML='';
+        t.style.transition='opacity 0.8s';
+        t.style.opacity='1';
+        setTimeout(run,500);
+      },1400);
+      return;
+    }
     var l=lines[li];
     if(ci===0){
       var d=document.createElement('div');
