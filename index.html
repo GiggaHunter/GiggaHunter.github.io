@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<title>Meshal Al-Harbi — Network Forensics</title>
+<title>Meshari Al-Harbi — Network Forensics</title>
 <link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=Syne:wght@400;600;700;800&family=JetBrains+Mono:wght@300;400;500&display=swap" rel="stylesheet"/>
 <style>
 :root{--bg:#080c10;--bg2:#0d1117;--bg3:#111820;--surface:#151d27;--surface2:#1a2535;--border:#1e2d3d;--border2:#253548;--accent:#00d4ff;--accent2:#0096cc;--accent-dim:rgba(0,212,255,0.08);--red:#ff4757;--red-dim:rgba(255,71,87,0.1);--amber:#ffa502;--amber-dim:rgba(255,165,2,0.1);--green:#2ed573;--green-dim:rgba(46,213,115,0.1);--text:#c9d1d9;--text2:#8b949e;--text3:#4a5568;--mono:'JetBrains Mono',monospace;--display:'Syne',sans-serif;--body:'Space Mono',monospace;}
@@ -373,7 +373,7 @@ footer{position:relative;z-index:1;border-top:1px solid var(--border);padding:36
     <div class="ioc-filter" onclick="filterIOC('2020-04-24',this)">2020-04-24</div>
     <div class="ioc-filter" onclick="filterIOC('2026-01-10',this)">2026-01-10</div>
   </div>
-  <table class="ioc-table fade-in">
+  <table class="ioc-table">
     <thead><tr><th>INDICATOR</th><th>TYPE</th><th>ROLE</th><th>EXERCISE</th></tr></thead>
     <tbody>
       <tr data-ex="2024-09-04"><td class="ioc-val">79.124.78.197</td><td><span class="ex-badge badge-critical">IP</span></td><td class="ioc-role">C2 Server — MODILOADER beaconing (POST /foots.php)</td><td class="ioc-ex">2024-09-04</td></tr>
@@ -392,7 +392,7 @@ footer{position:relative;z-index:1;border-top:1px solid var(--border);padding:36
 </section>
 
 <footer>
-  <div class="footer-left"><strong>Meshal Al-Harbi</strong> — Network Forensics Portfolio</div>
+  <div class="footer-left"><strong>Meshari Al-Harbi</strong> — Network Forensics Portfolio</div>
   <div class="footer-right"><span>malware-traffic-analysis.net</span><span>Training Exercises</span><span>2020 – 2026</span></div>
 </footer>
 
@@ -477,17 +477,21 @@ function switchChain(id,btn){
 }
 
 // Tooltip
-const tip=document.getElementById('chain-tooltip');
 function showTip(e,title,body){
-  tip.innerHTML=`<strong>${title}</strong>${body.replace(/\n/g,'<br>')}`;
+  var tip=document.getElementById('chain-tooltip');
+  tip.innerHTML='<strong>'+title+'</strong>'+body.replace(/\n/g,'<br>');
   tip.style.display='block';
   moveTip(e);
 }
 function moveTip(e){
+  var tip=document.getElementById('chain-tooltip');
   tip.style.left=Math.min(e.clientX+16,window.innerWidth-280)+'px';
   tip.style.top=Math.min(e.clientY+16,window.innerHeight-180)+'px';
 }
-function hideTip(){tip.style.display='none';}
+function hideTip(){
+  var tip=document.getElementById('chain-tooltip');
+  tip.style.display='none';
+}
 
 // IOC Filter
 function filterIOC(ex,btn){
