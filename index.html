@@ -443,15 +443,18 @@ document.querySelectorAll('.fade-in').forEach(function(el){
   function run(){
     if(li>=lines.length){
       // fade out then restart
-      t.style.transition='opacity 1.2s';
-      t.style.opacity='0';
+      // Wait 10 seconds to read, then fade out and restart
       setTimeout(function(){
-        li=0; ci=0;
-        t.innerHTML='';
-        t.style.transition='opacity 0.8s';
-        t.style.opacity='1';
-        setTimeout(run,500);
-      },11200);
+        t.style.transition='opacity 1.2s';
+        t.style.opacity='0';
+        setTimeout(function(){
+          li=0; ci=0;
+          t.innerHTML='';
+          t.style.transition='opacity 0.8s';
+          t.style.opacity='1';
+          setTimeout(run,500);
+        },1200);
+      },10000);
       return;
     }
     var l=lines[li];
