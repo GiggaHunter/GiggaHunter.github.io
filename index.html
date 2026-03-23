@@ -145,7 +145,7 @@ footer{position:relative;z-index:1;border-top:1px solid var(--border);padding:36
 .fade-in{opacity:1;transform:translateY(0);transition:opacity 0.6s ease,transform 0.6s ease;}
 
 @media(max-width:1100px){.hero-terminal{display:none;}.hero-content{max-width:100%;}.hero{padding:120px 40px 60px;}section{padding:70px 40px;}nav{padding:0 24px;}.nav-links{gap:16px;}footer{padding:28px 40px;}}
-@media(max-width:768px){.exercises-grid,.tools-grid,.method-grid{grid-template-columns:1fr;}.chain-panel.active{grid-template-columns:1fr;}.chain-meta-grid{grid-template-columns:1fr;}.hero-stats{gap:20px;}h2{font-size:26px;}h1{font-size:36px;}.nav-links{display:none;}footer{flex-direction:column;gap:12px;text-align:center;}.footer-right{flex-direction:column;gap:6px;align-items:center;}.chain-svg-wrap{overflow-x:hidden;}#chain-tooltip{display:none!important;}}
+@media(max-width:768px){.exercises-grid,.tools-grid,.method-grid{grid-template-columns:1fr;}.chain-panel.active{grid-template-columns:1fr;}.chain-meta-grid{grid-template-columns:1fr;}.hero-stats{gap:20px;}h2{font-size:26px;}h1{font-size:36px;}.nav-links{display:none;}footer{flex-direction:column;gap:12px;text-align:center;}.footer-right{flex-direction:column;gap:6px;align-items:center;}.ioc-table th:last-child,.ioc-table td:last-child{display:none;}.ioc-table td{font-size:11px;padding:10px 10px;word-break:break-all;}.ioc-table th{padding:10px 10px;font-size:9px;}.ioc-val{font-size:11px;}}
 html,body{max-width:100%;overflow-x:hidden;}
 </style>
 </head>
@@ -442,22 +442,43 @@ function switchChain(id,btn){
 }
 
 // Tooltip
+var tipVisible=false;
 function showTip(e,title,body){
   var tip=document.getElementById('chain-tooltip');
+  if(tipVisible&&tip.style.display==='block'){hideTip();return;}
   tip.innerHTML='<strong>'+title+'</strong>'+body.replace(/\n/g,'<br>');
+  if(window.innerWidth<=768){
+    tip.style.position='fixed';
+    tip.style.left='16px';
+    tip.style.right='16px';
+    tip.style.width='auto';
+    tip.style.top='auto';
+    tip.style.bottom='80px';
+    tip.style.maxWidth='none';
+    tip.style.transform='none';
+  } else {
+    tip.style.position='fixed';
+    tip.style.bottom='auto';
+    tip.style.right='auto';
+    tip.style.width='auto';
+    tip.style.maxWidth='260px';
+    tip.style.left=Math.min(e.clientX+16,window.innerWidth-280)+'px';
+    tip.style.top=Math.min(e.clientY+16,window.innerHeight-180)+'px';
+  }
   tip.style.display='block';
-  moveTip(e);
+  tipVisible=true;
 }
 function moveTip(e){
-  var tip=document.getElementById('chain-tooltip');
-  tip.style.left=Math.min(e.clientX+16,window.innerWidth-280)+'px';
-  tip.style.top=Math.min(e.clientY+16,window.innerHeight-180)+'px';
+  if(window.innerWidth>768){
+    var tip=document.getElementById('chain-tooltip');
+    tip.style.left=Math.min(e.clientX+16,window.innerWidth-280)+'px';
+    tip.style.top=Math.min(e.clientY+16,window.innerHeight-180)+'px';
+  }
 }
 function hideTip(){
-  var tip=document.getElementById('chain-tooltip');
-  tip.style.display='none';
+  document.getElementById('chain-tooltip').style.display='none';
+  tipVisible=false;
 }
-// Hide tooltip when clicking anywhere on mobile
 document.addEventListener('click',function(e){
   if(!e.target.closest('.chain-node')) hideTip();
 });
