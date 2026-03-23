@@ -478,14 +478,23 @@ document.querySelectorAll('.fade-in').forEach(function(el){
     if(ci<l.text.length){
       removeCursor();
       el.textContent+=l.text[ci++];
-      addCursor(el);
+      var cur=document.createElement('span');
+      cur.className='t-cursor';
+      cur.id='term-cursor';
+      cur.style.animationPlayState='paused';
+      cur.style.opacity='1';
+      el.appendChild(cur);
       setTimeout(run,l.type==='cmd'?48:22);
     } else {
       var c=document.getElementById('term-cursor');
-      if(c){ c.style.transition='opacity 0.15s'; c.style.opacity='0'; }
+      if(c){ c.style.animationPlayState='running'; }
       setTimeout(function(){
-        li++; ci=0;
-        setTimeout(run, 80);
+        var c2=document.getElementById('term-cursor');
+        if(c2){ c2.style.transition='opacity 0.15s'; c2.style.opacity='0'; }
+        setTimeout(function(){
+          li++; ci=0;
+          setTimeout(run, 80);
+        }, 150);
       }, l.pause || 400);
     }
   }
