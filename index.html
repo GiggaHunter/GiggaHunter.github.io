@@ -390,22 +390,13 @@ window.addEventListener('scroll',()=>{
 });
 
 // Active nav
-const navLinks=document.querySelectorAll('.nav-links a');
-new IntersectionObserver(entries=>{
-  entries.forEach(e=>{
-    if(e.isIntersecting){
-      navLinks.forEach(a=>a.classList.remove('active'));
-      const a=document.querySelector(`.nav-links a[href="#${e.target.id}"]`);
-      if(a) a.classList.add('active');
-    }
-  });
-},{threshold:0.4}).observe.call({observe:el=>el},{});
-document.querySelectorAll('section[id]').forEach(s=>{
-  new IntersectionObserver(entries=>{
-    entries.forEach(e=>{
+var navLinks=document.querySelectorAll('.nav-links a');
+document.querySelectorAll('section[id]').forEach(function(s){
+  new IntersectionObserver(function(entries){
+    entries.forEach(function(e){
       if(e.isIntersecting){
-        navLinks.forEach(a=>a.classList.remove('active'));
-        const a=document.querySelector(`.nav-links a[href="#${e.target.id}"]`);
+        navLinks.forEach(function(a){a.classList.remove('active');});
+        var a=document.querySelector('.nav-links a[href="#'+e.target.id+'"]');
         if(a) a.classList.add('active');
       }
     });
@@ -413,13 +404,11 @@ document.querySelectorAll('section[id]').forEach(s=>{
 });
 
 // Fade in
-new IntersectionObserver(entries=>{
-  entries.forEach(e=>{if(e.isIntersecting) e.target.classList.add('visible');});
-},{threshold:0.08}).observe.call(
-  {observe:()=>{}},{}
-);
-const fo=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('visible');});},{threshold:0.08});
-document.querySelectorAll('.fade-in').forEach(el=>fo.observe(el));
+document.querySelectorAll('.fade-in').forEach(function(el){
+  new IntersectionObserver(function(entries){
+    entries.forEach(function(e){if(e.isIntersecting) e.target.classList.add('visible');});
+  },{threshold:0.08}).observe(el);
+});
 
 // Terminal typewriter
 (function(){
