@@ -53,7 +53,8 @@ h1 .dim{color:var(--text3);}
 .t-green{color:var(--green);}
 .t-red{color:var(--red);}
 .t-amber{color:var(--amber);}
-.t-cursor{display:inline-block;width:8px;height:13px;background:var(--accent);animation:blink 1s step-end infinite;vertical-align:middle;margin-left:2px;}
+.t-cursor{display:inline-block;width:8px;height:13px;background:var(--accent);vertical-align:middle;margin-left:2px;}
+.t-cursor.blinking{animation:blink 1s step-end infinite;}
 @keyframes blink{0%,100%{opacity:1}50%{opacity:0}}
 .hero::after{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,transparent,var(--accent),transparent);animation:scan 5s linear infinite;opacity:0.15;}
 @keyframes scan{0%{top:0}100%{top:100%}}
@@ -476,15 +477,17 @@ document.querySelectorAll('.fade-in').forEach(function(el){
     if(!el){li++;ci=0;setTimeout(run,50);return;}
 
     if(ci<l.text.length){
-      // remove cursor, add char, re-add cursor
+      // remove cursor, add char, re-add cursor (no blink while typing)
       removeCursor();
       el.textContent+=l.text[ci++];
       addCursor(el);
       setTimeout(run,l.type==='cmd'?48:22);
     } else {
-      // line done — fade cursor out smoothly then pause
+      // line done — cursor blinks now (paused)
       var c=document.getElementById('term-cursor');
-      if(c){ c.style.transition='opacity 0.15s'; c.style.opacity='0'; }
+      if(c) c.classList.add('blinking');
+      var c2=document.getElementById('term-cursor');
+      if(c2){ c2.style.transition='opacity 0.15s'; c2.style.opacity='0'; }
       setTimeout(function(){
         li++; ci=0;
         setTimeout(run, 80);
