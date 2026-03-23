@@ -422,48 +422,46 @@ const fo=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersect
 document.querySelectorAll('.fade-in').forEach(el=>fo.observe(el));
 
 // Terminal typewriter
-var termLines=[
-  {type:'cmd',text:'wireshark -r 2024-09-04.pcap'},
-  {type:'out',text:'→ Opening capture file...',cls:'t-green'},
-  {type:'cmd',text:'ip.src == 172.17.0.99 && http'},
-  {type:'out',text:'57 packets matched filter'},
-  {type:'out',text:'⚠ POST /foots.php → 79.124.78.197',cls:'t-amber'},
-  {type:'out',text:'⚠ Repeated beaconing detected',cls:'t-amber'},
-  {type:'cmd',text:'// Analyze User-Agent string'},
-  {type:'out',text:'MSIE 7.0 on Windows 10 — IMPOSSIBLE',cls:'t-red'},
-  {type:'out',text:'✗ DESKTOP-RNVO9AT — COMPROMISED',cls:'t-red'},
-  {type:'cmd',text:'_'},
-];
-var termEl=document.getElementById('terminal-output');
-var tli=0,tci=0;
-function typeNext(){
-  if(!termEl) return;
-  if(tli>=termLines.length){
-    tli=0; tci=0;
-    termEl.innerHTML='';
-    setTimeout(typeNext,2000);
-    return;
+(function(){
+  var lines=[
+    {type:'cmd',text:'wireshark -r 2024-09-04.pcap'},
+    {type:'out',text:'Opening capture file...',cls:'t-green'},
+    {type:'cmd',text:'ip.src == 172.17.0.99 and http'},
+    {type:'out',text:'57 packets matched filter'},
+    {type:'out',text:'WARNING: POST /foots.php x79.124.78.197',cls:'t-amber'},
+    {type:'out',text:'WARNING: Repeated beaconing detected',cls:'t-amber'},
+    {type:'cmd',text:'// Analyze User-Agent'},
+    {type:'out',text:'MSIE 7.0 on Windows 10 = IMPOSSIBLE',cls:'t-red'},
+    {type:'out',text:'COMPROMISED: DESKTOP-RNVO9AT',cls:'t-red'},
+  ];
+  var t=document.getElementById('terminal-output');
+  if(!t) return;
+  var li=0,ci=0;
+  function run(){
+    if(li>=lines.length){li=0;ci=0;t.innerHTML='';setTimeout(run,2500);return;}
+    var l=lines[li];
+    if(ci===0){
+      var d=document.createElement('div');
+      d.className='t-line';
+      if(l.type==='cmd'){
+        d.innerHTML='<span class="t-prompt">$ </span><span class="t-cmd" id="tc'+li+'"></span>';
+      } else {
+        d.innerHTML='<span class="t-out '+(l.cls||'')+'" id="tc'+li+'"></span>';
+      }
+      t.appendChild(d);
+    }
+    var el=document.getElementById('tc'+li);
+    if(!el){li++;ci=0;setTimeout(run,50);return;}
+    if(ci<l.text.length){
+      el.textContent+=l.text[ci++];
+      setTimeout(run,l.type==='cmd'?45:20);
+    } else {
+      li++;ci=0;
+      setTimeout(run,l.type==='cmd'?300:120);
+    }
   }
-  var l=termLines[tli];
-  if(tci===0){
-    var div=document.createElement('div');
-    div.className='t-line';
-    div.innerHTML=l.type==='cmd'
-      ?'<span class="t-prompt">$ </span><span class="t-cmd" id="tl'+tli+'"></span>'
-      :'<span class="t-out '+(l.cls||'')+'" id="tl'+tli+'"></span>';
-    termEl.appendChild(div);
-  }
-  var el=document.getElementById('tl'+tli);
-  if(el && tci<l.text.length){
-    el.textContent+=l.text[tci];
-    tci++;
-    setTimeout(typeNext, l.type==='cmd'?40:16);
-  } else {
-    tli++; tci=0;
-    setTimeout(typeNext, tli===termLines.length?2500:l.type==='cmd'?240:100);
-  }
-}
-window.addEventListener('load', function(){ setTimeout(typeNext,600); });
+  setTimeout(run,1000);
+})();
 
 // Chain tabs
 function switchChain(id,btn){
