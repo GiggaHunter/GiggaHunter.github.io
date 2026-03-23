@@ -142,8 +142,7 @@ footer{position:relative;z-index:1;border-top:1px solid var(--border);padding:36
 .footer-left strong{color:var(--accent);font-weight:400;}
 .footer-right{font-family:var(--mono);font-size:11px;color:var(--text3);display:flex;gap:24px;}
 
-.fade-in{opacity:0;transform:translateY(20px);transition:opacity 0.6s ease,transform 0.6s ease;}
-.fade-in.visible{opacity:1;transform:translateY(0);}
+.fade-in{opacity:1;transform:translateY(0);transition:opacity 0.6s ease,transform 0.6s ease;}
 
 @media(max-width:1100px){.hero-terminal{display:none;}.hero-content{max-width:100%;}.hero{padding:120px 40px 60px;}section{padding:70px 40px;}nav{padding:0 24px;}.nav-links{gap:16px;}footer{padding:28px 40px;}}
 @media(max-width:768px){.exercises-grid,.tools-grid,.method-grid{grid-template-columns:1fr;}.chain-panel.active{grid-template-columns:1fr;}.chain-meta-grid{grid-template-columns:1fr;}.hero-stats{gap:20px;}h2{font-size:26px;}h1{font-size:36px;}.nav-links{display:none;}footer{flex-direction:column;gap:12px;text-align:center;}.footer-right{flex-direction:column;gap:6px;align-items:center;}}
@@ -172,9 +171,9 @@ footer{position:relative;z-index:1;border-top:1px solid var(--border);padding:36
     <h1>Hunting<br/><span class="accent">Threats</span><br/><span class="dim">in the Wire.</span></h1>
     <p class="hero-desc">PCAP analysis, malware traffic forensics, and incident response. Documenting real-world attack chains — one packet at a time.</p>
     <div class="hero-stats">
-      <div class="stat-item"><div class="stat-num">4</div><div class="stat-label">EXERCISES</div></div>
-      <div class="stat-item"><div class="stat-num">14+</div><div class="stat-label">IOCs FOUND</div></div>
-      <div class="stat-item"><div class="stat-num">4</div><div class="stat-label">IR REPORTS</div></div>
+      <div class="stat-item"><div class="stat-num">1</div><div class="stat-label">EXERCISES</div></div>
+      <div class="stat-item"><div class="stat-num">3</div><div class="stat-label">IOCs FOUND</div></div>
+      <div class="stat-item"><div class="stat-num">1</div><div class="stat-label">IR REPORTS</div></div>
     </div>
     <div class="hero-btns">
       <a href="#exercises" class="btn-primary">VIEW EXERCISES</a>
@@ -193,31 +192,7 @@ footer{position:relative;z-index:1;border-top:1px solid var(--border);padding:36
 <section id="exercises">
   <div class="section-header"><span class="section-num">01</span><h2>Exercises</h2><div class="section-line"></div></div>
   <div class="exercises-grid">
-    <a href="#" class="exercise-card fade-in">
-      <div class="ex-meta"><span class="ex-date">2026-01-10</span><span class="ex-badge badge-complete">FAILED ATTACK</span></div>
-      <div class="ex-title">Web Server Attack</div>
-      <div class="ex-subtitle">Ten Days of Scans and Probes</div>
-      <div class="ex-desc">CGI path traversal attack combined with Mirai botnet reconnaissance. Attack failed with HTTP 400 — server not vulnerable.</div>
-      <div class="ex-tags"><span class="tag">CGI EXPLOIT</span><span class="tag">MIRAI BOTNET</span><span class="tag">PATH TRAVERSAL</span><span class="tag">HTTP 400</span></div>
-      <div class="ex-footer"><span class="ex-iocs">Attacker: 82.26.93.41 | C2: 178.16.55.224</span><span class="ex-arrow">→</span></div>
-    </a>
-    <a href="#" class="exercise-card fade-in" style="transition-delay:0.1s">
-      <div class="ex-meta"><span class="ex-date">2020-04-24</span><span class="ex-badge badge-high">SPAM BOT</span></div>
-      <div class="ex-title">Infected Machine Hunt</div>
-      <div class="ex-subtitle">steelcoffee.net Domain</div>
-      <div class="ex-desc">Workstation infected via ZIP file download. Malware established C2 with custom User-Agent and leaked Kerberos hashes for two accounts.</div>
-      <div class="ex-tags"><span class="tag">SPAM BOT</span><span class="tag">KERBEROS HASH</span><span class="tag">ZIP DELIVERY</span><span class="tag">LARACONF UA</span></div>
-      <div class="ex-footer"><span class="ex-iocs">Infected: 10.0.0.167 | elmer.obrien</span><span class="ex-arrow">→</span></div>
-    </a>
-    <a href="#" class="exercise-card fade-in" style="transition-delay:0.2s">
-      <div class="ex-meta"><span class="ex-date">2025-06-13</span><span class="ex-badge badge-critical">CRITICAL</span></div>
-      <div class="ex-title">It's a Trap</div>
-      <div class="ex-subtitle">massfriction.com Domain</div>
-      <div class="ex-desc">Multi-stage PowerShell attack chain. Fileless malware delivered via HTTPS, exfiltrated 991 KB systeminfo, then established 3 simultaneous C2 channels.</div>
-      <div class="ex-tags"><span class="tag">FILELESS</span><span class="tag">POWERSHELL IEX</span><span class="tag">3x C2 CHANNELS</span><span class="tag">CLOUDFLARE TUNNEL</span></div>
-      <div class="ex-footer"><span class="ex-iocs">Infected: 10.6.13.133 | rgaines</span><span class="ex-arrow">→</span></div>
-    </a>
-    <a href="#chain" class="exercise-card fade-in" style="transition-delay:0.3s">
+    <a href="#chain" class="exercise-card fade-in">
       <div class="ex-meta"><span class="ex-date">2024-09-04</span><span class="ex-badge badge-critical">CRITICAL</span></div>
       <div class="ex-title">Big Fish in a Little Pond</div>
       <div class="ex-subtitle">bepositive.com Domain</div>
@@ -369,9 +344,6 @@ footer{position:relative;z-index:1;border-top:1px solid var(--border);padding:36
   <div class="ioc-filters">
     <div class="ioc-filter active" onclick="filterIOC('all',this)">ALL</div>
     <div class="ioc-filter" onclick="filterIOC('2024-09-04',this)">2024-09-04</div>
-    <div class="ioc-filter" onclick="filterIOC('2025-06-13',this)">2025-06-13</div>
-    <div class="ioc-filter" onclick="filterIOC('2020-04-24',this)">2020-04-24</div>
-    <div class="ioc-filter" onclick="filterIOC('2026-01-10',this)">2026-01-10</div>
   </div>
   <table class="ioc-table">
     <thead><tr><th>INDICATOR</th><th>TYPE</th><th>ROLE</th><th>EXERCISE</th></tr></thead>
@@ -379,14 +351,6 @@ footer{position:relative;z-index:1;border-top:1px solid var(--border);padding:36
       <tr data-ex="2024-09-04"><td class="ioc-val">79.124.78.197</td><td><span class="ex-badge badge-critical">IP</span></td><td class="ioc-role">C2 Server — MODILOADER beaconing (POST /foots.php)</td><td class="ioc-ex">2024-09-04</td></tr>
       <tr data-ex="2024-09-04"><td class="ioc-val">bellantonicioccolato.it</td><td><span class="ex-badge badge-high">DOMAIN</span></td><td class="ioc-role">Initial infection vector — compromised Italian website</td><td class="ioc-ex">2024-09-04</td></tr>
       <tr data-ex="2024-09-04"><td class="ioc-val">46.254.34.201</td><td><span class="ex-badge badge-high">IP</span></td><td class="ioc-role">Hosting IP for initial infection vector (Italy)</td><td class="ioc-ex">2024-09-04</td></tr>
-      <tr data-ex="2025-06-13"><td class="ioc-val">104.21.24.186</td><td><span class="ex-badge badge-critical">IP</span></td><td class="ioc-role">PowerShell Stage 1 C2 — script delivery via HTTP</td><td class="ioc-ex">2025-06-13</td></tr>
-      <tr data-ex="2025-06-13"><td class="ioc-val">event-time-microsoft.org</td><td><span class="ex-badge badge-high">DOMAIN</span></td><td class="ioc-role">Typosquatting — PowerShell IEX delivery</td><td class="ioc-ex">2025-06-13</td></tr>
-      <tr data-ex="2025-06-13"><td class="ioc-val">104.21.112.1</td><td><span class="ex-badge badge-critical">IP</span></td><td class="ioc-role">Exfiltration — 991 KB systeminfo POST</td><td class="ioc-ex">2025-06-13</td></tr>
-      <tr data-ex="2025-06-13"><td class="ioc-val">windows-msgas.com</td><td><span class="ex-badge badge-high">DOMAIN</span></td><td class="ioc-role">Persistent C2 beacon — masquerades as Microsoft</td><td class="ioc-ex">2025-06-13</td></tr>
-      <tr data-ex="2020-04-24"><td class="ioc-val">158.69.28.93</td><td><span class="ex-badge badge-critical">IP</span></td><td class="ioc-role">Initial infection — ZIP file delivery (play.astrite.ga)</td><td class="ioc-ex">2020-04-24</td></tr>
-      <tr data-ex="2020-04-24"><td class="ioc-val">atn24live.com</td><td><span class="ex-badge badge-high">DOMAIN</span></td><td class="ioc-role">C2 spam bot — LaraConf User-Agent beaconing</td><td class="ioc-ex">2020-04-24</td></tr>
-      <tr data-ex="2026-01-10"><td class="ioc-val">82.26.93.41</td><td><span class="ex-badge badge-critical">IP</span></td><td class="ioc-role">Attacker IP — CGI path traversal scans</td><td class="ioc-ex">2026-01-10</td></tr>
-      <tr data-ex="2026-01-10"><td class="ioc-val">178.16.55.224</td><td><span class="ex-badge badge-high">IP</span></td><td class="ioc-role">Mirai botnet C2 — attack failed HTTP 400</td><td class="ioc-ex">2026-01-10</td></tr>
     </tbody>
   </table>
 </section>
