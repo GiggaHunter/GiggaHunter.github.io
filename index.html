@@ -205,7 +205,7 @@ html,body{max-width:100%;overflow-x:hidden;}
     <div class="hero-stats">
       <div class="stat-item"><div class="stat-num">3</div><div class="stat-label">EXERCISES</div></div>
       <div class="stat-item"><div class="stat-num">14</div><div class="stat-label">IOCs FOUND</div></div>
-      <div class="stat-item"><div class="stat-num">1</div><div class="stat-label">IR REPORTS</div></div>
+      <div class="stat-item"><div class="stat-num">0</div><div class="stat-label">IR REPORTS</div></div>
     </div>
     <div class="hero-btns">
       <a href="#exercises" class="btn-primary">VIEW EXERCISES</a>
@@ -296,6 +296,7 @@ html,body{max-width:100%;overflow-x:hidden;}
         </defs>
 
         <!-- Node 1: Victim -->
+        <text x="308" y="8" font-family="'JetBrains Mono',monospace" font-size="9" fill="#4a5568" text-anchor="end">17:34:35</text>
         <g class="chain-node"
           onmouseenter="showTip(event,'Victim Workstation','IP: 172.17.0.99\nHostname: DESKTOP-RNVO9AT\nUser: afletcher\nDomain: bepositive.com')"
           onmouseleave="hideTip()" onmousemove="moveTip(event)">
@@ -303,13 +304,13 @@ html,body{max-width:100%;overflow-x:hidden;}
           <rect x="10" y="10" width="4" height="54" rx="2" fill="#4a5568"/>
           <text x="24" y="32" font-family="'JetBrains Mono',monospace" font-size="11" fill="#fff" font-weight="500">afletcher — DESKTOP-RNVO9AT</text>
           <text x="24" y="50" font-family="'JetBrains Mono',monospace" font-size="10" fill="#4a5568">172.17.0.99 | bepositive.com</text>
-          <text x="286" y="41" font-family="'JetBrains Mono',monospace" font-size="9" fill="#253548" text-anchor="end">17:34:35</text>
         </g>
 
         <line x1="160" y1="64" x2="160" y2="96" stroke="#1e2d3d" stroke-width="1" stroke-dasharray="3 3" marker-end="url(#am)"/>
-        <text x="168" y="84" font-family="'JetBrains Mono',monospace" font-size="9" fill="#253548">Kerberos login</text>
+        <text x="168" y="84" font-family="'JetBrains Mono',monospace" font-size="9" fill="#4a5568">Kerberos login</text>
 
         <!-- Node 2: Initial Vector -->
+        <text x="308" y="97" font-family="'JetBrains Mono',monospace" font-size="9" fill="#4a5568" text-anchor="end">17:35:04</text>
         <g class="chain-node"
           onmouseenter="showTip(event,'Initial Infection Vector','Domain: bellantonicioccolato.it\nIP: 46.254.34.201\nProtocol: HTTPS (TLSv1.3)\nPayload: 193 KB — 155 server packets\nType: Drive-by Download\nNote: Legitimate site compromised')"
           onmouseleave="hideTip()" onmousemove="moveTip(event)">
@@ -318,13 +319,13 @@ html,body{max-width:100%;overflow-x:hidden;}
           <text x="24" y="121" font-family="'JetBrains Mono',monospace" font-size="11" fill="#fff" font-weight="500">bellantonicioccolato.it</text>
           <text x="24" y="139" font-family="'JetBrains Mono',monospace" font-size="10" fill="#ffa502">46.254.34.201 — HTTPS initial vector</text>
           <text x="24" y="155" font-family="'JetBrains Mono',monospace" font-size="10" fill="#4a5568">Drive-by Download — 193 KB payload</text>
-          <text x="286" y="135" font-family="'JetBrains Mono',monospace" font-size="9" fill="#3d3000" text-anchor="end">17:35:04</text>
         </g>
 
         <line x1="160" y1="165" x2="160" y2="197" stroke="#ff4757" stroke-width="1" stroke-dasharray="3 3" marker-end="url(#ar)"/>
         <text x="168" y="185" font-family="'JetBrains Mono',monospace" font-size="9" fill="#ff4757">9 sec →</text>
 
         <!-- Node 3: C2 Registration -->
+        <text x="308" y="198" font-family="'JetBrains Mono',monospace" font-size="9" fill="#4a5568" text-anchor="end">17:35:13</text>
         <g class="chain-node"
           onmouseenter="showTip(event,'C2 Registration','IP: 79.124.78.197\nEndpoint: GET /index.php\nSubID: qIOuKk7U\nBot ID assigned: HckDcK0czXjaq48jVHNn\nUser-Agent: MSIE 7.0 (fake!)\nASN: DigiSys Ltd — Bulgaria')"
           onmouseleave="hideTip()" onmousemove="moveTip(event)">
@@ -333,12 +334,12 @@ html,body{max-width:100%;overflow-x:hidden;}
           <text x="24" y="222" font-family="'JetBrains Mono',monospace" font-size="11" fill="#fff" font-weight="500">79.124.78.197 — C2 registration</text>
           <text x="24" y="240" font-family="'JetBrains Mono',monospace" font-size="10" fill="#ff4757">GET /index.php?id=&amp;subid=qIOuKk7U</text>
           <text x="24" y="256" font-family="'JetBrains Mono',monospace" font-size="10" fill="#4a5568">Bot ID: HckDcK0czXjaq48jVHNn</text>
-          <text x="286" y="236" font-family="'JetBrains Mono',monospace" font-size="9" fill="#3d1010" text-anchor="end">17:35:13</text>
         </g>
 
         <line x1="160" y1="266" x2="160" y2="298" stroke="#ff4757" stroke-width="1" stroke-dasharray="3 3" marker-end="url(#ar)"/>
 
         <!-- Node 4: Data Exfiltration -->
+        <text x="308" y="299" font-family="'JetBrains Mono',monospace" font-size="9" fill="#4a5568" text-anchor="end">17:35:14</text>
         <g class="chain-node"
           onmouseenter="showTip(event,'Data Exfiltration','IP: 79.124.78.197\nEndpoint: POST /index.php\nContent: Encoded binary data\nC2 response: single char D\n= acknowledged, continue beaconing')"
           onmouseleave="hideTip()" onmousemove="moveTip(event)">
@@ -346,12 +347,12 @@ html,body{max-width:100%;overflow-x:hidden;}
           <rect x="10" y="301" width="4" height="54" rx="2" fill="#ff4757"/>
           <text x="24" y="323" font-family="'JetBrains Mono',monospace" font-size="11" fill="#fff" font-weight="500">Data exfiltration</text>
           <text x="24" y="341" font-family="'JetBrains Mono',monospace" font-size="10" fill="#4a5568">POST /index.php — encoded system data</text>
-          <text x="286" y="332" font-family="'JetBrains Mono',monospace" font-size="9" fill="#3d1010" text-anchor="end">17:35:14</text>
         </g>
 
         <line x1="160" y1="355" x2="160" y2="387" stroke="#ff4757" stroke-width="1" stroke-dasharray="3 3" marker-end="url(#ar)"/>
 
         <!-- Node 5: Beaconing -->
+        <text x="308" y="388" font-family="'JetBrains Mono',monospace" font-size="9" fill="#4a5568" text-anchor="end">17:35:13+</text>
         <g class="chain-node"
           onmouseenter="showTip(event,'Persistent C2 Beaconing','IP: 79.124.78.197\nEndpoint: POST /foots.php\nContent-Length: 40 bytes each\nContent-Type: application/octet-stream\nUser-Agent: MSIE 7.0 (fake)\nCache-Control: no-cache\nPattern: automated, ongoing')"
           onmouseleave="hideTip()" onmousemove="moveTip(event)">
@@ -360,7 +361,6 @@ html,body{max-width:100%;overflow-x:hidden;}
           <text x="24" y="412" font-family="'JetBrains Mono',monospace" font-size="11" fill="#fff" font-weight="500">Persistent C2 beaconing</text>
           <text x="24" y="430" font-family="'JetBrains Mono',monospace" font-size="10" fill="#ff4757">POST /foots.php — 40 bytes each</text>
           <text x="24" y="446" font-family="'JetBrains Mono',monospace" font-size="10" fill="#4a5568">Content-Type: application/octet-stream</text>
-          <text x="286" y="426" font-family="'JetBrains Mono',monospace" font-size="9" fill="#3d1010" text-anchor="end">17:35:13+</text>
         </g>
 
         <text x="160" y="484" font-family="'JetBrains Mono',monospace" font-size="9" fill="#253548" text-anchor="middle">── ~38 seconds: access → persistent C2 ──</text>
@@ -400,6 +400,7 @@ html,body{max-width:100%;overflow-x:hidden;}
         </defs>
 
         <!-- Node 1: Victim -->
+        <text x="308" y="8" font-family="'JetBrains Mono',monospace" font-size="9" fill="#4a5568" text-anchor="end">19:55:23</text>
         <g class="chain-node"
           onmouseenter="showTip(event,'Victim Workstation','IP: 10.2.28.88\nHostname: DESKTOP-TEYQ2NR\nUser: brolf\nDomain: easyas123.tech\nMAC: 00:19:D1:B2:4D:AD')"
           onmouseleave="hideTip()" onmousemove="moveTip(event)">
@@ -407,13 +408,13 @@ html,body{max-width:100%;overflow-x:hidden;}
           <rect x="10" y="10" width="4" height="54" rx="2" fill="#4a5568"/>
           <text x="24" y="32" font-family="'JetBrains Mono',monospace" font-size="11" fill="#fff" font-weight="500">brolf — DESKTOP-TEYQ2NR</text>
           <text x="24" y="50" font-family="'JetBrains Mono',monospace" font-size="10" fill="#4a5568">10.2.28.88 | easyas123.tech</text>
-          <text x="286" y="41" font-family="'JetBrains Mono',monospace" font-size="9" fill="#253548" text-anchor="end">19:55:23</text>
         </g>
 
         <line x1="160" y1="64" x2="160" y2="96" stroke="#1e2d3d" stroke-width="1" stroke-dasharray="3 3" marker-end="url(#am5)"/>
-        <text x="168" y="84" font-family="'JetBrains Mono',monospace" font-size="9" fill="#253548">Kerberos login</text>
+        <text x="168" y="84" font-family="'JetBrains Mono',monospace" font-size="9" fill="#4a5568">Kerberos login</text>
 
         <!-- Node 2: Unknown Vector -->
+        <text x="308" y="97" font-family="'JetBrains Mono',monospace" font-size="9" fill="#4a5568" text-anchor="end">unknown</text>
         <g class="chain-node"
           onmouseenter="showTip(event,'Initial Infection Vector','Status: UNKNOWN\nReason: Malware was active before PCAP recording started\nDelivery: Suspected HTTPS encrypted channel\nNote: SIEM triggered NetSupport RAT alerts\nAll pre-C2 HTTPS traffic was legitimate Microsoft domains')"
           onmouseleave="hideTip()" onmousemove="moveTip(event)">
@@ -422,12 +423,12 @@ html,body{max-width:100%;overflow-x:hidden;}
           <text x="24" y="121" font-family="'JetBrains Mono',monospace" font-size="11" fill="#8b949e" font-weight="500">Initial infection vector</text>
           <text x="24" y="139" font-family="'JetBrains Mono',monospace" font-size="10" fill="#4a5568">Unknown — outside PCAP capture window</text>
           <text x="24" y="155" font-family="'JetBrains Mono',monospace" font-size="10" fill="#4a5568">Suspected encrypted HTTPS delivery</text>
-          <text x="286" y="135" font-family="'JetBrains Mono',monospace" font-size="9" fill="#253548" text-anchor="end">unknown</text>
         </g>
 
         <line x1="160" y1="165" x2="160" y2="197" stroke="#ff4757" stroke-width="1" stroke-dasharray="3 3" marker-end="url(#ar5)"/>
 
         <!-- Node 3: C2 Check-in -->
+        <text x="308" y="198" font-family="'JetBrains Mono',monospace" font-size="9" fill="#4a5568" text-anchor="end">19:55:51</text>
         <g class="chain-node"
           onmouseenter="showTip(event,'C2 Beaconing — CMD=POLL','IP: 45.131.214.85\nEndpoint: POST /fakeurl.htm\nUser-Agent: NetSupport Manager/1.3\nContent-Type: application/x-www-form-urlencoded\nCMD=POLL: host checks in for new commands\nInterval: ~60 seconds')"
           onmouseleave="hideTip()" onmousemove="moveTip(event)">
@@ -436,12 +437,12 @@ html,body{max-width:100%;overflow-x:hidden;}
           <text x="24" y="222" font-family="'JetBrains Mono',monospace" font-size="11" fill="#fff" font-weight="500">45.131.214.85 — C2 beaconing</text>
           <text x="24" y="240" font-family="'JetBrains Mono',monospace" font-size="10" fill="#ff4757">POST /fakeurl.htm — CMD=POLL</text>
           <text x="24" y="256" font-family="'JetBrains Mono',monospace" font-size="10" fill="#4a5568">NetSupport Manager/1.3 User-Agent</text>
-          <text x="286" y="236" font-family="'JetBrains Mono',monospace" font-size="9" fill="#3d1010" text-anchor="end">19:55:51</text>
         </g>
 
         <line x1="160" y1="266" x2="160" y2="298" stroke="#ff4757" stroke-width="1" stroke-dasharray="3 3" marker-end="url(#ar5)"/>
 
         <!-- Node 4: C2 Commands -->
+        <text x="308" y="299" font-family="'JetBrains Mono',monospace" font-size="9" fill="#4a5568" text-anchor="end">19:55:51+</text>
         <g class="chain-node"
           onmouseenter="showTip(event,'C2 Encoded Commands — CMD=ENCD','Server response: CMD=ENCD\nES=1\nDATA=<encoded payload>\nMeaning: C2 sends encoded commands back\nTotal stream: 62 KB — 264 client packets\nPattern: automated persistent beaconing')"
           onmouseleave="hideTip()" onmousemove="moveTip(event)">
@@ -450,7 +451,6 @@ html,body{max-width:100%;overflow-x:hidden;}
           <text x="24" y="323" font-family="'JetBrains Mono',monospace" font-size="11" fill="#fff" font-weight="500">Persistent C2 — CMD=ENCD</text>
           <text x="24" y="341" font-family="'JetBrains Mono',monospace" font-size="10" fill="#ff4757">C2 sends encoded commands to host</text>
           <text x="24" y="357" font-family="'JetBrains Mono',monospace" font-size="10" fill="#4a5568">Full remote control capability active</text>
-          <text x="286" y="335" font-family="'JetBrains Mono',monospace" font-size="9" fill="#3d1010" text-anchor="end">19:55:51+</text>
         </g>
 
         <text x="160" y="484" font-family="'JetBrains Mono',monospace" font-size="9" fill="#253548" text-anchor="middle">── Beaconing every ~60 seconds ──</text>
@@ -491,6 +491,7 @@ html,body{max-width:100%;overflow-x:hidden;}
         </defs>
 
         <!-- Node 1: Victim -->
+        <text x="308" y="8" font-family="'JetBrains Mono',monospace" font-size="9" fill="#4a5568" text-anchor="end">23:04:49</text>
         <g class="chain-node"
           onmouseenter="showTip(event,'Victim Workstation','IP: 10.1.21.58\nHostname: DESKTOP-ES9F3ML\nUser: gwyatt\nDomain: win11office.com\nMAC: 00:21:5D:C8:0E:F2')"
           onmouseleave="hideTip()" onmousemove="moveTip(event)">
@@ -498,13 +499,13 @@ html,body{max-width:100%;overflow-x:hidden;}
           <rect x="10" y="10" width="4" height="54" rx="2" fill="#4a5568"/>
           <text x="24" y="32" font-family="'JetBrains Mono',monospace" font-size="11" fill="#fff" font-weight="500">gwyatt — DESKTOP-ES9F3ML</text>
           <text x="24" y="50" font-family="'JetBrains Mono',monospace" font-size="10" fill="#4a5568">10.1.21.58 | win11office.com</text>
-          <text x="286" y="41" font-family="'JetBrains Mono',monospace" font-size="9" fill="#253548" text-anchor="end">23:04:49</text>
         </g>
 
         <line x1="160" y1="64" x2="160" y2="96" stroke="#1e2d3d" stroke-width="1" stroke-dasharray="3 3" marker-end="url(#am6)"/>
-        <text x="168" y="84" font-family="'JetBrains Mono',monospace" font-size="9" fill="#253548">Kerberos login</text>
+        <text x="168" y="84" font-family="'JetBrains Mono',monospace" font-size="9" fill="#4a5568">Kerberos login</text>
 
         <!-- Node 2: Initial Infection -->
+        <text x="308" y="97" font-family="'JetBrains Mono',monospace" font-size="9" fill="#4a5568" text-anchor="end">23:04:49</text>
         <g class="chain-node"
           onmouseenter="showTip(event,'Initial Infection Vector','Domain: media.megafilehub4.lat\nIP: 104.21.48.156 (Cloudflare)\nProtocol: HTTPS (TLSv1.3)\nType: Payload delivery site\nDomain age: 3 months (newly registered)\nVT: BitDefender + G-Data flagged malicious')"
           onmouseleave="hideTip()" onmousemove="moveTip(event)">
@@ -513,13 +514,13 @@ html,body{max-width:100%;overflow-x:hidden;}
           <text x="24" y="121" font-family="'JetBrains Mono',monospace" font-size="11" fill="#fff" font-weight="500">media.megafilehub4.lat</text>
           <text x="24" y="139" font-family="'JetBrains Mono',monospace" font-size="10" fill="#ffa502">104.21.48.156 — Lumma Stealer delivery</text>
           <text x="24" y="155" font-family="'JetBrains Mono',monospace" font-size="10" fill="#4a5568">HTTPS encrypted — payload not observable</text>
-          <text x="286" y="135" font-family="'JetBrains Mono',monospace" font-size="9" fill="#3d3000" text-anchor="end">23:04:49</text>
         </g>
 
         <line x1="160" y1="165" x2="160" y2="197" stroke="#ff4757" stroke-width="1" stroke-dasharray="3 3" marker-end="url(#ar6)"/>
         <text x="168" y="185" font-family="'JetBrains Mono',monospace" font-size="9" fill="#ff4757">1:41 min →</text>
 
         <!-- Node 3: C2 Gate -->
+        <text x="308" y="198" font-family="'JetBrains Mono',monospace" font-size="9" fill="#4a5568" text-anchor="end">23:05:34</text>
         <g class="chain-node"
           onmouseenter="showTip(event,'C2 Gate — whooptm.cyou','IP: 62.72.32.156\nProtocol: HTTPS single connection\nVT: botnet_cc — Lumma Stealer confirmed\nAlias: LummaC2 Stealer\nPattern: gate/redirector — one contact only\nPurpose: delivers real C2 address')"
           onmouseleave="hideTip()" onmousemove="moveTip(event)">
@@ -528,13 +529,13 @@ html,body{max-width:100%;overflow-x:hidden;}
           <text x="24" y="222" font-family="'JetBrains Mono',monospace" font-size="11" fill="#fff" font-weight="500">whooptm.cyou — C2 Gate</text>
           <text x="24" y="240" font-family="'JetBrains Mono',monospace" font-size="10" fill="#ff4757">62.72.32.156 — Lumma Stealer botnet_cc</text>
           <text x="24" y="256" font-family="'JetBrains Mono',monospace" font-size="10" fill="#4a5568">Single contact — redirector to real C2</text>
-          <text x="286" y="236" font-family="'JetBrains Mono',monospace" font-size="9" fill="#3d1010" text-anchor="end">23:05:34</text>
         </g>
 
         <line x1="160" y1="266" x2="160" y2="298" stroke="#ff4757" stroke-width="1" stroke-dasharray="3 3" marker-end="url(#ar6)"/>
         <text x="168" y="285" font-family="'JetBrains Mono',monospace" font-size="9" fill="#ff4757">4 sec →</text>
 
         <!-- Node 4: C2 Exfiltration -->
+        <text x="308" y="299" font-family="'JetBrains Mono',monospace" font-size="9" fill="#4a5568" text-anchor="end">23:05:39</text>
         <g class="chain-node"
           onmouseenter="showTip(event,'C2 + Exfiltration — whitepepper.su','IP: 153.92.1.49 (Hostinger — AS47583)\nProtocol: HTTP (port 80) — visible!\nEndpoint: GET /api/set_agent + POST /api/set_agent\nAction: system fingerprinting + data exfiltration\nCollects: platform, userAgent, language, hardwareConcurrency\nServer: nginx/1.29.1 — title: test (hastily deployed)')"
           onmouseleave="hideTip()" onmousemove="moveTip(event)">
@@ -543,12 +544,12 @@ html,body{max-width:100%;overflow-x:hidden;}
           <text x="24" y="323" font-family="'JetBrains Mono',monospace" font-size="11" fill="#fff" font-weight="500">whitepepper.su — C2 + Exfiltration</text>
           <text x="24" y="341" font-family="'JetBrains Mono',monospace" font-size="10" fill="#ff4757">POST /api/set_agent — system data sent</text>
           <text x="24" y="357" font-family="'JetBrains Mono',monospace" font-size="10" fill="#4a5568">Fingerprinting: platform, UA, language</text>
-          <text x="286" y="335" font-family="'JetBrains Mono',monospace" font-size="9" fill="#3d1010" text-anchor="end">23:05:39</text>
         </g>
 
         <line x1="160" y1="367" x2="160" y2="390" stroke="#ff4757" stroke-width="1" stroke-dasharray="3 3" marker-end="url(#ar6)"/>
 
         <!-- Node 5: Lateral Movement -->
+        <text x="308" y="391" font-family="'JetBrains Mono',monospace" font-size="9" fill="#4a5568" text-anchor="end">23:06:12</text>
         <g class="chain-node"
           onmouseenter="showTip(event,'Lateral Movement — LSARPC Attack','Secondary C2: holiday-forever.cc (80.97.160.24)\nContact at 23:06:06 — 6 sec before attack\nTarget: DC 10.1.21.2\nMethod: 749 malformed lsa_OpenPolicy3 requests\nWindow: burst within ~1 second\nGoal: credential dumping / privilege escalation')"
           onmouseleave="hideTip()" onmousemove="moveTip(event)">
@@ -557,7 +558,6 @@ html,body{max-width:100%;overflow-x:hidden;}
           <text x="24" y="415" font-family="'JetBrains Mono',monospace" font-size="11" fill="#fff" font-weight="500">LSARPC → DC 10.1.21.2</text>
           <text x="24" y="433" font-family="'JetBrains Mono',monospace" font-size="10" fill="#ff4757">749 malformed lsa_OpenPolicy3 requests</text>
           <text x="24" y="449" font-family="'JetBrains Mono',monospace" font-size="10" fill="#4a5568">Lateral movement — credential dump attempt</text>
-          <text x="286" y="429" font-family="'JetBrains Mono',monospace" font-size="9" fill="#3d1010" text-anchor="end">23:06:12</text>
         </g>
 
         <text x="160" y="484" font-family="'JetBrains Mono',monospace" font-size="9" fill="#253548" text-anchor="middle">── ~83 seconds: delivery → lateral movement ──</text>
