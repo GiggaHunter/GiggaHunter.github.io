@@ -203,9 +203,9 @@ html,body{max-width:100%;overflow-x:hidden;}
     <h1>Hunting<br/><span class="accent">Threats</span><br/><span class="dim">in the Wire.</span></h1>
     <p class="hero-desc">PCAP analysis, malware traffic forensics, and incident response. Documenting real-world attack chains — one packet at a time.</p>
     <div class="hero-stats">
-      <div class="stat-item"><div class="stat-num">1</div><div class="stat-label">EXERCISES</div></div>
-      <div class="stat-item"><div class="stat-num">3</div><div class="stat-label">IOCs FOUND</div></div>
-      <div class="stat-item"><div class="stat-num">1</div><div class="stat-label">IR REPORTS</div></div>
+      <div class="stat-item"><div class="stat-num">2</div><div class="stat-label">EXERCISES</div></div>
+      <div class="stat-item"><div class="stat-num">6</div><div class="stat-label">IOCs FOUND</div></div>
+      <div class="stat-item"><div class="stat-num">0</div><div class="stat-label">IR REPORTS</div></div>
     </div>
     <div class="hero-btns">
       <a href="#exercises" class="btn-primary">VIEW EXERCISES</a>
@@ -232,6 +232,14 @@ html,body{max-width:100%;overflow-x:hidden;}
       <div class="ex-tags"><span class="tag">MODILOADER</span><span class="tag">WIKILOADER</span><span class="tag">DRIVE-BY</span><span class="tag">FAKE MSIE 7.0</span></div>
       <div class="ex-footer"><span class="ex-iocs">Infected: 172.17.0.99 | afletcher</span><span class="ex-arrow">→</span></div>
     </a>
+    <a href="#chain" class="exercise-card fade-in" style="transition-delay:0.1s">
+      <div class="ex-meta"><span class="ex-date">2026-02-28</span><span class="ex-badge badge-critical">CRITICAL</span></div>
+      <div class="ex-title">Easy as 123</div>
+      <div class="ex-subtitle">easyas123.tech Domain</div>
+      <div class="ex-desc">NetSupport Manager RAT established persistent C2 beaconing via HTTP POST. Initial infection vector not observable in PCAP — malware active before capture window.</div>
+      <div class="ex-tags"><span class="tag">NETSUPPORT RAT</span><span class="tag">CMD=POLL</span><span class="tag">CMD=ENCD</span><span class="tag">UNKNOWN VECTOR</span></div>
+      <div class="ex-footer"><span class="ex-iocs">Infected: 10.2.28.88 | brolf</span><span class="ex-arrow">→</span></div>
+    </a>
   </div>
 </section>
 
@@ -253,7 +261,7 @@ html,body{max-width:100%;overflow-x:hidden;}
   <div class="section-header"><span class="section-num">03</span><h2>Attack Chain</h2><div class="section-line"></div></div>
   <div class="chain-tabs">
     <div class="chain-tab active" onclick="switchChain('ex4',this)">2024-09-04 — Big Fish</div>
-    <div class="chain-tab disabled">Exercise 5 — Coming Soon</div>
+    <div class="chain-tab" onclick="switchChain('ex5',this)">2026-02-28 — Easy as 123</div>
   </div>
 
   <div class="chain-panel active" id="chain-ex4">
@@ -361,6 +369,96 @@ html,body{max-width:100%;overflow-x:hidden;}
   </div>
 </section>
 
+<!-- EX5 PANEL -->
+<div class="chain-panel" id="chain-ex5" style="display:none;grid-template-columns:1fr 1.2fr;gap:48px;align-items:start;">
+    <div class="chain-info fade-in">
+      <h3>Easy as 123</h3>
+      <p>NetSupport Manager RAT with persistent C2 beaconing. Initial infection vector not observable in PCAP — malware was already active at capture start. C2 communication used structured CMD=POLL / CMD=ENCD protocol.</p>
+      <div class="chain-meta-grid">
+        <div class="chain-meta-item"><div class="chain-meta-label">INFECTED HOST</div><div class="chain-meta-val">10.2.28.88</div></div>
+        <div class="chain-meta-item"><div class="chain-meta-label">USER</div><div class="chain-meta-val">brolf</div></div>
+        <div class="chain-meta-item"><div class="chain-meta-label">MALWARE</div><div class="chain-meta-val">NetSupport RAT</div></div>
+        <div class="chain-meta-item"><div class="chain-meta-label">C2 SERVER</div><div class="chain-meta-val">45.131.214.85</div></div>
+        <div class="chain-meta-item"><div class="chain-meta-label">DOMAIN</div><div class="chain-meta-val">easyas123.tech</div></div>
+        <div class="chain-meta-item"><div class="chain-meta-label">VECTOR</div><div class="chain-meta-val">Unknown</div></div>
+      </div>
+    </div>
+
+    <div class="chain-svg-wrap fade-in">
+      <svg width="100%" viewBox="0 0 320 470">
+        <defs>
+          <marker id="am5" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="5" markerHeight="5" orient="auto"><path d="M2 2L8 5L2 8" fill="none" stroke="#253548" stroke-width="1.5" stroke-linecap="round"/></marker>
+          <marker id="ar5" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="5" markerHeight="5" orient="auto"><path d="M2 2L8 5L2 8" fill="none" stroke="#ff4757" stroke-width="1.5" stroke-linecap="round"/></marker>
+        </defs>
+
+        <!-- Node 1: Victim -->
+        <g class="chain-node"
+          onmouseenter="showTip(event,'Victim Workstation','IP: 10.2.28.88\nHostname: DESKTOP-TEYQ2NR\nUser: brolf\nDomain: easyas123.tech\nMAC: 00:19:D1:B2:4D:AD')"
+          onmouseleave="hideTip()" onmousemove="moveTip(event)">
+          <rect x="10" y="10" width="300" height="54" rx="4" fill="#151d27" stroke="#253548" stroke-width="1"/>
+          <rect x="10" y="10" width="4" height="54" rx="2" fill="#4a5568"/>
+          <text x="24" y="32" font-family="'JetBrains Mono',monospace" font-size="11" fill="#fff" font-weight="500">brolf — DESKTOP-TEYQ2NR</text>
+          <text x="24" y="50" font-family="'JetBrains Mono',monospace" font-size="10" fill="#4a5568">10.2.28.88 | easyas123.tech</text>
+          <text x="286" y="41" font-family="'JetBrains Mono',monospace" font-size="9" fill="#253548" text-anchor="end">19:55:23</text>
+        </g>
+
+        <line x1="160" y1="64" x2="160" y2="96" stroke="#1e2d3d" stroke-width="1" stroke-dasharray="3 3" marker-end="url(#am5)"/>
+        <text x="168" y="84" font-family="'JetBrains Mono',monospace" font-size="9" fill="#253548">Kerberos login</text>
+
+        <!-- Node 2: Unknown Vector -->
+        <g class="chain-node"
+          onmouseenter="showTip(event,'Initial Infection Vector','Status: UNKNOWN\nReason: Malware was active before PCAP recording started\nDelivery: Suspected HTTPS encrypted channel\nNote: SIEM triggered NetSupport RAT alerts\nAll pre-C2 HTTPS traffic was legitimate Microsoft domains')"
+          onmouseleave="hideTip()" onmousemove="moveTip(event)">
+          <rect x="10" y="99" width="300" height="66" rx="4" fill="#111820" stroke="#253548" stroke-width="1" stroke-dasharray="4 3"/>
+          <rect x="10" y="99" width="4" height="66" rx="2" fill="#4a5568"/>
+          <text x="24" y="121" font-family="'JetBrains Mono',monospace" font-size="11" fill="#8b949e" font-weight="500">Initial infection vector</text>
+          <text x="24" y="139" font-family="'JetBrains Mono',monospace" font-size="10" fill="#4a5568">Unknown — outside PCAP capture window</text>
+          <text x="24" y="155" font-family="'JetBrains Mono',monospace" font-size="10" fill="#4a5568">Suspected encrypted HTTPS delivery</text>
+          <text x="286" y="135" font-family="'JetBrains Mono',monospace" font-size="9" fill="#253548" text-anchor="end">unknown</text>
+        </g>
+
+        <line x1="160" y1="165" x2="160" y2="197" stroke="#ff4757" stroke-width="1" stroke-dasharray="3 3" marker-end="url(#ar5)"/>
+
+        <!-- Node 3: C2 Check-in -->
+        <g class="chain-node"
+          onmouseenter="showTip(event,'C2 Beaconing — CMD=POLL','IP: 45.131.214.85\nEndpoint: POST /fakeurl.htm\nUser-Agent: NetSupport Manager/1.3\nContent-Type: application/x-www-form-urlencoded\nCMD=POLL: host checks in for new commands\nInterval: ~60 seconds')"
+          onmouseleave="hideTip()" onmousemove="moveTip(event)">
+          <rect x="10" y="200" width="300" height="66" rx="4" fill="#1a0808" stroke="#3d1010" stroke-width="1"/>
+          <rect x="10" y="200" width="4" height="66" rx="2" fill="#ff4757"/>
+          <text x="24" y="222" font-family="'JetBrains Mono',monospace" font-size="11" fill="#fff" font-weight="500">45.131.214.85 — C2 beaconing</text>
+          <text x="24" y="240" font-family="'JetBrains Mono',monospace" font-size="10" fill="#ff4757">POST /fakeurl.htm — CMD=POLL</text>
+          <text x="24" y="256" font-family="'JetBrains Mono',monospace" font-size="10" fill="#4a5568">NetSupport Manager/1.3 User-Agent</text>
+          <text x="286" y="236" font-family="'JetBrains Mono',monospace" font-size="9" fill="#3d1010" text-anchor="end">19:55:51</text>
+        </g>
+
+        <line x1="160" y1="266" x2="160" y2="298" stroke="#ff4757" stroke-width="1" stroke-dasharray="3 3" marker-end="url(#ar5)"/>
+
+        <!-- Node 4: C2 Commands -->
+        <g class="chain-node"
+          onmouseenter="showTip(event,'C2 Encoded Commands — CMD=ENCD','Server response: CMD=ENCD\nES=1\nDATA=<encoded payload>\nMeaning: C2 sends encoded commands back\nTotal stream: 62 KB — 264 client packets\nPattern: automated persistent beaconing')"
+          onmouseleave="hideTip()" onmousemove="moveTip(event)">
+          <rect x="10" y="301" width="300" height="66" rx="4" fill="#1a0808" stroke="#ff4757" stroke-width="1.5"/>
+          <rect x="10" y="301" width="4" height="66" rx="2" fill="#ff4757"/>
+          <text x="24" y="323" font-family="'JetBrains Mono',monospace" font-size="11" fill="#fff" font-weight="500">Persistent C2 — CMD=ENCD</text>
+          <text x="24" y="341" font-family="'JetBrains Mono',monospace" font-size="10" fill="#ff4757">C2 sends encoded commands to host</text>
+          <text x="24" y="357" font-family="'JetBrains Mono',monospace" font-size="10" fill="#4a5568">Full remote control capability active</text>
+          <text x="286" y="335" font-family="'JetBrains Mono',monospace" font-size="9" fill="#3d1010" text-anchor="end">19:55:51+</text>
+        </g>
+
+        <text x="160" y="395" font-family="'JetBrains Mono',monospace" font-size="9" fill="#253548" text-anchor="middle">── Beaconing every ~60 seconds ──</text>
+
+        <rect x="10" y="410" width="10" height="10" fill="#4a5568" rx="1"/>
+        <text x="26" y="419" font-family="'JetBrains Mono',monospace" font-size="9" fill="#4a5568">Victim</text>
+        <rect x="80" y="410" width="10" height="10" fill="#253548" rx="1" stroke="#4a5568" stroke-width="1" stroke-dasharray="2 2"/>
+        <text x="96" y="419" font-family="'JetBrains Mono',monospace" font-size="9" fill="#4a5568">Unknown vector</text>
+        <rect x="200" y="410" width="10" height="10" fill="#ff4757" rx="1"/>
+        <text x="216" y="419" font-family="'JetBrains Mono',monospace" font-size="9" fill="#4a5568">C2 activity</text>
+
+        <text x="160" y="455" font-family="'JetBrains Mono',monospace" font-size="9" fill="#1e2d3d" text-anchor="middle">Hover each step for full details</text>
+      </svg>
+    </div>
+  </div>
+
 <section id="tools">
   <div class="section-header"><span class="section-num">04</span><h2>Tools & Methods</h2><div class="section-line"></div></div>
   <div class="tools-grid">
@@ -375,6 +473,7 @@ html,body{max-width:100%;overflow-x:hidden;}
   <div class="ioc-filters">
     <div class="ioc-filter active" onclick="filterIOC('all',this)">ALL</div>
     <div class="ioc-filter" onclick="filterIOC('2024-09-04',this)">2024-09-04</div>
+    <div class="ioc-filter" onclick="filterIOC('2026-02-28',this)">2026-02-28</div>
   </div>
   <table class="ioc-table">
     <thead><tr><th>INDICATOR</th><th>TYPE</th><th>ROLE</th><th>EXERCISE</th></tr></thead>
@@ -382,6 +481,9 @@ html,body{max-width:100%;overflow-x:hidden;}
       <tr data-ex="2024-09-04"><td class="ioc-val" data-label="INDICATOR">79.124.78.197</td><td data-label="TYPE"><span class="ex-badge badge-critical">IP</span></td><td class="ioc-role" data-label="ROLE">C2 Server — MODILOADER beaconing (POST /foots.php)</td><td class="ioc-ex" data-label="EXERCISE">2024-09-04</td></tr>
       <tr data-ex="2024-09-04"><td class="ioc-val" data-label="INDICATOR">bellantonicioccolato.it</td><td data-label="TYPE"><span class="ex-badge badge-high">DOMAIN</span></td><td class="ioc-role" data-label="ROLE">Initial infection vector — compromised Italian website</td><td class="ioc-ex" data-label="EXERCISE">2024-09-04</td></tr>
       <tr data-ex="2024-09-04"><td class="ioc-val" data-label="INDICATOR">46.254.34.201</td><td data-label="TYPE"><span class="ex-badge badge-high">IP</span></td><td class="ioc-role" data-label="ROLE">Hosting IP for initial infection vector (Italy)</td><td class="ioc-ex" data-label="EXERCISE">2024-09-04</td></tr>
+      <tr data-ex="2026-02-28"><td class="ioc-val" data-label="INDICATOR">45.131.214.85</td><td data-label="TYPE"><span class="ex-badge badge-critical">IP</span></td><td class="ioc-role" data-label="ROLE">C2 Server — NetSupport RAT beaconing (POST /fakeurl.htm)</td><td class="ioc-ex" data-label="EXERCISE">2026-02-28</td></tr>
+      <tr data-ex="2026-02-28"><td class="ioc-val" data-label="INDICATOR">45.131.214.85/fakeurl.htm</td><td data-label="TYPE"><span class="ex-badge badge-critical">URL</span></td><td class="ioc-role" data-label="ROLE">C2 endpoint — CMD=POLL beaconing + CMD=ENCD commands</td><td class="ioc-ex" data-label="EXERCISE">2026-02-28</td></tr>
+      <tr data-ex="2026-02-28"><td class="ioc-val" data-label="INDICATOR">NetSupport Manager/1.3</td><td data-label="TYPE"><span class="ex-badge badge-high">UA</span></td><td class="ioc-role" data-label="ROLE">Malicious User-Agent — NetSupport RAT identifier</td><td class="ioc-ex" data-label="EXERCISE">2026-02-28</td></tr>
     </tbody>
   </table>
 </section>
@@ -512,9 +614,13 @@ document.querySelectorAll('.fade-in').forEach(function(el){
 
 // Chain tabs
 function switchChain(id,btn){
-  document.querySelectorAll('.chain-panel').forEach(p=>p.classList.remove('active'));
-  document.querySelectorAll('.chain-tab:not(.disabled)').forEach(t=>t.classList.remove('active'));
-  document.getElementById('chain-'+id).classList.add('active');
+  document.querySelectorAll('.chain-panel').forEach(function(p){
+    p.classList.remove('active');
+    p.style.display='none';
+  });
+  document.querySelectorAll('.chain-tab:not(.disabled)').forEach(function(t){t.classList.remove('active');});
+  var panel=document.getElementById('chain-'+id);
+  if(panel){panel.classList.add('active');panel.style.display='grid';}
   btn.classList.add('active');
 }
 
