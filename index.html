@@ -203,9 +203,9 @@ html,body{max-width:100%;overflow-x:hidden;}
     <h1>Hunting<br/><span class="accent">Threats</span><br/><span class="dim">in the Wire.</span></h1>
     <p class="hero-desc">PCAP analysis, malware traffic forensics, and incident response. Documenting real-world attack chains — one packet at a time.</p>
     <div class="hero-stats">
-      <div class="stat-item"><div class="stat-num">2</div><div class="stat-label">EXERCISES</div></div>
-      <div class="stat-item"><div class="stat-num">6</div><div class="stat-label">IOCs FOUND</div></div>
-      <div class="stat-item"><div class="stat-num">0</div><div class="stat-label">IR REPORTS</div></div>
+      <div class="stat-item"><div class="stat-num">3</div><div class="stat-label">EXERCISES</div></div>
+      <div class="stat-item"><div class="stat-num">14</div><div class="stat-label">IOCs FOUND</div></div>
+      <div class="stat-item"><div class="stat-num">1</div><div class="stat-label">IR REPORTS</div></div>
     </div>
     <div class="hero-btns">
       <a href="#exercises" class="btn-primary">VIEW EXERCISES</a>
@@ -240,6 +240,14 @@ html,body{max-width:100%;overflow-x:hidden;}
       <div class="ex-tags"><span class="tag">NETSUPPORT RAT</span><span class="tag">CMD=POLL</span><span class="tag">CMD=ENCD</span><span class="tag">UNKNOWN VECTOR</span></div>
       <div class="ex-footer"><span class="ex-iocs">Infected: 10.2.28.88 | brolf</span><span class="ex-arrow">→</span></div>
     </a>
+    <a href="#chain" class="exercise-card fade-in" style="transition-delay:0.2s">
+      <div class="ex-meta"><span class="ex-date">2026-01-31</span><span class="ex-badge badge-critical">CRITICAL</span></div>
+      <div class="ex-title">Lumma in the Room-ah!</div>
+      <div class="ex-subtitle">win11office.com Domain</div>
+      <div class="ex-desc">Lumma Stealer delivered via malicious file hub. Multi-stage C2 chain: gate contact, victim fingerprinting, data exfiltration, followed by LSARPC lateral movement attempt against Domain Controller.</div>
+      <div class="ex-tags"><span class="tag">LUMMA STEALER</span><span class="tag">C2 GATE</span><span class="tag">FINGERPRINTING</span><span class="tag">LSARPC ATTACK</span></div>
+      <div class="ex-footer"><span class="ex-iocs">Infected: 10.1.21.58 | gwyatt</span><span class="ex-arrow">→</span></div>
+    </a>
   </div>
 </section>
 
@@ -262,6 +270,7 @@ html,body{max-width:100%;overflow-x:hidden;}
   <div class="chain-tabs">
     <div class="chain-tab active" onclick="switchChain('ex4',this)">2024-09-04 — Big Fish</div>
     <div class="chain-tab" onclick="switchChain('ex5',this)">2026-02-28 — Easy as 123</div>
+    <div class="chain-tab" onclick="switchChain('ex6',this)">2026-01-31 — Lumma</div>
   </div>
 
   <div class="chain-panel active" id="chain-ex4">
@@ -458,6 +467,113 @@ html,body{max-width:100%;overflow-x:hidden;}
     </div>
   </div>
 
+  <!-- EX6 PANEL -->
+  <div class="chain-panel" id="chain-ex6" style="display:none;grid-template-columns:1fr 1.2fr;gap:48px;align-items:start;">
+    <div class="chain-info fade-in">
+      <h3>Lumma in the Room-ah!</h3>
+      <p>Multi-stage Lumma Stealer attack. Payload delivered via file distribution site, followed by C2 gate contact, victim fingerprinting, data exfiltration, and LSARPC lateral movement attempt against Domain Controller — all within 83 seconds.</p>
+      <div class="chain-meta-grid">
+        <div class="chain-meta-item"><div class="chain-meta-label">INFECTED HOST</div><div class="chain-meta-val">10.1.21.58</div></div>
+        <div class="chain-meta-item"><div class="chain-meta-label">USER</div><div class="chain-meta-val">gwyatt</div></div>
+        <div class="chain-meta-item"><div class="chain-meta-label">MALWARE</div><div class="chain-meta-val">Lumma Stealer</div></div>
+        <div class="chain-meta-item"><div class="chain-meta-label">C2 SERVER</div><div class="chain-meta-val">whitepepper.su</div></div>
+        <div class="chain-meta-item"><div class="chain-meta-label">DOMAIN</div><div class="chain-meta-val">win11office.com</div></div>
+        <div class="chain-meta-item"><div class="chain-meta-label">TOTAL TIME</div><div class="chain-meta-val">~83 seconds</div></div>
+      </div>
+    </div>
+
+    <div class="chain-svg-wrap fade-in">
+      <svg width="100%" viewBox="0 0 320 490" style="max-height:520px">
+        <defs>
+          <marker id="am6" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="5" markerHeight="5" orient="auto"><path d="M2 2L8 5L2 8" fill="none" stroke="#253548" stroke-width="1.5" stroke-linecap="round"/></marker>
+          <marker id="ar6" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="5" markerHeight="5" orient="auto"><path d="M2 2L8 5L2 8" fill="none" stroke="#ff4757" stroke-width="1.5" stroke-linecap="round"/></marker>
+          <marker id="aa6" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="5" markerHeight="5" orient="auto"><path d="M2 2L8 5L2 8" fill="none" stroke="#ffa502" stroke-width="1.5" stroke-linecap="round"/></marker>
+        </defs>
+
+        <!-- Node 1: Victim -->
+        <g class="chain-node"
+          onmouseenter="showTip(event,'Victim Workstation','IP: 10.1.21.58\nHostname: DESKTOP-ES9F3ML\nUser: gwyatt\nDomain: win11office.com\nMAC: 00:21:5D:C8:0E:F2')"
+          onmouseleave="hideTip()" onmousemove="moveTip(event)">
+          <rect x="10" y="10" width="300" height="54" rx="4" fill="#151d27" stroke="#253548" stroke-width="1"/>
+          <rect x="10" y="10" width="4" height="54" rx="2" fill="#4a5568"/>
+          <text x="24" y="32" font-family="'JetBrains Mono',monospace" font-size="11" fill="#fff" font-weight="500">gwyatt — DESKTOP-ES9F3ML</text>
+          <text x="24" y="50" font-family="'JetBrains Mono',monospace" font-size="10" fill="#4a5568">10.1.21.58 | win11office.com</text>
+          <text x="286" y="41" font-family="'JetBrains Mono',monospace" font-size="9" fill="#253548" text-anchor="end">23:04:49</text>
+        </g>
+
+        <line x1="160" y1="64" x2="160" y2="96" stroke="#1e2d3d" stroke-width="1" stroke-dasharray="3 3" marker-end="url(#am6)"/>
+        <text x="168" y="84" font-family="'JetBrains Mono',monospace" font-size="9" fill="#253548">Kerberos login</text>
+
+        <!-- Node 2: Initial Infection -->
+        <g class="chain-node"
+          onmouseenter="showTip(event,'Initial Infection Vector','Domain: media.megafilehub4.lat\nIP: 104.21.48.156 (Cloudflare)\nProtocol: HTTPS (TLSv1.3)\nType: Payload delivery site\nDomain age: 3 months (newly registered)\nVT: BitDefender + G-Data flagged malicious')"
+          onmouseleave="hideTip()" onmousemove="moveTip(event)">
+          <rect x="10" y="99" width="300" height="66" rx="4" fill="#1a1600" stroke="#3d3000" stroke-width="1"/>
+          <rect x="10" y="99" width="4" height="66" rx="2" fill="#ffa502"/>
+          <text x="24" y="121" font-family="'JetBrains Mono',monospace" font-size="11" fill="#fff" font-weight="500">media.megafilehub4.lat</text>
+          <text x="24" y="139" font-family="'JetBrains Mono',monospace" font-size="10" fill="#ffa502">104.21.48.156 — Lumma Stealer delivery</text>
+          <text x="24" y="155" font-family="'JetBrains Mono',monospace" font-size="10" fill="#4a5568">HTTPS encrypted — payload not observable</text>
+          <text x="286" y="135" font-family="'JetBrains Mono',monospace" font-size="9" fill="#3d3000" text-anchor="end">23:04:49</text>
+        </g>
+
+        <line x1="160" y1="165" x2="160" y2="197" stroke="#ff4757" stroke-width="1" stroke-dasharray="3 3" marker-end="url(#ar6)"/>
+        <text x="168" y="185" font-family="'JetBrains Mono',monospace" font-size="9" fill="#ff4757">1:41 min →</text>
+
+        <!-- Node 3: C2 Gate -->
+        <g class="chain-node"
+          onmouseenter="showTip(event,'C2 Gate — whooptm.cyou','IP: 62.72.32.156\nProtocol: HTTPS single connection\nVT: botnet_cc — Lumma Stealer confirmed\nAlias: LummaC2 Stealer\nPattern: gate/redirector — one contact only\nPurpose: delivers real C2 address')"
+          onmouseleave="hideTip()" onmousemove="moveTip(event)">
+          <rect x="10" y="200" width="300" height="66" rx="4" fill="#1a0808" stroke="#3d1010" stroke-width="1"/>
+          <rect x="10" y="200" width="4" height="66" rx="2" fill="#ff4757"/>
+          <text x="24" y="222" font-family="'JetBrains Mono',monospace" font-size="11" fill="#fff" font-weight="500">whooptm.cyou — C2 Gate</text>
+          <text x="24" y="240" font-family="'JetBrains Mono',monospace" font-size="10" fill="#ff4757">62.72.32.156 — Lumma Stealer botnet_cc</text>
+          <text x="24" y="256" font-family="'JetBrains Mono',monospace" font-size="10" fill="#4a5568">Single contact — redirector to real C2</text>
+          <text x="286" y="236" font-family="'JetBrains Mono',monospace" font-size="9" fill="#3d1010" text-anchor="end">23:05:34</text>
+        </g>
+
+        <line x1="160" y1="266" x2="160" y2="298" stroke="#ff4757" stroke-width="1" stroke-dasharray="3 3" marker-end="url(#ar6)"/>
+        <text x="168" y="285" font-family="'JetBrains Mono',monospace" font-size="9" fill="#ff4757">4 sec →</text>
+
+        <!-- Node 4: C2 Exfiltration -->
+        <g class="chain-node"
+          onmouseenter="showTip(event,'C2 + Exfiltration — whitepepper.su','IP: 153.92.1.49 (Hostinger — AS47583)\nProtocol: HTTP (port 80) — visible!\nEndpoint: GET /api/set_agent + POST /api/set_agent\nAction: system fingerprinting + data exfiltration\nCollects: platform, userAgent, language, hardwareConcurrency\nServer: nginx/1.29.1 — title: test (hastily deployed)')"
+          onmouseleave="hideTip()" onmousemove="moveTip(event)">
+          <rect x="10" y="301" width="300" height="66" rx="4" fill="#1a0808" stroke="#3d1010" stroke-width="1"/>
+          <rect x="10" y="301" width="4" height="66" rx="2" fill="#ff4757"/>
+          <text x="24" y="323" font-family="'JetBrains Mono',monospace" font-size="11" fill="#fff" font-weight="500">whitepepper.su — C2 + Exfiltration</text>
+          <text x="24" y="341" font-family="'JetBrains Mono',monospace" font-size="10" fill="#ff4757">POST /api/set_agent — system data sent</text>
+          <text x="24" y="357" font-family="'JetBrains Mono',monospace" font-size="10" fill="#4a5568">Fingerprinting: platform, UA, language</text>
+          <text x="286" y="335" font-family="'JetBrains Mono',monospace" font-size="9" fill="#3d1010" text-anchor="end">23:05:39</text>
+        </g>
+
+        <line x1="160" y1="367" x2="160" y2="390" stroke="#ff4757" stroke-width="1" stroke-dasharray="3 3" marker-end="url(#ar6)"/>
+
+        <!-- Node 5: Lateral Movement -->
+        <g class="chain-node"
+          onmouseenter="showTip(event,'Lateral Movement — LSARPC Attack','Secondary C2: holiday-forever.cc (80.97.160.24)\nContact at 23:06:06 — 6 sec before attack\nTarget: DC 10.1.21.2\nMethod: 749 malformed lsa_OpenPolicy3 requests\nWindow: burst within ~1 second\nGoal: credential dumping / privilege escalation')"
+          onmouseleave="hideTip()" onmousemove="moveTip(event)">
+          <rect x="10" y="393" width="300" height="66" rx="4" fill="#1a0808" stroke="#ff4757" stroke-width="1.5"/>
+          <rect x="10" y="393" width="4" height="66" rx="2" fill="#ff4757"/>
+          <text x="24" y="415" font-family="'JetBrains Mono',monospace" font-size="11" fill="#fff" font-weight="500">LSARPC → DC 10.1.21.2</text>
+          <text x="24" y="433" font-family="'JetBrains Mono',monospace" font-size="10" fill="#ff4757">749 malformed lsa_OpenPolicy3 requests</text>
+          <text x="24" y="449" font-family="'JetBrains Mono',monospace" font-size="10" fill="#4a5568">Lateral movement — credential dump attempt</text>
+          <text x="286" y="429" font-family="'JetBrains Mono',monospace" font-size="9" fill="#3d1010" text-anchor="end">23:06:12</text>
+        </g>
+
+        <text x="160" y="484" font-family="'JetBrains Mono',monospace" font-size="9" fill="#253548" text-anchor="middle">── ~83 seconds: delivery → lateral movement ──</text>
+
+        <rect x="10" y="498" width="10" height="10" fill="#4a5568" rx="1"/>
+        <text x="26" y="507" font-family="'JetBrains Mono',monospace" font-size="9" fill="#4a5568">Victim</text>
+        <rect x="80" y="498" width="10" height="10" fill="#ffa502" rx="1"/>
+        <text x="96" y="507" font-family="'JetBrains Mono',monospace" font-size="9" fill="#4a5568">Init. vector</text>
+        <rect x="170" y="498" width="10" height="10" fill="#ff4757" rx="1"/>
+        <text x="186" y="507" font-family="'JetBrains Mono',monospace" font-size="9" fill="#4a5568">C2 activity</text>
+
+        <text x="160" y="532" font-family="'JetBrains Mono',monospace" font-size="9" fill="#1e2d3d" text-anchor="middle">Hover each step for full details</text>
+      </svg>
+    </div>
+  </div>
+
 </section>
 
 <section id="tools">
@@ -475,6 +591,7 @@ html,body{max-width:100%;overflow-x:hidden;}
     <div class="ioc-filter active" onclick="filterIOC('all',this)">ALL</div>
     <div class="ioc-filter" onclick="filterIOC('2024-09-04',this)">2024-09-04</div>
     <div class="ioc-filter" onclick="filterIOC('2026-02-28',this)">2026-02-28</div>
+    <div class="ioc-filter" onclick="filterIOC('2026-01-31',this)">2026-01-31</div>
   </div>
   <table class="ioc-table">
     <thead><tr><th>INDICATOR</th><th>TYPE</th><th>ROLE</th><th>EXERCISE</th></tr></thead>
@@ -485,6 +602,14 @@ html,body{max-width:100%;overflow-x:hidden;}
       <tr data-ex="2026-02-28"><td class="ioc-val" data-label="INDICATOR">45.131.214.85</td><td data-label="TYPE"><span class="ex-badge badge-critical">IP</span></td><td class="ioc-role" data-label="ROLE">C2 Server — NetSupport RAT beaconing (POST /fakeurl.htm)</td><td class="ioc-ex" data-label="EXERCISE">2026-02-28</td></tr>
       <tr data-ex="2026-02-28"><td class="ioc-val" data-label="INDICATOR">45.131.214.85/fakeurl.htm</td><td data-label="TYPE"><span class="ex-badge badge-critical">URL</span></td><td class="ioc-role" data-label="ROLE">C2 endpoint — CMD=POLL beaconing + CMD=ENCD commands</td><td class="ioc-ex" data-label="EXERCISE">2026-02-28</td></tr>
       <tr data-ex="2026-02-28"><td class="ioc-val" data-label="INDICATOR">NetSupport Manager/1.3</td><td data-label="TYPE"><span class="ex-badge badge-high">UA</span></td><td class="ioc-role" data-label="ROLE">Malicious User-Agent — NetSupport RAT identifier</td><td class="ioc-ex" data-label="EXERCISE">2026-02-28</td></tr>
+      <tr data-ex="2026-01-31"><td class="ioc-val" data-label="INDICATOR">media.megafilehub4.lat</td><td data-label="TYPE"><span class="ex-badge badge-high">DOMAIN</span></td><td class="ioc-role" data-label="ROLE">Initial infection — Lumma Stealer payload delivery site</td><td class="ioc-ex" data-label="EXERCISE">2026-01-31</td></tr>
+      <tr data-ex="2026-01-31"><td class="ioc-val" data-label="INDICATOR">whooptm.cyou</td><td data-label="TYPE"><span class="ex-badge badge-critical">DOMAIN</span></td><td class="ioc-role" data-label="ROLE">C2 Gate — Lumma Stealer botnet_cc (VirusTotal confirmed)</td><td class="ioc-ex" data-label="EXERCISE">2026-01-31</td></tr>
+      <tr data-ex="2026-01-31"><td class="ioc-val" data-label="INDICATOR">62.72.32.156</td><td data-label="TYPE"><span class="ex-badge badge-critical">IP</span></td><td class="ioc-role" data-label="ROLE">Hosting IP for whooptm.cyou C2 gate</td><td class="ioc-ex" data-label="EXERCISE">2026-01-31</td></tr>
+      <tr data-ex="2026-01-31"><td class="ioc-val" data-label="INDICATOR">whitepepper.su</td><td data-label="TYPE"><span class="ex-badge badge-critical">DOMAIN</span></td><td class="ioc-role" data-label="ROLE">C2 server — victim fingerprinting + data exfiltration (POST)</td><td class="ioc-ex" data-label="EXERCISE">2026-01-31</td></tr>
+      <tr data-ex="2026-01-31"><td class="ioc-val" data-label="INDICATOR">153.92.1.49</td><td data-label="TYPE"><span class="ex-badge badge-critical">IP</span></td><td class="ioc-role" data-label="ROLE">Hostinger VPS — C2 server IP for whitepepper.su</td><td class="ioc-ex" data-label="EXERCISE">2026-01-31</td></tr>
+      <tr data-ex="2026-01-31"><td class="ioc-val" data-label="INDICATOR">holiday-forever.cc</td><td data-label="TYPE"><span class="ex-badge badge-critical">DOMAIN</span></td><td class="ioc-role" data-label="ROLE">Secondary C2 — likely lateral movement tasking (6s before LSARPC)</td><td class="ioc-ex" data-label="EXERCISE">2026-01-31</td></tr>
+      <tr data-ex="2026-01-31"><td class="ioc-val" data-label="INDICATOR">80.97.160.24</td><td data-label="TYPE"><span class="ex-badge badge-critical">IP</span></td><td class="ioc-role" data-label="ROLE">Hosting IP for holiday-forever.cc secondary C2</td><td class="ioc-ex" data-label="EXERCISE">2026-01-31</td></tr>
+      <tr data-ex="2026-01-31"><td class="ioc-val" data-label="INDICATOR">/api/set_agent</td><td data-label="TYPE"><span class="ex-badge badge-high">URL</span></td><td class="ioc-role" data-label="ROLE">C2 endpoint — victim registration + exfiltration on whitepepper.su</td><td class="ioc-ex" data-label="EXERCISE">2026-01-31</td></tr>
     </tbody>
   </table>
 </section>
