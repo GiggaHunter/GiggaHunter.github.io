@@ -650,15 +650,15 @@ document.querySelectorAll('.fade-in').forEach(function(el){
 // Terminal typewriter
 (function(){
   var lines=[
-    {type:'cmd',text:'wireshark -r 2024-09-04.pcap', pause:400},
+    {type:'cmd',text:'wireshark -r 2026-01-31.pcap', pause:400},
     {type:'out',text:'Opening capture file...',cls:'t-green', pause:300},
-    {type:'cmd',text:'ip.src == 172.17.0.99 and http', pause:400},
-    {type:'out',text:'57 packets matched filter', pause:300},
-    {type:'out',text:'WARNING: POST /foots.php -> 79.124.78.197',cls:'t-amber', pause:900},
-    {type:'out',text:'WARNING: Repeated beaconing detected',cls:'t-amber', pause:900},
-    {type:'cmd',text:'// Analyze User-Agent', pause:500},
-    {type:'out',text:'MSIE 7.0 on Windows 10 = IMPOSSIBLE',cls:'t-red', pause:1300},
-    {type:'out',text:'COMPROMISED: DESKTOP-RNVO9AT',cls:'t-red', pause:1800},
+    {type:'cmd',text:'ip.src == 10.1.21.58 and http', pause:400},
+    {type:'out',text:'16 packets matched filter', pause:300},
+    {type:'out',text:'WARNING: GET /api/set_agent -> whitepepper.su',cls:'t-amber', pause:900},
+    {type:'out',text:'WARNING: POST /api/set_agent — data exfiltration',cls:'t-amber', pause:900},
+    {type:'cmd',text:'// Check LSARPC traffic', pause:500},
+    {type:'out',text:'749 malformed lsa_OpenPolicy3 requests!',cls:'t-red', pause:1300},
+    {type:'out',text:'COMPROMISED: DESKTOP-ES9F3ML | gwyatt',cls:'t-red', pause:1800},
   ];
   var t=document.getElementById('terminal-output');
   if(!t) return;
