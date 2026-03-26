@@ -5,7 +5,6 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 <title>Meshari | Threat Hunter</title>
 <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🛡️</text></svg>"/>
-<!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-LKW84EHBTD"></script>
 <script>
   window.dataLayer = window.dataLayer || [];
@@ -108,8 +107,16 @@ h2{font-family:var(--display);font-size:34px;font-weight:800;color:#fff;letter-s
 .chain-tab{font-family:var(--mono);font-size:11px;color:var(--text3);padding:10px 20px;background:var(--bg2);border:1px solid var(--border);cursor:pointer;transition:all 0.2s;letter-spacing:0.06em;}
 .chain-tab.active{color:var(--accent);border-color:var(--accent2);background:var(--accent-dim);}
 .chain-tab.disabled{opacity:0.35;cursor:default;}
+
+/* ── Chain panel base ── */
 .chain-panel{display:none;}
-.chain-panel.active{display:grid;grid-template-columns:1fr 1.2fr;gap:48px;align-items:start;}
+.chain-panel.active{
+  display:grid;
+  grid-template-columns:1fr 1.2fr;
+  gap:48px;
+  align-items:start;
+}
+
 .chain-info h3{font-family:var(--display);font-size:22px;font-weight:700;color:#fff;margin-bottom:12px;}
 .chain-info p{font-size:12px;color:var(--text2);line-height:1.9;margin-bottom:20px;}
 .chain-meta-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:24px;}
@@ -153,11 +160,29 @@ footer{position:relative;z-index:1;border-top:1px solid var(--border);padding:36
 
 .fade-in{opacity:1;transform:translateY(0);transition:opacity 0.6s ease,transform 0.6s ease;}
 
-@media(max-width:1100px){.hero-terminal{display:none;}.hero-content{max-width:100%;}.hero{padding:120px 40px 60px;}section{padding:70px 40px;}nav{padding:0 24px;}.nav-links{gap:16px;}footer{padding:28px 40px;}}
+@media(max-width:1100px){
+  .hero-terminal{display:none;}
+  .hero-content{max-width:100%;}
+  .hero{padding:120px 40px 60px;}
+  section{padding:70px 40px;}
+  nav{padding:0 24px;}
+  .nav-links{gap:16px;}
+  footer{padding:28px 40px;}
+}
+
 @media(max-width:768px){
   .exercises-grid,.tools-grid,.method-grid{grid-template-columns:1fr;}
-  .chain-panel.active{grid-template-columns:1fr;}
+
+  /* ── FIX: force all chain panels to single column on mobile ── */
+  .chain-panel.active{
+    grid-template-columns:1fr !important;
+    gap:24px !important;
+  }
+
   .chain-meta-grid{grid-template-columns:1fr;}
+  .chain-svg-wrap{padding:12px;}
+  .chain-svg-wrap svg{max-height:none !important;}
+
   .hero-stats{gap:20px;}
   h2{font-size:26px;}
   h1{font-size:36px;}
@@ -175,8 +200,12 @@ footer{position:relative;z-index:1;border-top:1px solid var(--border);padding:36
   .ioc-table td:last-child{display:none;}
   section{padding:60px 20px;}
   nav{padding:0 16px;}
-  .chain-svg-wrap{padding:16px;}
+
+  /* Chain tabs scroll on mobile */
+  .chain-tabs{overflow-x:auto;-webkit-overflow-scrolling:touch;flex-wrap:nowrap;padding-bottom:4px;}
+  .chain-tab{white-space:nowrap;flex-shrink:0;}
 }
+
 html,body{max-width:100%;overflow-x:hidden;}
 </style>
 </head>
@@ -273,6 +302,7 @@ html,body{max-width:100%;overflow-x:hidden;}
     <div class="chain-tab" onclick="switchChain('ex6',this)">2026-01-31 — Lumma</div>
   </div>
 
+  <!-- EX4 PANEL — Big Fish -->
   <div class="chain-panel active" id="chain-ex4">
     <div class="chain-info fade-in">
       <h3>Big Fish in a Little Pond</h3>
@@ -285,100 +315,71 @@ html,body{max-width:100%;overflow-x:hidden;}
         <div class="chain-meta-item"><div class="chain-meta-label">DOMAIN</div><div class="chain-meta-val">bepositive.com</div></div>
         <div class="chain-meta-item"><div class="chain-meta-label">TOTAL TIME</div><div class="chain-meta-val">~38 seconds</div></div>
       </div>
-
     </div>
-
     <div class="chain-svg-wrap fade-in">
       <svg width="100%" viewBox="0 0 320 490" style="max-height:520px">
         <defs>
           <marker id="am" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="5" markerHeight="5" orient="auto"><path d="M2 2L8 5L2 8" fill="none" stroke="#253548" stroke-width="1.5" stroke-linecap="round"/></marker>
           <marker id="ar" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="5" markerHeight="5" orient="auto"><path d="M2 2L8 5L2 8" fill="none" stroke="#ff4757" stroke-width="1.5" stroke-linecap="round"/></marker>
         </defs>
-
-        <!-- Node 1: Victim -->
         <text x="308" y="8" font-family="'JetBrains Mono',monospace" font-size="9" fill="#4a5568" text-anchor="end">17:34:35</text>
-        <g class="chain-node"
-          onmouseenter="showTip(event,'Victim Workstation','IP: 172.17.0.99\nHostname: DESKTOP-RNVO9AT\nUser: afletcher\nDomain: bepositive.com')"
-          onmouseleave="hideTip()" onmousemove="moveTip(event)">
+        <g class="chain-node" onmouseenter="showTip(event,'Victim Workstation','IP: 172.17.0.99\nHostname: DESKTOP-RNVO9AT\nUser: afletcher\nDomain: bepositive.com')" onmouseleave="hideTip()" onmousemove="moveTip(event)">
           <rect x="10" y="10" width="300" height="54" rx="4" fill="#151d27" stroke="#253548" stroke-width="1"/>
           <rect x="10" y="10" width="4" height="54" rx="2" fill="#4a5568"/>
           <text x="24" y="32" font-family="'JetBrains Mono',monospace" font-size="11" fill="#fff" font-weight="500">afletcher — DESKTOP-RNVO9AT</text>
           <text x="24" y="50" font-family="'JetBrains Mono',monospace" font-size="10" fill="#4a5568">172.17.0.99 | bepositive.com</text>
         </g>
-
         <line x1="160" y1="64" x2="160" y2="96" stroke="#1e2d3d" stroke-width="1" stroke-dasharray="3 3" marker-end="url(#am)"/>
         <text x="168" y="84" font-family="'JetBrains Mono',monospace" font-size="9" fill="#4a5568">Kerberos login</text>
-
-        <!-- Node 2: Initial Vector -->
         <text x="308" y="97" font-family="'JetBrains Mono',monospace" font-size="9" fill="#4a5568" text-anchor="end">17:35:04</text>
-        <g class="chain-node"
-          onmouseenter="showTip(event,'Initial Infection Vector','Domain: bellantonicioccolato.it\nIP: 46.254.34.201\nProtocol: HTTPS (TLSv1.3)\nPayload: 193 KB — 155 server packets\nType: Drive-by Download\nNote: Legitimate site compromised')"
-          onmouseleave="hideTip()" onmousemove="moveTip(event)">
+        <g class="chain-node" onmouseenter="showTip(event,'Initial Infection Vector','Domain: bellantonicioccolato.it\nIP: 46.254.34.201\nProtocol: HTTPS (TLSv1.3)\nPayload: 193 KB — 155 server packets\nType: Drive-by Download\nNote: Legitimate site compromised')" onmouseleave="hideTip()" onmousemove="moveTip(event)">
           <rect x="10" y="99" width="300" height="66" rx="4" fill="#1a1600" stroke="#3d3000" stroke-width="1"/>
           <rect x="10" y="99" width="4" height="66" rx="2" fill="#ffa502"/>
           <text x="24" y="121" font-family="'JetBrains Mono',monospace" font-size="11" fill="#fff" font-weight="500">bellantonicioccolato.it</text>
           <text x="24" y="139" font-family="'JetBrains Mono',monospace" font-size="10" fill="#ffa502">46.254.34.201 — HTTPS initial vector</text>
           <text x="24" y="155" font-family="'JetBrains Mono',monospace" font-size="10" fill="#4a5568">Drive-by Download — 193 KB payload</text>
         </g>
-
         <line x1="160" y1="165" x2="160" y2="197" stroke="#ff4757" stroke-width="1" stroke-dasharray="3 3" marker-end="url(#ar)"/>
         <text x="168" y="185" font-family="'JetBrains Mono',monospace" font-size="9" fill="#ff4757">9 sec →</text>
-
-        <!-- Node 3: C2 Registration -->
         <text x="308" y="198" font-family="'JetBrains Mono',monospace" font-size="9" fill="#4a5568" text-anchor="end">17:35:13</text>
-        <g class="chain-node"
-          onmouseenter="showTip(event,'C2 Registration','IP: 79.124.78.197\nEndpoint: GET /index.php\nSubID: qIOuKk7U\nBot ID assigned: HckDcK0czXjaq48jVHNn\nUser-Agent: MSIE 7.0 (fake!)\nASN: DigiSys Ltd — Bulgaria')"
-          onmouseleave="hideTip()" onmousemove="moveTip(event)">
+        <g class="chain-node" onmouseenter="showTip(event,'C2 Registration','IP: 79.124.78.197\nEndpoint: GET /index.php\nSubID: qIOuKk7U\nBot ID assigned: HckDcK0czXjaq48jVHNn\nUser-Agent: MSIE 7.0 (fake!)\nASN: DigiSys Ltd — Bulgaria')" onmouseleave="hideTip()" onmousemove="moveTip(event)">
           <rect x="10" y="200" width="300" height="66" rx="4" fill="#1a0808" stroke="#3d1010" stroke-width="1"/>
           <rect x="10" y="200" width="4" height="66" rx="2" fill="#ff4757"/>
           <text x="24" y="222" font-family="'JetBrains Mono',monospace" font-size="11" fill="#fff" font-weight="500">79.124.78.197 — C2 registration</text>
           <text x="24" y="240" font-family="'JetBrains Mono',monospace" font-size="10" fill="#ff4757">GET /index.php?id=&amp;subid=qIOuKk7U</text>
           <text x="24" y="256" font-family="'JetBrains Mono',monospace" font-size="10" fill="#4a5568">Bot ID: HckDcK0czXjaq48jVHNn</text>
         </g>
-
         <line x1="160" y1="266" x2="160" y2="298" stroke="#ff4757" stroke-width="1" stroke-dasharray="3 3" marker-end="url(#ar)"/>
-
-        <!-- Node 4: Data Exfiltration -->
         <text x="308" y="299" font-family="'JetBrains Mono',monospace" font-size="9" fill="#4a5568" text-anchor="end">17:35:14</text>
-        <g class="chain-node"
-          onmouseenter="showTip(event,'Data Exfiltration','IP: 79.124.78.197\nEndpoint: POST /index.php\nContent: Encoded binary data\nC2 response: single char D\n= acknowledged, continue beaconing')"
-          onmouseleave="hideTip()" onmousemove="moveTip(event)">
+        <g class="chain-node" onmouseenter="showTip(event,'Data Exfiltration','IP: 79.124.78.197\nEndpoint: POST /index.php\nContent: Encoded binary data\nC2 response: single char D\n= acknowledged, continue beaconing')" onmouseleave="hideTip()" onmousemove="moveTip(event)">
           <rect x="10" y="301" width="300" height="54" rx="4" fill="#1a0808" stroke="#3d1010" stroke-width="1"/>
           <rect x="10" y="301" width="4" height="54" rx="2" fill="#ff4757"/>
           <text x="24" y="323" font-family="'JetBrains Mono',monospace" font-size="11" fill="#fff" font-weight="500">Data exfiltration</text>
           <text x="24" y="341" font-family="'JetBrains Mono',monospace" font-size="10" fill="#4a5568">POST /index.php — encoded system data</text>
         </g>
-
         <line x1="160" y1="355" x2="160" y2="387" stroke="#ff4757" stroke-width="1" stroke-dasharray="3 3" marker-end="url(#ar)"/>
-
-        <!-- Node 5: Beaconing -->
         <text x="308" y="388" font-family="'JetBrains Mono',monospace" font-size="9" fill="#4a5568" text-anchor="end">17:35:13+</text>
-        <g class="chain-node"
-          onmouseenter="showTip(event,'Persistent C2 Beaconing','IP: 79.124.78.197\nEndpoint: POST /foots.php\nContent-Length: 40 bytes each\nContent-Type: application/octet-stream\nUser-Agent: MSIE 7.0 (fake)\nCache-Control: no-cache\nPattern: automated, ongoing')"
-          onmouseleave="hideTip()" onmousemove="moveTip(event)">
+        <g class="chain-node" onmouseenter="showTip(event,'Persistent C2 Beaconing','IP: 79.124.78.197\nEndpoint: POST /foots.php\nContent-Length: 40 bytes each\nContent-Type: application/octet-stream\nUser-Agent: MSIE 7.0 (fake)\nCache-Control: no-cache\nPattern: automated, ongoing')" onmouseleave="hideTip()" onmousemove="moveTip(event)">
           <rect x="10" y="390" width="300" height="66" rx="4" fill="#1a0808" stroke="#ff4757" stroke-width="1.5"/>
           <rect x="10" y="390" width="4" height="66" rx="2" fill="#ff4757"/>
           <text x="24" y="412" font-family="'JetBrains Mono',monospace" font-size="11" fill="#fff" font-weight="500">Persistent C2 beaconing</text>
           <text x="24" y="430" font-family="'JetBrains Mono',monospace" font-size="10" fill="#ff4757">POST /foots.php — 40 bytes each</text>
           <text x="24" y="446" font-family="'JetBrains Mono',monospace" font-size="10" fill="#4a5568">Content-Type: application/octet-stream</text>
         </g>
-
         <text x="160" y="484" font-family="'JetBrains Mono',monospace" font-size="9" fill="#253548" text-anchor="middle">── ~38 seconds: access → persistent C2 ──</text>
-
         <rect x="10" y="498" width="10" height="10" fill="#4a5568" rx="1"/>
         <text x="26" y="507" font-family="'JetBrains Mono',monospace" font-size="9" fill="#4a5568">Victim</text>
         <rect x="80" y="498" width="10" height="10" fill="#ffa502" rx="1"/>
         <text x="96" y="507" font-family="'JetBrains Mono',monospace" font-size="9" fill="#4a5568">Init. vector</text>
         <rect x="170" y="498" width="10" height="10" fill="#ff4757" rx="1"/>
         <text x="186" y="507" font-family="'JetBrains Mono',monospace" font-size="9" fill="#4a5568">C2 activity</text>
-
         <text x="160" y="532" font-family="'JetBrains Mono',monospace" font-size="9" fill="#1e2d3d" text-anchor="middle">Hover each step for full details</text>
       </svg>
     </div>
   </div>
 
-  <!-- EX5 PANEL -->
-  <div class="chain-panel" id="chain-ex5" style="display:none;grid-template-columns:1fr 1.2fr;gap:48px;align-items:start;">
+  <!-- EX5 PANEL — Easy as 123 — NO inline grid styles -->
+  <div class="chain-panel" id="chain-ex5">
     <div class="chain-info fade-in">
       <h3>Easy as 123</h3>
       <p>NetSupport Manager RAT with persistent C2 beaconing. Initial infection vector not observable in PCAP — malware was already active at capture start. C2 communication used structured CMD=POLL / CMD=ENCD protocol.</p>
@@ -391,84 +392,61 @@ html,body{max-width:100%;overflow-x:hidden;}
         <div class="chain-meta-item"><div class="chain-meta-label">VECTOR</div><div class="chain-meta-val">Unknown</div></div>
       </div>
     </div>
-
     <div class="chain-svg-wrap fade-in">
       <svg width="100%" viewBox="0 0 320 490" style="max-height:520px">
         <defs>
           <marker id="am5" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="5" markerHeight="5" orient="auto"><path d="M2 2L8 5L2 8" fill="none" stroke="#253548" stroke-width="1.5" stroke-linecap="round"/></marker>
           <marker id="ar5" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="5" markerHeight="5" orient="auto"><path d="M2 2L8 5L2 8" fill="none" stroke="#ff4757" stroke-width="1.5" stroke-linecap="round"/></marker>
         </defs>
-
-        <!-- Node 1: Victim -->
         <text x="308" y="8" font-family="'JetBrains Mono',monospace" font-size="9" fill="#4a5568" text-anchor="end">19:55:23</text>
-        <g class="chain-node"
-          onmouseenter="showTip(event,'Victim Workstation','IP: 10.2.28.88\nHostname: DESKTOP-TEYQ2NR\nUser: brolf\nDomain: easyas123.tech\nMAC: 00:19:D1:B2:4D:AD')"
-          onmouseleave="hideTip()" onmousemove="moveTip(event)">
+        <g class="chain-node" onmouseenter="showTip(event,'Victim Workstation','IP: 10.2.28.88\nHostname: DESKTOP-TEYQ2NR\nUser: brolf\nDomain: easyas123.tech\nMAC: 00:19:D1:B2:4D:AD')" onmouseleave="hideTip()" onmousemove="moveTip(event)">
           <rect x="10" y="10" width="300" height="54" rx="4" fill="#151d27" stroke="#253548" stroke-width="1"/>
           <rect x="10" y="10" width="4" height="54" rx="2" fill="#4a5568"/>
           <text x="24" y="32" font-family="'JetBrains Mono',monospace" font-size="11" fill="#fff" font-weight="500">brolf — DESKTOP-TEYQ2NR</text>
           <text x="24" y="50" font-family="'JetBrains Mono',monospace" font-size="10" fill="#4a5568">10.2.28.88 | easyas123.tech</text>
         </g>
-
         <line x1="160" y1="64" x2="160" y2="96" stroke="#1e2d3d" stroke-width="1" stroke-dasharray="3 3" marker-end="url(#am5)"/>
         <text x="168" y="84" font-family="'JetBrains Mono',monospace" font-size="9" fill="#4a5568">Kerberos login</text>
-
-        <!-- Node 2: Unknown Vector -->
         <text x="308" y="97" font-family="'JetBrains Mono',monospace" font-size="9" fill="#4a5568" text-anchor="end">unknown</text>
-        <g class="chain-node"
-          onmouseenter="showTip(event,'Initial Infection Vector','Status: UNKNOWN\nReason: Malware was active before PCAP recording started\nDelivery: Suspected HTTPS encrypted channel\nNote: SIEM triggered NetSupport RAT alerts\nAll pre-C2 HTTPS traffic was legitimate Microsoft domains')"
-          onmouseleave="hideTip()" onmousemove="moveTip(event)">
+        <g class="chain-node" onmouseenter="showTip(event,'Initial Infection Vector','Status: UNKNOWN\nReason: Malware was active before PCAP recording started\nDelivery: Suspected HTTPS encrypted channel\nNote: SIEM triggered NetSupport RAT alerts\nAll pre-C2 HTTPS traffic was legitimate Microsoft domains')" onmouseleave="hideTip()" onmousemove="moveTip(event)">
           <rect x="10" y="99" width="300" height="66" rx="4" fill="#111820" stroke="#253548" stroke-width="1" stroke-dasharray="4 3"/>
           <rect x="10" y="99" width="4" height="66" rx="2" fill="#4a5568"/>
           <text x="24" y="121" font-family="'JetBrains Mono',monospace" font-size="11" fill="#8b949e" font-weight="500">Initial infection vector</text>
           <text x="24" y="139" font-family="'JetBrains Mono',monospace" font-size="10" fill="#4a5568">Unknown — outside PCAP capture window</text>
           <text x="24" y="155" font-family="'JetBrains Mono',monospace" font-size="10" fill="#4a5568">Suspected encrypted HTTPS delivery</text>
         </g>
-
         <line x1="160" y1="165" x2="160" y2="197" stroke="#ff4757" stroke-width="1" stroke-dasharray="3 3" marker-end="url(#ar5)"/>
-
-        <!-- Node 3: C2 Check-in -->
         <text x="308" y="198" font-family="'JetBrains Mono',monospace" font-size="9" fill="#4a5568" text-anchor="end">19:55:51</text>
-        <g class="chain-node"
-          onmouseenter="showTip(event,'C2 Beaconing — CMD=POLL','IP: 45.131.214.85\nEndpoint: POST /fakeurl.htm\nUser-Agent: NetSupport Manager/1.3\nContent-Type: application/x-www-form-urlencoded\nCMD=POLL: host checks in for new commands\nInterval: ~60 seconds')"
-          onmouseleave="hideTip()" onmousemove="moveTip(event)">
+        <g class="chain-node" onmouseenter="showTip(event,'C2 Beaconing — CMD=POLL','IP: 45.131.214.85\nEndpoint: POST /fakeurl.htm\nUser-Agent: NetSupport Manager/1.3\nContent-Type: application/x-www-form-urlencoded\nCMD=POLL: host checks in for new commands\nInterval: ~60 seconds')" onmouseleave="hideTip()" onmousemove="moveTip(event)">
           <rect x="10" y="200" width="300" height="66" rx="4" fill="#1a0808" stroke="#3d1010" stroke-width="1"/>
           <rect x="10" y="200" width="4" height="66" rx="2" fill="#ff4757"/>
           <text x="24" y="222" font-family="'JetBrains Mono',monospace" font-size="11" fill="#fff" font-weight="500">45.131.214.85 — C2 beaconing</text>
           <text x="24" y="240" font-family="'JetBrains Mono',monospace" font-size="10" fill="#ff4757">POST /fakeurl.htm — CMD=POLL</text>
           <text x="24" y="256" font-family="'JetBrains Mono',monospace" font-size="10" fill="#4a5568">NetSupport Manager/1.3 User-Agent</text>
         </g>
-
         <line x1="160" y1="266" x2="160" y2="298" stroke="#ff4757" stroke-width="1" stroke-dasharray="3 3" marker-end="url(#ar5)"/>
-
-        <!-- Node 4: C2 Commands -->
         <text x="308" y="299" font-family="'JetBrains Mono',monospace" font-size="9" fill="#4a5568" text-anchor="end">19:55:51+</text>
-        <g class="chain-node"
-          onmouseenter="showTip(event,'C2 Encoded Commands — CMD=ENCD','Server response: CMD=ENCD\nES=1\nDATA=<encoded payload>\nMeaning: C2 sends encoded commands back\nTotal stream: 62 KB — 264 client packets\nPattern: automated persistent beaconing')"
-          onmouseleave="hideTip()" onmousemove="moveTip(event)">
+        <g class="chain-node" onmouseenter="showTip(event,'C2 Encoded Commands — CMD=ENCD','Server response: CMD=ENCD\nES=1\nDATA=<encoded payload>\nMeaning: C2 sends encoded commands back\nTotal stream: 62 KB — 264 client packets\nPattern: automated persistent beaconing')" onmouseleave="hideTip()" onmousemove="moveTip(event)">
           <rect x="10" y="301" width="300" height="66" rx="4" fill="#1a0808" stroke="#ff4757" stroke-width="1.5"/>
           <rect x="10" y="301" width="4" height="66" rx="2" fill="#ff4757"/>
           <text x="24" y="323" font-family="'JetBrains Mono',monospace" font-size="11" fill="#fff" font-weight="500">Persistent C2 — CMD=ENCD</text>
           <text x="24" y="341" font-family="'JetBrains Mono',monospace" font-size="10" fill="#ff4757">C2 sends encoded commands to host</text>
           <text x="24" y="357" font-family="'JetBrains Mono',monospace" font-size="10" fill="#4a5568">Full remote control capability active</text>
         </g>
-
         <text x="160" y="484" font-family="'JetBrains Mono',monospace" font-size="9" fill="#253548" text-anchor="middle">── Beaconing every ~60 seconds ──</text>
-
         <rect x="10" y="498" width="10" height="10" fill="#4a5568" rx="1"/>
         <text x="26" y="507" font-family="'JetBrains Mono',monospace" font-size="9" fill="#4a5568">Victim</text>
         <rect x="80" y="498" width="10" height="10" fill="#253548" rx="1" stroke="#4a5568" stroke-width="1" stroke-dasharray="2 2"/>
         <text x="96" y="507" font-family="'JetBrains Mono',monospace" font-size="9" fill="#4a5568">Unknown vector</text>
         <rect x="200" y="498" width="10" height="10" fill="#ff4757" rx="1"/>
         <text x="216" y="507" font-family="'JetBrains Mono',monospace" font-size="9" fill="#4a5568">C2 activity</text>
-
         <text x="160" y="532" font-family="'JetBrains Mono',monospace" font-size="9" fill="#1e2d3d" text-anchor="middle">Hover each step for full details</text>
       </svg>
     </div>
   </div>
 
-  <!-- EX6 PANEL -->
-  <div class="chain-panel" id="chain-ex6" style="display:none;grid-template-columns:1fr 1.2fr;gap:48px;align-items:start;">
+  <!-- EX6 PANEL — Lumma — NO inline grid styles -->
+  <div class="chain-panel" id="chain-ex6">
     <div class="chain-info fade-in">
       <h3>Lumma in the Room-ah!</h3>
       <p>Multi-stage Lumma Stealer attack. Payload delivered via file distribution site, followed by C2 gate contact, victim fingerprinting, data exfiltration, and LSARPC lateral movement attempt against Domain Controller — all within 83 seconds.</p>
@@ -481,94 +459,65 @@ html,body{max-width:100%;overflow-x:hidden;}
         <div class="chain-meta-item"><div class="chain-meta-label">TOTAL TIME</div><div class="chain-meta-val">~83 seconds</div></div>
       </div>
     </div>
-
     <div class="chain-svg-wrap fade-in">
       <svg width="100%" viewBox="0 0 320 490" style="max-height:520px">
         <defs>
           <marker id="am6" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="5" markerHeight="5" orient="auto"><path d="M2 2L8 5L2 8" fill="none" stroke="#253548" stroke-width="1.5" stroke-linecap="round"/></marker>
           <marker id="ar6" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="5" markerHeight="5" orient="auto"><path d="M2 2L8 5L2 8" fill="none" stroke="#ff4757" stroke-width="1.5" stroke-linecap="round"/></marker>
-          <marker id="aa6" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="5" markerHeight="5" orient="auto"><path d="M2 2L8 5L2 8" fill="none" stroke="#ffa502" stroke-width="1.5" stroke-linecap="round"/></marker>
         </defs>
-
-        <!-- Node 1: Victim -->
         <text x="308" y="8" font-family="'JetBrains Mono',monospace" font-size="9" fill="#4a5568" text-anchor="end">23:04:49</text>
-        <g class="chain-node"
-          onmouseenter="showTip(event,'Victim Workstation','IP: 10.1.21.58\nHostname: DESKTOP-ES9F3ML\nUser: gwyatt\nDomain: win11office.com\nMAC: 00:21:5D:C8:0E:F2')"
-          onmouseleave="hideTip()" onmousemove="moveTip(event)">
+        <g class="chain-node" onmouseenter="showTip(event,'Victim Workstation','IP: 10.1.21.58\nHostname: DESKTOP-ES9F3ML\nUser: gwyatt\nDomain: win11office.com\nMAC: 00:21:5D:C8:0E:F2')" onmouseleave="hideTip()" onmousemove="moveTip(event)">
           <rect x="10" y="10" width="300" height="54" rx="4" fill="#151d27" stroke="#253548" stroke-width="1"/>
           <rect x="10" y="10" width="4" height="54" rx="2" fill="#4a5568"/>
           <text x="24" y="32" font-family="'JetBrains Mono',monospace" font-size="11" fill="#fff" font-weight="500">gwyatt — DESKTOP-ES9F3ML</text>
           <text x="24" y="50" font-family="'JetBrains Mono',monospace" font-size="10" fill="#4a5568">10.1.21.58 | win11office.com</text>
         </g>
-
         <line x1="160" y1="64" x2="160" y2="96" stroke="#1e2d3d" stroke-width="1" stroke-dasharray="3 3" marker-end="url(#am6)"/>
         <text x="168" y="84" font-family="'JetBrains Mono',monospace" font-size="9" fill="#4a5568">Kerberos login</text>
-
-        <!-- Node 2: Initial Infection -->
         <text x="308" y="97" font-family="'JetBrains Mono',monospace" font-size="9" fill="#4a5568" text-anchor="end">23:04:49</text>
-        <g class="chain-node"
-          onmouseenter="showTip(event,'Initial Infection Vector','Domain: media.megafilehub4.lat\nIP: 104.21.48.156 (Cloudflare)\nProtocol: HTTPS (TLSv1.3)\nType: Payload delivery site\nDomain age: 3 months (newly registered)\nVT: BitDefender + G-Data flagged malicious')"
-          onmouseleave="hideTip()" onmousemove="moveTip(event)">
+        <g class="chain-node" onmouseenter="showTip(event,'Initial Infection Vector','Domain: media.megafilehub4.lat\nIP: 104.21.48.156 (Cloudflare)\nProtocol: HTTPS (TLSv1.3)\nType: Payload delivery site\nDomain age: 3 months (newly registered)\nVT: BitDefender + G-Data flagged malicious')" onmouseleave="hideTip()" onmousemove="moveTip(event)">
           <rect x="10" y="99" width="300" height="66" rx="4" fill="#1a1600" stroke="#3d3000" stroke-width="1"/>
           <rect x="10" y="99" width="4" height="66" rx="2" fill="#ffa502"/>
           <text x="24" y="121" font-family="'JetBrains Mono',monospace" font-size="11" fill="#fff" font-weight="500">media.megafilehub4.lat</text>
           <text x="24" y="139" font-family="'JetBrains Mono',monospace" font-size="10" fill="#ffa502">104.21.48.156 — Lumma Stealer delivery</text>
           <text x="24" y="155" font-family="'JetBrains Mono',monospace" font-size="10" fill="#4a5568">HTTPS encrypted — payload not observable</text>
         </g>
-
         <line x1="160" y1="165" x2="160" y2="197" stroke="#ff4757" stroke-width="1" stroke-dasharray="3 3" marker-end="url(#ar6)"/>
         <text x="168" y="185" font-family="'JetBrains Mono',monospace" font-size="9" fill="#ff4757">1:41 min →</text>
-
-        <!-- Node 3: C2 Gate -->
         <text x="308" y="198" font-family="'JetBrains Mono',monospace" font-size="9" fill="#4a5568" text-anchor="end">23:05:34</text>
-        <g class="chain-node"
-          onmouseenter="showTip(event,'C2 Gate — whooptm.cyou','IP: 62.72.32.156\nProtocol: HTTPS single connection\nVT: botnet_cc — Lumma Stealer confirmed\nAlias: LummaC2 Stealer\nPattern: gate/redirector — one contact only\nPurpose: delivers real C2 address')"
-          onmouseleave="hideTip()" onmousemove="moveTip(event)">
+        <g class="chain-node" onmouseenter="showTip(event,'C2 Gate — whooptm.cyou','IP: 62.72.32.156\nProtocol: HTTPS single connection\nVT: botnet_cc — Lumma Stealer confirmed\nAlias: LummaC2 Stealer\nPattern: gate/redirector — one contact only\nPurpose: delivers real C2 address')" onmouseleave="hideTip()" onmousemove="moveTip(event)">
           <rect x="10" y="200" width="300" height="66" rx="4" fill="#1a0808" stroke="#3d1010" stroke-width="1"/>
           <rect x="10" y="200" width="4" height="66" rx="2" fill="#ff4757"/>
           <text x="24" y="222" font-family="'JetBrains Mono',monospace" font-size="11" fill="#fff" font-weight="500">whooptm.cyou — C2 Gate</text>
           <text x="24" y="240" font-family="'JetBrains Mono',monospace" font-size="10" fill="#ff4757">62.72.32.156 — Lumma Stealer botnet_cc</text>
           <text x="24" y="256" font-family="'JetBrains Mono',monospace" font-size="10" fill="#4a5568">Single contact — redirector to real C2</text>
         </g>
-
         <line x1="160" y1="266" x2="160" y2="298" stroke="#ff4757" stroke-width="1" stroke-dasharray="3 3" marker-end="url(#ar6)"/>
         <text x="168" y="285" font-family="'JetBrains Mono',monospace" font-size="9" fill="#ff4757">4 sec →</text>
-
-        <!-- Node 4: C2 Exfiltration -->
         <text x="308" y="299" font-family="'JetBrains Mono',monospace" font-size="9" fill="#4a5568" text-anchor="end">23:05:39</text>
-        <g class="chain-node"
-          onmouseenter="showTip(event,'C2 + Exfiltration — whitepepper.su','IP: 153.92.1.49 (Hostinger — AS47583)\nProtocol: HTTP (port 80) — visible!\nEndpoint: GET /api/set_agent + POST /api/set_agent\nAction: system fingerprinting + data exfiltration\nCollects: platform, userAgent, language, hardwareConcurrency\nServer: nginx/1.29.1 — title: test (hastily deployed)')"
-          onmouseleave="hideTip()" onmousemove="moveTip(event)">
+        <g class="chain-node" onmouseenter="showTip(event,'C2 + Exfiltration — whitepepper.su','IP: 153.92.1.49 (Hostinger — AS47583)\nProtocol: HTTP (port 80) — visible!\nEndpoint: GET /api/set_agent + POST /api/set_agent\nAction: system fingerprinting + data exfiltration\nCollects: platform, userAgent, language, hardwareConcurrency\nServer: nginx/1.29.1 — title: test (hastily deployed)')" onmouseleave="hideTip()" onmousemove="moveTip(event)">
           <rect x="10" y="301" width="300" height="66" rx="4" fill="#1a0808" stroke="#3d1010" stroke-width="1"/>
           <rect x="10" y="301" width="4" height="66" rx="2" fill="#ff4757"/>
           <text x="24" y="323" font-family="'JetBrains Mono',monospace" font-size="11" fill="#fff" font-weight="500">whitepepper.su — C2 + Exfiltration</text>
           <text x="24" y="341" font-family="'JetBrains Mono',monospace" font-size="10" fill="#ff4757">POST /api/set_agent — system data sent</text>
           <text x="24" y="357" font-family="'JetBrains Mono',monospace" font-size="10" fill="#4a5568">Fingerprinting: platform, UA, language</text>
         </g>
-
         <line x1="160" y1="367" x2="160" y2="390" stroke="#ff4757" stroke-width="1" stroke-dasharray="3 3" marker-end="url(#ar6)"/>
-
-        <!-- Node 5: Lateral Movement -->
         <text x="308" y="391" font-family="'JetBrains Mono',monospace" font-size="9" fill="#4a5568" text-anchor="end">23:06:12</text>
-        <g class="chain-node"
-          onmouseenter="showTip(event,'Lateral Movement — LSARPC Attack','Secondary C2: holiday-forever.cc (80.97.160.24)\nContact at 23:06:06 — 6 sec before attack\nTarget: DC 10.1.21.2\nMethod: 749 malformed lsa_OpenPolicy3 requests\nWindow: burst within ~1 second\nGoal: credential dumping / privilege escalation')"
-          onmouseleave="hideTip()" onmousemove="moveTip(event)">
+        <g class="chain-node" onmouseenter="showTip(event,'Lateral Movement — LSARPC Attack','Secondary C2: holiday-forever.cc (80.97.160.24)\nContact at 23:06:06 — 6 sec before attack\nTarget: DC 10.1.21.2\nMethod: 749 malformed lsa_OpenPolicy3 requests\nWindow: burst within ~1 second\nGoal: credential dumping / privilege escalation')" onmouseleave="hideTip()" onmousemove="moveTip(event)">
           <rect x="10" y="393" width="300" height="66" rx="4" fill="#1a0808" stroke="#ff4757" stroke-width="1.5"/>
           <rect x="10" y="393" width="4" height="66" rx="2" fill="#ff4757"/>
           <text x="24" y="415" font-family="'JetBrains Mono',monospace" font-size="11" fill="#fff" font-weight="500">LSARPC → DC 10.1.21.2</text>
           <text x="24" y="433" font-family="'JetBrains Mono',monospace" font-size="10" fill="#ff4757">749 malformed lsa_OpenPolicy3 requests</text>
           <text x="24" y="449" font-family="'JetBrains Mono',monospace" font-size="10" fill="#4a5568">Lateral movement — credential dump attempt</text>
         </g>
-
         <text x="160" y="484" font-family="'JetBrains Mono',monospace" font-size="9" fill="#253548" text-anchor="middle">── ~83 seconds: delivery → lateral movement ──</text>
-
         <rect x="10" y="498" width="10" height="10" fill="#4a5568" rx="1"/>
         <text x="26" y="507" font-family="'JetBrains Mono',monospace" font-size="9" fill="#4a5568">Victim</text>
         <rect x="80" y="498" width="10" height="10" fill="#ffa502" rx="1"/>
         <text x="96" y="507" font-family="'JetBrains Mono',monospace" font-size="9" fill="#4a5568">Init. vector</text>
         <rect x="170" y="498" width="10" height="10" fill="#ff4757" rx="1"/>
         <text x="186" y="507" font-family="'JetBrains Mono',monospace" font-size="9" fill="#4a5568">C2 activity</text>
-
         <text x="160" y="532" font-family="'JetBrains Mono',monospace" font-size="9" fill="#1e2d3d" text-anchor="middle">Hover each step for full details</text>
       </svg>
     </div>
@@ -620,13 +569,11 @@ html,body{max-width:100%;overflow-x:hidden;}
 </footer>
 
 <script>
-// Progress bar
 window.addEventListener('scroll',()=>{
   const h=document.documentElement;
   document.getElementById('progress-bar').style.width=(h.scrollTop/(h.scrollHeight-h.clientHeight)*100)+'%';
 });
 
-// Active nav
 var navLinks=document.querySelectorAll('.nav-links a');
 document.querySelectorAll('section[id]').forEach(function(s){
   new IntersectionObserver(function(entries){
@@ -640,14 +587,12 @@ document.querySelectorAll('section[id]').forEach(function(s){
   },{threshold:0.4}).observe(s);
 });
 
-// Fade in
 document.querySelectorAll('.fade-in').forEach(function(el){
   new IntersectionObserver(function(entries){
     entries.forEach(function(e){if(e.isIntersecting) e.target.classList.add('visible');});
   },{threshold:0.08}).observe(el);
 });
 
-// Terminal typewriter
 (function(){
   var lines=[
     {type:'cmd',text:'wireshark -r 2026-01-31.pcap', pause:400},
@@ -664,33 +609,14 @@ document.querySelectorAll('.fade-in').forEach(function(el){
   if(!t) return;
   var li=0,ci=0;
 
-  function addCursor(el){
-    var c=document.createElement('span');
-    c.className='t-cursor';
-    c.id='term-cursor';
-    c.style.opacity='1';
-    el.appendChild(c);
-  }
-
-  function removeCursor(){
-    var c=document.getElementById('term-cursor');
-    if(c) c.remove();
-  }
+  function addCursor(el){var c=document.createElement('span');c.className='t-cursor';c.id='term-cursor';c.style.opacity='1';el.appendChild(c);}
+  function removeCursor(){var c=document.getElementById('term-cursor');if(c) c.remove();}
 
   function run(){
     if(li>=lines.length){
-      // fade out then restart
-      // fade out then restart
       setTimeout(function(){
-        t.style.transition='opacity 1.2s';
-        t.style.opacity='0';
-        setTimeout(function(){
-          li=0; ci=0;
-          t.innerHTML='';
-          t.style.transition='opacity 0.8s';
-          t.style.opacity='1';
-          setTimeout(run,500);
-        },1200);
+        t.style.transition='opacity 1.2s';t.style.opacity='0';
+        setTimeout(function(){li=0;ci=0;t.innerHTML='';t.style.transition='opacity 0.8s';t.style.opacity='1';setTimeout(run,500);},1200);
       },5000);
       return;
     }
@@ -699,78 +625,57 @@ document.querySelectorAll('.fade-in').forEach(function(el){
       removeCursor();
       var d=document.createElement('div');
       d.className='t-line';
-      if(l.type==='cmd'){
-        d.innerHTML='<span class="t-prompt">$ </span><span class="t-cmd" id="tc'+li+'"></span>';
-      } else {
-        d.innerHTML='<span class="t-out '+(l.cls||'')+'" id="tc'+li+'"></span>';
-      }
+      if(l.type==='cmd'){d.innerHTML='<span class="t-prompt">$ </span><span class="t-cmd" id="tc'+li+'"></span>';}
+      else{d.innerHTML='<span class="t-out '+(l.cls||'')+'" id="tc'+li+'"></span>';}
       t.appendChild(d);
-      // slight delay before adding cursor to new line — smoother transition
       var elTemp=document.getElementById('tc'+li);
-      if(elTemp) setTimeout(function(){ addCursor(elTemp); }, 60);
+      if(elTemp) setTimeout(function(){addCursor(elTemp);},60);
     }
     var el=document.getElementById('tc'+li);
     if(!el){li++;ci=0;setTimeout(run,50);return;}
-
     if(ci<l.text.length){
       removeCursor();
       el.textContent+=l.text[ci++];
       var cur=document.createElement('span');
-      cur.className='t-cursor';
-      cur.id='term-cursor';
-      cur.style.animationPlayState='paused';
-      cur.style.opacity='1';
+      cur.className='t-cursor';cur.id='term-cursor';cur.style.animationPlayState='paused';cur.style.opacity='1';
       el.appendChild(cur);
       setTimeout(run,l.type==='cmd'?48:22);
     } else {
       var c=document.getElementById('term-cursor');
-      if(c){ c.style.animationPlayState='running'; }
+      if(c){c.style.animationPlayState='running';}
       setTimeout(function(){
         var c2=document.getElementById('term-cursor');
-        if(c2){ c2.style.transition='opacity 0.15s'; c2.style.opacity='0'; }
-        setTimeout(function(){
-          li++; ci=0;
-          setTimeout(run, 80);
-        }, 150);
-      }, l.pause || 400);
+        if(c2){c2.style.transition='opacity 0.15s';c2.style.opacity='0';}
+        setTimeout(function(){li++;ci=0;setTimeout(run,80);},150);
+      },l.pause||400);
     }
   }
   setTimeout(run,1000);
 })();
 
-// Chain tabs
+// Chain tabs — use class only, no inline display style
 function switchChain(id,btn){
   document.querySelectorAll('.chain-panel').forEach(function(p){
     p.classList.remove('active');
-    p.style.display='none';
   });
   document.querySelectorAll('.chain-tab:not(.disabled)').forEach(function(t){t.classList.remove('active');});
   var panel=document.getElementById('chain-'+id);
-  if(panel){panel.classList.add('active');panel.style.display='grid';}
+  if(panel){panel.classList.add('active');}
   btn.classList.add('active');
 }
 
-// Tooltip
 var tipVisible=false;
 function showTip(e,title,body){
   var tip=document.getElementById('chain-tooltip');
   if(tipVisible&&tip.style.display==='block'){hideTip();return;}
   tip.innerHTML='<strong>'+title+'</strong>'+body.replace(/\n/g,'<br>');
   if(window.innerWidth<=768){
-    tip.style.position='fixed';
-    tip.style.left='16px';
-    tip.style.right='16px';
-    tip.style.width='auto';
-    tip.style.top='auto';
-    tip.style.bottom='80px';
-    tip.style.maxWidth='none';
-    tip.style.transform='none';
+    tip.style.position='fixed';tip.style.left='16px';tip.style.right='16px';
+    tip.style.width='auto';tip.style.top='auto';tip.style.bottom='80px';
+    tip.style.maxWidth='none';tip.style.transform='none';
   } else {
-    tip.style.position='fixed';
-    tip.style.bottom='auto';
-    tip.style.right='auto';
-    tip.style.width='auto';
-    tip.style.maxWidth='260px';
+    tip.style.position='fixed';tip.style.bottom='auto';tip.style.right='auto';
+    tip.style.width='auto';tip.style.maxWidth='260px';
     tip.style.left=Math.min(e.clientX+16,window.innerWidth-280)+'px';
     tip.style.top=Math.min(e.clientY+16,window.innerHeight-180)+'px';
   }
@@ -784,16 +689,10 @@ function moveTip(e){
     tip.style.top=Math.min(e.clientY+16,window.innerHeight-180)+'px';
   }
 }
-function hideTip(){
-  document.getElementById('chain-tooltip').style.display='none';
-  tipVisible=false;
-}
-document.addEventListener('click',function(e){
-  if(!e.target.closest('.chain-node')) hideTip();
-});
-document.addEventListener('scroll',function(){ hideTip(); });
+function hideTip(){document.getElementById('chain-tooltip').style.display='none';tipVisible=false;}
+document.addEventListener('click',function(e){if(!e.target.closest('.chain-node')) hideTip();});
+document.addEventListener('scroll',function(){hideTip();});
 
-// IOC Filter
 function filterIOC(ex,btn){
   document.querySelectorAll('.ioc-filter').forEach(b=>b.classList.remove('active'));
   btn.classList.add('active');
