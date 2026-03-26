@@ -728,15 +728,17 @@ document.querySelectorAll('.fade-in').forEach(function(el){
 
 (function(){
   var lines=[
-    {type:'cmd',text:'wireshark -r 2026-01-31.pcap', pause:400},
+    {type:'cmd',text:'wireshark -r 2026-02-03.pcap', pause:400},
     {type:'out',text:'Opening capture file...',cls:'t-green', pause:300},
-    {type:'cmd',text:'ip.src == 10.1.21.58 and http', pause:400},
-    {type:'out',text:'16 packets matched filter', pause:300},
-    {type:'out',text:'WARNING: GET /api/set_agent -> whitepepper.su',cls:'t-amber', pause:900},
-    {type:'out',text:'WARNING: POST /api/set_agent — data exfiltration',cls:'t-amber', pause:900},
-    {type:'cmd',text:'// Check LSARPC traffic', pause:500},
-    {type:'out',text:'749 malformed lsa_OpenPolicy3 requests!',cls:'t-red', pause:1300},
-    {type:'out',text:'COMPROMISED: DESKTOP-ES9F3ML | gwyatt',cls:'t-red', pause:1800},
+    {type:'cmd',text:'http.request and ip.src == 10.2.3.101', pause:400},
+    {type:'out',text:'1 packet matched filter', pause:300},
+    {type:'out',text:'WARNING: GET /line/?fields=hosting → ip-api.com',cls:'t-amber', pause:900},
+    {type:'cmd',text:'// Check HTTPS before 16:13:59', pause:500},
+    {type:'out',text:'drive.usercontent.google.com — 270 kB download!',cls:'t-amber', pause:900},
+    {type:'cmd',text:'ftp or ftp-data', pause:400},
+    {type:'out',text:'USER: edunis@corwineagles.com',cls:'t-red', pause:600},
+    {type:'out',text:'STOR PW_tyler-DESKTOP-W7F98GR...html',cls:'t-red', pause:900},
+    {type:'out',text:'COMPROMISED: DESKTOP-W7F98GR | tyler',cls:'t-red', pause:1800},
   ];
   var t=document.getElementById('terminal-output');
   if(!t) return;
