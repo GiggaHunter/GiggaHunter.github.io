@@ -40,6 +40,9 @@ h1 .dim{color:var(--text3);}
 .hero-stats{display:flex;gap:36px;margin-bottom:40px;}
 .stat-num{font-family:var(--display);font-size:34px;font-weight:800;color:var(--accent);line-height:1;margin-bottom:4px;}
 .stat-label{font-family:var(--mono);font-size:10px;color:var(--text3);letter-spacing:0.08em;}
+.stat-coming-soon{position:relative;background:var(--amber-dim);border:1px solid rgba(255,165,2,0.25);padding:10px 14px;border-radius:3px;}
+.stat-num-dim{color:var(--amber) !important;opacity:0.5;}
+.stat-soon-badge{display:inline-block;margin-top:6px;font-family:var(--mono);font-size:9px;letter-spacing:0.12em;color:var(--amber);background:rgba(255,165,2,0.15);border:1px solid rgba(255,165,2,0.35);padding:2px 7px;border-radius:2px;}
 .hero-btns{display:flex;gap:12px;flex-wrap:wrap;}
 .btn-primary{font-family:var(--mono);font-size:11px;letter-spacing:0.08em;color:var(--bg);background:var(--accent);padding:12px 24px;border:none;cursor:pointer;text-decoration:none;display:inline-block;transition:all 0.2s;}
 .btn-primary:hover{background:#fff;transform:translateY(-1px);}
@@ -107,6 +110,7 @@ h2{font-family:var(--display);font-size:34px;font-weight:800;color:#fff;letter-s
 .chain-tab{font-family:var(--mono);font-size:11px;color:var(--text3);padding:10px 20px;background:var(--bg2);border:1px solid var(--border);cursor:pointer;transition:all 0.2s;letter-spacing:0.06em;}
 .chain-tab.active{color:var(--accent);border-color:var(--accent2);background:var(--accent-dim);}
 .chain-tab.disabled{opacity:0.35;cursor:default;}
+.chain-tab-soon{opacity:1 !important;cursor:default !important;color:var(--amber) !important;border-color:rgba(255,165,2,0.3) !important;background:rgba(255,165,2,0.05) !important;border-style:dashed !important;}
 
 /* ── Chain panel base ── */
 .chain-panel{display:none;}
@@ -234,7 +238,11 @@ html,body{max-width:100%;overflow-x:hidden;}
     <div class="hero-stats">
       <div class="stat-item"><div class="stat-num">3</div><div class="stat-label">EXERCISES</div></div>
       <div class="stat-item"><div class="stat-num">14</div><div class="stat-label">IOCs FOUND</div></div>
-      <div class="stat-item"><div class="stat-num">0</div><div class="stat-label">IR REPORTS</div></div>
+      <div class="stat-item stat-coming-soon">
+        <div class="stat-num stat-num-dim">0</div>
+        <div class="stat-label">IR REPORTS</div>
+        <div class="stat-soon-badge">COMING SOON</div>
+      </div>
     </div>
     <div class="hero-btns">
       <a href="#exercises" class="btn-primary">VIEW EXERCISES</a>
@@ -300,6 +308,7 @@ html,body{max-width:100%;overflow-x:hidden;}
     <div class="chain-tab active" onclick="switchChain('ex4',this)">2024-09-04 — Big Fish</div>
     <div class="chain-tab" onclick="switchChain('ex5',this)">2026-02-28 — Easy as 123</div>
     <div class="chain-tab" onclick="switchChain('ex6',this)">2026-01-31 — Lumma</div>
+    <div class="chain-tab chain-tab-soon disabled">Exercise 07 — Coming Soon</div>
   </div>
 
   <!-- EX4 PANEL — Big Fish -->
