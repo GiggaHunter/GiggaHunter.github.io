@@ -56,7 +56,7 @@ h1 .dim{color:var(--text3);}
 .t-dot.y{background:var(--amber);}
 .t-dot.g{background:var(--green);}
 .terminal-title{font-size:11px;color:var(--text3);margin-left:8px;}
-.terminal-body{padding:20px;line-height:1.9;min-height:200px;}
+.terminal-body{padding:20px;line-height:1.9;min-height:200px;will-change:opacity;}
 .t-line{margin-bottom:2px;}
 .t-prompt{color:var(--accent);}
 .t-cmd{color:var(--text);}
@@ -624,8 +624,20 @@ document.querySelectorAll('.fade-in').forEach(function(el){
   function run(){
     if(li>=lines.length){
       setTimeout(function(){
-        t.style.transition='opacity 1.2s';t.style.opacity='0';
-        setTimeout(function(){li=0;ci=0;t.innerHTML='';t.style.transition='opacity 0.8s';t.style.opacity='1';setTimeout(run,500);},1200);
+        // force reflow before fade out — fixes inconsistency on mobile
+        t.style.transition='none';
+        t.style.opacity='1';
+        void t.offsetHeight;
+        t.style.transition='opacity 1.2s ease';
+        t.style.opacity='0';
+        setTimeout(function(){
+          t.style.transition='none';
+          li=0; ci=0; t.innerHTML='';
+          void t.offsetHeight;
+          t.style.transition='opacity 0.8s ease';
+          t.style.opacity='1';
+          setTimeout(run,500);
+        },1250);
       },5000);
       return;
     }
