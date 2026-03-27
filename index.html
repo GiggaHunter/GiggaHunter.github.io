@@ -927,18 +927,22 @@ window.addEventListener('scroll',()=>{
   document.getElementById('progress-bar').style.width=(h.scrollTop/(h.scrollHeight-h.clientHeight)*100)+'%';
 });
 
+try{
 var navLinks=document.querySelectorAll('.nav-links a');
 document.querySelectorAll('section[id]').forEach(function(s){
   new IntersectionObserver(function(entries){
     entries.forEach(function(e){
       if(e.isIntersecting){
         navLinks.forEach(function(a){a.classList.remove('active');});
-        var a=document.querySelector('.nav-links a[href="#'+e.target.id+'"]');
-        if(a) a.classList.add('active');
+        var id=e.target.id;
+        navLinks.forEach(function(a){
+          if(a.getAttribute('href')==='#'+id) a.classList.add('active');
+        });
       }
     });
   },{threshold:0.4}).observe(s);
 });
+}catch(err){console.warn('nav observer:',err);}
 
 document.querySelectorAll('.fade-in').forEach(function(el){
   new IntersectionObserver(function(entries){
@@ -1060,7 +1064,7 @@ document.addEventListener('scroll',function(){hideTip();});
 
 // ── ThreatFox Live Feed ──
 (function(){
-  var REFRESH_MS = 60 * 60 * 1000; // 60 min
+  var REFRESH_MS = 60 * 60 * 1000;
 
   function colorClass(rank){
     if(rank===0) return 'danger';
@@ -1073,7 +1077,7 @@ document.addEventListener('scroll',function(){hideTip();});
       .sort(function(a,b){return b[1]-a[1];})
       .slice(0,10);
     if(!sorted.length){
-      document.getElementById('tf-chart').innerHTML='<div class="tf-error">No data available.</div>';
+      document.getElementById('tf-chart').innerHTML='<div class="tf-error">No data returned.</div>';
       return;
     }
     var max = sorted[0][1];
@@ -1090,7 +1094,6 @@ document.addEventListener('scroll',function(){hideTip();});
         + '</div>';
     });
     document.getElementById('tf-chart').innerHTML = html;
-    // animate bars after render
     setTimeout(function(){
       document.querySelectorAll('.tf-bar-fill').forEach(function(el){
         el.style.width = el.dataset.pct + '%';
@@ -1098,82 +1101,105 @@ document.addEventListener('scroll',function(){hideTip();});
     }, 80);
   }
 
-  function fetchThreatFox(){
-    var chart = document.getElementById('tf-chart');
-    chart.innerHTML = '<div class="tf-loading">Fetching from ThreatFox</div>';
+  function processData(iocs){
+    var malwareCount = {};
+    var typeCount = {domain:0, ip_port:0, url:0};
+    var highConf = 0;
+    var exeCount = 0;
+    var tagCount = {};
 
-    fetch('https://threatfox-api.abuse.ch/api/v1/', {
-      method: 'POST',
-      headers: {'Content-Type': 'application/json'},
-      body: JSON.stringify({query: 'get_iocs', days: 1})
-    })
-    .then(function(r){ return r.json(); })
-    .then(function(data){
-      if(data.query_status !== 'ok' || !data.data){
-        chart.innerHTML = '<div class="tf-error">ThreatFox returned no data.<br>Try refreshing in a few minutes.</div>';
-        return;
-      }
-      var iocs = data.data;
-      var malwareCount = {};
-      var typeCount = {domain:0, ip_port:0, url:0, md5_hash:0, sha256_hash:0};
-      var highConf = 0;
-      var exeCount = 0;
-      var tagCount = {};
-
-      iocs.forEach(function(ioc){
-        // malware family
-        var mname = ioc.malware_printable || ioc.malware || 'Unknown';
-        malwareCount[mname] = (malwareCount[mname]||0) + 1;
-
-        // type
-        var t = ioc.ioc_type || '';
-        if(typeCount.hasOwnProperty(t)) typeCount[t]++;
-
-        // confidence
-        if((ioc.confidence_level||0) >= 90) highConf++;
-
-        // exe
-        if(ioc.malware_malpedia && ioc.malware_malpedia.indexOf('win.')===0) exeCount++;
-
-        // tags
-        if(ioc.tags && Array.isArray(ioc.tags)){
-          ioc.tags.forEach(function(tag){
-            tagCount[tag] = (tagCount[tag]||0) + 1;
-          });
-        }
+    iocs.forEach(function(ioc){
+      var mname = ioc.malware_printable || ioc.malware || 'Unknown';
+      malwareCount[mname] = (malwareCount[mname]||0) + 1;
+      var t = ioc.ioc_type || '';
+      if(typeCount.hasOwnProperty(t)) typeCount[t]++;
+      if((ioc.confidence_level||0) >= 90) highConf++;
+      if((ioc.tags||[]).some(function(x){return x==='exe';})) exeCount++;
+      (ioc.tags||[]).forEach(function(tag){
+        tagCount[tag] = (tagCount[tag]||0)+1;
       });
-
-      // stats
-      var families = Object.keys(malwareCount).length;
-      var sorted = Object.entries(malwareCount).sort(function(a,b){return b[1]-a[1];});
-      var top1 = sorted.length ? sorted[0][0] : '—';
-      var topTag = Object.entries(tagCount).sort(function(a,b){return b[1]-a[1];})[0];
-      var topTagStr = topTag ? '#'+topTag[0] : '—';
-
-      document.getElementById('tf-total').textContent = iocs.length;
-      document.getElementById('tf-domains').textContent = typeCount.domain;
-      document.getElementById('tf-ips').textContent = typeCount.ip_port;
-      document.getElementById('tf-urls').textContent = typeCount.url;
-      document.getElementById('tf-top1').textContent = top1;
-      document.getElementById('tf-families').textContent = families;
-      document.getElementById('tf-high-conf').textContent = highConf;
-      document.getElementById('tf-exe').textContent = exeCount;
-      document.getElementById('tf-top-tag').textContent = topTagStr;
-
-      renderBars(malwareCount);
-
-      var now = new Date();
-      document.getElementById('tf-updated').innerHTML =
-        'Last updated: <span>'+now.toUTCString()+'</span>';
-    })
-    .catch(function(err){
-      chart.innerHTML = '<div class="tf-error">Could not reach ThreatFox API.<br>Check your connection or try again later.<br><small style="color:var(--text3)">'+err.message+'</small></div>';
     });
+
+    var families = Object.keys(malwareCount).length;
+    var sorted = Object.entries(malwareCount).sort(function(a,b){return b[1]-a[1];});
+    var top1 = sorted.length ? sorted[0][0] : '—';
+    var topTag = Object.entries(tagCount).sort(function(a,b){return b[1]-a[1];})[0];
+    var topTagStr = topTag ? '#'+topTag[0] : '—';
+
+    document.getElementById('tf-total').textContent = iocs.length;
+    document.getElementById('tf-domains').textContent = typeCount.domain;
+    document.getElementById('tf-ips').textContent = typeCount.ip_port;
+    document.getElementById('tf-urls').textContent = typeCount.url;
+    document.getElementById('tf-top1').textContent = top1;
+    document.getElementById('tf-families').textContent = families;
+    document.getElementById('tf-high-conf').textContent = highConf;
+    document.getElementById('tf-exe').textContent = exeCount;
+    document.getElementById('tf-top-tag').textContent = topTagStr;
+
+    renderBars(malwareCount);
+
+    var now = new Date();
+    document.getElementById('tf-updated').innerHTML =
+      'Last updated: <span>'+now.toUTCString()+'</span>';
   }
 
-  // initial fetch + interval
-  fetchThreatFox();
-  setInterval(fetchThreatFox, REFRESH_MS);
+  function fetchDirect(){
+    return fetch('https://threatfox-api.abuse.ch/api/v1/', {
+      method:'POST',
+      headers:{'Content-Type':'application/json'},
+      body:JSON.stringify({query:'get_iocs',days:1})
+    }).then(function(r){return r.json();});
+  }
+
+  function fetchViaProxy(){
+    var url = 'https://api.allorigins.win/raw?url='+encodeURIComponent('https://threatfox-api.abuse.ch/api/v1/');
+    return fetch(url,{
+      method:'POST',
+      headers:{'Content-Type':'application/json'},
+      body:JSON.stringify({query:'get_iocs',days:1})
+    }).then(function(r){return r.json();});
+  }
+
+  function fetchThreatFox(){
+    var chart = document.getElementById('tf-chart');
+    if(!chart) return;
+    chart.innerHTML = '<div class="tf-loading">Fetching from ThreatFox</div>';
+
+    // Try direct first, fallback to proxy
+    fetchDirect()
+      .then(function(data){
+        if(!data || data.query_status!=='ok' || !data.data || !data.data.length){
+          throw new Error('empty or bad response');
+        }
+        processData(data.data);
+      })
+      .catch(function(){
+        // fallback: try CORS proxy
+        fetchViaProxy()
+          .then(function(data){
+            if(!data || data.query_status!=='ok' || !data.data || !data.data.length){
+              throw new Error('proxy also failed');
+            }
+            processData(data.data);
+          })
+          .catch(function(err){
+            chart.innerHTML = '<div class="tf-error">Could not reach ThreatFox API.<br>'
+              +'<small style="color:var(--text3);display:block;margin-top:8px">Try opening the site in a different browser, or check your internet connection.</small></div>';
+            console.warn('ThreatFox fetch failed:',err);
+          });
+      });
+  }
+
+  // Run on load
+  if(document.readyState==='loading'){
+    document.addEventListener('DOMContentLoaded', function(){
+      fetchThreatFox();
+      setInterval(fetchThreatFox, REFRESH_MS);
+    });
+  } else {
+    fetchThreatFox();
+    setInterval(fetchThreatFox, REFRESH_MS);
+  }
 })();
 
 function filterIOC(ex,btn){
