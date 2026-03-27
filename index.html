@@ -8,7 +8,7 @@
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-LKW84EHBTD"></script>
 <script>
   window.dataLayer = window.dataLayer || [];
- بثتfefds
+  function gtag(){dataLayer.push(arguments);}
   gtag('js', new Date());
   gtag('config', 'G-LKW84EHBTD');
 </script>
@@ -658,7 +658,7 @@ html,body{max-width:100%;overflow-x:hidden;}
           <rect x="10" y="402" width="4" height="80" rx="2" fill="#ff4757"/>
           <text x="24" y="424" font-family="'JetBrains Mono',monospace" font-size="11" fill="#fff" font-weight="500">FTP Exfiltration — corwineagles.com</text>
           <text x="24" y="442" font-family="'JetBrains Mono',monospace" font-size="10" fill="#ff4757">STOR PW_tyler...html + Contacts_Thunderbird.txt</text>
-          <text x="24" y="458" font-family="'JetBrains Mono',monospace" font-size="10" fill="#4a5568">USER: <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="4d28293823243e0d2e223f3a2423282c2a21283e632e2220">[email&#160;protected]</a></text>
+          <text x="24" y="458" font-family="'JetBrains Mono',monospace" font-size="10" fill="#4a5568">USER: edunis [at] corwineagles.com</text>
           <text x="24" y="472" font-family="'JetBrains Mono',monospace" font-size="10" fill="#4a5568">162.241.123.75 — likely compromised site</text>
         </g>
         <text x="160" y="510" font-family="'JetBrains Mono',monospace" font-size="9" fill="#253548" text-anchor="middle">── ~9 seconds: download → exfiltration ──</text>
@@ -921,7 +921,7 @@ html,body{max-width:100%;overflow-x:hidden;}
   <div class="footer-right"><span>malware-traffic-analysis.net</span><span>Training Exercises</span><span>2024 – 2026</span></div>
 </footer>
 
-<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+<script>
 window.addEventListener('scroll',()=>{
   const h=document.documentElement;
   document.getElementById('progress-bar').style.width=(h.scrollTop/(h.scrollHeight-h.clientHeight)*100)+'%';
@@ -1065,140 +1065,111 @@ document.addEventListener('scroll',function(){hideTip();});
 // ── ThreatFox Live Feed ──
 (function(){
   var REFRESH_MS = 60 * 60 * 1000;
+  var API_URL = 'https://threatfox-api.abuse.ch/api/v1/';
+  var BODY = JSON.stringify({query:'get_iocs',days:1});
+  var HEADERS = {'Content-Type':'application/json'};
 
-  function colorClass(rank){
-    if(rank===0) return 'danger';
-    if(rank===1||rank===2) return 'warn';
-    return '';
-  }
-
-  function renderBars(malwareCounts){
-    var sorted = Object.entries(malwareCounts)
-      .sort(function(a,b){return b[1]-a[1];})
-      .slice(0,10);
-    if(!sorted.length){
-      document.getElementById('tf-chart').innerHTML='<div class="tf-error">No data returned.</div>';
-      return;
+  var PROXIES = [
+    function(){ // direct
+      return fetch(API_URL,{method:'POST',headers:HEADERS,body:BODY});
+    },
+    function(){ // corsproxy.io
+      return fetch('https://corsproxy.io/?'+encodeURIComponent(API_URL),{method:'POST',headers:HEADERS,body:BODY});
+    },
+    function(){ // allorigins GET workaround — encode body in URL not possible for POST, skip
+      return fetch('https://api.codetabs.com/v1/proxy?quest='+encodeURIComponent(API_URL),{method:'POST',headers:HEADERS,body:BODY});
     }
-    var max = sorted[0][1];
-    var html = '';
-    sorted.forEach(function(entry, i){
-      var name = entry[0] || 'Unknown';
-      var count = entry[1];
-      var pct = Math.round((count/max)*100);
-      var cls = colorClass(i);
-      html += '<div class="tf-bar-row">'
-        + '<div class="tf-bar-label" title="'+name+'">'+name+'</div>'
-        + '<div class="tf-bar-track"><div class="tf-bar-fill '+cls+'" data-pct="'+pct+'"></div></div>'
-        + '<div class="tf-bar-count">'+count+'</div>'
-        + '</div>';
-    });
-    document.getElementById('tf-chart').innerHTML = html;
+  ];
+
+  function colorClass(i){return i===0?'danger':i<3?'warn':'';}
+
+  function renderBars(counts){
+    var sorted=Object.entries(counts).sort(function(a,b){return b[1]-a[1];}).slice(0,10);
+    if(!sorted.length){document.getElementById('tf-chart').innerHTML='<div class="tf-error">No IOCs found in last 24h.</div>';return;}
+    var max=sorted[0][1];
+    var html=sorted.map(function(e,i){
+      var pct=Math.round(e[1]/max*100);
+      return '<div class="tf-bar-row">'
+        +'<div class="tf-bar-label" title="'+e[0]+'">'+e[0]+'</div>'
+        +'<div class="tf-bar-track"><div class="tf-bar-fill '+colorClass(i)+'" data-pct="'+pct+'"></div></div>'
+        +'<div class="tf-bar-count">'+e[1]+'</div></div>';
+    }).join('');
+    document.getElementById('tf-chart').innerHTML=html;
     setTimeout(function(){
-      document.querySelectorAll('.tf-bar-fill').forEach(function(el){
-        el.style.width = el.dataset.pct + '%';
-      });
-    }, 80);
+      document.querySelectorAll('.tf-bar-fill').forEach(function(el){el.style.width=el.dataset.pct+'%';});
+    },80);
   }
 
   function processData(iocs){
-    var malwareCount = {};
-    var typeCount = {domain:0, ip_port:0, url:0};
-    var highConf = 0;
-    var exeCount = 0;
-    var tagCount = {};
-
+    var mw={},types={domain:0,ip_port:0,url:0},hc=0,exe=0,tags={};
     iocs.forEach(function(ioc){
-      var mname = ioc.malware_printable || ioc.malware || 'Unknown';
-      malwareCount[mname] = (malwareCount[mname]||0) + 1;
-      var t = ioc.ioc_type || '';
-      if(typeCount.hasOwnProperty(t)) typeCount[t]++;
-      if((ioc.confidence_level||0) >= 90) highConf++;
-      if((ioc.tags||[]).some(function(x){return x==='exe';})) exeCount++;
-      (ioc.tags||[]).forEach(function(tag){
-        tagCount[tag] = (tagCount[tag]||0)+1;
+      var m=ioc.malware_printable||ioc.malware||'Unknown';
+      mw[m]=(mw[m]||0)+1;
+      var t=ioc.ioc_type||'';
+      if(types.hasOwnProperty(t)) types[t]++;
+      if((ioc.confidence_level||0)>=90) hc++;
+      (ioc.tags||[]).forEach(function(tg){
+        if(tg==='exe') exe++;
+        tags[tg]=(tags[tg]||0)+1;
       });
     });
-
-    var families = Object.keys(malwareCount).length;
-    var sorted = Object.entries(malwareCount).sort(function(a,b){return b[1]-a[1];});
-    var top1 = sorted.length ? sorted[0][0] : '—';
-    var topTag = Object.entries(tagCount).sort(function(a,b){return b[1]-a[1];})[0];
-    var topTagStr = topTag ? '#'+topTag[0] : '—';
-
-    document.getElementById('tf-total').textContent = iocs.length;
-    document.getElementById('tf-domains').textContent = typeCount.domain;
-    document.getElementById('tf-ips').textContent = typeCount.ip_port;
-    document.getElementById('tf-urls').textContent = typeCount.url;
-    document.getElementById('tf-top1').textContent = top1;
-    document.getElementById('tf-families').textContent = families;
-    document.getElementById('tf-high-conf').textContent = highConf;
-    document.getElementById('tf-exe').textContent = exeCount;
-    document.getElementById('tf-top-tag').textContent = topTagStr;
-
-    renderBars(malwareCount);
-
-    var now = new Date();
-    document.getElementById('tf-updated').innerHTML =
-      'Last updated: <span>'+now.toUTCString()+'</span>';
+    var sorted=Object.entries(mw).sort(function(a,b){return b[1]-a[1];});
+    var topTag=Object.entries(tags).sort(function(a,b){return b[1]-a[1];})[0];
+    document.getElementById('tf-total').textContent=iocs.length;
+    document.getElementById('tf-domains').textContent=types.domain;
+    document.getElementById('tf-ips').textContent=types.ip_port;
+    document.getElementById('tf-urls').textContent=types.url;
+    document.getElementById('tf-top1').textContent=sorted.length?sorted[0][0]:'—';
+    document.getElementById('tf-families').textContent=Object.keys(mw).length;
+    document.getElementById('tf-high-conf').textContent=hc;
+    document.getElementById('tf-exe').textContent=exe;
+    document.getElementById('tf-top-tag').textContent=topTag?'#'+topTag[0]:'—';
+    renderBars(mw);
+    var now=new Date();
+    document.getElementById('tf-updated').innerHTML='Last updated: <span>'+now.toUTCString()+'</span>';
   }
 
-  function fetchDirect(){
-    return fetch('https://threatfox-api.abuse.ch/api/v1/', {
-      method:'POST',
-      headers:{'Content-Type':'application/json'},
-      body:JSON.stringify({query:'get_iocs',days:1})
-    }).then(function(r){return r.json();});
-  }
-
-  function fetchViaProxy(){
-    var url = 'https://api.allorigins.win/raw?url='+encodeURIComponent('https://threatfox-api.abuse.ch/api/v1/');
-    return fetch(url,{
-      method:'POST',
-      headers:{'Content-Type':'application/json'},
-      body:JSON.stringify({query:'get_iocs',days:1})
-    }).then(function(r){return r.json();});
-  }
-
-  function fetchThreatFox(){
-    var chart = document.getElementById('tf-chart');
-    if(!chart) return;
-    chart.innerHTML = '<div class="tf-loading">Fetching from ThreatFox</div>';
-
-    // Try direct first, fallback to proxy
-    fetchDirect()
+  function tryFetch(index){
+    if(index>=PROXIES.length){
+      document.getElementById('tf-chart').innerHTML=
+        '<div class="tf-error">ThreatFox API غير متاح حالياً.<br>'
+        +'<small style="color:var(--text3);display:block;margin-top:8px">حاول لاحقاً — الـ API يحتاج اتصال مباشر بالإنترنت.</small>'
+        +'<button onclick="window.tfRetry()" style="margin-top:12px;font-family:var(--mono);font-size:10px;color:var(--accent);background:var(--accent-dim);border:1px solid var(--accent2);padding:6px 14px;cursor:pointer;border-radius:2px;">RETRY</button></div>';
+      return;
+    }
+    PROXIES[index]()
+      .then(function(r){
+        if(!r.ok) throw new Error('HTTP '+r.status);
+        return r.json();
+      })
       .then(function(data){
-        if(!data || data.query_status!=='ok' || !data.data || !data.data.length){
-          throw new Error('empty or bad response');
-        }
+        if(!data||data.query_status!=='ok'||!Array.isArray(data.data)||!data.data.length)
+          throw new Error('bad data');
         processData(data.data);
       })
       .catch(function(){
-        // fallback: try CORS proxy
-        fetchViaProxy()
-          .then(function(data){
-            if(!data || data.query_status!=='ok' || !data.data || !data.data.length){
-              throw new Error('proxy also failed');
-            }
-            processData(data.data);
-          })
-          .catch(function(err){
-            chart.innerHTML = '<div class="tf-error">Could not reach ThreatFox API.<br>'
-              +'<small style="color:var(--text3);display:block;margin-top:8px">Try opening the site in a different browser, or check your internet connection.</small></div>';
-            console.warn('ThreatFox fetch failed:',err);
-          });
+        tryFetch(index+1);
       });
   }
 
-  // Run on load
+  window.tfRetry=function(){
+    var chart=document.getElementById('tf-chart');
+    if(chart) chart.innerHTML='<div class="tf-loading">Fetching from ThreatFox</div>';
+    tryFetch(0);
+  };
+
+  function fetchThreatFox(){
+    var chart=document.getElementById('tf-chart');
+    if(!chart) return;
+    chart.innerHTML='<div class="tf-loading">Fetching from ThreatFox</div>';
+    tryFetch(0);
+  }
+
   if(document.readyState==='loading'){
-    document.addEventListener('DOMContentLoaded', function(){
-      fetchThreatFox();
-      setInterval(fetchThreatFox, REFRESH_MS);
-    });
+    document.addEventListener('DOMContentLoaded',function(){fetchThreatFox();setInterval(fetchThreatFox,REFRESH_MS);});
   } else {
     fetchThreatFox();
-    setInterval(fetchThreatFox, REFRESH_MS);
+    setInterval(fetchThreatFox,REFRESH_MS);
   }
 })();
 
