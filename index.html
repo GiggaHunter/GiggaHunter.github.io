@@ -1017,7 +1017,7 @@ document.querySelectorAll('.fade-in').forEach(function(el){
   if(document.readyState === 'loading'){
     document.addEventListener('DOMContentLoaded', startTerminal);
   } else {
-    startTerminal();
+    setTimeout(startTerminal, 100);
   }
   window.addEventListener('load', startTerminal);
 })();
@@ -1155,6 +1155,7 @@ window.addEventListener('load', function(){
         return r.json();
       })
       .then(function(data){
+        console.log('ThreatFox export response:', JSON.stringify(data).slice(0,300));
         // Export format: { "query_status": "ok", "data": {...} }
         // data.data is an object where keys are hashes and values are arrays of ioc info
         var iocs = [];
