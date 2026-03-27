@@ -951,89 +951,76 @@ document.querySelectorAll('.fade-in').forEach(function(el){
 });
 
 // ── Terminal Animation ──
-window.addEventListener('load', function(){
-  var termEl = document.getElementById('terminal-output');
-  if(!termEl) return;
+(function(){
+  function startTerminal(){
+    var termEl = document.getElementById('terminal-output');
+    if(!termEl || termEl.dataset.started) return;
+    termEl.dataset.started = '1';
 
-  var LINES = [
-    {cmd: true,  text: 'wireshark -r 2026-02-02.pcap'},
-    {cmd: false, text: 'Opening capture file...', cls: 't-green'},
-    {cmd: true,  text: 'http.request and ip.src == 10.2.2.37'},
-    {cmd: false, text: 'Protocol: FINGER detected!', cls: 't-amber'},
-    {cmd: false, text: 'WARNING: LOLBin abuse — finger.exe', cls: 't-amber'},
-    {cmd: true,  text: 'tls.handshake.type == 1'},
-    {cmd: false, text: 'oceanbistrooumc.com — DGA domain!', cls: 't-amber'},
-    {cmd: false, text: 'MintsLoader C2: 64.52.80.153 confirmed', cls: 't-red'},
-    {cmd: false, text: 'sbwur1.top + gecdfcjcbcmmakk.top', cls: 't-red'},
-    {cmd: false, text: 'COMPROMISED: 10.2.2.37 — KongTuke', cls: 't-red'},
-  ];
+    var LINES = [
+      {cmd: true,  text: 'wireshark -r 2026-02-02.pcap'},
+      {cmd: false, text: 'Opening capture file...', cls: 'green'},
+      {cmd: true,  text: 'http.request and ip.src == 10.2.2.37'},
+      {cmd: false, text: 'Protocol: FINGER detected!', cls: 'amber'},
+      {cmd: false, text: 'WARNING: LOLBin — finger.exe', cls: 'amber'},
+      {cmd: true,  text: 'tls.handshake.type == 1'},
+      {cmd: false, text: 'oceanbistrooumc.com — DGA!', cls: 'amber'},
+      {cmd: false, text: 'MintsLoader C2 confirmed', cls: 'red'},
+      {cmd: false, text: 'COMPROMISED: 10.2.2.37', cls: 'red'},
+    ];
 
-  var lineIdx = 0;
-  var charIdx = 0;
-  var currentSpan = null;
+    var li=0, ci=0, span=null;
 
-  function nextChar() {
-    if (lineIdx >= LINES.length) {
-      // pause then restart
-      setTimeout(function(){
-        termEl.style.opacity = '0';
+    function tick(){
+      if(li >= LINES.length){
         setTimeout(function(){
-          termEl.innerHTML = '';
-          termEl.style.opacity = '1';
-          lineIdx = 0; charIdx = 0; currentSpan = null;
-          setTimeout(nextChar, 400);
-        }, 800);
-      }, 4000);
-      return;
-    }
-
-    var line = LINES[lineIdx];
-
-    // new line: create the DOM row
-    if (charIdx === 0) {
-      var row = document.createElement('div');
-      row.style.marginBottom = '2px';
-      row.style.fontFamily = 'var(--mono)';
-      row.style.fontSize = '12px';
-      row.style.lineHeight = '1.9';
-
-      if (line.cmd) {
-        var prompt = document.createElement('span');
-        prompt.style.color = 'var(--accent)';
-        prompt.textContent = '$ ';
-        row.appendChild(prompt);
+          termEl.style.opacity='0';
+          setTimeout(function(){
+            termEl.innerHTML='';
+            termEl.style.opacity='1';
+            li=0; ci=0; span=null;
+            setTimeout(tick, 600);
+          }, 700);
+        }, 3500);
+        return;
       }
-
-      currentSpan = document.createElement('span');
-      currentSpan.style.color = line.cmd ? 'var(--text)' : '';
-      if (!line.cmd && line.cls === 't-green') currentSpan.style.color = 'var(--green)';
-      if (!line.cmd && line.cls === 't-amber') currentSpan.style.color = 'var(--amber)';
-      if (!line.cmd && line.cls === 't-red')   currentSpan.style.color = 'var(--red)';
-      if (!line.cmd && !line.cls)              currentSpan.style.color = 'var(--text2)';
-      if (!line.cmd) currentSpan.style.paddingLeft = '16px';
-
-      row.appendChild(currentSpan);
-      termEl.appendChild(row);
+      var line = LINES[li];
+      if(ci===0){
+        var row = document.createElement('div');
+        row.style.cssText = 'margin-bottom:2px;font-family:JetBrains Mono,monospace;font-size:12px;line-height:1.9;';
+        if(line.cmd){
+          var p=document.createElement('span');
+          p.style.color='#00d4ff';
+          p.textContent='$ ';
+          row.appendChild(p);
+        }
+        span = document.createElement('span');
+        var colors = {green:'#2ed573', amber:'#ffa502', red:'#ff4757'};
+        span.style.color = line.cmd ? '#c9d1d9' : (colors[line.cls] || '#8b949e');
+        if(!line.cmd) span.style.paddingLeft='16px';
+        row.appendChild(span);
+        termEl.appendChild(row);
+      }
+      if(ci < line.text.length){
+        span.textContent += line.text[ci++];
+        setTimeout(tick, line.cmd ? 42 : 16);
+      } else {
+        li++; ci=0; span=null;
+        setTimeout(tick, line.cmd ? 300 : (line.cls==='red' ? 800 : 450));
+      }
     }
 
-    // type one character
-    if (charIdx < line.text.length) {
-      currentSpan.textContent += line.text[charIdx];
-      charIdx++;
-      setTimeout(nextChar, line.cmd ? 45 : 18);
-    } else {
-      // line done — pause then next line
-      lineIdx++;
-      charIdx = 0;
-      currentSpan = null;
-      var pause = line.cmd ? 350 : (line.cls === 't-red' ? 900 : 500);
-      setTimeout(nextChar, pause);
-    }
+    termEl.style.transition='opacity 0.7s';
+    setTimeout(tick, 1000);
   }
 
-  termEl.style.transition = 'opacity 0.8s';
-  setTimeout(nextChar, 1200);
-});
+  if(document.readyState === 'loading'){
+    document.addEventListener('DOMContentLoaded', startTerminal);
+  } else {
+    startTerminal();
+  }
+  window.addEventListener('load', startTerminal);
+})();
 
 function switchChain(id,btn){
   document.querySelectorAll('.chain-panel').forEach(function(p){
@@ -1046,9 +1033,10 @@ function switchChain(id,btn){
 }
 
 var tipVisible=false;
-function showTip(e,title,body){
+window.showTip=function(e,title,body){
   var tip=document.getElementById('chain-tooltip');
-  if(tipVisible&&tip.style.display==='block'){hideTip();return;}
+  if(!tip) return;
+  if(tipVisible&&tip.style.display==='block'){window.hideTip();return;}
   tip.innerHTML='<strong>'+title+'</strong>'+body.replace(/\n/g,'<br>');
   if(window.innerWidth<=768){
     tip.style.position='fixed';tip.style.left='16px';tip.style.right='16px';
@@ -1062,17 +1050,24 @@ function showTip(e,title,body){
   }
   tip.style.display='block';
   tipVisible=true;
-}
-function moveTip(e){
+};
+window.moveTip=function(e){
   if(window.innerWidth>768){
     var tip=document.getElementById('chain-tooltip');
+    if(!tip) return;
     tip.style.left=Math.min(e.clientX+16,window.innerWidth-280)+'px';
     tip.style.top=Math.min(e.clientY+16,window.innerHeight-180)+'px';
   }
-}
-function hideTip(){document.getElementById('chain-tooltip').style.display='none';tipVisible=false;}
-document.addEventListener('click',function(e){if(!e.target.closest('.chain-node')) hideTip();});
-document.addEventListener('scroll',function(){hideTip();});
+};
+window.hideTip=function(){
+  var tip=document.getElementById('chain-tooltip');
+  if(tip) tip.style.display='none';
+  tipVisible=false;
+};
+// aliases for inline SVG handlers
+var showTip=window.showTip, moveTip=window.moveTip, hideTip=window.hideTip;
+document.addEventListener('click',function(e){if(!e.target.closest('.chain-node')) window.hideTip();});
+document.addEventListener('scroll',function(){window.hideTip();});
 
 // ── ThreatFox Live Feed ──
 window.addEventListener('load', function(){
