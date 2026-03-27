@@ -209,6 +209,50 @@ footer{position:relative;z-index:1;border-top:1px solid var(--border);padding:36
 }
 
 html,body{max-width:100%;overflow-x:hidden;}
+
+/* ── ThreatFox Live Feed ── */
+.threatfox-section{background:var(--bg);}
+.tf-header-row{display:flex;align-items:center;justify-content:space-between;margin-bottom:32px;flex-wrap:wrap;gap:16px;}
+.tf-live-badge{display:inline-flex;align-items:center;gap:7px;font-family:var(--mono);font-size:11px;color:var(--green);background:var(--green-dim);border:1px solid rgba(46,213,115,0.25);padding:5px 12px;border-radius:2px;letter-spacing:0.08em;}
+.tf-live-dot{width:7px;height:7px;border-radius:50%;background:var(--green);animation:pulse-dot 1.5s ease-in-out infinite;}
+@keyframes pulse-dot{0%,100%{opacity:1;transform:scale(1)}50%{opacity:0.5;transform:scale(0.7)}}
+.tf-refresh-info{font-family:var(--mono);font-size:10px;color:var(--text3);}
+.tf-refresh-info span{color:var(--accent);}
+.tf-grid{display:grid;grid-template-columns:1fr 1fr;gap:2px;}
+.tf-chart-wrap{background:var(--bg2);border:1px solid var(--border);padding:28px;}
+.tf-chart-title{font-family:var(--mono);font-size:11px;color:var(--accent);letter-spacing:0.1em;margin-bottom:20px;opacity:0.8;}
+.tf-bar-row{display:flex;align-items:center;gap:10px;margin-bottom:11px;}
+.tf-bar-label{font-family:var(--mono);font-size:11px;color:var(--text);min-width:160px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+.tf-bar-track{flex:1;background:var(--bg3);border-radius:1px;height:6px;overflow:hidden;}
+.tf-bar-fill{height:100%;background:var(--accent);border-radius:1px;transition:width 0.8s cubic-bezier(0.4,0,0.2,1);width:0%;}
+.tf-bar-fill.danger{background:var(--red);}
+.tf-bar-fill.warn{background:var(--amber);}
+.tf-bar-count{font-family:var(--mono);font-size:10px;color:var(--text3);min-width:32px;text-align:right;}
+.tf-stats-wrap{background:var(--bg2);border:1px solid var(--border);padding:28px;display:flex;flex-direction:column;gap:0;}
+.tf-stat-row{display:flex;align-items:center;justify-content:space-between;padding:13px 0;border-bottom:1px solid var(--border);}
+.tf-stat-row:last-child{border-bottom:none;}
+.tf-stat-label{font-family:var(--mono);font-size:11px;color:var(--text2);}
+.tf-stat-val{font-family:var(--display);font-size:22px;font-weight:700;color:var(--accent);}
+.tf-stat-val.red{color:var(--red);}
+.tf-stat-val.amber{color:var(--amber);}
+.tf-stat-val.green{color:var(--green);}
+.tf-loading{display:flex;align-items:center;justify-content:center;height:200px;font-family:var(--mono);font-size:12px;color:var(--text3);}
+.tf-loading::after{content:'...';animation:dots 1.5s infinite;}
+@keyframes dots{0%{content:''}33%{content:'.'}66%{content:'..'}100%{content:'...'}}
+.tf-error{display:flex;align-items:center;justify-content:center;height:200px;font-family:var(--mono);font-size:11px;color:var(--red);text-align:center;padding:20px;}
+.tf-last-updated{font-family:var(--mono);font-size:10px;color:var(--text3);margin-top:16px;text-align:right;}
+.tf-last-updated span{color:var(--text2);}
+.tf-type-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:2px;margin-top:2px;}
+.tf-type-card{background:var(--bg2);border:1px solid var(--border);padding:18px 20px;transition:all 0.2s;}
+.tf-type-card:hover{background:var(--surface);border-color:var(--border2);}
+.tf-type-num{font-family:var(--display);font-size:28px;font-weight:800;color:var(--accent);line-height:1;margin-bottom:6px;}
+.tf-type-label{font-family:var(--mono);font-size:10px;color:var(--text3);letter-spacing:0.08em;}
+
+@media(max-width:768px){
+  .tf-grid{grid-template-columns:1fr;}
+  .tf-type-grid{grid-template-columns:repeat(2,1fr);}
+  .tf-bar-label{min-width:120px;font-size:10px;}
+}
 </style>
 </head>
 <body>
@@ -224,6 +268,7 @@ html,body{max-width:100%;overflow-x:hidden;}
     <li><a href="#chain">Attack Chain</a></li>
     <li><a href="#tools">Tools</a></li>
     <li><a href="#iocs">IOCs</a></li>
+    <li><a href="#threatfox">Live Feed</a></li>
   </ul>
   <div class="nav-badge">MID-LEVEL ANALYST</div>
 </nav>
@@ -613,7 +658,7 @@ html,body{max-width:100%;overflow-x:hidden;}
           <rect x="10" y="402" width="4" height="80" rx="2" fill="#ff4757"/>
           <text x="24" y="424" font-family="'JetBrains Mono',monospace" font-size="11" fill="#fff" font-weight="500">FTP Exfiltration — corwineagles.com</text>
           <text x="24" y="442" font-family="'JetBrains Mono',monospace" font-size="10" fill="#ff4757">STOR PW_tyler...html + Contacts_Thunderbird.txt</text>
-          <text x="24" y="458" font-family="'JetBrains Mono',monospace" font-size="10" fill="#4a5568">USER: edunis@corwineagles.com</text>
+          <text x="24" y="458" font-family="'JetBrains Mono',monospace" font-size="10" fill="#4a5568">USER: <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="4d28293823243e0d2e223f3a2423282c2a21283e632e2220">[email&#160;protected]</a></text>
           <text x="24" y="472" font-family="'JetBrains Mono',monospace" font-size="10" fill="#4a5568">162.241.123.75 — likely compromised site</text>
         </g>
         <text x="160" y="510" font-family="'JetBrains Mono',monospace" font-size="9" fill="#253548" text-anchor="middle">── ~9 seconds: download → exfiltration ──</text>
@@ -815,12 +860,68 @@ html,body{max-width:100%;overflow-x:hidden;}
   </table>
 </section>
 
+<section id="threatfox" class="threatfox-section">
+  <div class="section-header"><span class="section-num">06</span><h2>Live Threat Feed</h2><div class="section-line"></div></div>
+  <div class="tf-header-row">
+    <div class="tf-live-badge"><span class="tf-live-dot"></span>LIVE — ThreatFox API</div>
+    <div class="tf-refresh-info">Auto-refresh every <span>60 min</span> &nbsp;|&nbsp; Source: <span>abuse.ch / ThreatFox</span></div>
+  </div>
+
+  <!-- Type breakdown cards -->
+  <div class="tf-type-grid" id="tf-type-grid">
+    <div class="tf-type-card"><div class="tf-type-num" id="tf-total">—</div><div class="tf-type-label">TOTAL IOCs (24H)</div></div>
+    <div class="tf-type-card"><div class="tf-type-num" id="tf-domains">—</div><div class="tf-type-label">DOMAINS</div></div>
+    <div class="tf-type-card"><div class="tf-type-num" id="tf-ips">—</div><div class="tf-type-label">IP:PORT</div></div>
+    <div class="tf-type-card"><div class="tf-type-num" id="tf-urls">—</div><div class="tf-type-label">URLS</div></div>
+  </div>
+
+  <div style="height:2px"></div>
+
+  <div class="tf-grid">
+    <!-- Top Malware Chart -->
+    <div class="tf-chart-wrap">
+      <div class="tf-chart-title">TOP MALWARE FAMILIES — LAST 24H</div>
+      <div id="tf-chart"><div class="tf-loading">Fetching from ThreatFox</div></div>
+      <div class="tf-last-updated" id="tf-updated"></div>
+    </div>
+
+    <!-- Stats Panel -->
+    <div class="tf-stats-wrap">
+      <div class="tf-chart-title">THREAT INTELLIGENCE SNAPSHOT</div>
+      <div class="tf-stat-row">
+        <div class="tf-stat-label">#1 Most Active Malware</div>
+        <div class="tf-stat-val" id="tf-top1" style="font-size:14px;text-align:right;max-width:160px;">—</div>
+      </div>
+      <div class="tf-stat-row">
+        <div class="tf-stat-label">Unique Malware Families</div>
+        <div class="tf-stat-val amber" id="tf-families">—</div>
+      </div>
+      <div class="tf-stat-row">
+        <div class="tf-stat-label">Highest Confidence IOCs</div>
+        <div class="tf-stat-val green" id="tf-high-conf">—</div>
+      </div>
+      <div class="tf-stat-row">
+        <div class="tf-stat-label">Malware Executables (exe)</div>
+        <div class="tf-stat-val red" id="tf-exe">—</div>
+      </div>
+      <div class="tf-stat-row">
+        <div class="tf-stat-label">Most Common Tag</div>
+        <div class="tf-stat-val" id="tf-top-tag" style="font-size:12px;text-align:right;max-width:160px;">—</div>
+      </div>
+      <div class="tf-stat-row">
+        <div class="tf-stat-label">Data freshness</div>
+        <div class="tf-stat-val green" style="font-size:13px;">24H</div>
+      </div>
+    </div>
+  </div>
+</section>
+
 <footer>
   <div class="footer-left"><strong>Meshari Al-Harbi</strong> — Network Forensics Portfolio</div>
   <div class="footer-right"><span>malware-traffic-analysis.net</span><span>Training Exercises</span><span>2024 – 2026</span></div>
 </footer>
 
-<script>
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
 window.addEventListener('scroll',()=>{
   const h=document.documentElement;
   document.getElementById('progress-bar').style.width=(h.scrollTop/(h.scrollHeight-h.clientHeight)*100)+'%';
@@ -957,13 +1058,123 @@ function hideTip(){document.getElementById('chain-tooltip').style.display='none'
 document.addEventListener('click',function(e){if(!e.target.closest('.chain-node')) hideTip();});
 document.addEventListener('scroll',function(){hideTip();});
 
+// ── ThreatFox Live Feed ──
+(function(){
+  var REFRESH_MS = 60 * 60 * 1000; // 60 min
+
+  function colorClass(rank){
+    if(rank===0) return 'danger';
+    if(rank===1||rank===2) return 'warn';
+    return '';
+  }
+
+  function renderBars(malwareCounts){
+    var sorted = Object.entries(malwareCounts)
+      .sort(function(a,b){return b[1]-a[1];})
+      .slice(0,10);
+    if(!sorted.length){
+      document.getElementById('tf-chart').innerHTML='<div class="tf-error">No data available.</div>';
+      return;
+    }
+    var max = sorted[0][1];
+    var html = '';
+    sorted.forEach(function(entry, i){
+      var name = entry[0] || 'Unknown';
+      var count = entry[1];
+      var pct = Math.round((count/max)*100);
+      var cls = colorClass(i);
+      html += '<div class="tf-bar-row">'
+        + '<div class="tf-bar-label" title="'+name+'">'+name+'</div>'
+        + '<div class="tf-bar-track"><div class="tf-bar-fill '+cls+'" data-pct="'+pct+'"></div></div>'
+        + '<div class="tf-bar-count">'+count+'</div>'
+        + '</div>';
+    });
+    document.getElementById('tf-chart').innerHTML = html;
+    // animate bars after render
+    setTimeout(function(){
+      document.querySelectorAll('.tf-bar-fill').forEach(function(el){
+        el.style.width = el.dataset.pct + '%';
+      });
+    }, 80);
+  }
+
+  function fetchThreatFox(){
+    var chart = document.getElementById('tf-chart');
+    chart.innerHTML = '<div class="tf-loading">Fetching from ThreatFox</div>';
+
+    fetch('https://threatfox-api.abuse.ch/api/v1/', {
+      method: 'POST',
+      headers: {'Content-Type': 'application/json'},
+      body: JSON.stringify({query: 'get_iocs', days: 1})
+    })
+    .then(function(r){ return r.json(); })
+    .then(function(data){
+      if(data.query_status !== 'ok' || !data.data){
+        chart.innerHTML = '<div class="tf-error">ThreatFox returned no data.<br>Try refreshing in a few minutes.</div>';
+        return;
+      }
+      var iocs = data.data;
+      var malwareCount = {};
+      var typeCount = {domain:0, ip_port:0, url:0, md5_hash:0, sha256_hash:0};
+      var highConf = 0;
+      var exeCount = 0;
+      var tagCount = {};
+
+      iocs.forEach(function(ioc){
+        // malware family
+        var mname = ioc.malware_printable || ioc.malware || 'Unknown';
+        malwareCount[mname] = (malwareCount[mname]||0) + 1;
+
+        // type
+        var t = ioc.ioc_type || '';
+        if(typeCount.hasOwnProperty(t)) typeCount[t]++;
+
+        // confidence
+        if((ioc.confidence_level||0) >= 90) highConf++;
+
+        // exe
+        if(ioc.malware_malpedia && ioc.malware_malpedia.indexOf('win.')===0) exeCount++;
+
+        // tags
+        if(ioc.tags && Array.isArray(ioc.tags)){
+          ioc.tags.forEach(function(tag){
+            tagCount[tag] = (tagCount[tag]||0) + 1;
+          });
+        }
+      });
+
+      // stats
+      var families = Object.keys(malwareCount).length;
+      var sorted = Object.entries(malwareCount).sort(function(a,b){return b[1]-a[1];});
+      var top1 = sorted.length ? sorted[0][0] : '—';
+      var topTag = Object.entries(tagCount).sort(function(a,b){return b[1]-a[1];})[0];
+      var topTagStr = topTag ? '#'+topTag[0] : '—';
+
+      document.getElementById('tf-total').textContent = iocs.length;
+      document.getElementById('tf-domains').textContent = typeCount.domain;
+      document.getElementById('tf-ips').textContent = typeCount.ip_port;
+      document.getElementById('tf-urls').textContent = typeCount.url;
+      document.getElementById('tf-top1').textContent = top1;
+      document.getElementById('tf-families').textContent = families;
+      document.getElementById('tf-high-conf').textContent = highConf;
+      document.getElementById('tf-exe').textContent = exeCount;
+      document.getElementById('tf-top-tag').textContent = topTagStr;
+
+      renderBars(malwareCount);
+
+      var now = new Date();
+      document.getElementById('tf-updated').innerHTML =
+        'Last updated: <span>'+now.toUTCString()+'</span>';
+    })
+    .catch(function(err){
+      chart.innerHTML = '<div class="tf-error">Could not reach ThreatFox API.<br>Check your connection or try again later.<br><small style="color:var(--text3)">'+err.message+'</small></div>';
+    });
+  }
+
+  // initial fetch + interval
+  fetchThreatFox();
+  setInterval(fetchThreatFox, REFRESH_MS);
+})();
+
 function filterIOC(ex,btn){
-  document.querySelectorAll('.ioc-filter').forEach(b=>b.classList.remove('active'));
-  btn.classList.add('active');
-  document.querySelectorAll('.ioc-table tbody tr').forEach(r=>{
-    r.classList.toggle('hidden',ex!=='all'&&r.dataset.ex!==ex);
-  });
-}
-</script>
-</body>
-</html>
+  document.querySelectorAll('.ioc-filter').f
