@@ -950,78 +950,90 @@ document.querySelectorAll('.fade-in').forEach(function(el){
   },{threshold:0.08}).observe(el);
 });
 
-(function(){
-  var lines=[
-    {type:'cmd',text:'wireshark -r 2026-02-02.pcap', pause:400},
-    {type:'out',text:'Opening capture file...',cls:'t-green', pause:300},
-    {type:'cmd',text:'http.request and ip.src == 10.2.2.37', pause:400},
-    {type:'out',text:'Protocol: FINGER detected!',cls:'t-amber', pause:600},
-    {type:'out',text:'WARNING: LOLBin abuse via finger.exe',cls:'t-amber', pause:900},
-    {type:'cmd',text:'tls.handshake.type == 1', pause:500},
-    {type:'out',text:'oceanbistrooumc.com — DGA domain!',cls:'t-amber', pause:900},
-    {type:'cmd',text:'// ThreatFox lookup: 64.52.80.153', pause:400},
-    {type:'out',text:'MintsLoader C2 confirmed',cls:'t-red', pause:600},
-    {type:'out',text:'sbwur1.top + gecdfcjcbcmmakk.top',cls:'t-red', pause:900},
-    {type:'out',text:'COMPROMISED: 10.2.2.37 | KongTuke active',cls:'t-red', pause:1800},
+// ── Terminal Animation ──
+window.addEventListener('load', function(){
+  var termEl = document.getElementById('terminal-output');
+  if(!termEl) return;
+
+  var LINES = [
+    {cmd: true,  text: 'wireshark -r 2026-02-02.pcap'},
+    {cmd: false, text: 'Opening capture file...', cls: 't-green'},
+    {cmd: true,  text: 'http.request and ip.src == 10.2.2.37'},
+    {cmd: false, text: 'Protocol: FINGER detected!', cls: 't-amber'},
+    {cmd: false, text: 'WARNING: LOLBin abuse — finger.exe', cls: 't-amber'},
+    {cmd: true,  text: 'tls.handshake.type == 1'},
+    {cmd: false, text: 'oceanbistrooumc.com — DGA domain!', cls: 't-amber'},
+    {cmd: false, text: 'MintsLoader C2: 64.52.80.153 confirmed', cls: 't-red'},
+    {cmd: false, text: 'sbwur1.top + gecdfcjcbcmmakk.top', cls: 't-red'},
+    {cmd: false, text: 'COMPROMISED: 10.2.2.37 — KongTuke', cls: 't-red'},
   ];
-  var t=document.getElementById('terminal-output');
-  if(!t) return;
-  var li=0,ci=0;
 
-  function addCursor(el){var c=document.createElement('span');c.className='t-cursor';c.id='term-cursor';c.style.opacity='1';el.appendChild(c);}
-  function removeCursor(){var c=document.getElementById('term-cursor');if(c) c.remove();}
+  var lineIdx = 0;
+  var charIdx = 0;
+  var currentSpan = null;
 
-  function run(){
-    if(li>=lines.length){
+  function nextChar() {
+    if (lineIdx >= LINES.length) {
+      // pause then restart
       setTimeout(function(){
-        t.style.transition='none';
-        t.style.opacity='1';
-        void t.offsetHeight;
-        t.style.transition='opacity 1.2s ease';
-        t.style.opacity='0';
+        termEl.style.opacity = '0';
         setTimeout(function(){
-          t.style.transition='none';
-          li=0; ci=0; t.innerHTML='';
-          void t.offsetHeight;
-          t.style.transition='opacity 0.8s ease';
-          t.style.opacity='1';
-          setTimeout(run,500);
-        },1250);
-      },5000);
+          termEl.innerHTML = '';
+          termEl.style.opacity = '1';
+          lineIdx = 0; charIdx = 0; currentSpan = null;
+          setTimeout(nextChar, 400);
+        }, 800);
+      }, 4000);
       return;
     }
-    var l=lines[li];
-    if(ci===0){
-      removeCursor();
-      var d=document.createElement('div');
-      d.className='t-line';
-      if(l.type==='cmd'){d.innerHTML='<span class="t-prompt">$ </span><span class="t-cmd" id="tc'+li+'"></span>';}
-      else{d.innerHTML='<span class="t-out '+(l.cls||'')+'" id="tc'+li+'"></span>';}
-      t.appendChild(d);
-      var elTemp=document.getElementById('tc'+li);
-      if(elTemp) setTimeout(function(){addCursor(elTemp);},60);
+
+    var line = LINES[lineIdx];
+
+    // new line: create the DOM row
+    if (charIdx === 0) {
+      var row = document.createElement('div');
+      row.style.marginBottom = '2px';
+      row.style.fontFamily = 'var(--mono)';
+      row.style.fontSize = '12px';
+      row.style.lineHeight = '1.9';
+
+      if (line.cmd) {
+        var prompt = document.createElement('span');
+        prompt.style.color = 'var(--accent)';
+        prompt.textContent = '$ ';
+        row.appendChild(prompt);
+      }
+
+      currentSpan = document.createElement('span');
+      currentSpan.style.color = line.cmd ? 'var(--text)' : '';
+      if (!line.cmd && line.cls === 't-green') currentSpan.style.color = 'var(--green)';
+      if (!line.cmd && line.cls === 't-amber') currentSpan.style.color = 'var(--amber)';
+      if (!line.cmd && line.cls === 't-red')   currentSpan.style.color = 'var(--red)';
+      if (!line.cmd && !line.cls)              currentSpan.style.color = 'var(--text2)';
+      if (!line.cmd) currentSpan.style.paddingLeft = '16px';
+
+      row.appendChild(currentSpan);
+      termEl.appendChild(row);
     }
-    var el=document.getElementById('tc'+li);
-    if(!el){li++;ci=0;setTimeout(run,50);return;}
-    if(ci<l.text.length){
-      removeCursor();
-      el.textContent+=l.text[ci++];
-      var cur=document.createElement('span');
-      cur.className='t-cursor';cur.id='term-cursor';cur.style.animationPlayState='paused';cur.style.opacity='1';
-      el.appendChild(cur);
-      setTimeout(run,l.type==='cmd'?48:22);
+
+    // type one character
+    if (charIdx < line.text.length) {
+      currentSpan.textContent += line.text[charIdx];
+      charIdx++;
+      setTimeout(nextChar, line.cmd ? 45 : 18);
     } else {
-      var c=document.getElementById('term-cursor');
-      if(c){c.style.animationPlayState='running';}
-      setTimeout(function(){
-        var c2=document.getElementById('term-cursor');
-        if(c2){c2.style.transition='opacity 0.15s';c2.style.opacity='0';}
-        setTimeout(function(){li++;ci=0;setTimeout(run,80);},150);
-      },l.pause||400);
+      // line done — pause then next line
+      lineIdx++;
+      charIdx = 0;
+      currentSpan = null;
+      var pause = line.cmd ? 350 : (line.cls === 't-red' ? 900 : 500);
+      setTimeout(nextChar, pause);
     }
   }
-  setTimeout(run,1000);
-})();
+
+  termEl.style.transition = 'opacity 0.8s';
+  setTimeout(nextChar, 1200);
+});
 
 function switchChain(id,btn){
   document.querySelectorAll('.chain-panel').forEach(function(p){
@@ -1063,115 +1075,139 @@ document.addEventListener('click',function(e){if(!e.target.closest('.chain-node'
 document.addEventListener('scroll',function(){hideTip();});
 
 // ── ThreatFox Live Feed ──
-(function(){
+window.addEventListener('load', function(){
   var REFRESH_MS = 60 * 60 * 1000;
-  var API_URL = 'https://threatfox-api.abuse.ch/api/v1/';
-  var BODY = JSON.stringify({query:'get_iocs',days:1});
-  var HEADERS = {'Content-Type':'application/json'};
 
-  var PROXIES = [
-    function(){ // direct
-      return fetch(API_URL,{method:'POST',headers:HEADERS,body:BODY});
-    },
-    function(){ // corsproxy.io
-      return fetch('https://corsproxy.io/?'+encodeURIComponent(API_URL),{method:'POST',headers:HEADERS,body:BODY});
-    },
-    function(){ // allorigins GET workaround — encode body in URL not possible for POST, skip
-      return fetch('https://api.codetabs.com/v1/proxy?quest='+encodeURIComponent(API_URL),{method:'POST',headers:HEADERS,body:BODY});
-    }
-  ];
+  // ThreatFox public JSON export — GET request, no CORS issues
+  var EXPORT_URL = 'https://threatfox.abuse.ch/export/json/recent/';
 
   function colorClass(i){return i===0?'danger':i<3?'warn':'';}
 
   function renderBars(counts){
-    var sorted=Object.entries(counts).sort(function(a,b){return b[1]-a[1];}).slice(0,10);
-    if(!sorted.length){document.getElementById('tf-chart').innerHTML='<div class="tf-error">No IOCs found in last 24h.</div>';return;}
-    var max=sorted[0][1];
-    var html=sorted.map(function(e,i){
-      var pct=Math.round(e[1]/max*100);
+    var chart = document.getElementById('tf-chart');
+    if(!chart) return;
+    var sorted = Object.entries(counts).sort(function(a,b){return b[1]-a[1];}).slice(0,10);
+    if(!sorted.length){ chart.innerHTML='<div class="tf-error">No data found.</div>'; return; }
+    var max = sorted[0][1];
+    var html = sorted.map(function(e,i){
+      var pct = Math.round(e[1]/max*100);
       return '<div class="tf-bar-row">'
         +'<div class="tf-bar-label" title="'+e[0]+'">'+e[0]+'</div>'
-        +'<div class="tf-bar-track"><div class="tf-bar-fill '+colorClass(i)+'" data-pct="'+pct+'"></div></div>'
+        +'<div class="tf-bar-track"><div class="tf-bar-fill '+colorClass(i)+'" style="width:0%" data-pct="'+pct+'"></div></div>'
         +'<div class="tf-bar-count">'+e[1]+'</div></div>';
     }).join('');
-    document.getElementById('tf-chart').innerHTML=html;
+    chart.innerHTML = html;
     setTimeout(function(){
-      document.querySelectorAll('.tf-bar-fill').forEach(function(el){el.style.width=el.dataset.pct+'%';});
-    },80);
+      document.querySelectorAll('.tf-bar-fill').forEach(function(el){
+        el.style.width = el.getAttribute('data-pct')+'%';
+      });
+    }, 100);
   }
 
-  function processData(iocs){
-    var mw={},types={domain:0,ip_port:0,url:0},hc=0,exe=0,tags={};
-    iocs.forEach(function(ioc){
-      var m=ioc.malware_printable||ioc.malware||'Unknown';
-      mw[m]=(mw[m]||0)+1;
-      var t=ioc.ioc_type||'';
-      if(types.hasOwnProperty(t)) types[t]++;
+  function processData(items){
+    var mw={}, types={domain:0,ip_port:0,url:0}, hc=0, exe=0, tags={};
+    // items is an object like { "data": [...] } or array
+    var arr = Array.isArray(items) ? items : (items.data || []);
+    arr.forEach(function(ioc){
+      var m = ioc.malware_printable || ioc.malware || 'Unknown';
+      mw[m] = (mw[m]||0)+1;
+      var tp = ioc.ioc_type || '';
+      if(types.hasOwnProperty(tp)) types[tp]++;
       if((ioc.confidence_level||0)>=90) hc++;
       (ioc.tags||[]).forEach(function(tg){
         if(tg==='exe') exe++;
-        tags[tg]=(tags[tg]||0)+1;
+        tags[tg] = (tags[tg]||0)+1;
       });
     });
-    var sorted=Object.entries(mw).sort(function(a,b){return b[1]-a[1];});
-    var topTag=Object.entries(tags).sort(function(a,b){return b[1]-a[1];})[0];
-    document.getElementById('tf-total').textContent=iocs.length;
-    document.getElementById('tf-domains').textContent=types.domain;
-    document.getElementById('tf-ips').textContent=types.ip_port;
-    document.getElementById('tf-urls').textContent=types.url;
-    document.getElementById('tf-top1').textContent=sorted.length?sorted[0][0]:'—';
-    document.getElementById('tf-families').textContent=Object.keys(mw).length;
-    document.getElementById('tf-high-conf').textContent=hc;
-    document.getElementById('tf-exe').textContent=exe;
-    document.getElementById('tf-top-tag').textContent=topTag?'#'+topTag[0]:'—';
+    var sorted = Object.entries(mw).sort(function(a,b){return b[1]-a[1];});
+    var topTag = Object.entries(tags).sort(function(a,b){return b[1]-a[1];})[0];
+
+    var set = function(id, val){ var el=document.getElementById(id); if(el) el.textContent=val; };
+    set('tf-total',  arr.length);
+    set('tf-domains', types.domain);
+    set('tf-ips',    types.ip_port);
+    set('tf-urls',   types.url);
+    set('tf-top1',   sorted.length ? sorted[0][0] : '—');
+    set('tf-families', Object.keys(mw).length);
+    set('tf-high-conf', hc);
+    set('tf-exe',    exe);
+    set('tf-top-tag', topTag ? '#'+topTag[0] : '—');
     renderBars(mw);
-    var now=new Date();
-    document.getElementById('tf-updated').innerHTML='Last updated: <span>'+now.toUTCString()+'</span>';
+    var upd = document.getElementById('tf-updated');
+    if(upd) upd.innerHTML = 'Last updated: <span>'+new Date().toUTCString()+'</span>';
   }
 
-  function tryFetch(index){
-    if(index>=PROXIES.length){
-      document.getElementById('tf-chart').innerHTML=
-        '<div class="tf-error">ThreatFox API غير متاح حالياً.<br>'
-        +'<small style="color:var(--text3);display:block;margin-top:8px">حاول لاحقاً — الـ API يحتاج اتصال مباشر بالإنترنت.</small>'
-        +'<button onclick="window.tfRetry()" style="margin-top:12px;font-family:var(--mono);font-size:10px;color:var(--accent);background:var(--accent-dim);border:1px solid var(--accent2);padding:6px 14px;cursor:pointer;border-radius:2px;">RETRY</button></div>';
-      return;
-    }
-    PROXIES[index]()
+  function showError(msg){
+    var chart = document.getElementById('tf-chart');
+    if(chart) chart.innerHTML = '<div class="tf-error">'+msg
+      +'<br><button onclick="window.tfLoad()" style="margin-top:12px;font-family:var(--mono);font-size:10px;'
+      +'color:var(--accent);background:var(--accent-dim);border:1px solid var(--accent2);'
+      +'padding:6px 14px;cursor:pointer;border-radius:2px;">RETRY</button></div>';
+  }
+
+  window.tfLoad = function(){
+    var chart = document.getElementById('tf-chart');
+    if(chart) chart.innerHTML = '<div class="tf-loading">Fetching from ThreatFox</div>';
+
+    // Add timeout using AbortController
+    var ctrl = new AbortController();
+    var timer = setTimeout(function(){ ctrl.abort(); }, 12000);
+
+    fetch(EXPORT_URL, { signal: ctrl.signal })
       .then(function(r){
+        clearTimeout(timer);
         if(!r.ok) throw new Error('HTTP '+r.status);
         return r.json();
       })
       .then(function(data){
-        if(!data||data.query_status!=='ok'||!Array.isArray(data.data)||!data.data.length)
-          throw new Error('bad data');
-        processData(data.data);
+        // Export format: { "query_status": "ok", "data": {...} }
+        // data.data is an object where keys are hashes and values are arrays of ioc info
+        var iocs = [];
+        if(data && data.data){
+          if(Array.isArray(data.data)){
+            iocs = data.data;
+          } else {
+            // object format — flatten values
+            Object.values(data.data).forEach(function(arr){
+              if(Array.isArray(arr)) arr.forEach(function(i){ iocs.push(i); });
+              else iocs.push(arr);
+            });
+          }
+        }
+        if(!iocs.length) throw new Error('empty');
+        processData(iocs);
       })
-      .catch(function(){
-        tryFetch(index+1);
+      .catch(function(err){
+        clearTimeout(timer);
+        if(err.name === 'AbortError'){
+          showError('Request timed out. Check your connection.');
+        } else {
+          // Try POST API as fallback
+          var ctrl2 = new AbortController();
+          var timer2 = setTimeout(function(){ ctrl2.abort(); }, 12000);
+          fetch('https://threatfox-api.abuse.ch/api/v1/', {
+            method: 'POST',
+            headers: {'Content-Type':'application/json'},
+            body: JSON.stringify({query:'get_iocs', days:1}),
+            signal: ctrl2.signal
+          })
+          .then(function(r){ clearTimeout(timer2); return r.json(); })
+          .then(function(data){
+            if(!data || data.query_status !== 'ok' || !data.data || !data.data.length)
+              throw new Error('bad');
+            processData(data.data);
+          })
+          .catch(function(){
+            clearTimeout(timer2);
+            showError('ThreatFox API unavailable right now.');
+          });
+        }
       });
-  }
-
-  window.tfRetry=function(){
-    var chart=document.getElementById('tf-chart');
-    if(chart) chart.innerHTML='<div class="tf-loading">Fetching from ThreatFox</div>';
-    tryFetch(0);
   };
 
-  function fetchThreatFox(){
-    var chart=document.getElementById('tf-chart');
-    if(!chart) return;
-    chart.innerHTML='<div class="tf-loading">Fetching from ThreatFox</div>';
-    tryFetch(0);
-  }
-
-  if(document.readyState==='loading'){
-    document.addEventListener('DOMContentLoaded',function(){fetchThreatFox();setInterval(fetchThreatFox,REFRESH_MS);});
-  } else {
-    fetchThreatFox();
-    setInterval(fetchThreatFox,REFRESH_MS);
-  }
-})();
+  window.tfLoad();
+  setInterval(window.tfLoad, REFRESH_MS);
+});
 
 function filterIOC(ex,btn){
   document.querySelectorAll('.ioc-filter').f
