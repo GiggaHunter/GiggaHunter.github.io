@@ -1143,7 +1143,15 @@ window.addEventListener('load', function(){
     set('tf-top-tag', topTag ? '#'+topTag[0] : '—');
     renderBars(mw);
     var upd = document.getElementById('tf-updated');
-    if(upd) upd.innerHTML = 'Last updated: <span>'+new Date().toUTCString()+'</span>';
+    if(upd){
+      var riy = new Date().toLocaleString('en-SA', {
+        timeZone: 'Asia/Riyadh',
+        weekday:'short', year:'numeric', month:'short',
+        day:'numeric', hour:'2-digit', minute:'2-digit', second:'2-digit',
+        hour12: false
+      });
+      upd.innerHTML = 'Last updated: <span>'+riy+' (Riyadh)</span>';
+    }
   }
 
   function showError(msg){
