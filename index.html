@@ -1144,29 +1144,40 @@ window.addEventListener('load', function(){
     var chart = document.getElementById('tf-chart');
     if(chart) chart.innerHTML = '<div class="tf-loading">Fetching from ThreatFox</div>';
 
-    // قراءة البيانات من ملف JSON محلي يتحدث تلقائياً بـ GitHub Actions
     fetch('/threatfox-data.json?t=' + Date.now())
       .then(function(r){
         if(!r.ok) throw new Error('HTTP ' + r.status);
         return r.json();
       })
       .then(function(data){
-        if(!data || data.query_status !== 'ok' || !Array.isArray(data.data) || !data.data.length)
-          throw new Error('empty');
-        processData(data.data);
+        console.log('ThreatFox keys:', Object.keys(data));
+        console.log('query_status:', data.query_status);
+        console.log('data type:', typeof data.data, Array.isArray(data.data));
+        if(data.data) console.log('data sample:', JSON.stringify(data.data).slice(0,200));
+
+        var iocs = [];
+
+        if(Array.isArray(data.data)){
+          iocs = data.data;
+        } else if(data.data && typeof data.data === 'object'){
+          // ThreatFox sometimes returns object with hash keys
+          Object.values(data.data).forEach(function(v){
+            if(Array.isArray(v)) v.forEach(function(i){ iocs.push(i); });
+            else if(v && typeof v === 'object') iocs.push(v);
+          });
+        }
+
+        console.log('Total IOCs parsed:', iocs.length);
+        if(!iocs.length) throw new Error('empty after parse');
+        processData(iocs);
       })
       .catch(function(err){
-        console.warn('ThreatFox local file error:', err);
+        console.warn('ThreatFox error:', err.message);
         if(chart) chart.innerHTML =
-          '<div class="tf-error">البيانات غير متاحة حالياً.'
-          +'<br><small style="color:var(--text3);display:block;margin-top:6px">'
-          +'GitHub Actions لم يشتغل بعد — انتظر أول تشغيل للـ workflow.</small>'
+          '<div class="tf-error">خطأ في تحميل البيانات: ' + err.message
           +'<br><button onclick="window.tfLoad()" style="margin-top:12px;font-family:var(--mono);'
           +'font-size:10px;color:var(--accent);background:var(--accent-dim);border:1px solid '
-          +'var(--accent2);padding:6px 14px;cursor:pointer;border-radius:2px;">RETRY</button>'
-          +'&nbsp;<a href="https://threatfox.abuse.ch" target="_blank" style="font-family:var(--mono);'
-          +'font-size:10px;color:var(--text2);text-decoration:none;border:1px solid var(--border);'
-          +'padding:6px 14px;">VIEW ON THREATFOX ↗</a></div>';
+          +'var(--accent2);padding:6px 14px;cursor:pointer;border-radius:2px;">RETRY</button></div>';
       });
   };
 
