@@ -20,8 +20,33 @@ jobs:
           curl -s -X POST https://threatfox-api.abuse.ch/api/v1/ \
             -H "Content-Type: application/json" \
             -d '{"query":"get_iocs","days":1}' \
-            -o threatfox-data.json
-          echo "Done: $(wc -c < threatfox-data.json) bytes"
+            -o raw.json
+          
+          echo "Raw response preview:"
+          cat raw.json | head -c 300
+          echo ""
+          
+          # Check if response contains valid data
+          if python3 -c "
+          import json, sys
+          d = json.load(open('raw.json'))
+          print('keys:', list(d.keys()))
+          if 'error' in d:
+              print('ERROR:', d['error'])
+              sys.exit(1)
+          if d.get('query_status') == 'ok' and d.get('data'):
+              print('OK - IOCs:', len(d['data']))
+              sys.exit(0)
+          print('Unexpected format')
+          sys.exit(1)
+          "; then
+            cp raw.json threatfox-data.json
+            echo "Saved successfully"
+          else
+            echo "API returned error - keeping old data"
+            cat raw.json
+            exit 0
+          fi
 
       - name: Commit and push
         run: |
