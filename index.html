@@ -212,46 +212,60 @@ html,body{max-width:100%;overflow-x:hidden;}
 
 /* ── ThreatFox Live Feed ── */
 .threatfox-section{background:var(--bg);}
-.tf-header-row{display:flex;align-items:center;justify-content:space-between;margin-bottom:32px;flex-wrap:wrap;gap:16px;}
-.tf-live-badge{display:inline-flex;align-items:center;gap:7px;font-family:var(--mono);font-size:11px;color:var(--green);background:var(--green-dim);border:1px solid rgba(46,213,115,0.25);padding:5px 12px;border-radius:2px;letter-spacing:0.08em;}
-.tf-live-dot{width:7px;height:7px;border-radius:50%;background:var(--green);animation:pulse-dot 1.5s ease-in-out infinite;}
-@keyframes pulse-dot{0%,100%{opacity:1;transform:scale(1)}50%{opacity:0.5;transform:scale(0.7)}}
+.tf-header-row{display:flex;align-items:center;justify-content:space-between;margin-bottom:36px;flex-wrap:wrap;gap:16px;}
+.tf-live-badge{display:inline-flex;align-items:center;gap:8px;font-family:var(--mono);font-size:11px;color:var(--green);background:var(--green-dim);border:1px solid rgba(46,213,115,0.3);padding:6px 14px;border-radius:2px;letter-spacing:0.1em;}
+.tf-live-dot{width:8px;height:8px;border-radius:50%;background:var(--green);animation:pulse-dot 1.5s ease-in-out infinite;flex-shrink:0;}
+@keyframes pulse-dot{0%,100%{opacity:1;transform:scale(1)}50%{opacity:0.4;transform:scale(0.6)}}
 .tf-refresh-info{font-family:var(--mono);font-size:10px;color:var(--text3);}
 .tf-refresh-info span{color:var(--accent);}
-.tf-grid{display:grid;grid-template-columns:1fr 1fr;gap:2px;}
-.tf-chart-wrap{background:var(--bg2);border:1px solid var(--border);padding:28px;}
-.tf-chart-title{font-family:var(--mono);font-size:11px;color:var(--accent);letter-spacing:0.1em;margin-bottom:20px;opacity:0.8;}
-.tf-bar-row{display:flex;align-items:center;gap:10px;margin-bottom:11px;}
-.tf-bar-label{font-family:var(--mono);font-size:11px;color:var(--text);min-width:160px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
-.tf-bar-track{flex:1;background:var(--bg3);border-radius:1px;height:6px;overflow:hidden;}
-.tf-bar-fill{height:100%;background:var(--accent);border-radius:1px;transition:width 0.8s cubic-bezier(0.4,0,0.2,1);width:0%;}
+
+/* Top stat cards */
+.tf-type-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:2px;margin-bottom:2px;}
+.tf-type-card{background:var(--bg2);border:1px solid var(--border);padding:28px 24px;transition:all 0.2s;position:relative;overflow:hidden;}
+.tf-type-card::before{content:'';position:absolute;bottom:0;left:0;right:0;height:2px;background:var(--accent);opacity:0;transition:opacity 0.2s;}
+.tf-type-card:hover{background:var(--surface);border-color:var(--border2);}
+.tf-type-card:hover::before{opacity:1;}
+.tf-type-num{font-family:var(--display);font-size:48px;font-weight:800;color:var(--accent);line-height:1;margin-bottom:10px;letter-spacing:-0.02em;}
+.tf-type-label{font-family:var(--mono);font-size:10px;color:var(--text3);letter-spacing:0.1em;}
+
+/* Main grid */
+.tf-grid{display:grid;grid-template-columns:1.2fr 1fr;gap:2px;margin-top:2px;}
+.tf-chart-wrap{background:var(--bg2);border:1px solid var(--border);padding:32px;}
+.tf-chart-title{font-family:var(--mono);font-size:11px;color:var(--accent);letter-spacing:0.12em;margin-bottom:28px;opacity:0.8;}
+
+/* Bar chart */
+.tf-bar-row{display:flex;align-items:center;gap:12px;margin-bottom:14px;}
+.tf-bar-label{font-family:var(--mono);font-size:12px;color:var(--text);min-width:150px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+.tf-bar-track{flex:1;background:var(--bg3);border-radius:1px;height:8px;overflow:hidden;position:relative;}
+.tf-bar-fill{height:100%;background:var(--accent);border-radius:1px;transition:width 1s cubic-bezier(0.4,0,0.2,1);width:0%;}
 .tf-bar-fill.danger{background:var(--red);}
 .tf-bar-fill.warn{background:var(--amber);}
-.tf-bar-count{font-family:var(--mono);font-size:10px;color:var(--text3);min-width:32px;text-align:right;}
-.tf-stats-wrap{background:var(--bg2);border:1px solid var(--border);padding:28px;display:flex;flex-direction:column;gap:0;}
-.tf-stat-row{display:flex;align-items:center;justify-content:space-between;padding:13px 0;border-bottom:1px solid var(--border);}
+.tf-bar-count{font-family:var(--mono);font-size:11px;color:var(--text2);min-width:36px;text-align:right;font-weight:500;}
+
+/* Stats panel */
+.tf-stats-wrap{background:var(--bg2);border:1px solid var(--border);padding:32px;display:flex;flex-direction:column;}
+.tf-stat-row{display:flex;align-items:center;justify-content:space-between;padding:16px 0;border-bottom:1px solid var(--border);}
 .tf-stat-row:last-child{border-bottom:none;}
 .tf-stat-label{font-family:var(--mono);font-size:11px;color:var(--text2);}
-.tf-stat-val{font-family:var(--display);font-size:22px;font-weight:700;color:var(--accent);}
+.tf-stat-val{font-family:var(--display);font-size:28px;font-weight:800;color:var(--accent);line-height:1;}
 .tf-stat-val.red{color:var(--red);}
 .tf-stat-val.amber{color:var(--amber);}
 .tf-stat-val.green{color:var(--green);}
-.tf-loading{display:flex;align-items:center;justify-content:center;height:200px;font-family:var(--mono);font-size:12px;color:var(--text3);}
+.tf-stat-text{font-family:var(--mono);font-size:13px;font-weight:500;color:var(--accent);text-align:right;max-width:160px;}
+
+/* States */
+.tf-loading{display:flex;align-items:center;justify-content:center;height:240px;font-family:var(--mono);font-size:12px;color:var(--text3);}
 .tf-loading::after{content:'...';animation:dots 1.5s infinite;}
 @keyframes dots{0%{content:''}33%{content:'.'}66%{content:'..'}100%{content:'...'}}
-.tf-error{display:flex;align-items:center;justify-content:center;height:200px;font-family:var(--mono);font-size:11px;color:var(--red);text-align:center;padding:20px;}
-.tf-last-updated{font-family:var(--mono);font-size:10px;color:var(--text3);margin-top:16px;text-align:right;}
+.tf-error{display:flex;flex-direction:column;align-items:center;justify-content:center;height:240px;font-family:var(--mono);font-size:11px;color:var(--red);text-align:center;padding:24px;gap:12px;}
+.tf-last-updated{font-family:var(--mono);font-size:10px;color:var(--text3);margin-top:20px;}
 .tf-last-updated span{color:var(--text2);}
-.tf-type-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:2px;margin-top:2px;}
-.tf-type-card{background:var(--bg2);border:1px solid var(--border);padding:18px 20px;transition:all 0.2s;}
-.tf-type-card:hover{background:var(--surface);border-color:var(--border2);}
-.tf-type-num{font-family:var(--display);font-size:28px;font-weight:800;color:var(--accent);line-height:1;margin-bottom:6px;}
-.tf-type-label{font-family:var(--mono);font-size:10px;color:var(--text3);letter-spacing:0.08em;}
 
 @media(max-width:768px){
   .tf-grid{grid-template-columns:1fr;}
   .tf-type-grid{grid-template-columns:repeat(2,1fr);}
-  .tf-bar-label{min-width:120px;font-size:10px;}
+  .tf-bar-label{min-width:110px;font-size:11px;}
+  .tf-type-num{font-size:36px;}
 }
 </style>
 </head>
@@ -890,7 +904,7 @@ html,body{max-width:100%;overflow-x:hidden;}
       <div class="tf-chart-title">THREAT INTELLIGENCE SNAPSHOT</div>
       <div class="tf-stat-row">
         <div class="tf-stat-label">#1 Most Active Malware</div>
-        <div class="tf-stat-val" id="tf-top1" style="font-size:14px;text-align:right;max-width:160px;">—</div>
+        <div class="tf-stat-text" id="tf-top1">—</div>
       </div>
       <div class="tf-stat-row">
         <div class="tf-stat-label">Unique Malware Families</div>
@@ -906,11 +920,11 @@ html,body{max-width:100%;overflow-x:hidden;}
       </div>
       <div class="tf-stat-row">
         <div class="tf-stat-label">Most Common Tag</div>
-        <div class="tf-stat-val" id="tf-top-tag" style="font-size:12px;text-align:right;max-width:160px;">—</div>
+        <div class="tf-stat-text" id="tf-top-tag">—</div>
       </div>
       <div class="tf-stat-row">
         <div class="tf-stat-label">Data freshness</div>
-        <div class="tf-stat-val green" style="font-size:13px;">24H</div>
+        <div class="tf-stat-val green" style="font-size:16px;">24H</div>
       </div>
     </div>
   </div>
