@@ -1150,17 +1150,20 @@ window.addEventListener('load', function(){
         return r.json();
       })
       .then(function(data){
-        console.log('ThreatFox keys:', Object.keys(data));
-        console.log('query_status:', data.query_status);
-        console.log('data type:', typeof data.data, Array.isArray(data.data));
-        if(data.data) console.log('data sample:', JSON.stringify(data.data).slice(0,200));
+        console.log('ThreatFox raw type:', typeof data, Array.isArray(data));
+        console.log('ThreatFox keys:', Array.isArray(data) ? 'Array('+data.length+')' : Object.keys(data));
 
         var iocs = [];
 
-        if(Array.isArray(data.data)){
+        // Handle all possible formats
+        if(Array.isArray(data)){
+          // Format: [...iocs...]
+          iocs = data;
+        } else if(data && Array.isArray(data.data)){
+          // Format: {query_status:"ok", data:[...]}
           iocs = data.data;
-        } else if(data.data && typeof data.data === 'object'){
-          // ThreatFox sometimes returns object with hash keys
+        } else if(data && data.data && typeof data.data === 'object'){
+          // Format: {data: {hash: [...], ...}}
           Object.values(data.data).forEach(function(v){
             if(Array.isArray(v)) v.forEach(function(i){ iocs.push(i); });
             else if(v && typeof v === 'object') iocs.push(v);
