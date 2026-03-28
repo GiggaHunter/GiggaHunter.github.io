@@ -1144,36 +1144,23 @@ window.addEventListener('load', function(){
     var chart = document.getElementById('tf-chart');
     if(chart) chart.innerHTML = '<div class="tf-loading">Fetching from ThreatFox</div>';
 
-    // Use allorigins.win with ThreatFox GET export — no auth needed
-    var exportUrl = 'https://threatfox.abuse.ch/export/json/recent/';
-    var proxyUrl  = 'https://api.allorigins.win/get?url=' + encodeURIComponent(exportUrl);
-
-    fetch(proxyUrl)
-      .then(function(r){ return r.json(); })
-      .then(function(wrapper){
-        // allorigins wraps response in {contents:"...", status:{...}}
-        var raw = wrapper && wrapper.contents ? wrapper.contents : null;
-        if(!raw) throw new Error('empty wrapper');
-        var data = JSON.parse(raw);
-        // ThreatFox export format: {"query_status":"ok","data":{...}} or {"data":[...]}
-        var iocs = [];
-        if(Array.isArray(data.data)){
-          iocs = data.data;
-        } else if(data.data && typeof data.data === 'object'){
-          Object.values(data.data).forEach(function(item){
-            if(Array.isArray(item)) item.forEach(function(i){ iocs.push(i); });
-            else if(item && typeof item === 'object') iocs.push(item);
-          });
-        }
-        if(!iocs.length) throw new Error('no iocs');
-        processData(iocs);
+    // قراءة البيانات من ملف JSON محلي يتحدث تلقائياً بـ GitHub Actions
+    fetch('/threatfox-data.json?t=' + Date.now())
+      .then(function(r){
+        if(!r.ok) throw new Error('HTTP ' + r.status);
+        return r.json();
+      })
+      .then(function(data){
+        if(!data || data.query_status !== 'ok' || !Array.isArray(data.data) || !data.data.length)
+          throw new Error('empty');
+        processData(data.data);
       })
       .catch(function(err){
-        console.warn('ThreatFox failed:', err);
+        console.warn('ThreatFox local file error:', err);
         if(chart) chart.innerHTML =
-          '<div class="tf-error">ThreatFox API unavailable right now.'
+          '<div class="tf-error">البيانات غير متاحة حالياً.'
           +'<br><small style="color:var(--text3);display:block;margin-top:6px">'
-          +'قد يكون سبب ذلك حجب الطلب من الشبكة أو توقف الـ API مؤقتاً.</small>'
+          +'GitHub Actions لم يشتغل بعد — انتظر أول تشغيل للـ workflow.</small>'
           +'<br><button onclick="window.tfLoad()" style="margin-top:12px;font-family:var(--mono);'
           +'font-size:10px;color:var(--accent);background:var(--accent-dim);border:1px solid '
           +'var(--accent2);padding:6px 14px;cursor:pointer;border-radius:2px;">RETRY</button>'
