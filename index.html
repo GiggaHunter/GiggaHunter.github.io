@@ -927,7 +927,41 @@ html,body{max-width:100%;overflow-x:hidden;}
         <div class="tf-stat-val green" style="font-size:16px;">24H</div>
       </div>
     </div>
+
+  <!-- Legend -->
+  <div style="margin-top:2px;background:var(--bg2);border:1px solid var(--border);padding:24px 28px;">
+    <div style="font-family:var(--mono);font-size:10px;color:var(--accent);letter-spacing:0.12em;margin-bottom:16px;opacity:0.8;">HOW TO READ THIS FEED</div>
+    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:16px;">
+      <div>
+        <div style="font-family:var(--mono);font-size:11px;color:var(--text);margin-bottom:4px;">Bar Count (e.g. 250)</div>
+        <div style="font-family:var(--mono);font-size:11px;color:var(--text2);">عدد الـ IOCs المرتبطة بهذا المالوير خلال آخر 24 ساعة</div>
+      </div>
+      <div>
+        <div style="font-family:var(--mono);font-size:11px;color:var(--text);margin-bottom:4px;">Total IOCs (24H)</div>
+        <div style="font-family:var(--mono);font-size:11px;color:var(--text2);">مجموع الـ indicators (IPs, Domains, URLs) المرصودة اليوم</div>
+      </div>
+      <div>
+        <div style="font-family:var(--mono);font-size:11px;color:var(--text);margin-bottom:4px;">Domains / IP:Port / URLs</div>
+        <div style="font-family:var(--mono);font-size:11px;color:var(--text2);">تصنيف الـ IOCs حسب نوعها — Domain أو IP مع Port أو رابط URL</div>
+      </div>
+      <div>
+        <div style="font-family:var(--mono);font-size:11px;color:var(--text);margin-bottom:4px;">Unique Malware Families</div>
+        <div style="font-family:var(--mono);font-size:11px;color:var(--text2);">عدد عائلات المالوير المختلفة النشطة خلال 24 ساعة</div>
+      </div>
+      <div>
+        <div style="font-family:var(--mono);font-size:11px;color:var(--text);margin-bottom:4px;">Highest Confidence IOCs</div>
+        <div style="font-family:var(--mono);font-size:11px;color:var(--text2);">عدد الـ IOCs ذات مستوى ثقة 90% أو أعلى من ThreatFox</div>
+      </div>
+      <div>
+        <div style="font-family:var(--mono);font-size:11px;color:var(--text);margin-bottom:4px;">Most Common Tag</div>
+        <div style="font-family:var(--mono);font-size:11px;color:var(--text2);">التصنيف الأكثر تكراراً في البيانات (مثل: #exe أو #ClearFake)</div>
+      </div>
+    </div>
+    <div style="margin-top:16px;padding-top:16px;border-top:1px solid var(--border);font-family:var(--mono);font-size:10px;color:var(--text3);">
+      البيانات من <span style="color:var(--accent)">ThreatFox / abuse.ch</span> — تتحدث كل ساعة تلقائياً عبر GitHub Actions
+    </div>
   </div>
+
 </section>
 
 <footer>
