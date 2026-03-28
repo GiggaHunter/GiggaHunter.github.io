@@ -138,6 +138,12 @@ h2{font-family:var(--display);font-size:34px;font-weight:800;color:#fff;letter-s
 .ioc-val{color:var(--accent);}
 .ioc-role{color:var(--text2);}
 .ioc-ex{font-size:10px;color:var(--text3);}
+.ioc-extra{display:none;}
+.ioc-table.expanded .ioc-extra{display:table-row;}
+.ioc-toggle-wrap{display:flex;justify-content:center;margin-top:20px;}
+.ioc-toggle-btn{font-family:var(--mono);font-size:11px;letter-spacing:0.08em;color:var(--accent);background:var(--accent-dim);border:1px solid var(--accent2);padding:10px 28px;cursor:pointer;border-radius:2px;transition:all 0.2s;}
+.ioc-toggle-btn:hover{background:var(--accent);color:var(--bg);}
+.ioc-count-badge{font-family:var(--mono);font-size:10px;color:var(--text3);margin-left:10px;}
 footer{position:relative;z-index:1;border-top:1px solid var(--border);padding:36px 80px;display:flex;align-items:center;justify-content:space-between;}
 .footer-left{font-family:var(--mono);font-size:12px;color:var(--text3);}
 .footer-left strong{color:var(--accent);font-weight:400;}
@@ -854,6 +860,11 @@ html,body{max-width:100%;overflow-x:hidden;}
       <tr data-ex="2026-01-29"><td class="ioc-val" data-label="INDICATOR">78.110.166.82</td><td data-label="TYPE"><span class="ex-badge badge-critical">IP</span></td><td class="ioc-role" data-label="ROLE">UK Dedicated Servers (AS42831) — SMTP C2 / VT: PHISHING+BACKDOOR</td><td class="ioc-ex" data-label="EXERCISE">2026-01-29</td></tr>
     </tbody>
   </table>
+  <div class="ioc-toggle-wrap">
+    <button class="ioc-toggle-btn" id="ioc-toggle-btn" onclick="toggleIOCs(this)">
+      SHOW ALL IOCs <span class="ioc-count-badge" id="ioc-hidden-count"></span>
+    </button>
+  </div>
 </section>
 
 <section id="threatfox" class="threatfox-section">
@@ -1091,10 +1102,58 @@ window.addEventListener('load',function(){
 function filterIOC(ex,btn){
   document.querySelectorAll('.ioc-filter').forEach(b=>b.classList.remove('active'));
   btn.classList.add('active');
-  document.querySelectorAll('.ioc-table tbody tr').forEach(r=>{
-    r.classList.toggle('hidden',ex!=='all'&&r.dataset.ex!==ex);
-  });
+  var rows=document.querySelectorAll('.ioc-table tbody tr');
+  var table=document.querySelector('.ioc-table');
+  if(ex==='all'){
+    // restore collapse state
+    rows.forEach(function(r,i){
+      r.classList.remove('hidden');
+      if(i>=10 && !table.classList.contains('expanded')){
+        r.classList.add('ioc-extra');
+      } else {
+        r.classList.remove('ioc-extra');
+      }
+    });
+    updateToggleBtn();
+  } else {
+    // show all matching, hide non-matching — ignore collapse
+    rows.forEach(function(r){
+      r.classList.remove('ioc-extra');
+      r.classList.toggle('hidden', r.dataset.ex!==ex);
+    });
+    document.getElementById('ioc-toggle-btn').style.display='none';
+  }
 }
+function toggleIOCs(btn){
+  var table=document.querySelector('.ioc-table');
+  var expanded=table.classList.toggle('expanded');
+  document.querySelectorAll('.ioc-table tbody tr').forEach(function(r){
+    if(expanded){ r.classList.remove('ioc-extra'); }
+    else if(Array.from(document.querySelectorAll('.ioc-table tbody tr')).indexOf(r)>=10){
+      r.classList.add('ioc-extra');
+    }
+  });
+  btn.textContent=expanded?'SHOW LESS ▲':'SHOW ALL IOCs ▼';
+  if(!expanded) updateToggleBtn();
+}
+function updateToggleBtn(){
+  var all=document.querySelectorAll('.ioc-table tbody tr');
+  var hidden=all.length-10;
+  var btn=document.getElementById('ioc-toggle-btn');
+  var badge=document.getElementById('ioc-hidden-count');
+  if(hidden>0){
+    btn.style.display='';
+    btn.innerHTML='SHOW ALL IOCs ▼ <span class="ioc-count-badge">('+hidden+' more)</span>';
+  } else {
+    btn.style.display='none';
+  }
+}
+// Init: mark rows beyond 10 as extra
+(function initIOCCollapse(){
+  var rows=document.querySelectorAll('.ioc-table tbody tr');
+  rows.forEach(function(r,i){ if(i>=10) r.classList.add('ioc-extra'); });
+  updateToggleBtn();
+})();
 </script>
 </body>
 </html>
