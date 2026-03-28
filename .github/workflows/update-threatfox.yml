@@ -2,8 +2,11 @@ name: Update ThreatFox Data
 
 on:
   schedule:
-    - cron: '0 * * * *'  # كل ساعة
-  workflow_dispatch:       # يدوي من GitHub
+    - cron: '0 * * * *'
+  workflow_dispatch:
+
+permissions:
+  contents: write
 
 jobs:
   fetch:
@@ -18,7 +21,7 @@ jobs:
             -H "Content-Type: application/json" \
             -d '{"query":"get_iocs","days":1}' \
             -o threatfox-data.json
-          echo "Fetched $(cat threatfox-data.json | python3 -c "import sys,json; d=json.load(sys.stdin); print(len(d.get('data',[])))" 2>/dev/null || echo '?') IOCs"
+          echo "Done: $(wc -c < threatfox-data.json) bytes"
 
       - name: Commit and push
         run: |
