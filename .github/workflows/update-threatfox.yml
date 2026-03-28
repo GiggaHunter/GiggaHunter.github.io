@@ -24,30 +24,39 @@ jobs:
             -o raw.json
           
           echo "Raw response preview:"
-          cat raw.json | head -c 300
+          head -c 500 raw.json
           echo ""
           
-          # Check if response contains valid data
-          if python3 -c "
+          python3 -c "
           import json, sys
           d = json.load(open('raw.json'))
-          print('keys:', list(d.keys()))
-          if 'error' in d:
-              print('ERROR:', d['error'])
-              sys.exit(1)
-          if d.get('query_status') == 'ok' and d.get('data'):
-              print('OK - IOCs:', len(d['data']))
-              sys.exit(0)
-          print('Unexpected format')
+          
+          # Handle array format
+          if isinstance(d, list):
+              print('Format: array, length:', len(d))
+              if len(d) > 0:
+                  # Wrap in standard format
+                  wrapped = {'query_status': 'ok', 'data': d}
+                  json.dump(wrapped, open('threatfox-data.json', 'w'))
+                  print('Saved as wrapped object')
+                  sys.exit(0)
+          
+          # Handle object format
+          if isinstance(d, dict):
+              if 'error' in d:
+                  print('ERROR:', d['error'])
+                  sys.exit(1)
+              if d.get('query_status') == 'ok' and d.get('data'):
+                  data = d['data']
+                  count = len(data) if isinstance(data, list) else len(list(data.keys()))
+                  print('OK - IOCs:', count)
+                  import shutil
+                  shutil.copy('raw.json', 'threatfox-data.json')
+                  sys.exit(0)
+          
+          print('Unknown format:', type(d))
           sys.exit(1)
-          "; then
-            cp raw.json threatfox-data.json
-            echo "Saved successfully"
-          else
-            echo "API returned error - keeping old data"
-            cat raw.json
-            exit 0
-          fi
+          " && echo "Done" || echo "Skipped - keeping old data"
 
       - name: Commit and push
         run: |
