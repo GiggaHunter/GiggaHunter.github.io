@@ -2,6 +2,27 @@
     "query_status": "ok",
     "data": [
         {
+            "id": "1777792",
+            "ioc": "ext3gate.radiantprospera.in.net",
+            "threat_type": "payload_delivery",
+            "threat_type_desc": "Indicator that identifies a malware distribution server (payload delivery)",
+            "ioc_type": "domain",
+            "ioc_type_desc": "Domain name that delivers a malware payload",
+            "malware": "js.clearfake",
+            "malware_printable": "ClearFake",
+            "malware_alias": null,
+            "malware_malpedia": "https:\/\/malpedia.caad.fkie.fraunhofer.de\/details\/js.clearfake",
+            "confidence_level": 100,
+            "is_compromised": false,
+            "first_seen": "2026-03-28 03:36:39 UTC",
+            "last_seen": "2026-03-28 03:37:16 UTC",
+            "reference": null,
+            "reporter": "threatcat_ch",
+            "tags": [
+                "ClearFake"
+            ]
+        },
+        {
             "id": "1777791",
             "ioc": "ext2proc.radiantprospera.in.net",
             "threat_type": "payload_delivery",
@@ -15069,48 +15090,6 @@
             "confidence_level": 100,
             "is_compromised": true,
             "first_seen": "2026-03-27 03:44:52 UTC",
-            "last_seen": null,
-            "reference": null,
-            "reporter": "threatcat_ch",
-            "tags": [
-                "StrelaStealer"
-            ]
-        },
-        {
-            "id": "1777084",
-            "ioc": "ext4view.orbitprospera.in.net",
-            "threat_type": "payload_delivery",
-            "threat_type_desc": "Indicator that identifies a malware distribution server (payload delivery)",
-            "ioc_type": "domain",
-            "ioc_type_desc": "Domain name that delivers a malware payload",
-            "malware": "js.clearfake",
-            "malware_printable": "ClearFake",
-            "malware_alias": null,
-            "malware_malpedia": "https:\/\/malpedia.caad.fkie.fraunhofer.de\/details\/js.clearfake",
-            "confidence_level": 100,
-            "is_compromised": false,
-            "first_seen": "2026-03-27 03:38:30 UTC",
-            "last_seen": "2026-03-27 03:40:14 UTC",
-            "reference": null,
-            "reporter": "threatcat_ch",
-            "tags": [
-                "ClearFake"
-            ]
-        },
-        {
-            "id": "1777083",
-            "ioc": "littlekatsmiles.com",
-            "threat_type": "payload_delivery",
-            "threat_type_desc": "Indicator that identifies a malware distribution server (payload delivery)",
-            "ioc_type": "domain",
-            "ioc_type_desc": "Domain name that delivers a malware payload",
-            "malware": "win.strelastealer",
-            "malware_printable": "StrelaStealer",
-            "malware_alias": null,
-            "malware_malpedia": "https:\/\/malpedia.caad.fkie.fraunhofer.de\/details\/win.strelastealer",
-            "confidence_level": 100,
-            "is_compromised": true,
-            "first_seen": "2026-03-27 03:33:42 UTC",
             "last_seen": null,
             "reference": null,
             "reporter": "threatcat_ch",
