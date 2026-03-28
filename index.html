@@ -929,45 +929,45 @@ html,body{max-width:100%;overflow-x:hidden;}
     </div>
 
   <!-- Legend -->
-  <div style="margin-top:2px;background:var(--bg2);border:1px solid var(--border);">
+  <div style="margin-top:2px;background:var(--bg2);border:1px solid var(--border);width:100%;">
     <div style="padding:16px 28px;border-bottom:1px solid var(--border);display:flex;align-items:center;gap:10px;">
       <div style="width:3px;height:16px;background:var(--accent);border-radius:1px;flex-shrink:0;"></div>
       <div style="font-family:var(--mono);font-size:11px;color:var(--accent);letter-spacing:0.12em;">HOW TO READ THIS FEED</div>
     </div>
-    <div style="display:grid;grid-template-columns:repeat(3,1fr);">
+    <div style="display:grid;grid-template-columns:repeat(6,1fr);">
 
-      <div style="padding:22px 28px;border-right:1px solid var(--border);border-bottom:1px solid var(--border);">
-        <div style="font-family:var(--mono);font-size:12px;color:var(--accent);margin-bottom:8px;letter-spacing:0.04em;">Bar Count (e.g. 250)</div>
-        <div style="font-family:var(--mono);font-size:11px;color:var(--text2);line-height:1.8;">عدد الـ IOCs المرتبطة بهذا المالوير خلال آخر 24 ساعة — كلما زاد الرقم زاد النشاط</div>
+      <div style="padding:22px 20px;border-right:1px solid var(--border);">
+        <div style="font-family:var(--mono);font-size:11px;color:var(--accent);margin-bottom:8px;letter-spacing:0.04em;">Bar Count</div>
+        <div style="font-family:var(--mono);font-size:10px;color:var(--text2);line-height:1.8;">عدد الـ IOCs المرتبطة بالمالوير خلال 24 ساعة</div>
       </div>
 
-      <div style="padding:22px 28px;border-right:1px solid var(--border);border-bottom:1px solid var(--border);">
-        <div style="font-family:var(--mono);font-size:12px;color:var(--accent);margin-bottom:8px;letter-spacing:0.04em;">Total IOCs (24H)</div>
-        <div style="font-family:var(--mono);font-size:11px;color:var(--text2);line-height:1.8;">مجموع الـ indicators المرصودة اليوم — IPs و Domains و URLs</div>
+      <div style="padding:22px 20px;border-right:1px solid var(--border);">
+        <div style="font-family:var(--mono);font-size:11px;color:var(--accent);margin-bottom:8px;letter-spacing:0.04em;">Total IOCs (24H)</div>
+        <div style="font-family:var(--mono);font-size:10px;color:var(--text2);line-height:1.8;">مجموع الـ indicators المرصودة اليوم</div>
       </div>
 
-      <div style="padding:22px 28px;border-bottom:1px solid var(--border);">
-        <div style="font-family:var(--mono);font-size:12px;color:var(--accent);margin-bottom:8px;letter-spacing:0.04em;">Domains / IP:Port / URLs</div>
-        <div style="font-family:var(--mono);font-size:11px;color:var(--text2);line-height:1.8;">تصنيف الـ IOCs حسب نوعها — Domain أو IP مع Port أو رابط مباشر</div>
+      <div style="padding:22px 20px;border-right:1px solid var(--border);">
+        <div style="font-family:var(--mono);font-size:11px;color:var(--accent);margin-bottom:8px;letter-spacing:0.04em;">Domains / IP / URLs</div>
+        <div style="font-family:var(--mono);font-size:10px;color:var(--text2);line-height:1.8;">تصنيف الـ IOCs حسب نوعها</div>
       </div>
 
-      <div style="padding:22px 28px;border-right:1px solid var(--border);">
-        <div style="font-family:var(--mono);font-size:12px;color:var(--accent);margin-bottom:8px;letter-spacing:0.04em;">Unique Malware Families</div>
-        <div style="font-family:var(--mono);font-size:11px;color:var(--text2);line-height:1.8;">عدد عائلات المالوير المختلفة النشطة — يعكس تنوع التهديدات</div>
+      <div style="padding:22px 20px;border-right:1px solid var(--border);">
+        <div style="font-family:var(--mono);font-size:11px;color:var(--accent);margin-bottom:8px;letter-spacing:0.04em;">Malware Families</div>
+        <div style="font-family:var(--mono);font-size:10px;color:var(--text2);line-height:1.8;">عدد عائلات المالوير المختلفة النشطة</div>
       </div>
 
-      <div style="padding:22px 28px;border-right:1px solid var(--border);">
-        <div style="font-family:var(--mono);font-size:12px;color:var(--accent);margin-bottom:8px;letter-spacing:0.04em;">Highest Confidence IOCs</div>
-        <div style="font-family:var(--mono);font-size:11px;color:var(--text2);line-height:1.8;">الـ IOCs بنسبة ثقة 90%+ — موثوقة وجاهزة للحجب مباشرة</div>
+      <div style="padding:22px 20px;border-right:1px solid var(--border);">
+        <div style="font-family:var(--mono);font-size:11px;color:var(--accent);margin-bottom:8px;letter-spacing:0.04em;">High Confidence</div>
+        <div style="font-family:var(--mono);font-size:10px;color:var(--text2);line-height:1.8;">الـ IOCs بنسبة ثقة 90%+ — جاهزة للحجب</div>
       </div>
 
-      <div style="padding:22px 28px;">
-        <div style="font-family:var(--mono);font-size:12px;color:var(--accent);margin-bottom:8px;letter-spacing:0.04em;">Most Common Tag</div>
-        <div style="font-family:var(--mono);font-size:11px;color:var(--text2);line-height:1.8;">التصنيف الأكثر تكراراً — مثل #exe أو #ClearFake أو #stealer</div>
+      <div style="padding:22px 20px;">
+        <div style="font-family:var(--mono);font-size:11px;color:var(--accent);margin-bottom:8px;letter-spacing:0.04em;">Most Common Tag</div>
+        <div style="font-family:var(--mono);font-size:10px;color:var(--text2);line-height:1.8;">التصنيف الأكثر تكراراً مثل #exe أو #stealer</div>
       </div>
 
     </div>
-    <div style="padding:14px 28px;border-top:1px solid var(--border);background:var(--bg3);display:flex;align-items:center;gap:8px;">
+    <div style="padding:12px 28px;border-top:1px solid var(--border);background:var(--bg3);display:flex;align-items:center;gap:8px;">
       <div style="font-family:var(--mono);font-size:10px;color:var(--text3);">SOURCE</div>
       <div style="width:1px;height:12px;background:var(--border2);"></div>
       <div style="font-family:var(--mono);font-size:10px;color:var(--text2);">ThreatFox / abuse.ch — يتحدث كل ساعة تلقائياً عبر <span style="color:var(--accent);">GitHub Actions</span></div>
