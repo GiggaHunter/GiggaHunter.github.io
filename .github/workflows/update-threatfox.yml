@@ -19,6 +19,7 @@ jobs:
         run: |
           curl -s -X POST https://threatfox-api.abuse.ch/api/v1/ \
             -H "Content-Type: application/json" \
+            -H "Auth-Key: ${{ secrets.THREATFOX_API_KEY }}" \
             -d '{"query":"get_iocs","days":1}' \
             -o raw.json
           
