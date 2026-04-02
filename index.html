@@ -241,7 +241,7 @@ html,body{max-width:100%;overflow-x:hidden;}
 <section id="exercises">
   <div class="section-header"><span class="section-num">01</span><h2>Cases</h2><div class="section-line"></div></div>
   <div class="exercises-grid">
-    <a href="#chain" class="exercise-card fade-in">
+    <a href="#chain" class="exercise-card fade-in" onclick="switchChain('ex4')"
       <div class="ex-meta"><span class="ex-date">2024-09-04</span><span class="ex-badge badge-critical">CRITICAL</span></div>
       <div class="ex-title">Big Fish in a Little Pond</div>
       <div class="ex-subtitle">bepositive.com Domain</div>
@@ -249,7 +249,7 @@ html,body{max-width:100%;overflow-x:hidden;}
       <div class="ex-tags"><span class="tag">MODILOADER</span><span class="tag">WIKILOADER</span><span class="tag">DRIVE-BY</span><span class="tag">FAKE MSIE 7.0</span></div>
       <div class="ex-footer"><span class="ex-iocs">Infected: 172.17.0.99 | afletcher</span><span class="ex-arrow">→</span></div>
     </a>
-    <a href="#chain" class="exercise-card fade-in" style="transition-delay:0.1s">
+    <a href="#chain" class="exercise-card fade-in" style="transition-delay:0.1s" onclick="switchChain('ex5')"
       <div class="ex-meta"><span class="ex-date">2026-02-28</span><span class="ex-badge badge-critical">CRITICAL</span></div>
       <div class="ex-title">Easy as 123</div>
       <div class="ex-subtitle">easyas123.tech Domain</div>
@@ -257,7 +257,7 @@ html,body{max-width:100%;overflow-x:hidden;}
       <div class="ex-tags"><span class="tag">NETSUPPORT RAT</span><span class="tag">CMD=POLL</span><span class="tag">CMD=ENCD</span><span class="tag">UNKNOWN VECTOR</span></div>
       <div class="ex-footer"><span class="ex-iocs">Infected: 10.2.28.88 | brolf</span><span class="ex-arrow">→</span></div>
     </a>
-    <a href="#chain" class="exercise-card fade-in" style="transition-delay:0.2s" onclick="switchChain('ex7',document.querySelector('[data-chain=ex7]'))">
+    <a href="#chain" class="exercise-card fade-in" style="transition-delay:0.2s" onclick="switchChain('ex7')">
       <div class="ex-meta"><span class="ex-date">2026-02-03</span><span class="ex-badge badge-critical">CRITICAL</span></div>
       <div class="ex-title">Phantom in the Drive</div>
       <div class="ex-subtitle">Workgroup Network</div>
@@ -265,7 +265,7 @@ html,body{max-width:100%;overflow-x:hidden;}
       <div class="ex-tags"><span class="tag">PHANTOM STEALER</span><span class="tag">GOOGLE DRIVE</span><span class="tag">FTP EXFIL</span><span class="tag">SANDBOX EVASION</span></div>
       <div class="ex-footer"><span class="ex-iocs">Infected: 10.2.3.101 | tyler</span><span class="ex-arrow">→</span></div>
     </a>
-    <a href="#chain" class="exercise-card fade-in" style="transition-delay:0.3s">
+    <a href="#chain" class="exercise-card fade-in" style="transition-delay:0.3s" onclick="switchChain('ex6')"
       <div class="ex-meta"><span class="ex-date">2026-01-31</span><span class="ex-badge badge-critical">CRITICAL</span></div>
       <div class="ex-title">Lumma in the Room-ah!</div>
       <div class="ex-subtitle">win11office.com Domain</div>
@@ -273,7 +273,7 @@ html,body{max-width:100%;overflow-x:hidden;}
       <div class="ex-tags"><span class="tag">LUMMA STEALER</span><span class="tag">C2 GATE</span><span class="tag">FINGERPRINTING</span><span class="tag">LSARPC ATTACK</span></div>
       <div class="ex-footer"><span class="ex-iocs">Infected: 10.1.21.58 | gwyatt</span><span class="ex-arrow">→</span></div>
     </a>
-    <a href="#chain" class="exercise-card fade-in" style="transition-delay:0.4s" onclick="switchChain('ex8',document.querySelector('[data-chain=ex8]'))">
+    <a href="#chain" class="exercise-card fade-in" style="transition-delay:0.4s" onclick="switchChain('ex8')">
       <div class="ex-meta"><span class="ex-date">2026-02-02</span><span class="ex-badge badge-critical">CRITICAL</span></div>
       <div class="ex-title">KongTuke ClickFix</div>
       <div class="ex-subtitle">Workgroup Network</div>
@@ -281,7 +281,7 @@ html,body{max-width:100%;overflow-x:hidden;}
       <div class="ex-tags"><span class="tag">KONGTUKE</span><span class="tag">CLICKFIX</span><span class="tag">MINTSLOADER</span><span class="tag">LOLBIN</span><span class="tag">DGA</span></div>
       <div class="ex-footer"><span class="ex-iocs">Infected: 10.2.2.37 | Workgroup</span><span class="ex-arrow">→</span></div>
     </a>
-    <a href="#chain" class="exercise-card fade-in" style="transition-delay:0.5s" onclick="switchChain('ex9',document.querySelector('[data-chain=ex9]'))">
+    <a href="#chain" class="exercise-card fade-in" style="transition-delay:0.5s" onclick="switchChain('ex9')">
       <div class="ex-meta"><span class="ex-date">2026-01-29</span><span class="ex-badge badge-critical">CRITICAL</span></div>
       <div class="ex-title">Silent Spammer</div>
       <div class="ex-subtitle">Workgroup Network</div>
@@ -289,7 +289,7 @@ html,body{max-width:100%;overflow-x:hidden;}
       <div class="ex-tags"><span class="tag">SNAKEKEYLOGGER</span><span class="tag">TELEGRAM C2</span><span class="tag">SPAM BOT</span><span class="tag">GEO-RECON</span><span class="tag">SANDBOX EVASION</span></div>
       <div class="ex-footer"><span class="ex-iocs">Infected: 10.1.29.101 | DESKTOP-WIN11PC</span><span class="ex-arrow">→</span></div>
     </a>
-    <a href="#chain" class="exercise-card fade-in" style="transition-delay:0.6s" onclick="switchChain('ex10',document.querySelector('[data-chain=ex10]'))">
+    <a href="#chain" class="exercise-card fade-in" style="transition-delay:0.6s" onclick="switchChain('ex10')">
       <div class="ex-meta"><span class="ex-date">2025-12-29</span><span class="ex-badge badge-critical">CRITICAL</span></div>
       <div class="ex-title">ClickFix to NetSupport</div>
       <div class="ex-subtitle">techbros.tech Domain</div>
@@ -1086,15 +1086,15 @@ document.querySelectorAll('.fade-in').forEach(function(el){
     if(!termEl||termEl.dataset.started) return;
     termEl.dataset.started='1';
     var LINES=[
-      {cmd:true,text:'wireshark -r 2026-01-29.pcap'},
+      {cmd:true,text:'wireshark -r 2025-12-29.pcap'},
       {cmd:false,text:'Opening capture file...',cls:'green'},
-      {cmd:true,text:'smtp and ip.src == 10.1.29.101'},
-      {cmd:false,text:'SMTP on workstation detected!',cls:'amber'},
-      {cmd:false,text:'WARNING: Spam Bot activity',cls:'amber'},
+      {cmd:true,text:'http and ip.src == 10.12.29.101'},
+      {cmd:false,text:'NetSupport RAT detected!',cls:'amber'},
+      {cmd:false,text:'WARNING: ClickFix attack chain',cls:'amber'},
       {cmd:true,text:'tls.handshake.type == 1'},
-      {cmd:false,text:'api.telegram.org — C2!',cls:'red'},
-      {cmd:false,text:'SNAKEKEYLOGGER suspected',cls:'red'},
-      {cmd:false,text:'COMPROMISED: 10.1.29.101',cls:'red'},
+      {cmd:false,text:'extracareliving.com — ClickFix!',cls:'red'},
+      {cmd:false,text:'NETSUPPORT RAT active',cls:'red'},
+      {cmd:false,text:'COMPROMISED: 10.12.29.101',cls:'red'},
     ];
     var li=0,ci=0,span=null;
     function tick(){
@@ -1132,7 +1132,14 @@ function switchChain(id,btn){
   document.querySelectorAll('.chain-tab:not(.disabled)').forEach(function(t){t.classList.remove('active');});
   var panel=document.getElementById('chain-'+id);
   if(panel){panel.classList.add('active');}
-  if(btn) btn.classList.add('active');
+  if(btn&&btn.classList){
+    btn.classList.add('active');
+  } else {
+    document.querySelectorAll('.chain-tab').forEach(function(t){
+      var oc=t.getAttribute('onclick')||'';
+      if(oc.indexOf("'"+id+"'")!==-1) t.classList.add('active');
+    });
+  }
 }
 var tipVisible=false;
 window.showTip=function(e,title,body){
