@@ -2,6 +2,184 @@
     "query_status": "ok",
     "data": [
         {
+            "id": "1780590",
+            "ioc": "64.89.161.131:80",
+            "threat_type": "payload_delivery",
+            "threat_type_desc": "Indicator that identifies a malware distribution server (payload delivery)",
+            "ioc_type": "ip:port",
+            "ioc_type_desc": "ip:port combination that delivery a malware payload",
+            "malware": "unknown",
+            "malware_printable": "Unknown malware",
+            "malware_alias": null,
+            "malware_malpedia": "https:\/\/malpedia.caad.fkie.fraunhofer.de\/details\/unknown",
+            "confidence_level": 100,
+            "is_compromised": false,
+            "first_seen": "2026-04-02 22:45:51 UTC",
+            "last_seen": null,
+            "reference": "",
+            "reporter": "HuntYethHounds",
+            "tags": [
+                "Avast",
+                "Fake Software",
+                "ScreenConnect"
+            ]
+        },
+        {
+            "id": "1780589",
+            "ioc": "http:\/\/64.89.161.131\/Bin\/ScreenConnect.ClientSetup.msi?e=Access&y=Guest",
+            "threat_type": "payload_delivery",
+            "threat_type_desc": "Indicator that identifies a malware distribution server (payload delivery)",
+            "ioc_type": "url",
+            "ioc_type_desc": "URL that delivers a malware payload",
+            "malware": "unknown",
+            "malware_printable": "Unknown malware",
+            "malware_alias": null,
+            "malware_malpedia": "https:\/\/malpedia.caad.fkie.fraunhofer.de\/details\/unknown",
+            "confidence_level": 100,
+            "is_compromised": false,
+            "first_seen": "2026-04-02 22:45:12 UTC",
+            "last_seen": null,
+            "reference": "",
+            "reporter": "HuntYethHounds",
+            "tags": [
+                "Avast",
+                "Fake Software",
+                "ScreenConnect"
+            ]
+        },
+        {
+            "id": "1780588",
+            "ioc": "https:\/\/onetimeinvitation.com\/downloads\/AnyDesk.exe",
+            "threat_type": "payload_delivery",
+            "threat_type_desc": "Indicator that identifies a malware distribution server (payload delivery)",
+            "ioc_type": "url",
+            "ioc_type_desc": "URL that delivers a malware payload",
+            "malware": "unknown",
+            "malware_printable": "Unknown malware",
+            "malware_alias": null,
+            "malware_malpedia": "https:\/\/malpedia.caad.fkie.fraunhofer.de\/details\/unknown",
+            "confidence_level": 100,
+            "is_compromised": false,
+            "first_seen": "2026-04-02 22:43:55 UTC",
+            "last_seen": null,
+            "reference": "",
+            "reporter": "HuntYethHounds",
+            "tags": [
+                "AnyDesk",
+                "Avast",
+                "Fake Software"
+            ]
+        },
+        {
+            "id": "1780587",
+            "ioc": "https:\/\/onetimeinvitation.com\/downloads\/Invitation.vbs",
+            "threat_type": "payload_delivery",
+            "threat_type_desc": "Indicator that identifies a malware distribution server (payload delivery)",
+            "ioc_type": "url",
+            "ioc_type_desc": "URL that delivers a malware payload",
+            "malware": "unknown",
+            "malware_printable": "Unknown malware",
+            "malware_alias": null,
+            "malware_malpedia": "https:\/\/malpedia.caad.fkie.fraunhofer.de\/details\/unknown",
+            "confidence_level": 100,
+            "is_compromised": false,
+            "first_seen": "2026-04-02 22:43:27 UTC",
+            "last_seen": null,
+            "reference": "",
+            "reporter": "HuntYethHounds",
+            "tags": [
+                "Avast",
+                "Fake Software",
+                "VBScript"
+            ]
+        },
+        {
+            "id": "1780586",
+            "ioc": "onetimeinvitation.com",
+            "threat_type": "payload_delivery",
+            "threat_type_desc": "Indicator that identifies a malware distribution server (payload delivery)",
+            "ioc_type": "domain",
+            "ioc_type_desc": "Domain name that delivers a malware payload",
+            "malware": "unknown",
+            "malware_printable": "Unknown malware",
+            "malware_alias": null,
+            "malware_malpedia": "https:\/\/malpedia.caad.fkie.fraunhofer.de\/details\/unknown",
+            "confidence_level": 100,
+            "is_compromised": false,
+            "first_seen": "2026-04-02 22:43:01 UTC",
+            "last_seen": null,
+            "reference": "",
+            "reporter": "HuntYethHounds",
+            "tags": [
+                "Avast",
+                "Fake Software"
+            ]
+        },
+        {
+            "id": "1780585",
+            "ioc": "217.154.6.255:7004",
+            "threat_type": "botnet_cc",
+            "threat_type_desc": "Indicator that identifies a botnet command&control server (C&C)",
+            "ioc_type": "ip:port",
+            "ioc_type_desc": "ip:port combination that is used for botnet Command&control (C&C)",
+            "malware": "win.xworm",
+            "malware_printable": "XWorm",
+            "malware_alias": null,
+            "malware_malpedia": "https:\/\/malpedia.caad.fkie.fraunhofer.de\/details\/win.xworm",
+            "confidence_level": 100,
+            "is_compromised": false,
+            "first_seen": "2026-04-02 22:01:56 UTC",
+            "last_seen": null,
+            "reference": "https:\/\/tria.ge\/260402-xs4ceaav5m",
+            "reporter": "dyingbreeds_",
+            "tags": [
+                "XWorm"
+            ]
+        },
+        {
+            "id": "1780584",
+            "ioc": "she55.ddnsking.com",
+            "threat_type": "botnet_cc",
+            "threat_type_desc": "Indicator that identifies a botnet command&control server (C&C)",
+            "ioc_type": "domain",
+            "ioc_type_desc": "Domain that is used for botnet Command&control (C&C)",
+            "malware": "win.xworm",
+            "malware_printable": "XWorm",
+            "malware_alias": null,
+            "malware_malpedia": "https:\/\/malpedia.caad.fkie.fraunhofer.de\/details\/win.xworm",
+            "confidence_level": 100,
+            "is_compromised": false,
+            "first_seen": "2026-04-02 22:01:50 UTC",
+            "last_seen": null,
+            "reference": "https:\/\/tria.ge\/260402-zvm5babw8m",
+            "reporter": "dyingbreeds_",
+            "tags": [
+                "XWorm"
+            ]
+        },
+        {
+            "id": "1780583",
+            "ioc": "bill-proof.cc",
+            "threat_type": "botnet_cc",
+            "threat_type_desc": "Indicator that identifies a botnet command&control server (C&C)",
+            "ioc_type": "domain",
+            "ioc_type_desc": "Domain that is used for botnet Command&control (C&C)",
+            "malware": "win.santa_stealer",
+            "malware_printable": "SantaStealer",
+            "malware_alias": null,
+            "malware_malpedia": "https:\/\/malpedia.caad.fkie.fraunhofer.de\/details\/win.santa_stealer",
+            "confidence_level": 100,
+            "is_compromised": false,
+            "first_seen": "2026-04-02 21:55:06 UTC",
+            "last_seen": null,
+            "reference": "https:\/\/bazaar.abuse.ch\/sample\/42caae0666649bd94561b64d976c762bf990ca592f66eb13a68ca9ab3f3b825e\/",
+            "reporter": "burger",
+            "tags": [
+                "c2",
+                "SantaStealer"
+            ]
+        },
+        {
             "id": "1780582",
             "ioc": "parky.pics",
             "threat_type": "botnet_cc",
@@ -7732,111 +7910,6 @@
             "reporter": "dyingbreeds_",
             "tags": [
                 "quasar"
-            ]
-        },
-        {
-            "id": "1780254",
-            "ioc": "t7bs6h40.apexharvestor.digital",
-            "threat_type": "payload_delivery",
-            "threat_type_desc": "Indicator that identifies a malware distribution server (payload delivery)",
-            "ioc_type": "domain",
-            "ioc_type_desc": "Domain name that delivers a malware payload",
-            "malware": "js.clearfake",
-            "malware_printable": "ClearFake",
-            "malware_alias": null,
-            "malware_malpedia": "https:\/\/malpedia.caad.fkie.fraunhofer.de\/details\/js.clearfake",
-            "confidence_level": 100,
-            "is_compromised": false,
-            "first_seen": "2026-04-01 22:35:46 UTC",
-            "last_seen": null,
-            "reference": null,
-            "reporter": "threatcat_ch",
-            "tags": [
-                "ClearFake"
-            ]
-        },
-        {
-            "id": "1780253",
-            "ioc": "q55at0cm.apexharvestor.digital",
-            "threat_type": "payload_delivery",
-            "threat_type_desc": "Indicator that identifies a malware distribution server (payload delivery)",
-            "ioc_type": "domain",
-            "ioc_type_desc": "Domain name that delivers a malware payload",
-            "malware": "js.clearfake",
-            "malware_printable": "ClearFake",
-            "malware_alias": null,
-            "malware_malpedia": "https:\/\/malpedia.caad.fkie.fraunhofer.de\/details\/js.clearfake",
-            "confidence_level": 100,
-            "is_compromised": false,
-            "first_seen": "2026-04-01 22:35:38 UTC",
-            "last_seen": null,
-            "reference": null,
-            "reporter": "anonymous",
-            "tags": [
-                "ClearFake"
-            ]
-        },
-        {
-            "id": "1780252",
-            "ioc": "fr0ippml.covenantventure.digital",
-            "threat_type": "payload_delivery",
-            "threat_type_desc": "Indicator that identifies a malware distribution server (payload delivery)",
-            "ioc_type": "domain",
-            "ioc_type_desc": "Domain name that delivers a malware payload",
-            "malware": "js.clearfake",
-            "malware_printable": "ClearFake",
-            "malware_alias": null,
-            "malware_malpedia": "https:\/\/malpedia.caad.fkie.fraunhofer.de\/details\/js.clearfake",
-            "confidence_level": 100,
-            "is_compromised": false,
-            "first_seen": "2026-04-01 22:34:44 UTC",
-            "last_seen": null,
-            "reference": null,
-            "reporter": "threatcat_ch",
-            "tags": [
-                "ClearFake"
-            ]
-        },
-        {
-            "id": "1780250",
-            "ioc": "e70839572.duckdns.org",
-            "threat_type": "botnet_cc",
-            "threat_type_desc": "Indicator that identifies a botnet command&control server (C&C)",
-            "ioc_type": "domain",
-            "ioc_type_desc": "Domain that is used for botnet Command&control (C&C)",
-            "malware": "win.remcos",
-            "malware_printable": "Remcos",
-            "malware_alias": "RemcosRAT,Remvio,Socmer",
-            "malware_malpedia": "https:\/\/malpedia.caad.fkie.fraunhofer.de\/details\/win.remcos",
-            "confidence_level": 100,
-            "is_compromised": false,
-            "first_seen": "2026-04-01 22:00:05 UTC",
-            "last_seen": null,
-            "reference": "https:\/\/tria.ge\/260401-zse1xsbx6z",
-            "reporter": "dyingbreeds_",
-            "tags": [
-                "remcos"
-            ]
-        },
-        {
-            "id": "1780251",
-            "ioc": "e70839572bk.duckdns.org",
-            "threat_type": "botnet_cc",
-            "threat_type_desc": "Indicator that identifies a botnet command&control server (C&C)",
-            "ioc_type": "domain",
-            "ioc_type_desc": "Domain that is used for botnet Command&control (C&C)",
-            "malware": "win.remcos",
-            "malware_printable": "Remcos",
-            "malware_alias": "RemcosRAT,Remvio,Socmer",
-            "malware_malpedia": "https:\/\/malpedia.caad.fkie.fraunhofer.de\/details\/win.remcos",
-            "confidence_level": 100,
-            "is_compromised": false,
-            "first_seen": "2026-04-01 22:00:05 UTC",
-            "last_seen": null,
-            "reference": "https:\/\/tria.ge\/260401-zse1xsbx6z",
-            "reporter": "dyingbreeds_",
-            "tags": [
-                "remcos"
             ]
         }
     ]
