@@ -70,26 +70,28 @@ section{position:relative;z-index:1;padding:90px 80px;}
 .section-num{font-family:var(--mono);font-size:13px;color:var(--accent);letter-spacing:0.1em;opacity:1;border:1px solid var(--accent2);padding:2px 8px;border-radius:2px;background:var(--accent-dim);}
 h2{font-family:var(--display);font-size:34px;font-weight:800;color:#fff;letter-spacing:-0.02em;}
 .section-line{flex:1;height:1px;background:var(--border);}
-.exercises-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:2px;}
-.exercise-card{background:var(--bg2);border:1px solid var(--border);padding:32px;position:relative;overflow:hidden;cursor:pointer;transition:all 0.25s;text-decoration:none;display:block;}
-.exercise-card::before{content:'';position:absolute;top:0;left:0;width:3px;height:100%;background:var(--accent);transform:scaleY(0);transition:transform 0.25s;transform-origin:bottom;}
-.exercise-card:hover{border-color:var(--border2);background:var(--surface);transform:translateY(-2px);}
+.exercises-grid{display:flex;flex-direction:column;gap:0;}
+.exercise-card{background:transparent;border:none;border-bottom:1px solid var(--border);padding:20px 24px;position:relative;cursor:pointer;transition:all 0.2s;text-decoration:none;display:flex;align-items:center;gap:24px;}
+.exercise-card::before{content:'';position:absolute;left:0;top:0;bottom:0;width:2px;background:var(--accent);transform:scaleY(0);transition:transform 0.2s;transform-origin:bottom;}
+.exercise-card:first-child{border-top:1px solid var(--border);}
+.exercise-card:hover{background:var(--bg2);}
 .exercise-card:hover::before{transform:scaleY(1);}
-.ex-meta{display:flex;align-items:center;justify-content:space-between;margin-bottom:18px;}
-.ex-date{font-family:var(--mono);font-size:12px;color:var(--text2);}
-.ex-badge{font-family:var(--mono);font-size:10px;letter-spacing:0.1em;padding:3px 10px;border-radius:2px;}
+.ex-date{font-family:var(--mono);font-size:11px;color:var(--text3);letter-spacing:0.04em;min-width:90px;flex-shrink:0;}
+.ex-badge{font-family:var(--mono);font-size:9px;letter-spacing:0.1em;padding:2px 8px;border-radius:2px;flex-shrink:0;}
 .badge-critical{color:var(--red);background:var(--red-dim);border:1px solid rgba(255,71,87,0.2);}
 .badge-high{color:var(--amber);background:var(--amber-dim);border:1px solid rgba(255,165,2,0.2);}
 .badge-complete{color:var(--green);background:var(--green-dim);border:1px solid rgba(46,213,115,0.2);}
-.ex-title{font-family:var(--display);font-size:22px;font-weight:700;color:#fff;margin-bottom:6px;}
-.ex-subtitle{font-family:var(--mono);font-size:12px;color:var(--accent);margin-bottom:14px;}
-.ex-desc{font-size:13px;color:var(--text);line-height:1.8;margin-bottom:20px;}
-.ex-tags{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:20px;}
-.tag{font-family:var(--mono);font-size:10px;color:var(--text2);border:1px solid var(--border);padding:2px 8px;border-radius:2px;}
-.ex-footer{display:flex;align-items:center;justify-content:space-between;}
-.ex-iocs{font-family:var(--mono);font-size:12px;color:var(--text2);}
-.ex-arrow{font-size:18px;color:var(--text3);transition:all 0.2s;}
+.ex-main{flex:1;min-width:0;}
+.ex-title{font-family:var(--display);font-size:15px;font-weight:700;color:#fff;margin-bottom:2px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+.ex-subtitle{font-family:var(--mono);font-size:10px;color:var(--accent);opacity:0.7;}
+.ex-desc{font-size:12px;color:var(--text2);line-height:1.6;margin-top:6px;}
+.ex-tags{display:flex;flex-wrap:wrap;gap:4px;margin-top:8px;}
+.tag{font-family:var(--mono);font-size:9px;color:var(--text3);border:1px solid var(--border);padding:1px 6px;border-radius:2px;}
+.ex-footer{display:none;}
+.ex-iocs{font-family:var(--mono);font-size:11px;color:var(--text3);min-width:200px;text-align:right;flex-shrink:0;}
+.ex-arrow{font-size:14px;color:var(--text3);transition:all 0.2s;flex-shrink:0;margin-left:12px;}
 .exercise-card:hover .ex-arrow{color:var(--accent);transform:translateX(4px);}
+.ex-meta{display:none;}
 .method-section{background:var(--bg2);}
 .method-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:2px;}
 .method-card{background:var(--bg3);border:1px solid var(--border);padding:28px;transition:all 0.2s;}
@@ -150,7 +152,7 @@ footer{position:relative;z-index:1;border-top:1px solid var(--border);padding:36
 .footer-right{font-family:var(--mono);font-size:11px;color:var(--text3);display:flex;gap:24px;}
 .fade-in{opacity:1;transform:translateY(0);transition:opacity 0.6s ease,transform 0.6s ease;}
 @media(max-width:1100px){.hero{padding:120px 40px 60px;flex-direction:column;align-items:flex-start;}.hero-content{max-width:100%;}.hero-terminal{position:relative;right:auto;top:auto;transform:none;width:100%;margin-top:40px;}section{padding:70px 40px;}nav{padding:0 24px;}.nav-links{gap:16px;}footer{padding:28px 40px;}}
-@media(max-width:768px){.exercises-grid,.tools-grid,.method-grid{grid-template-columns:1fr;}.chain-panel.active{grid-template-columns:1fr !important;gap:24px !important;}.chain-meta-grid{grid-template-columns:1fr;}.chain-svg-wrap{padding:12px;}.chain-svg-wrap svg{max-height:none !important;}.hero-stats{gap:20px;}h2{font-size:26px;}h1{font-size:36px;}.nav-links{display:none;}footer{flex-direction:column;gap:12px;text-align:center;}.footer-right{flex-direction:column;gap:6px;align-items:center;}#chain-tooltip{display:none!important;}.chain-node .hover-only{display:none;}.ioc-table thead{display:none;}.ioc-table tr{display:block;background:var(--bg3);border:1px solid var(--border);border-radius:4px;margin-bottom:12px;padding:16px;}.ioc-table tr.hidden{display:none;}.ioc-table td{display:block;padding:4px 0;border:none;font-size:12px;}.ioc-table td::before{content:attr(data-label);display:block;font-size:10px;color:var(--text3);letter-spacing:0.08em;margin-bottom:2px;}.ioc-val{font-size:13px;}.ioc-table td:last-child{display:none;}section{padding:60px 20px;}nav{padding:0 16px;}.chain-tabs{overflow-x:auto;-webkit-overflow-scrolling:touch;flex-wrap:nowrap;padding-bottom:4px;}.chain-tab{white-space:nowrap;flex-shrink:0;}}
+@media(max-width:768px){.exercises-grid,.tools-grid,.method-grid{grid-template-columns:1fr;}.exercise-card{flex-wrap:wrap;gap:12px;padding:16px;}.ex-iocs{display:none;}.ex-date{min-width:auto;}chain-panel.active{grid-template-columns:1fr !important;gap:24px !important;}.chain-meta-grid{grid-template-columns:1fr;}.chain-svg-wrap{padding:12px;}.chain-svg-wrap svg{max-height:none !important;}.hero-stats{gap:20px;}h2{font-size:26px;}h1{font-size:36px;}.nav-links{display:none;}footer{flex-direction:column;gap:12px;text-align:center;}.footer-right{flex-direction:column;gap:6px;align-items:center;}#chain-tooltip{display:none!important;}.chain-node .hover-only{display:none;}.ioc-table thead{display:none;}.ioc-table tr{display:block;background:var(--bg3);border:1px solid var(--border);border-radius:4px;margin-bottom:12px;padding:16px;}.ioc-table tr.hidden{display:none;}.ioc-table td{display:block;padding:4px 0;border:none;font-size:12px;}.ioc-table td::before{content:attr(data-label);display:block;font-size:10px;color:var(--text3);letter-spacing:0.08em;margin-bottom:2px;}.ioc-val{font-size:13px;}.ioc-table td:last-child{display:none;}section{padding:60px 20px;}nav{padding:0 16px;}.chain-tabs{overflow-x:auto;-webkit-overflow-scrolling:touch;flex-wrap:nowrap;padding-bottom:4px;}.chain-tab{white-space:nowrap;flex-shrink:0;}}
 html,body{max-width:100%;overflow-x:hidden;}
 .threatfox-section{background:var(--bg);}
 .tf-header-row{display:flex;align-items:center;justify-content:space-between;margin-bottom:36px;flex-wrap:wrap;gap:16px;}
@@ -241,61 +243,82 @@ html,body{max-width:100%;overflow-x:hidden;}
 <section id="exercises">
   <div class="section-header"><span class="section-num">01</span><h2>Cases</h2><div class="section-line"></div></div>
   <div class="exercises-grid">
-    <a href="#chain" class="exercise-card fade-in" onclick="switchChain('ex4')"
-      <div class="ex-meta"><span class="ex-date">2024-09-04</span><span class="ex-badge badge-critical">CRITICAL</span></div>
-      <div class="ex-title">Big Fish in a Little Pond</div>
-      <div class="ex-subtitle">bepositive.com Domain</div>
-      <div class="ex-desc">MODILOADER/WIKILOADER delivered via compromised Italian website. Drive-by download followed by persistent beaconing using fake MSIE 7.0 User-Agent.</div>
-      <div class="ex-tags"><span class="tag">MODILOADER</span><span class="tag">WIKILOADER</span><span class="tag">DRIVE-BY</span><span class="tag">FAKE MSIE 7.0</span></div>
-      <div class="ex-footer"><span class="ex-iocs">Infected: 172.17.0.99 | afletcher</span><span class="ex-arrow">→</span></div>
+    <a href="#chain" class="exercise-card fade-in" onclick="switchChain('ex4')">
+      <span class="ex-date">2024-09-04</span>
+      <span class="ex-badge badge-critical">CRITICAL</span>
+      <div class="ex-main">
+        <div class="ex-title">Big Fish in a Little Pond</div>
+        <div class="ex-subtitle">bepositive.com — MODILOADER / WIKILOADER</div>
+        <div class="ex-tags"><span class="tag">MODILOADER</span><span class="tag">WIKILOADER</span><span class="tag">DRIVE-BY</span><span class="tag">FAKE MSIE 7.0</span></div>
+      </div>
+      <span class="ex-iocs">172.17.0.99 | afletcher</span>
+      <span class="ex-arrow">→</span>
     </a>
-    <a href="#chain" class="exercise-card fade-in" style="transition-delay:0.1s" onclick="switchChain('ex5')"
-      <div class="ex-meta"><span class="ex-date">2026-02-28</span><span class="ex-badge badge-critical">CRITICAL</span></div>
-      <div class="ex-title">Easy as 123</div>
-      <div class="ex-subtitle">easyas123.tech Domain</div>
-      <div class="ex-desc">NetSupport Manager RAT established persistent C2 beaconing via HTTP POST. Initial infection vector not observable in PCAP — malware active before capture window.</div>
-      <div class="ex-tags"><span class="tag">NETSUPPORT RAT</span><span class="tag">CMD=POLL</span><span class="tag">CMD=ENCD</span><span class="tag">UNKNOWN VECTOR</span></div>
-      <div class="ex-footer"><span class="ex-iocs">Infected: 10.2.28.88 | brolf</span><span class="ex-arrow">→</span></div>
+    <a href="#chain" class="exercise-card fade-in" style="transition-delay:0.05s" onclick="switchChain('ex5')">
+      <span class="ex-date">2026-02-28</span>
+      <span class="ex-badge badge-critical">CRITICAL</span>
+      <div class="ex-main">
+        <div class="ex-title">Easy as 123</div>
+        <div class="ex-subtitle">easyas123.tech — NetSupport Manager RAT</div>
+        <div class="ex-tags"><span class="tag">NETSUPPORT RAT</span><span class="tag">CMD=POLL</span><span class="tag">CMD=ENCD</span><span class="tag">UNKNOWN VECTOR</span></div>
+      </div>
+      <span class="ex-iocs">10.2.28.88 | brolf</span>
+      <span class="ex-arrow">→</span>
     </a>
-    <a href="#chain" class="exercise-card fade-in" style="transition-delay:0.2s" onclick="switchChain('ex7')">
-      <div class="ex-meta"><span class="ex-date">2026-02-03</span><span class="ex-badge badge-critical">CRITICAL</span></div>
-      <div class="ex-title">Phantom in the Drive</div>
-      <div class="ex-subtitle">Workgroup Network</div>
-      <div class="ex-desc">Phantom Stealer delivered via Google Drive. Sandbox evasion via ip-api.com Reconnaissance, followed by FTP exfiltration of browser passwords and Thunderbird contacts.</div>
-      <div class="ex-tags"><span class="tag">PHANTOM STEALER</span><span class="tag">GOOGLE DRIVE</span><span class="tag">FTP EXFIL</span><span class="tag">SANDBOX EVASION</span></div>
-      <div class="ex-footer"><span class="ex-iocs">Infected: 10.2.3.101 | tyler</span><span class="ex-arrow">→</span></div>
+    <a href="#chain" class="exercise-card fade-in" style="transition-delay:0.1s" onclick="switchChain('ex7')">
+      <span class="ex-date">2026-02-03</span>
+      <span class="ex-badge badge-critical">CRITICAL</span>
+      <div class="ex-main">
+        <div class="ex-title">Phantom in the Drive</div>
+        <div class="ex-subtitle">Workgroup — Phantom Stealer via Google Drive</div>
+        <div class="ex-tags"><span class="tag">PHANTOM STEALER</span><span class="tag">GOOGLE DRIVE</span><span class="tag">FTP EXFIL</span><span class="tag">SANDBOX EVASION</span></div>
+      </div>
+      <span class="ex-iocs">10.2.3.101 | tyler</span>
+      <span class="ex-arrow">→</span>
     </a>
-    <a href="#chain" class="exercise-card fade-in" style="transition-delay:0.3s" onclick="switchChain('ex6')"
-      <div class="ex-meta"><span class="ex-date">2026-01-31</span><span class="ex-badge badge-critical">CRITICAL</span></div>
-      <div class="ex-title">Lumma in the Room-ah!</div>
-      <div class="ex-subtitle">win11office.com Domain</div>
-      <div class="ex-desc">Lumma Stealer delivered via malicious file hub. Multi-stage C2 chain: gate contact, victim fingerprinting, data exfiltration, followed by LSARPC lateral movement attempt against Domain Controller.</div>
-      <div class="ex-tags"><span class="tag">LUMMA STEALER</span><span class="tag">C2 GATE</span><span class="tag">FINGERPRINTING</span><span class="tag">LSARPC ATTACK</span></div>
-      <div class="ex-footer"><span class="ex-iocs">Infected: 10.1.21.58 | gwyatt</span><span class="ex-arrow">→</span></div>
+    <a href="#chain" class="exercise-card fade-in" style="transition-delay:0.15s" onclick="switchChain('ex6')">
+      <span class="ex-date">2026-01-31</span>
+      <span class="ex-badge badge-critical">CRITICAL</span>
+      <div class="ex-main">
+        <div class="ex-title">Lumma in the Room-ah!</div>
+        <div class="ex-subtitle">win11office.com — Lumma Stealer + LSARPC</div>
+        <div class="ex-tags"><span class="tag">LUMMA STEALER</span><span class="tag">C2 GATE</span><span class="tag">FINGERPRINTING</span><span class="tag">LSARPC ATTACK</span></div>
+      </div>
+      <span class="ex-iocs">10.1.21.58 | gwyatt</span>
+      <span class="ex-arrow">→</span>
     </a>
-    <a href="#chain" class="exercise-card fade-in" style="transition-delay:0.4s" onclick="switchChain('ex8')">
-      <div class="ex-meta"><span class="ex-date">2026-02-02</span><span class="ex-badge badge-critical">CRITICAL</span></div>
-      <div class="ex-title">KongTuke ClickFix</div>
-      <div class="ex-subtitle">Workgroup Network</div>
-      <div class="ex-desc">Multi-stage attack combining ClickFix social engineering with Drive-by download. KongTuke deployed via DGA domain, LOLBin abuse via finger.exe, then MintsLoader staging chain with victim geo-reconnaissance.</div>
-      <div class="ex-tags"><span class="tag">KONGTUKE</span><span class="tag">CLICKFIX</span><span class="tag">MINTSLOADER</span><span class="tag">LOLBIN</span><span class="tag">DGA</span></div>
-      <div class="ex-footer"><span class="ex-iocs">Infected: 10.2.2.37 | Workgroup</span><span class="ex-arrow">→</span></div>
+    <a href="#chain" class="exercise-card fade-in" style="transition-delay:0.2s" onclick="switchChain('ex8')">
+      <span class="ex-date">2026-02-02</span>
+      <span class="ex-badge badge-critical">CRITICAL</span>
+      <div class="ex-main">
+        <div class="ex-title">KongTuke ClickFix</div>
+        <div class="ex-subtitle">Workgroup — KongTuke + MintsLoader + LOLBin</div>
+        <div class="ex-tags"><span class="tag">KONGTUKE</span><span class="tag">CLICKFIX</span><span class="tag">MINTSLOADER</span><span class="tag">LOLBIN</span><span class="tag">DGA</span></div>
+      </div>
+      <span class="ex-iocs">10.2.2.37 | Workgroup</span>
+      <span class="ex-arrow">→</span>
     </a>
-    <a href="#chain" class="exercise-card fade-in" style="transition-delay:0.5s" onclick="switchChain('ex9')">
-      <div class="ex-meta"><span class="ex-date">2026-01-29</span><span class="ex-badge badge-critical">CRITICAL</span></div>
-      <div class="ex-title">Silent Spammer</div>
-      <div class="ex-subtitle">Workgroup Network</div>
-      <div class="ex-desc">SNAKEKEYLOGGER suspected infection using Telegram Bot API as covert C2 channel. Geographic reconnaissance across three services, then victim machine converted to outbound spam bot via external SMTP server.</div>
-      <div class="ex-tags"><span class="tag">SNAKEKEYLOGGER</span><span class="tag">TELEGRAM C2</span><span class="tag">SPAM BOT</span><span class="tag">GEO-RECON</span><span class="tag">SANDBOX EVASION</span></div>
-      <div class="ex-footer"><span class="ex-iocs">Infected: 10.1.29.101 | DESKTOP-WIN11PC</span><span class="ex-arrow">→</span></div>
+    <a href="#chain" class="exercise-card fade-in" style="transition-delay:0.25s" onclick="switchChain('ex9')">
+      <span class="ex-date">2026-01-29</span>
+      <span class="ex-badge badge-critical">CRITICAL</span>
+      <div class="ex-main">
+        <div class="ex-title">Silent Spammer</div>
+        <div class="ex-subtitle">Workgroup — SNAKEKEYLOGGER + Telegram C2</div>
+        <div class="ex-tags"><span class="tag">SNAKEKEYLOGGER</span><span class="tag">TELEGRAM C2</span><span class="tag">SPAM BOT</span><span class="tag">GEO-RECON</span></div>
+      </div>
+      <span class="ex-iocs">10.1.29.101 | DESKTOP-WIN11PC</span>
+      <span class="ex-arrow">→</span>
     </a>
-    <a href="#chain" class="exercise-card fade-in" style="transition-delay:0.6s" onclick="switchChain('ex10')">
-      <div class="ex-meta"><span class="ex-date">2025-12-29</span><span class="ex-badge badge-critical">CRITICAL</span></div>
-      <div class="ex-title">ClickFix to NetSupport</div>
-      <div class="ex-subtitle">techbros.tech Domain</div>
-      <div class="ex-desc">Multi-stage ClickFix attack abusing Google Sites as initial lander. Victim tricked into executing a PowerShell stager via fake CAPTCHA. NetSupport RAT deployed fileless, with C2 beaconing and lateral movement attempt against Domain Controller.</div>
-      <div class="ex-tags"><span class="tag">NETSUPPORT RAT</span><span class="tag">CLICKFIX</span><span class="tag">FILELESS</span><span class="tag">POWERSHELL STAGER</span><span class="tag">LSARPC</span></div>
-      <div class="ex-footer"><span class="ex-iocs">Infected: 10.12.29.101 | DESKTOP-7P1B4E8</span><span class="ex-arrow">→</span></div>
+    <a href="#chain" class="exercise-card fade-in" style="transition-delay:0.3s" onclick="switchChain('ex10')">
+      <span class="ex-date">2025-12-29</span>
+      <span class="ex-badge badge-critical">CRITICAL</span>
+      <div class="ex-main">
+        <div class="ex-title">ClickFix to NetSupport</div>
+        <div class="ex-subtitle">techbros.tech — Google Sites Lure + Fileless RAT</div>
+        <div class="ex-tags"><span class="tag">NETSUPPORT RAT</span><span class="tag">CLICKFIX</span><span class="tag">FILELESS</span><span class="tag">POWERSHELL STAGER</span><span class="tag">LSARPC</span></div>
+      </div>
+      <span class="ex-iocs">10.12.29.101 | DESKTOP-7P1B4E8</span>
+      <span class="ex-arrow">→</span>
     </a>
   </div>
 </section>
