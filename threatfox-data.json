@@ -325,7 +325,7 @@
             "confidence_level": 100,
             "is_compromised": true,
             "first_seen": "2026-04-02 21:10:28 UTC",
-            "last_seen": null,
+            "last_seen": "2026-04-03 05:07:24 UTC",
             "reference": "https:\/\/infosec.exchange\/@monitorsg\/116337161263343056",
             "reporter": "monitorsg",
             "tags": [
@@ -346,7 +346,7 @@
             "confidence_level": 100,
             "is_compromised": true,
             "first_seen": "2026-04-02 21:10:20 UTC",
-            "last_seen": null,
+            "last_seen": "2026-04-03 05:07:17 UTC",
             "reference": "https:\/\/infosec.exchange\/@monitorsg\/116337161263343056",
             "reporter": "monitorsg",
             "tags": [
@@ -367,7 +367,7 @@
             "confidence_level": 100,
             "is_compromised": true,
             "first_seen": "2026-04-02 21:10:15 UTC",
-            "last_seen": "2026-04-02 21:10:33 UTC",
+            "last_seen": "2026-04-03 05:07:27 UTC",
             "reference": "https:\/\/infosec.exchange\/@monitorsg\/116337161263343056",
             "reporter": "monitorsg",
             "tags": [
@@ -7658,258 +7658,6 @@
             "reporter": "abuse_ch",
             "tags": [
                 "Lumma"
-            ]
-        },
-        {
-            "id": "1780287",
-            "ioc": "198.244.201.139:3183",
-            "threat_type": "botnet_cc",
-            "threat_type_desc": "Indicator that identifies a botnet command&control server (C&C)",
-            "ioc_type": "ip:port",
-            "ioc_type_desc": "ip:port combination that is used for botnet Command&control (C&C)",
-            "malware": "win.raton_rat",
-            "malware_printable": "RatonRAT",
-            "malware_alias": null,
-            "malware_malpedia": "https:\/\/malpedia.caad.fkie.fraunhofer.de\/details\/win.raton_rat",
-            "confidence_level": 100,
-            "is_compromised": false,
-            "first_seen": "2026-04-02 02:45:30 UTC",
-            "last_seen": null,
-            "reference": null,
-            "reporter": "abuse_ch",
-            "tags": [
-                "RatonRAT"
-            ]
-        },
-        {
-            "id": "1780285",
-            "ioc": "kvhce4pcgf.localto.net",
-            "threat_type": "botnet_cc",
-            "threat_type_desc": "Indicator that identifies a botnet command&control server (C&C)",
-            "ioc_type": "domain",
-            "ioc_type_desc": "Domain that is used for botnet Command&control (C&C)",
-            "malware": "win.xworm",
-            "malware_printable": "XWorm",
-            "malware_alias": null,
-            "malware_malpedia": "https:\/\/malpedia.caad.fkie.fraunhofer.de\/details\/win.xworm",
-            "confidence_level": 100,
-            "is_compromised": false,
-            "first_seen": "2026-04-02 02:01:44 UTC",
-            "last_seen": null,
-            "reference": "https:\/\/tria.ge\/260402-cdwnssaz7m",
-            "reporter": "dyingbreeds_",
-            "tags": [
-                "XWorm"
-            ]
-        },
-        {
-            "id": "1780283",
-            "ioc": "cakhiazke.cc",
-            "threat_type": "botnet_cc",
-            "threat_type_desc": "Indicator that identifies a botnet command&control server (C&C)",
-            "ioc_type": "domain",
-            "ioc_type_desc": "Domain that is used for botnet Command&control (C&C)",
-            "malware": "win.quasar_rat",
-            "malware_printable": "Quasar RAT",
-            "malware_alias": "CinaRAT,QuasarRAT,Yggdrasil",
-            "malware_malpedia": "https:\/\/malpedia.caad.fkie.fraunhofer.de\/details\/win.quasar_rat",
-            "confidence_level": 100,
-            "is_compromised": false,
-            "first_seen": "2026-04-02 02:00:28 UTC",
-            "last_seen": null,
-            "reference": "https:\/\/tria.ge\/260402-cb94eaaz7k",
-            "reporter": "dyingbreeds_",
-            "tags": [
-                "quasar"
-            ]
-        },
-        {
-            "id": "1780284",
-            "ioc": "malware.cakhiazke.cc",
-            "threat_type": "botnet_cc",
-            "threat_type_desc": "Indicator that identifies a botnet command&control server (C&C)",
-            "ioc_type": "domain",
-            "ioc_type_desc": "Domain that is used for botnet Command&control (C&C)",
-            "malware": "win.quasar_rat",
-            "malware_printable": "Quasar RAT",
-            "malware_alias": "CinaRAT,QuasarRAT,Yggdrasil",
-            "malware_malpedia": "https:\/\/malpedia.caad.fkie.fraunhofer.de\/details\/win.quasar_rat",
-            "confidence_level": 100,
-            "is_compromised": false,
-            "first_seen": "2026-04-02 02:00:28 UTC",
-            "last_seen": null,
-            "reference": "https:\/\/tria.ge\/260402-cb94eaaz7k",
-            "reporter": "dyingbreeds_",
-            "tags": [
-                "quasar"
-            ]
-        },
-        {
-            "id": "1780281",
-            "ioc": "gitpitch.com",
-            "threat_type": "botnet_cc",
-            "threat_type_desc": "Indicator that identifies a botnet command&control server (C&C)",
-            "ioc_type": "domain",
-            "ioc_type_desc": "Domain that is used for botnet Command&control (C&C)",
-            "malware": "win.quasar_rat",
-            "malware_printable": "Quasar RAT",
-            "malware_alias": "CinaRAT,QuasarRAT,Yggdrasil",
-            "malware_malpedia": "https:\/\/malpedia.caad.fkie.fraunhofer.de\/details\/win.quasar_rat",
-            "confidence_level": 100,
-            "is_compromised": false,
-            "first_seen": "2026-04-02 02:00:24 UTC",
-            "last_seen": null,
-            "reference": "https:\/\/tria.ge\/260402-cdeqaaes6s",
-            "reporter": "dyingbreeds_",
-            "tags": [
-                "quasar"
-            ]
-        },
-        {
-            "id": "1780282",
-            "ioc": "malware.gitpitch.com",
-            "threat_type": "botnet_cc",
-            "threat_type_desc": "Indicator that identifies a botnet command&control server (C&C)",
-            "ioc_type": "domain",
-            "ioc_type_desc": "Domain that is used for botnet Command&control (C&C)",
-            "malware": "win.quasar_rat",
-            "malware_printable": "Quasar RAT",
-            "malware_alias": "CinaRAT,QuasarRAT,Yggdrasil",
-            "malware_malpedia": "https:\/\/malpedia.caad.fkie.fraunhofer.de\/details\/win.quasar_rat",
-            "confidence_level": 100,
-            "is_compromised": false,
-            "first_seen": "2026-04-02 02:00:24 UTC",
-            "last_seen": null,
-            "reference": "https:\/\/tria.ge\/260402-cdeqaaes6s",
-            "reporter": "dyingbreeds_",
-            "tags": [
-                "quasar"
-            ]
-        },
-        {
-            "id": "1780279",
-            "ioc": "147.185.221.17:11977",
-            "threat_type": "botnet_cc",
-            "threat_type_desc": "Indicator that identifies a botnet command&control server (C&C)",
-            "ioc_type": "ip:port",
-            "ioc_type_desc": "ip:port combination that is used for botnet Command&control (C&C)",
-            "malware": "win.xworm",
-            "malware_printable": "XWorm",
-            "malware_alias": null,
-            "malware_malpedia": "https:\/\/malpedia.caad.fkie.fraunhofer.de\/details\/win.xworm",
-            "confidence_level": 100,
-            "is_compromised": false,
-            "first_seen": "2026-04-02 01:53:03 UTC",
-            "last_seen": null,
-            "reference": "https:\/\/tria.ge\/260402-bpf7taay3n",
-            "reporter": "dyingbreeds_",
-            "tags": [
-                "XWorm"
-            ]
-        },
-        {
-            "id": "1780277",
-            "ioc": "cakhiaaq.cc",
-            "threat_type": "botnet_cc",
-            "threat_type_desc": "Indicator that identifies a botnet command&control server (C&C)",
-            "ioc_type": "domain",
-            "ioc_type_desc": "Domain that is used for botnet Command&control (C&C)",
-            "malware": "win.quasar_rat",
-            "malware_printable": "Quasar RAT",
-            "malware_alias": "CinaRAT,QuasarRAT,Yggdrasil",
-            "malware_malpedia": "https:\/\/malpedia.caad.fkie.fraunhofer.de\/details\/win.quasar_rat",
-            "confidence_level": 100,
-            "is_compromised": false,
-            "first_seen": "2026-04-02 01:51:51 UTC",
-            "last_seen": null,
-            "reference": "https:\/\/tria.ge\/260402-b812bses21",
-            "reporter": "dyingbreeds_",
-            "tags": [
-                "quasar"
-            ]
-        },
-        {
-            "id": "1780278",
-            "ioc": "malware.cakhiaaq.cc",
-            "threat_type": "botnet_cc",
-            "threat_type_desc": "Indicator that identifies a botnet command&control server (C&C)",
-            "ioc_type": "domain",
-            "ioc_type_desc": "Domain that is used for botnet Command&control (C&C)",
-            "malware": "win.quasar_rat",
-            "malware_printable": "Quasar RAT",
-            "malware_alias": "CinaRAT,QuasarRAT,Yggdrasil",
-            "malware_malpedia": "https:\/\/malpedia.caad.fkie.fraunhofer.de\/details\/win.quasar_rat",
-            "confidence_level": 100,
-            "is_compromised": false,
-            "first_seen": "2026-04-02 01:51:51 UTC",
-            "last_seen": null,
-            "reference": "https:\/\/tria.ge\/260402-b812bses21",
-            "reporter": "dyingbreeds_",
-            "tags": [
-                "quasar"
-            ]
-        },
-        {
-            "id": "1780275",
-            "ioc": "acemyonlineclasses.com",
-            "threat_type": "botnet_cc",
-            "threat_type_desc": "Indicator that identifies a botnet command&control server (C&C)",
-            "ioc_type": "domain",
-            "ioc_type_desc": "Domain that is used for botnet Command&control (C&C)",
-            "malware": "win.quasar_rat",
-            "malware_printable": "Quasar RAT",
-            "malware_alias": "CinaRAT,QuasarRAT,Yggdrasil",
-            "malware_malpedia": "https:\/\/malpedia.caad.fkie.fraunhofer.de\/details\/win.quasar_rat",
-            "confidence_level": 100,
-            "is_compromised": false,
-            "first_seen": "2026-04-02 01:47:32 UTC",
-            "last_seen": null,
-            "reference": "https:\/\/tria.ge\/260402-b6tt8saz3l",
-            "reporter": "dyingbreeds_",
-            "tags": [
-                "quasar"
-            ]
-        },
-        {
-            "id": "1780276",
-            "ioc": "malware.acemyonlineclasses.com",
-            "threat_type": "botnet_cc",
-            "threat_type_desc": "Indicator that identifies a botnet command&control server (C&C)",
-            "ioc_type": "domain",
-            "ioc_type_desc": "Domain that is used for botnet Command&control (C&C)",
-            "malware": "win.quasar_rat",
-            "malware_printable": "Quasar RAT",
-            "malware_alias": "CinaRAT,QuasarRAT,Yggdrasil",
-            "malware_malpedia": "https:\/\/malpedia.caad.fkie.fraunhofer.de\/details\/win.quasar_rat",
-            "confidence_level": 100,
-            "is_compromised": false,
-            "first_seen": "2026-04-02 01:47:32 UTC",
-            "last_seen": null,
-            "reference": "https:\/\/tria.ge\/260402-b6tt8saz3l",
-            "reporter": "dyingbreeds_",
-            "tags": [
-                "quasar"
-            ]
-        },
-        {
-            "id": "1780256",
-            "ioc": "109.241.233.244:4782",
-            "threat_type": "botnet_cc",
-            "threat_type_desc": "Indicator that identifies a botnet command&control server (C&C)",
-            "ioc_type": "ip:port",
-            "ioc_type_desc": "ip:port combination that is used for botnet Command&control (C&C)",
-            "malware": "win.quasar_rat",
-            "malware_printable": "Quasar RAT",
-            "malware_alias": "CinaRAT,QuasarRAT,Yggdrasil",
-            "malware_malpedia": "https:\/\/malpedia.caad.fkie.fraunhofer.de\/details\/win.quasar_rat",
-            "confidence_level": 100,
-            "is_compromised": false,
-            "first_seen": "2026-04-01 23:08:28 UTC",
-            "last_seen": null,
-            "reference": "https:\/\/tria.ge\/260401-21a32scw2s",
-            "reporter": "dyingbreeds_",
-            "tags": [
-                "quasar"
             ]
         }
     ]
