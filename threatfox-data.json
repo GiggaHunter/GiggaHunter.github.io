@@ -2,6 +2,952 @@
     "query_status": "ok",
     "data": [
         {
+            "id": "1781353",
+            "ioc": "snack-api.balkarbelyashi.in.net",
+            "threat_type": "payload_delivery",
+            "threat_type_desc": "Indicator that identifies a malware distribution server (payload delivery)",
+            "ioc_type": "domain",
+            "ioc_type_desc": "Domain name that delivers a malware payload",
+            "malware": "js.clearfake",
+            "malware_printable": "ClearFake",
+            "malware_alias": null,
+            "malware_malpedia": "https:\/\/malpedia.caad.fkie.fraunhofer.de\/details\/js.clearfake",
+            "confidence_level": 100,
+            "is_compromised": false,
+            "first_seen": "2026-04-05 05:54:10 UTC",
+            "last_seen": null,
+            "reference": null,
+            "reporter": "threatcat_ch",
+            "tags": [
+                "ClearFake"
+            ]
+        },
+        {
+            "id": "1781352",
+            "ioc": "livewithrelief.com",
+            "threat_type": "payload_delivery",
+            "threat_type_desc": "Indicator that identifies a malware distribution server (payload delivery)",
+            "ioc_type": "domain",
+            "ioc_type_desc": "Domain name that delivers a malware payload",
+            "malware": "win.strelastealer",
+            "malware_printable": "StrelaStealer",
+            "malware_alias": null,
+            "malware_malpedia": "https:\/\/malpedia.caad.fkie.fraunhofer.de\/details\/win.strelastealer",
+            "confidence_level": 100,
+            "is_compromised": true,
+            "first_seen": "2026-04-05 05:44:27 UTC",
+            "last_seen": null,
+            "reference": null,
+            "reporter": "threatcat_ch",
+            "tags": [
+                "StrelaStealer"
+            ]
+        },
+        {
+            "id": "1781351",
+            "ioc": "171.233.27.46:5001",
+            "threat_type": "botnet_cc",
+            "threat_type_desc": "Indicator that identifies a botnet command&control server (C&C)",
+            "ioc_type": "ip:port",
+            "ioc_type_desc": "ip:port combination that is used for botnet Command&control (C&C)",
+            "malware": "win.venom",
+            "malware_printable": "Venom RAT",
+            "malware_alias": null,
+            "malware_malpedia": "https:\/\/malpedia.caad.fkie.fraunhofer.de\/details\/win.venom",
+            "confidence_level": 100,
+            "is_compromised": false,
+            "first_seen": "2026-04-05 05:12:47 UTC",
+            "last_seen": null,
+            "reference": "",
+            "reporter": "whoamix302",
+            "tags": [
+                "RAT",
+                "Venom RAT"
+            ]
+        },
+        {
+            "id": "1781350",
+            "ioc": "http:\/\/196.251.107.130\/h84jjfAr\/index.php",
+            "threat_type": "botnet_cc",
+            "threat_type_desc": "Indicator that identifies a botnet command&control server (C&C)",
+            "ioc_type": "url",
+            "ioc_type_desc": "URL that is used for botnet Command&control (C&C)",
+            "malware": "win.amadey",
+            "malware_printable": "Amadey",
+            "malware_alias": null,
+            "malware_malpedia": "https:\/\/malpedia.caad.fkie.fraunhofer.de\/details\/win.amadey",
+            "confidence_level": 100,
+            "is_compromised": false,
+            "first_seen": "2026-04-05 04:30:09 UTC",
+            "last_seen": null,
+            "reference": null,
+            "reporter": "abuse_ch",
+            "tags": [
+                "Amadey"
+            ]
+        },
+        {
+            "id": "1781349",
+            "ioc": "https:\/\/syndicatesecurity.co.uk\/",
+            "threat_type": "payload_delivery",
+            "threat_type_desc": "Indicator that identifies a malware distribution server (payload delivery)",
+            "ioc_type": "url",
+            "ioc_type_desc": "URL that delivers a malware payload",
+            "malware": "unknown",
+            "malware_printable": "Unknown malware",
+            "malware_alias": null,
+            "malware_malpedia": "https:\/\/malpedia.caad.fkie.fraunhofer.de\/details\/unknown",
+            "confidence_level": 90,
+            "is_compromised": false,
+            "first_seen": "2026-04-05 02:30:29 UTC",
+            "last_seen": null,
+            "reference": "https:\/\/clickfix.carsonww.com\/domains\/syndicatesecurity.co.uk",
+            "reporter": "CarsonWilliams",
+            "tags": [
+                "ClickFix"
+            ]
+        },
+        {
+            "id": "1781348",
+            "ioc": "ghfjfgj57765r67ghght-56660.portmap.host",
+            "threat_type": "botnet_cc",
+            "threat_type_desc": "Indicator that identifies a botnet command&control server (C&C)",
+            "ioc_type": "domain",
+            "ioc_type_desc": "Domain that is used for botnet Command&control (C&C)",
+            "malware": "win.xworm",
+            "malware_printable": "XWorm",
+            "malware_alias": null,
+            "malware_malpedia": "https:\/\/malpedia.caad.fkie.fraunhofer.de\/details\/win.xworm",
+            "confidence_level": 100,
+            "is_compromised": false,
+            "first_seen": "2026-04-05 02:01:44 UTC",
+            "last_seen": null,
+            "reference": "https:\/\/tria.ge\/260404-18btwaay8t",
+            "reporter": "dyingbreeds_",
+            "tags": [
+                "XWorm"
+            ]
+        },
+        {
+            "id": "1781347",
+            "ioc": "sost1213.duckdns.org",
+            "threat_type": "botnet_cc",
+            "threat_type_desc": "Indicator that identifies a botnet command&control server (C&C)",
+            "ioc_type": "domain",
+            "ioc_type_desc": "Domain that is used for botnet Command&control (C&C)",
+            "malware": "win.remcos",
+            "malware_printable": "Remcos",
+            "malware_alias": "RemcosRAT,Remvio,Socmer",
+            "malware_malpedia": "https:\/\/malpedia.caad.fkie.fraunhofer.de\/details\/win.remcos",
+            "confidence_level": 100,
+            "is_compromised": false,
+            "first_seen": "2026-04-05 02:00:08 UTC",
+            "last_seen": null,
+            "reference": "https:\/\/tria.ge\/260405-a9fw4sfw7n",
+            "reporter": "dyingbreeds_",
+            "tags": [
+                "remcos"
+            ]
+        },
+        {
+            "id": "1781346",
+            "ioc": "tfxgjy8d4r.localto.net",
+            "threat_type": "botnet_cc",
+            "threat_type_desc": "Indicator that identifies a botnet command&control server (C&C)",
+            "ioc_type": "domain",
+            "ioc_type_desc": "Domain that is used for botnet Command&control (C&C)",
+            "malware": "win.quasar_rat",
+            "malware_printable": "Quasar RAT",
+            "malware_alias": "CinaRAT,QuasarRAT,Yggdrasil",
+            "malware_malpedia": "https:\/\/malpedia.caad.fkie.fraunhofer.de\/details\/win.quasar_rat",
+            "confidence_level": 75,
+            "is_compromised": false,
+            "first_seen": "2026-04-05 00:55:29 UTC",
+            "last_seen": "2026-04-05 02:00:27 UTC",
+            "reference": "https:\/\/bazaar.abuse.ch\/sample\/17abb2fc33e5d297d42173bc0515078031a8119e9ae4edefc98c33be93e4f330\/",
+            "reporter": "abuse_ch",
+            "tags": [
+                "quasar"
+            ]
+        },
+        {
+            "id": "1781331",
+            "ioc": "extended-king-tone-polar.trycloudflare.com",
+            "threat_type": "botnet_cc",
+            "threat_type_desc": "Indicator that identifies a botnet command&control server (C&C)",
+            "ioc_type": "domain",
+            "ioc_type_desc": "Domain that is used for botnet Command&control (C&C)",
+            "malware": "js.ether_rat",
+            "malware_printable": "EtherRAT",
+            "malware_alias": null,
+            "malware_malpedia": "https:\/\/malpedia.caad.fkie.fraunhofer.de\/details\/js.ether_rat",
+            "confidence_level": 100,
+            "is_compromised": false,
+            "first_seen": "2026-04-04 23:59:17 UTC",
+            "last_seen": null,
+            "reference": "",
+            "reporter": "RacWatchin8872",
+            "tags": [
+                "domain",
+                "EtherRat"
+            ]
+        },
+        {
+            "id": "1781332",
+            "ioc": "fluxnet.life",
+            "threat_type": "botnet_cc",
+            "threat_type_desc": "Indicator that identifies a botnet command&control server (C&C)",
+            "ioc_type": "domain",
+            "ioc_type_desc": "Domain that is used for botnet Command&control (C&C)",
+            "malware": "js.ether_rat",
+            "malware_printable": "EtherRAT",
+            "malware_alias": null,
+            "malware_malpedia": "https:\/\/malpedia.caad.fkie.fraunhofer.de\/details\/js.ether_rat",
+            "confidence_level": 100,
+            "is_compromised": false,
+            "first_seen": "2026-04-04 23:59:17 UTC",
+            "last_seen": null,
+            "reference": "",
+            "reporter": "RacWatchin8872",
+            "tags": [
+                "domain",
+                "EtherRat"
+            ]
+        },
+        {
+            "id": "1781333",
+            "ioc": "cerumo.shop",
+            "threat_type": "botnet_cc",
+            "threat_type_desc": "Indicator that identifies a botnet command&control server (C&C)",
+            "ioc_type": "domain",
+            "ioc_type_desc": "Domain that is used for botnet Command&control (C&C)",
+            "malware": "js.ether_rat",
+            "malware_printable": "EtherRAT",
+            "malware_alias": null,
+            "malware_malpedia": "https:\/\/malpedia.caad.fkie.fraunhofer.de\/details\/js.ether_rat",
+            "confidence_level": 100,
+            "is_compromised": false,
+            "first_seen": "2026-04-04 23:59:17 UTC",
+            "last_seen": null,
+            "reference": "",
+            "reporter": "RacWatchin8872",
+            "tags": [
+                "domain",
+                "EtherRat"
+            ]
+        },
+        {
+            "id": "1781334",
+            "ioc": "zonasteni.com",
+            "threat_type": "botnet_cc",
+            "threat_type_desc": "Indicator that identifies a botnet command&control server (C&C)",
+            "ioc_type": "domain",
+            "ioc_type_desc": "Domain that is used for botnet Command&control (C&C)",
+            "malware": "js.ether_rat",
+            "malware_printable": "EtherRAT",
+            "malware_alias": null,
+            "malware_malpedia": "https:\/\/malpedia.caad.fkie.fraunhofer.de\/details\/js.ether_rat",
+            "confidence_level": 100,
+            "is_compromised": false,
+            "first_seen": "2026-04-04 23:59:17 UTC",
+            "last_seen": null,
+            "reference": "",
+            "reporter": "RacWatchin8872",
+            "tags": [
+                "domain",
+                "EtherRat"
+            ]
+        },
+        {
+            "id": "1781335",
+            "ioc": "millersteel.digital",
+            "threat_type": "botnet_cc",
+            "threat_type_desc": "Indicator that identifies a botnet command&control server (C&C)",
+            "ioc_type": "domain",
+            "ioc_type_desc": "Domain that is used for botnet Command&control (C&C)",
+            "malware": "js.ether_rat",
+            "malware_printable": "EtherRAT",
+            "malware_alias": null,
+            "malware_malpedia": "https:\/\/malpedia.caad.fkie.fraunhofer.de\/details\/js.ether_rat",
+            "confidence_level": 100,
+            "is_compromised": false,
+            "first_seen": "2026-04-04 23:59:17 UTC",
+            "last_seen": null,
+            "reference": "",
+            "reporter": "RacWatchin8872",
+            "tags": [
+                "domain",
+                "EtherRat"
+            ]
+        },
+        {
+            "id": "1781336",
+            "ioc": "publisherresolution.com",
+            "threat_type": "botnet_cc",
+            "threat_type_desc": "Indicator that identifies a botnet command&control server (C&C)",
+            "ioc_type": "domain",
+            "ioc_type_desc": "Domain that is used for botnet Command&control (C&C)",
+            "malware": "js.ether_rat",
+            "malware_printable": "EtherRAT",
+            "malware_alias": null,
+            "malware_malpedia": "https:\/\/malpedia.caad.fkie.fraunhofer.de\/details\/js.ether_rat",
+            "confidence_level": 100,
+            "is_compromised": false,
+            "first_seen": "2026-04-04 23:59:17 UTC",
+            "last_seen": null,
+            "reference": "",
+            "reporter": "RacWatchin8872",
+            "tags": [
+                "domain",
+                "EtherRat"
+            ]
+        },
+        {
+            "id": "1781337",
+            "ioc": "nastilka.com",
+            "threat_type": "botnet_cc",
+            "threat_type_desc": "Indicator that identifies a botnet command&control server (C&C)",
+            "ioc_type": "domain",
+            "ioc_type_desc": "Domain that is used for botnet Command&control (C&C)",
+            "malware": "js.ether_rat",
+            "malware_printable": "EtherRAT",
+            "malware_alias": null,
+            "malware_malpedia": "https:\/\/malpedia.caad.fkie.fraunhofer.de\/details\/js.ether_rat",
+            "confidence_level": 100,
+            "is_compromised": false,
+            "first_seen": "2026-04-04 23:59:17 UTC",
+            "last_seen": null,
+            "reference": "",
+            "reporter": "RacWatchin8872",
+            "tags": [
+                "domain",
+                "EtherRat"
+            ]
+        },
+        {
+            "id": "1781338",
+            "ioc": "terminal-labels-fan-witness.trycloudflare.com",
+            "threat_type": "botnet_cc",
+            "threat_type_desc": "Indicator that identifies a botnet command&control server (C&C)",
+            "ioc_type": "domain",
+            "ioc_type_desc": "Domain that is used for botnet Command&control (C&C)",
+            "malware": "js.ether_rat",
+            "malware_printable": "EtherRAT",
+            "malware_alias": null,
+            "malware_malpedia": "https:\/\/malpedia.caad.fkie.fraunhofer.de\/details\/js.ether_rat",
+            "confidence_level": 100,
+            "is_compromised": false,
+            "first_seen": "2026-04-04 23:59:17 UTC",
+            "last_seen": null,
+            "reference": "",
+            "reporter": "RacWatchin8872",
+            "tags": [
+                "domain",
+                "EtherRat"
+            ]
+        },
+        {
+            "id": "1781339",
+            "ioc": "northcroft.digital",
+            "threat_type": "botnet_cc",
+            "threat_type_desc": "Indicator that identifies a botnet command&control server (C&C)",
+            "ioc_type": "domain",
+            "ioc_type_desc": "Domain that is used for botnet Command&control (C&C)",
+            "malware": "js.ether_rat",
+            "malware_printable": "EtherRAT",
+            "malware_alias": null,
+            "malware_malpedia": "https:\/\/malpedia.caad.fkie.fraunhofer.de\/details\/js.ether_rat",
+            "confidence_level": 100,
+            "is_compromised": false,
+            "first_seen": "2026-04-04 23:59:17 UTC",
+            "last_seen": null,
+            "reference": "",
+            "reporter": "RacWatchin8872",
+            "tags": [
+                "domain",
+                "EtherRat"
+            ]
+        },
+        {
+            "id": "1781340",
+            "ioc": "imported-spread-amplifier-chemicals.trycloudflare.com",
+            "threat_type": "botnet_cc",
+            "threat_type_desc": "Indicator that identifies a botnet command&control server (C&C)",
+            "ioc_type": "domain",
+            "ioc_type_desc": "Domain that is used for botnet Command&control (C&C)",
+            "malware": "js.ether_rat",
+            "malware_printable": "EtherRAT",
+            "malware_alias": null,
+            "malware_malpedia": "https:\/\/malpedia.caad.fkie.fraunhofer.de\/details\/js.ether_rat",
+            "confidence_level": 100,
+            "is_compromised": false,
+            "first_seen": "2026-04-04 23:59:17 UTC",
+            "last_seen": null,
+            "reference": "",
+            "reporter": "RacWatchin8872",
+            "tags": [
+                "domain",
+                "EtherRat"
+            ]
+        },
+        {
+            "id": "1781341",
+            "ioc": "kde-blink-buried-flower.trycloudflare.com",
+            "threat_type": "botnet_cc",
+            "threat_type_desc": "Indicator that identifies a botnet command&control server (C&C)",
+            "ioc_type": "domain",
+            "ioc_type_desc": "Domain that is used for botnet Command&control (C&C)",
+            "malware": "js.ether_rat",
+            "malware_printable": "EtherRAT",
+            "malware_alias": null,
+            "malware_malpedia": "https:\/\/malpedia.caad.fkie.fraunhofer.de\/details\/js.ether_rat",
+            "confidence_level": 100,
+            "is_compromised": false,
+            "first_seen": "2026-04-04 23:59:17 UTC",
+            "last_seen": null,
+            "reference": "",
+            "reporter": "RacWatchin8872",
+            "tags": [
+                "domain",
+                "EtherRat"
+            ]
+        },
+        {
+            "id": "1781342",
+            "ioc": "icq-flooring-procedure-rap.trycloudflare.com",
+            "threat_type": "botnet_cc",
+            "threat_type_desc": "Indicator that identifies a botnet command&control server (C&C)",
+            "ioc_type": "domain",
+            "ioc_type_desc": "Domain that is used for botnet Command&control (C&C)",
+            "malware": "js.ether_rat",
+            "malware_printable": "EtherRAT",
+            "malware_alias": null,
+            "malware_malpedia": "https:\/\/malpedia.caad.fkie.fraunhofer.de\/details\/js.ether_rat",
+            "confidence_level": 100,
+            "is_compromised": false,
+            "first_seen": "2026-04-04 23:59:17 UTC",
+            "last_seen": null,
+            "reference": "",
+            "reporter": "RacWatchin8872",
+            "tags": [
+                "domain",
+                "EtherRat"
+            ]
+        },
+        {
+            "id": "1781343",
+            "ioc": "might-tribute-christina-vacuum.trycloudflare.com",
+            "threat_type": "botnet_cc",
+            "threat_type_desc": "Indicator that identifies a botnet command&control server (C&C)",
+            "ioc_type": "domain",
+            "ioc_type_desc": "Domain that is used for botnet Command&control (C&C)",
+            "malware": "js.ether_rat",
+            "malware_printable": "EtherRAT",
+            "malware_alias": null,
+            "malware_malpedia": "https:\/\/malpedia.caad.fkie.fraunhofer.de\/details\/js.ether_rat",
+            "confidence_level": 100,
+            "is_compromised": false,
+            "first_seen": "2026-04-04 23:59:17 UTC",
+            "last_seen": null,
+            "reference": "",
+            "reporter": "RacWatchin8872",
+            "tags": [
+                "domain",
+                "EtherRat"
+            ]
+        },
+        {
+            "id": "1781344",
+            "ioc": "corp-embassy-finds-marked.trycloudflare.com",
+            "threat_type": "botnet_cc",
+            "threat_type_desc": "Indicator that identifies a botnet command&control server (C&C)",
+            "ioc_type": "domain",
+            "ioc_type_desc": "Domain that is used for botnet Command&control (C&C)",
+            "malware": "js.ether_rat",
+            "malware_printable": "EtherRAT",
+            "malware_alias": null,
+            "malware_malpedia": "https:\/\/malpedia.caad.fkie.fraunhofer.de\/details\/js.ether_rat",
+            "confidence_level": 100,
+            "is_compromised": false,
+            "first_seen": "2026-04-04 23:59:17 UTC",
+            "last_seen": null,
+            "reference": "",
+            "reporter": "RacWatchin8872",
+            "tags": [
+                "domain",
+                "EtherRat"
+            ]
+        },
+        {
+            "id": "1781345",
+            "ioc": "depot-reunion-listings-targets.trycloudflare.com",
+            "threat_type": "botnet_cc",
+            "threat_type_desc": "Indicator that identifies a botnet command&control server (C&C)",
+            "ioc_type": "domain",
+            "ioc_type_desc": "Domain that is used for botnet Command&control (C&C)",
+            "malware": "js.ether_rat",
+            "malware_printable": "EtherRAT",
+            "malware_alias": null,
+            "malware_malpedia": "https:\/\/malpedia.caad.fkie.fraunhofer.de\/details\/js.ether_rat",
+            "confidence_level": 100,
+            "is_compromised": false,
+            "first_seen": "2026-04-04 23:59:17 UTC",
+            "last_seen": null,
+            "reference": "",
+            "reporter": "RacWatchin8872",
+            "tags": [
+                "domain",
+                "EtherRat"
+            ]
+        },
+        {
+            "id": "1781326",
+            "ioc": "https:\/\/kde-blink-buried-flower.trycloudflare.com",
+            "threat_type": "botnet_cc",
+            "threat_type_desc": "Indicator that identifies a botnet command&control server (C&C)",
+            "ioc_type": "url",
+            "ioc_type_desc": "URL that is used for botnet Command&control (C&C)",
+            "malware": "js.ether_rat",
+            "malware_printable": "EtherRAT",
+            "malware_alias": null,
+            "malware_malpedia": "https:\/\/malpedia.caad.fkie.fraunhofer.de\/details\/js.ether_rat",
+            "confidence_level": 100,
+            "is_compromised": false,
+            "first_seen": "2026-04-04 23:58:25 UTC",
+            "last_seen": null,
+            "reference": "",
+            "reporter": "RacWatchin8872",
+            "tags": [
+                "EtherRat"
+            ]
+        },
+        {
+            "id": "1781327",
+            "ioc": "https:\/\/icq-flooring-procedure-rap.trycloudflare.com",
+            "threat_type": "botnet_cc",
+            "threat_type_desc": "Indicator that identifies a botnet command&control server (C&C)",
+            "ioc_type": "url",
+            "ioc_type_desc": "URL that is used for botnet Command&control (C&C)",
+            "malware": "js.ether_rat",
+            "malware_printable": "EtherRAT",
+            "malware_alias": null,
+            "malware_malpedia": "https:\/\/malpedia.caad.fkie.fraunhofer.de\/details\/js.ether_rat",
+            "confidence_level": 100,
+            "is_compromised": false,
+            "first_seen": "2026-04-04 23:58:25 UTC",
+            "last_seen": null,
+            "reference": "",
+            "reporter": "RacWatchin8872",
+            "tags": [
+                "EtherRat"
+            ]
+        },
+        {
+            "id": "1781328",
+            "ioc": "https:\/\/might-tribute-christina-vacuum.trycloudflare.com",
+            "threat_type": "botnet_cc",
+            "threat_type_desc": "Indicator that identifies a botnet command&control server (C&C)",
+            "ioc_type": "url",
+            "ioc_type_desc": "URL that is used for botnet Command&control (C&C)",
+            "malware": "js.ether_rat",
+            "malware_printable": "EtherRAT",
+            "malware_alias": null,
+            "malware_malpedia": "https:\/\/malpedia.caad.fkie.fraunhofer.de\/details\/js.ether_rat",
+            "confidence_level": 100,
+            "is_compromised": false,
+            "first_seen": "2026-04-04 23:58:25 UTC",
+            "last_seen": null,
+            "reference": "",
+            "reporter": "RacWatchin8872",
+            "tags": [
+                "EtherRat"
+            ]
+        },
+        {
+            "id": "1781329",
+            "ioc": "https:\/\/corp-embassy-finds-marked.trycloudflare.com",
+            "threat_type": "botnet_cc",
+            "threat_type_desc": "Indicator that identifies a botnet command&control server (C&C)",
+            "ioc_type": "url",
+            "ioc_type_desc": "URL that is used for botnet Command&control (C&C)",
+            "malware": "js.ether_rat",
+            "malware_printable": "EtherRAT",
+            "malware_alias": null,
+            "malware_malpedia": "https:\/\/malpedia.caad.fkie.fraunhofer.de\/details\/js.ether_rat",
+            "confidence_level": 100,
+            "is_compromised": false,
+            "first_seen": "2026-04-04 23:58:25 UTC",
+            "last_seen": null,
+            "reference": "",
+            "reporter": "RacWatchin8872",
+            "tags": [
+                "EtherRat"
+            ]
+        },
+        {
+            "id": "1781330",
+            "ioc": "https:\/\/depot-reunion-listings-targets.trycloudflare.com",
+            "threat_type": "botnet_cc",
+            "threat_type_desc": "Indicator that identifies a botnet command&control server (C&C)",
+            "ioc_type": "url",
+            "ioc_type_desc": "URL that is used for botnet Command&control (C&C)",
+            "malware": "js.ether_rat",
+            "malware_printable": "EtherRAT",
+            "malware_alias": null,
+            "malware_malpedia": "https:\/\/malpedia.caad.fkie.fraunhofer.de\/details\/js.ether_rat",
+            "confidence_level": 100,
+            "is_compromised": false,
+            "first_seen": "2026-04-04 23:58:25 UTC",
+            "last_seen": null,
+            "reference": "",
+            "reporter": "RacWatchin8872",
+            "tags": [
+                "EtherRat"
+            ]
+        },
+        {
+            "id": "1781319",
+            "ioc": "https:\/\/zonasteni.com",
+            "threat_type": "botnet_cc",
+            "threat_type_desc": "Indicator that identifies a botnet command&control server (C&C)",
+            "ioc_type": "url",
+            "ioc_type_desc": "URL that is used for botnet Command&control (C&C)",
+            "malware": "js.ether_rat",
+            "malware_printable": "EtherRAT",
+            "malware_alias": null,
+            "malware_malpedia": "https:\/\/malpedia.caad.fkie.fraunhofer.de\/details\/js.ether_rat",
+            "confidence_level": 100,
+            "is_compromised": false,
+            "first_seen": "2026-04-04 23:58:24 UTC",
+            "last_seen": null,
+            "reference": "",
+            "reporter": "RacWatchin8872",
+            "tags": [
+                "EtherRat"
+            ]
+        },
+        {
+            "id": "1781320",
+            "ioc": "https:\/\/millersteel.digital",
+            "threat_type": "botnet_cc",
+            "threat_type_desc": "Indicator that identifies a botnet command&control server (C&C)",
+            "ioc_type": "url",
+            "ioc_type_desc": "URL that is used for botnet Command&control (C&C)",
+            "malware": "js.ether_rat",
+            "malware_printable": "EtherRAT",
+            "malware_alias": null,
+            "malware_malpedia": "https:\/\/malpedia.caad.fkie.fraunhofer.de\/details\/js.ether_rat",
+            "confidence_level": 100,
+            "is_compromised": false,
+            "first_seen": "2026-04-04 23:58:24 UTC",
+            "last_seen": null,
+            "reference": "",
+            "reporter": "RacWatchin8872",
+            "tags": [
+                "EtherRat"
+            ]
+        },
+        {
+            "id": "1781321",
+            "ioc": "https:\/\/publisherresolution.com",
+            "threat_type": "botnet_cc",
+            "threat_type_desc": "Indicator that identifies a botnet command&control server (C&C)",
+            "ioc_type": "url",
+            "ioc_type_desc": "URL that is used for botnet Command&control (C&C)",
+            "malware": "js.ether_rat",
+            "malware_printable": "EtherRAT",
+            "malware_alias": null,
+            "malware_malpedia": "https:\/\/malpedia.caad.fkie.fraunhofer.de\/details\/js.ether_rat",
+            "confidence_level": 100,
+            "is_compromised": false,
+            "first_seen": "2026-04-04 23:58:24 UTC",
+            "last_seen": null,
+            "reference": "",
+            "reporter": "RacWatchin8872",
+            "tags": [
+                "EtherRat"
+            ]
+        },
+        {
+            "id": "1781322",
+            "ioc": "https:\/\/nastilka.com",
+            "threat_type": "botnet_cc",
+            "threat_type_desc": "Indicator that identifies a botnet command&control server (C&C)",
+            "ioc_type": "url",
+            "ioc_type_desc": "URL that is used for botnet Command&control (C&C)",
+            "malware": "js.ether_rat",
+            "malware_printable": "EtherRAT",
+            "malware_alias": null,
+            "malware_malpedia": "https:\/\/malpedia.caad.fkie.fraunhofer.de\/details\/js.ether_rat",
+            "confidence_level": 100,
+            "is_compromised": false,
+            "first_seen": "2026-04-04 23:58:24 UTC",
+            "last_seen": null,
+            "reference": "",
+            "reporter": "RacWatchin8872",
+            "tags": [
+                "EtherRat"
+            ]
+        },
+        {
+            "id": "1781323",
+            "ioc": "https:\/\/terminal-labels-fan-witness.trycloudflare.com",
+            "threat_type": "botnet_cc",
+            "threat_type_desc": "Indicator that identifies a botnet command&control server (C&C)",
+            "ioc_type": "url",
+            "ioc_type_desc": "URL that is used for botnet Command&control (C&C)",
+            "malware": "js.ether_rat",
+            "malware_printable": "EtherRAT",
+            "malware_alias": null,
+            "malware_malpedia": "https:\/\/malpedia.caad.fkie.fraunhofer.de\/details\/js.ether_rat",
+            "confidence_level": 100,
+            "is_compromised": false,
+            "first_seen": "2026-04-04 23:58:24 UTC",
+            "last_seen": null,
+            "reference": "",
+            "reporter": "RacWatchin8872",
+            "tags": [
+                "EtherRat"
+            ]
+        },
+        {
+            "id": "1781324",
+            "ioc": "https:\/\/northcroft.digital",
+            "threat_type": "botnet_cc",
+            "threat_type_desc": "Indicator that identifies a botnet command&control server (C&C)",
+            "ioc_type": "url",
+            "ioc_type_desc": "URL that is used for botnet Command&control (C&C)",
+            "malware": "js.ether_rat",
+            "malware_printable": "EtherRAT",
+            "malware_alias": null,
+            "malware_malpedia": "https:\/\/malpedia.caad.fkie.fraunhofer.de\/details\/js.ether_rat",
+            "confidence_level": 100,
+            "is_compromised": false,
+            "first_seen": "2026-04-04 23:58:24 UTC",
+            "last_seen": null,
+            "reference": "",
+            "reporter": "RacWatchin8872",
+            "tags": [
+                "EtherRat"
+            ]
+        },
+        {
+            "id": "1781325",
+            "ioc": "https:\/\/imported-spread-amplifier-chemicals.trycloudflare.com",
+            "threat_type": "botnet_cc",
+            "threat_type_desc": "Indicator that identifies a botnet command&control server (C&C)",
+            "ioc_type": "url",
+            "ioc_type_desc": "URL that is used for botnet Command&control (C&C)",
+            "malware": "js.ether_rat",
+            "malware_printable": "EtherRAT",
+            "malware_alias": null,
+            "malware_malpedia": "https:\/\/malpedia.caad.fkie.fraunhofer.de\/details\/js.ether_rat",
+            "confidence_level": 100,
+            "is_compromised": false,
+            "first_seen": "2026-04-04 23:58:24 UTC",
+            "last_seen": null,
+            "reference": "",
+            "reporter": "RacWatchin8872",
+            "tags": [
+                "EtherRat"
+            ]
+        },
+        {
+            "id": "1781316",
+            "ioc": "https:\/\/extended-king-tone-polar.trycloudflare.com",
+            "threat_type": "botnet_cc",
+            "threat_type_desc": "Indicator that identifies a botnet command&control server (C&C)",
+            "ioc_type": "url",
+            "ioc_type_desc": "URL that is used for botnet Command&control (C&C)",
+            "malware": "js.ether_rat",
+            "malware_printable": "EtherRAT",
+            "malware_alias": null,
+            "malware_malpedia": "https:\/\/malpedia.caad.fkie.fraunhofer.de\/details\/js.ether_rat",
+            "confidence_level": 100,
+            "is_compromised": false,
+            "first_seen": "2026-04-04 23:58:23 UTC",
+            "last_seen": null,
+            "reference": "",
+            "reporter": "RacWatchin8872",
+            "tags": [
+                "EtherRat"
+            ]
+        },
+        {
+            "id": "1781317",
+            "ioc": "https:\/\/fluxnet.life",
+            "threat_type": "botnet_cc",
+            "threat_type_desc": "Indicator that identifies a botnet command&control server (C&C)",
+            "ioc_type": "url",
+            "ioc_type_desc": "URL that is used for botnet Command&control (C&C)",
+            "malware": "js.ether_rat",
+            "malware_printable": "EtherRAT",
+            "malware_alias": null,
+            "malware_malpedia": "https:\/\/malpedia.caad.fkie.fraunhofer.de\/details\/js.ether_rat",
+            "confidence_level": 100,
+            "is_compromised": false,
+            "first_seen": "2026-04-04 23:58:23 UTC",
+            "last_seen": null,
+            "reference": "",
+            "reporter": "RacWatchin8872",
+            "tags": [
+                "EtherRat"
+            ]
+        },
+        {
+            "id": "1781318",
+            "ioc": "https:\/\/cerumo.shop",
+            "threat_type": "botnet_cc",
+            "threat_type_desc": "Indicator that identifies a botnet command&control server (C&C)",
+            "ioc_type": "url",
+            "ioc_type_desc": "URL that is used for botnet Command&control (C&C)",
+            "malware": "js.ether_rat",
+            "malware_printable": "EtherRAT",
+            "malware_alias": null,
+            "malware_malpedia": "https:\/\/malpedia.caad.fkie.fraunhofer.de\/details\/js.ether_rat",
+            "confidence_level": 100,
+            "is_compromised": false,
+            "first_seen": "2026-04-04 23:58:23 UTC",
+            "last_seen": null,
+            "reference": "",
+            "reporter": "RacWatchin8872",
+            "tags": [
+                "EtherRat"
+            ]
+        },
+        {
+            "id": "1781315",
+            "ioc": "https:\/\/visitsight.info",
+            "threat_type": "payload_delivery",
+            "threat_type_desc": "Indicator that identifies a malware distribution server (payload delivery)",
+            "ioc_type": "url",
+            "ioc_type_desc": "URL that delivers a malware payload",
+            "malware": "unknown",
+            "malware_printable": "Unknown malware",
+            "malware_alias": null,
+            "malware_malpedia": "https:\/\/malpedia.caad.fkie.fraunhofer.de\/details\/unknown",
+            "confidence_level": 100,
+            "is_compromised": false,
+            "first_seen": "2026-04-04 23:11:54 UTC",
+            "last_seen": null,
+            "reference": "",
+            "reporter": "HuntYethHounds",
+            "tags": [
+                "ClickFix",
+                "EXT"
+            ]
+        },
+        {
+            "id": "1781314",
+            "ioc": "visitsight.info",
+            "threat_type": "payload_delivery",
+            "threat_type_desc": "Indicator that identifies a malware distribution server (payload delivery)",
+            "ioc_type": "domain",
+            "ioc_type_desc": "Domain name that delivers a malware payload",
+            "malware": "unknown",
+            "malware_printable": "Unknown malware",
+            "malware_alias": null,
+            "malware_malpedia": "https:\/\/malpedia.caad.fkie.fraunhofer.de\/details\/unknown",
+            "confidence_level": 100,
+            "is_compromised": false,
+            "first_seen": "2026-04-04 23:11:36 UTC",
+            "last_seen": null,
+            "reference": "",
+            "reporter": "HuntYethHounds",
+            "tags": [
+                "ClickFix",
+                "EXT"
+            ]
+        },
+        {
+            "id": "1781313",
+            "ioc": "https:\/\/pathaudit.info",
+            "threat_type": "payload_delivery",
+            "threat_type_desc": "Indicator that identifies a malware distribution server (payload delivery)",
+            "ioc_type": "url",
+            "ioc_type_desc": "URL that delivers a malware payload",
+            "malware": "unknown",
+            "malware_printable": "Unknown malware",
+            "malware_alias": null,
+            "malware_malpedia": "https:\/\/malpedia.caad.fkie.fraunhofer.de\/details\/unknown",
+            "confidence_level": 100,
+            "is_compromised": false,
+            "first_seen": "2026-04-04 23:11:18 UTC",
+            "last_seen": null,
+            "reference": "",
+            "reporter": "HuntYethHounds",
+            "tags": [
+                "ClickFix",
+                "EXT"
+            ]
+        },
+        {
+            "id": "1781312",
+            "ioc": "pathaudit.info",
+            "threat_type": "payload_delivery",
+            "threat_type_desc": "Indicator that identifies a malware distribution server (payload delivery)",
+            "ioc_type": "domain",
+            "ioc_type_desc": "Domain name that delivers a malware payload",
+            "malware": "unknown",
+            "malware_printable": "Unknown malware",
+            "malware_alias": null,
+            "malware_malpedia": "https:\/\/malpedia.caad.fkie.fraunhofer.de\/details\/unknown",
+            "confidence_level": 100,
+            "is_compromised": false,
+            "first_seen": "2026-04-04 23:11:00 UTC",
+            "last_seen": null,
+            "reference": "",
+            "reporter": "HuntYethHounds",
+            "tags": [
+                "ClickFix",
+                "EXT"
+            ]
+        },
+        {
+            "id": "1781311",
+            "ioc": "https:\/\/trafficcore.info",
+            "threat_type": "payload_delivery",
+            "threat_type_desc": "Indicator that identifies a malware distribution server (payload delivery)",
+            "ioc_type": "url",
+            "ioc_type_desc": "URL that delivers a malware payload",
+            "malware": "unknown",
+            "malware_printable": "Unknown malware",
+            "malware_alias": null,
+            "malware_malpedia": "https:\/\/malpedia.caad.fkie.fraunhofer.de\/details\/unknown",
+            "confidence_level": 100,
+            "is_compromised": false,
+            "first_seen": "2026-04-04 23:10:13 UTC",
+            "last_seen": null,
+            "reference": "",
+            "reporter": "HuntYethHounds",
+            "tags": [
+                "ClickFix",
+                "EXT"
+            ]
+        },
+        {
+            "id": "1781310",
+            "ioc": "trafficcore.info",
+            "threat_type": "payload_delivery",
+            "threat_type_desc": "Indicator that identifies a malware distribution server (payload delivery)",
+            "ioc_type": "domain",
+            "ioc_type_desc": "Domain name that delivers a malware payload",
+            "malware": "unknown",
+            "malware_printable": "Unknown malware",
+            "malware_alias": null,
+            "malware_malpedia": "https:\/\/malpedia.caad.fkie.fraunhofer.de\/details\/unknown",
+            "confidence_level": 100,
+            "is_compromised": false,
+            "first_seen": "2026-04-04 23:09:58 UTC",
+            "last_seen": null,
+            "reference": "",
+            "reporter": "HuntYethHounds",
+            "tags": [
+                "ClickFix",
+                "EXT"
+            ]
+        },
+        {
             "id": "1781309",
             "ioc": "lifecenterfisioterapia.com.br",
             "threat_type": "payload_delivery",
@@ -995,7 +1941,8 @@
             "reference": "",
             "reporter": "HuntYethHounds",
             "tags": [
-                "ClickFix"
+                "ClickFix",
+                "EXT"
             ]
         },
         {
@@ -1016,7 +1963,8 @@
             "reference": "",
             "reporter": "HuntYethHounds",
             "tags": [
-                "ClickFix"
+                "ClickFix",
+                "EXT"
             ]
         },
         {
@@ -1037,7 +1985,8 @@
             "reference": "",
             "reporter": "HuntYethHounds",
             "tags": [
-                "ClickFix"
+                "ClickFix",
+                "EXT"
             ]
         },
         {
@@ -1058,7 +2007,8 @@
             "reference": "",
             "reporter": "HuntYethHounds",
             "tags": [
-                "ClickFix"
+                "ClickFix",
+                "EXT"
             ]
         },
         {
@@ -1079,7 +2029,8 @@
             "reference": "",
             "reporter": "HuntYethHounds",
             "tags": [
-                "ClickFix"
+                "ClickFix",
+                "EXT"
             ]
         },
         {
@@ -1100,7 +2051,8 @@
             "reference": "",
             "reporter": "HuntYethHounds",
             "tags": [
-                "ClickFix"
+                "ClickFix",
+                "EXT"
             ]
         },
         {
@@ -1121,7 +2073,8 @@
             "reference": "",
             "reporter": "HuntYethHounds",
             "tags": [
-                "ClickFix"
+                "ClickFix",
+                "EXT"
             ]
         },
         {
@@ -1786,7 +2739,7 @@
             "confidence_level": 75,
             "is_compromised": false,
             "first_seen": "2026-04-04 20:45:31 UTC",
-            "last_seen": "2026-04-04 22:44:09 UTC",
+            "last_seen": "2026-04-05 05:44:56 UTC",
             "reference": null,
             "reporter": "abuse_ch",
             "tags": [
@@ -1808,7 +2761,7 @@
             "confidence_level": 75,
             "is_compromised": false,
             "first_seen": "2026-04-04 20:45:04 UTC",
-            "last_seen": "2026-04-04 22:43:56 UTC",
+            "last_seen": "2026-04-05 05:44:43 UTC",
             "reference": null,
             "reporter": "abuse_ch",
             "tags": [
@@ -1830,7 +2783,7 @@
             "confidence_level": 75,
             "is_compromised": false,
             "first_seen": "2026-04-04 20:44:05 UTC",
-            "last_seen": "2026-04-04 22:43:32 UTC",
+            "last_seen": "2026-04-05 05:43:54 UTC",
             "reference": null,
             "reporter": "abuse_ch",
             "tags": [
@@ -1852,7 +2805,7 @@
             "confidence_level": 75,
             "is_compromised": false,
             "first_seen": "2026-04-04 20:44:01 UTC",
-            "last_seen": "2026-04-04 22:43:31 UTC",
+            "last_seen": "2026-04-05 05:43:52 UTC",
             "reference": null,
             "reporter": "abuse_ch",
             "tags": [
@@ -1874,7 +2827,7 @@
             "confidence_level": 75,
             "is_compromised": false,
             "first_seen": "2026-04-04 20:43:43 UTC",
-            "last_seen": "2026-04-04 22:43:24 UTC",
+            "last_seen": "2026-04-05 05:43:36 UTC",
             "reference": null,
             "reporter": "abuse_ch",
             "tags": [
@@ -6958,7 +7911,7 @@
             "confidence_level": 100,
             "is_compromised": false,
             "first_seen": "2026-04-04 11:52:04 UTC",
-            "last_seen": "2026-04-04 22:43:56 UTC",
+            "last_seen": "2026-04-05 05:44:42 UTC",
             "reference": "",
             "reporter": "whoamix302",
             "tags": null
@@ -7265,7 +8218,7 @@
             "confidence_level": 75,
             "is_compromised": false,
             "first_seen": "2026-04-04 10:43:09 UTC",
-            "last_seen": "2026-04-04 22:43:09 UTC",
+            "last_seen": "2026-04-05 05:43:13 UTC",
             "reference": null,
             "reporter": "abuse_ch",
             "tags": [
@@ -7821,7 +8774,7 @@
             "confidence_level": 100,
             "is_compromised": false,
             "first_seen": "2026-04-04 07:11:10 UTC",
-            "last_seen": "2026-04-04 22:43:46 UTC",
+            "last_seen": "2026-04-05 05:44:24 UTC",
             "reference": "",
             "reporter": "whoamix302",
             "tags": [
@@ -8045,7 +8998,7 @@
             "confidence_level": 100,
             "is_compromised": false,
             "first_seen": "2026-04-04 07:11:02 UTC",
-            "last_seen": "2026-04-04 22:58:27 UTC",
+            "last_seen": "2026-04-05 05:54:58 UTC",
             "reference": null,
             "reporter": "Bitsight",
             "tags": [
@@ -9974,175 +10927,6 @@
             "reporter": "dyingbreeds_",
             "tags": [
                 "remcos"
-            ]
-        },
-        {
-            "id": "1780919",
-            "ioc": "185.14.92.89:5000",
-            "threat_type": "botnet_cc",
-            "threat_type_desc": "Indicator that identifies a botnet command&control server (C&C)",
-            "ioc_type": "ip:port",
-            "ioc_type_desc": "ip:port combination that is used for botnet Command&control (C&C)",
-            "malware": "win.xenorat",
-            "malware_printable": "XenoRAT",
-            "malware_alias": null,
-            "malware_malpedia": "https:\/\/malpedia.caad.fkie.fraunhofer.de\/details\/win.xenorat",
-            "confidence_level": 100,
-            "is_compromised": false,
-            "first_seen": "2026-04-04 03:45:10 UTC",
-            "last_seen": null,
-            "reference": null,
-            "reporter": "abuse_ch",
-            "tags": [
-                "XenoRAT"
-            ]
-        },
-        {
-            "id": "1780918",
-            "ioc": "notes-ease.gl.at.ply.gg",
-            "threat_type": "botnet_cc",
-            "threat_type_desc": "Indicator that identifies a botnet command&control server (C&C)",
-            "ioc_type": "domain",
-            "ioc_type_desc": "Domain that is used for botnet Command&control (C&C)",
-            "malware": "win.xworm",
-            "malware_printable": "XWorm",
-            "malware_alias": null,
-            "malware_malpedia": "https:\/\/malpedia.caad.fkie.fraunhofer.de\/details\/win.xworm",
-            "confidence_level": 100,
-            "is_compromised": false,
-            "first_seen": "2026-04-04 02:01:33 UTC",
-            "last_seen": null,
-            "reference": "https:\/\/tria.ge\/260404-b5hetadt4j",
-            "reporter": "dyingbreeds_",
-            "tags": [
-                "XWorm"
-            ]
-        },
-        {
-            "id": "1780917",
-            "ioc": "killerboymaxilo-59859.portmap.host",
-            "threat_type": "botnet_cc",
-            "threat_type_desc": "Indicator that identifies a botnet command&control server (C&C)",
-            "ioc_type": "domain",
-            "ioc_type_desc": "Domain that is used for botnet Command&control (C&C)",
-            "malware": "win.quasar_rat",
-            "malware_printable": "Quasar RAT",
-            "malware_alias": "CinaRAT,QuasarRAT,Yggdrasil",
-            "malware_malpedia": "https:\/\/malpedia.caad.fkie.fraunhofer.de\/details\/win.quasar_rat",
-            "confidence_level": 100,
-            "is_compromised": false,
-            "first_seen": "2026-04-04 02:00:24 UTC",
-            "last_seen": null,
-            "reference": "https:\/\/tria.ge\/260403-3th1rabz5j",
-            "reporter": "dyingbreeds_",
-            "tags": [
-                "quasar"
-            ]
-        },
-        {
-            "id": "1780916",
-            "ioc": "power-drive.infodynamics.in.net",
-            "threat_type": "payload_delivery",
-            "threat_type_desc": "Indicator that identifies a malware distribution server (payload delivery)",
-            "ioc_type": "domain",
-            "ioc_type_desc": "Domain name that delivers a malware payload",
-            "malware": "js.clearfake",
-            "malware_printable": "ClearFake",
-            "malware_alias": null,
-            "malware_malpedia": "https:\/\/malpedia.caad.fkie.fraunhofer.de\/details\/js.clearfake",
-            "confidence_level": 100,
-            "is_compromised": false,
-            "first_seen": "2026-04-04 00:22:45 UTC",
-            "last_seen": "2026-04-04 00:24:26 UTC",
-            "reference": null,
-            "reporter": "threatcat_ch",
-            "tags": [
-                "ClearFake"
-            ]
-        },
-        {
-            "id": "1780907",
-            "ioc": "https:\/\/lightef.cyou",
-            "threat_type": "botnet_cc",
-            "threat_type_desc": "Indicator that identifies a botnet command&control server (C&C)",
-            "ioc_type": "url",
-            "ioc_type_desc": "URL that is used for botnet Command&control (C&C)",
-            "malware": "win.lumma",
-            "malware_printable": "Lumma Stealer",
-            "malware_alias": "LummaC2 Stealer",
-            "malware_malpedia": "https:\/\/malpedia.caad.fkie.fraunhofer.de\/details\/win.lumma",
-            "confidence_level": 75,
-            "is_compromised": false,
-            "first_seen": "2026-04-03 23:45:35 UTC",
-            "last_seen": null,
-            "reference": "https:\/\/bazaar.abuse.ch\/sample\/f6e63a680606f0cfdce4a37aaa97cc7a1ec0ea57351c45fd681f80273a15cc7b\/",
-            "reporter": "abuse_ch",
-            "tags": [
-                "Lumma"
-            ]
-        },
-        {
-            "id": "1780906",
-            "ioc": "f4lmbzwznn.localto.net",
-            "threat_type": "botnet_cc",
-            "threat_type_desc": "Indicator that identifies a botnet command&control server (C&C)",
-            "ioc_type": "domain",
-            "ioc_type_desc": "Domain that is used for botnet Command&control (C&C)",
-            "malware": "win.asyncrat",
-            "malware_printable": "AsyncRAT",
-            "malware_alias": null,
-            "malware_malpedia": "https:\/\/malpedia.caad.fkie.fraunhofer.de\/details\/win.asyncrat",
-            "confidence_level": 75,
-            "is_compromised": false,
-            "first_seen": "2026-04-03 23:45:23 UTC",
-            "last_seen": "2026-04-04 04:15:19 UTC",
-            "reference": "https:\/\/bazaar.abuse.ch\/sample\/017ba68aa41ff6416707ea9fe1482dc231a6c6e2740961f5107c88695e9c4362\/",
-            "reporter": "abuse_ch",
-            "tags": [
-                "asyncrat"
-            ]
-        },
-        {
-            "id": "1780905",
-            "ioc": "194.182.64.133:5778",
-            "threat_type": "botnet_cc",
-            "threat_type_desc": "Indicator that identifies a botnet command&control server (C&C)",
-            "ioc_type": "ip:port",
-            "ioc_type_desc": "ip:port combination that is used for botnet Command&control (C&C)",
-            "malware": "win.asyncrat",
-            "malware_printable": "AsyncRAT",
-            "malware_alias": null,
-            "malware_malpedia": "https:\/\/malpedia.caad.fkie.fraunhofer.de\/details\/win.asyncrat",
-            "confidence_level": 100,
-            "is_compromised": false,
-            "first_seen": "2026-04-03 23:40:05 UTC",
-            "last_seen": null,
-            "reference": null,
-            "reporter": "abuse_ch",
-            "tags": [
-                "asyncrat",
-                "RAT"
-            ]
-        },
-        {
-            "id": "1780904",
-            "ioc": "karlovackacrtackaskola.org",
-            "threat_type": "payload_delivery",
-            "threat_type_desc": "Indicator that identifies a malware distribution server (payload delivery)",
-            "ioc_type": "domain",
-            "ioc_type_desc": "Domain name that delivers a malware payload",
-            "malware": "win.strelastealer",
-            "malware_printable": "StrelaStealer",
-            "malware_alias": null,
-            "malware_malpedia": "https:\/\/malpedia.caad.fkie.fraunhofer.de\/details\/win.strelastealer",
-            "confidence_level": 100,
-            "is_compromised": true,
-            "first_seen": "2026-04-03 23:08:17 UTC",
-            "last_seen": null,
-            "reference": null,
-            "reporter": "threatcat_ch",
-            "tags": [
-                "StrelaStealer"
             ]
         }
     ]
