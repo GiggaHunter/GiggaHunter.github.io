@@ -37,9 +37,10 @@ h1{font-family:var(--display);font-size:clamp(38px,5vw,68px);font-weight:800;lin
 h1 .accent{color:var(--accent);}
 h1 .dim{color:var(--text3);}
 .hero-desc{font-size:13px;color:var(--text2);line-height:1.9;max-width:480px;margin-bottom:40px;}
-.hero-stats{display:flex;gap:36px;margin-bottom:40px;flex-wrap:wrap;}
-.stat-num{font-family:var(--display);font-size:34px;font-weight:800;color:var(--accent);line-height:1;margin-bottom:4px;}
-.stat-label{font-family:var(--mono);font-size:10px;color:var(--text3);letter-spacing:0.08em;}
+.hero-stats{display:flex;gap:40px;margin-bottom:40px;flex-wrap:wrap;align-items:flex-end;}
+.stat-item{display:flex;flex-direction:column;}
+.stat-num{font-family:'JetBrains Mono',monospace;font-size:40px;font-weight:700;color:var(--accent);line-height:1;margin-bottom:6px;letter-spacing:-0.02em;font-variant-numeric:tabular-nums;min-width:2ch;text-align:left;}
+.stat-label{font-family:var(--mono);font-size:10px;color:var(--text2);letter-spacing:0.1em;text-transform:uppercase;}
 .hero-btns{display:flex;gap:12px;flex-wrap:wrap;}
 .btn-primary{font-family:var(--mono);font-size:11px;letter-spacing:0.08em;color:var(--bg);background:var(--accent);padding:12px 24px;border:none;cursor:pointer;text-decoration:none;display:inline-block;transition:all 0.2s;}
 .btn-primary:hover{background:#fff;transform:translateY(-1px);}
@@ -142,9 +143,9 @@ h2{font-family:var(--display);font-size:34px;font-weight:800;color:#fff;letter-s
 .dot-locked{background:transparent;border:1px solid var(--text3);}
 .roadmap-line{width:1px;flex:1;min-height:16px;background:var(--border);margin-top:4px;}
 .roadmap-content{flex:1;}
-.roadmap-phase{font-family:var(--mono);font-size:10px;color:var(--text3);letter-spacing:0.1em;margin-bottom:3px;}
-.roadmap-title{font-family:var(--display);font-size:15px;font-weight:700;color:#fff;margin-bottom:5px;}
-.roadmap-rooms{font-family:var(--mono);font-size:10px;color:var(--text2);line-height:1.6;margin-bottom:8px;}
+.roadmap-phase{font-family:var(--mono);font-size:10px;color:var(--accent);letter-spacing:0.1em;margin-bottom:3px;opacity:0.7;}
+.roadmap-title{font-family:var(--display);font-size:15px;font-weight:700;color:#fff;margin-bottom:6px;}
+.roadmap-rooms{font-family:var(--mono);font-size:11px;color:var(--text2);line-height:1.7;margin-bottom:8px;}
 .roadmap-badge{display:inline-flex;align-items:center;gap:5px;font-family:var(--mono);font-size:9px;letter-spacing:0.1em;padding:2px 8px;border-radius:2px;}
 
 /* THREATFOX */
