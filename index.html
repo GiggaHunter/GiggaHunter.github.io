@@ -37,15 +37,18 @@ h1{font-family:var(--display);font-size:clamp(34px,3.8vw,54px);font-weight:800;l
 h1 .accent{color:var(--accent);}
 h1 .dim{color:var(--text3);}
 .hero-desc{font-size:13px;color:var(--text2);line-height:1.9;max-width:480px;margin-bottom:40px;}
-.hero-stats{display:flex;gap:40px;margin-bottom:40px;flex-wrap:wrap;align-items:flex-end;}
-.stat-item{display:flex;flex-direction:column;}
-.stat-num{font-family:'JetBrains Mono',monospace;font-size:40px;font-weight:700;color:var(--accent);line-height:1;margin-bottom:6px;letter-spacing:-0.02em;font-variant-numeric:tabular-nums;min-width:2ch;text-align:left;}
-.stat-label{font-family:var(--mono);font-size:10px;color:var(--text2);letter-spacing:0.1em;text-transform:uppercase;}
+.hero-stats{display:flex;gap:40px;margin-bottom:44px;flex-wrap:wrap;align-items:flex-start;}
+.stat-item{display:flex;flex-direction:column;align-items:center;text-align:center;}
+.stat-num{font-family:'JetBrains Mono',monospace;font-size:42px;font-weight:700;color:var(--accent);line-height:1;margin-bottom:8px;letter-spacing:-0.02em;font-variant-numeric:tabular-nums;}
+.stat-label{font-family:var(--mono);font-size:12px;color:var(--text);letter-spacing:0.12em;text-transform:uppercase;border-top:2px solid var(--accent2);padding-top:8px;width:100%;text-align:center;}
+.stat-divider{width:1px;background:var(--border2);align-self:stretch;margin:4px 0;}
 .hero-btns{display:flex;gap:12px;flex-wrap:wrap;}
-.btn-primary{font-family:var(--mono);font-size:11px;letter-spacing:0.08em;color:var(--bg);background:var(--accent);padding:12px 24px;border:none;cursor:pointer;text-decoration:none;display:inline-block;transition:all 0.2s;}
-.btn-primary:hover{background:#fff;transform:translateY(-1px);}
-.btn-outline{font-family:var(--mono);font-size:11px;letter-spacing:0.08em;color:var(--accent);background:transparent;padding:12px 24px;border:1px solid var(--border2);cursor:pointer;text-decoration:none;display:inline-block;transition:all 0.2s;}
-.btn-outline:hover{border-color:var(--accent);background:var(--accent-dim);}
+.btn-primary{font-family:var(--mono);font-size:12px;letter-spacing:0.1em;color:var(--bg);background:var(--accent);padding:14px 32px;border:none;cursor:pointer;text-decoration:none;display:inline-flex;align-items:center;gap:8px;transition:all 0.2s;font-weight:700;}
+.btn-primary:hover{background:#fff;transform:translateY(-2px);box-shadow:0 8px 24px rgba(0,212,255,0.2);}
+.btn-primary::before{content:'→';font-size:14px;}
+.btn-outline{font-family:var(--mono);font-size:12px;letter-spacing:0.1em;color:var(--text);background:transparent;padding:14px 32px;border:1px solid var(--border2);cursor:pointer;text-decoration:none;display:inline-flex;align-items:center;gap:8px;transition:all 0.2s;}
+.btn-outline:hover{border-color:var(--accent);color:var(--accent);background:var(--accent-dim);transform:translateY(-2px);}
+.btn-outline::before{content:'◇';font-size:11px;color:var(--text3);}
 .hero-terminal{position:absolute;right:80px;top:50%;transform:translateY(-50%);width:400px;background:var(--bg2);border:1px solid var(--border);border-radius:4px;overflow:hidden;font-family:var(--mono);font-size:12px;z-index:2;}
 .terminal-bar{background:var(--surface);padding:10px 16px;display:flex;align-items:center;gap:8px;border-bottom:1px solid var(--border);}
 .t-dot{width:10px;height:10px;border-radius:50%;}
@@ -239,9 +242,11 @@ html,body{max-width:100%;overflow-x:hidden;}
     <h1>Learning to<br/><span class="accent">Defend.</span><br/><span class="dim">One Room<br/>at a Time.</span></h1>
     <p class="hero-desc">Documenting my journey through the TryHackMe SOC Level 1 learning path — 65 rooms across 14 modules covering blue team fundamentals, threat intelligence, SIEM, network & endpoint monitoring, malware analysis, and incident response.</p>
     <div class="hero-stats">
-      <div class="stat-item"><div class="stat-num">1</div><div class="stat-label">ROOM DONE</div></div>
-      <div class="stat-item"><div class="stat-num">65</div><div class="stat-label">TOTAL ROOMS</div></div>
-      <div class="stat-item"><div class="stat-num">14</div><div class="stat-label">MODULES</div></div>
+      <div class="stat-item"><div class="stat-num">1</div><div class="stat-label">Room Done</div></div>
+      <div class="stat-divider"></div>
+      <div class="stat-item"><div class="stat-num">65</div><div class="stat-label">Total Rooms</div></div>
+      <div class="stat-divider"></div>
+      <div class="stat-item"><div class="stat-num">14</div><div class="stat-label">Modules</div></div>
     </div>
     <div class="hero-btns">
       <a href="#rooms" class="btn-primary">VIEW ROOMS</a>
