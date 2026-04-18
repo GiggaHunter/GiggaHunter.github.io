@@ -128,27 +128,26 @@ h2{font-family:var(--display);font-size:34px;font-weight:800;color:#fff;letter-s
 .mini-pct{font-family:var(--mono);font-size:9px;color:var(--text3);margin-top:4px;}
 
 /* ROOMS */
-.rooms-grid{display:flex;flex-direction:column;gap:0;}
-.room-card{background:transparent;border:none;border-bottom:1px solid var(--border);padding:20px 24px;position:relative;display:flex;align-items:center;gap:24px;text-decoration:none;transition:all 0.2s;cursor:default;}
-.room-card:first-child{border-top:1px solid var(--border);}
-.room-card::before{content:'';position:absolute;left:0;top:0;bottom:0;width:2px;background:var(--green);transform:scaleY(0);transition:transform 0.2s;transform-origin:bottom;}
-.room-card:hover{background:var(--bg2);}
+.rooms-grid{display:flex;flex-direction:column;gap:2px;}
+.room-card{background:var(--bg2);border:1px solid var(--border);padding:24px 28px;position:relative;display:block;text-decoration:none;transition:all 0.2s;cursor:default;}
+.room-card::before{content:'';position:absolute;left:0;top:0;bottom:0;width:3px;background:var(--green);transform:scaleY(0);transition:transform 0.2s;transform-origin:bottom;}
+.room-card:hover{background:var(--surface);border-color:var(--border2);}
 .room-card:hover::before{transform:scaleY(1);}
-.room-card.locked-room{opacity:0.35;cursor:not-allowed;}
-.room-card.locked-room::before{display:none;}
-.room-num{font-family:var(--mono);font-size:11px;color:var(--text3);min-width:32px;flex-shrink:0;}
-.room-badge{font-family:var(--mono);font-size:9px;letter-spacing:0.1em;padding:2px 8px;border-radius:2px;flex-shrink:0;}
-.badge-done{color:var(--green);background:var(--green-dim);border:1px solid rgba(46,213,115,0.2);}
+.room-card.locked-room{opacity:0.4;cursor:not-allowed;}
+.room-card.locked-room::before{background:var(--text3);}
+.room-card-top{display:flex;align-items:center;gap:12px;margin-bottom:12px;}
+.room-num{font-family:var(--mono);font-size:11px;color:var(--text3);min-width:28px;}
+.room-badge{font-family:var(--mono);font-size:9px;letter-spacing:0.1em;padding:3px 10px;border-radius:2px;}
+.badge-done{color:var(--green);background:var(--green-dim);border:1px solid rgba(46,213,115,0.25);}
 .badge-progress{color:var(--accent);background:var(--accent-dim);border:1px solid rgba(0,212,255,0.2);}
 .badge-locked{color:var(--text3);background:transparent;border:1px solid var(--border);}
-.room-main{flex:1;min-width:0;}
-.room-title{font-family:var(--display);font-size:15px;font-weight:700;color:#fff;margin-bottom:2px;}
-.room-module{font-family:var(--mono);font-size:10px;color:var(--accent);opacity:0.7;margin-bottom:6px;}
-.room-desc{font-size:12px;color:var(--text2);line-height:1.6;}
-.room-tags{display:flex;flex-wrap:wrap;gap:4px;margin-top:8px;}
-.tag{font-family:var(--mono);font-size:9px;color:var(--text3);border:1px solid var(--border);padding:1px 6px;border-radius:2px;}
-.room-difficulty{font-family:var(--mono);font-size:10px;color:var(--text3);flex-shrink:0;}
-.room-check{font-size:16px;flex-shrink:0;margin-left:8px;}
+.room-difficulty{font-family:var(--mono);font-size:10px;margin-left:auto;}
+.room-check{font-size:14px;margin-left:8px;}
+.room-title{font-family:var(--display);font-size:16px;font-weight:700;color:#fff;margin-bottom:4px;}
+.room-module{font-family:var(--mono);font-size:10px;color:var(--accent);opacity:0.75;margin-bottom:10px;letter-spacing:0.04em;}
+.room-desc{font-size:12px;color:var(--text2);line-height:1.75;}
+.room-tags{display:flex;flex-wrap:wrap;gap:4px;margin-top:10px;}
+.tag{font-family:var(--mono);font-size:9px;color:var(--text3);border:1px solid var(--border);padding:2px 7px;border-radius:2px;}
 
 /* SKILLS */
 .skills-section{background:var(--bg3);}
@@ -434,101 +433,98 @@ html,body{max-width:100%;overflow-x:hidden;}
   <div class="rooms-grid">
 
     <div class="room-card fade-in">
-      <span class="room-num">01</span>
-      <span class="room-badge badge-done">✓ DONE</span>
-      <div class="room-main">
-        <div class="room-title">Junior Security Analyst Intro</div>
-        <div class="room-module">MODULE 01 — Cyber Defence Frameworks</div>
-        <div class="room-desc">Overview of the SOC analyst role, responsibilities, and daily workflow. Covers triage, alert handling, and the difference between Tier 1/2/3.</div>
-        <div class="room-tags">
-          <span class="tag">SOC WORKFLOW</span>
-          <span class="tag">TRIAGE</span>
-          <span class="tag">ALERT HANDLING</span>
-        </div>
+      <div class="room-card-top">
+        <span class="room-num">01</span>
+        <span class="room-badge badge-done">✓ DONE</span>
+        <span class="room-difficulty" style="color:var(--green)">EASY</span>
+        <span class="room-check">✅</span>
       </div>
-      <span class="room-difficulty" style="color:var(--green)">EASY</span>
-      <span class="room-check">✅</span>
+      <div class="room-title">Junior Security Analyst Intro</div>
+      <div class="room-module">MODULE 01 — Cyber Defence Frameworks</div>
+      <div class="room-desc">Overview of the SOC analyst role, responsibilities, and daily workflow. Covers triage, alert handling, and the difference between Tier 1/2/3.</div>
+      <div class="room-tags">
+        <span class="tag">SOC WORKFLOW</span>
+        <span class="tag">TRIAGE</span>
+        <span class="tag">ALERT HANDLING</span>
+      </div>
     </div>
 
     <div class="room-card fade-in" style="transition-delay:0.05s">
-      <span class="room-num">02</span>
-      <span class="room-badge badge-done">✓ DONE</span>
-      <div class="room-main">
-        <div class="room-title">Pyramid of Pain</div>
-        <div class="room-module">MODULE 01 — Cyber Defence Frameworks</div>
-        <div class="room-desc">Understanding David Bianco's Pyramid of Pain — how blocking different IOC types causes varying levels of difficulty for adversaries. From Hash Values up to TTPs.</div>
-        <div class="room-tags">
-          <span class="tag">IOCs</span>
-          <span class="tag">THREAT INTEL</span>
-          <span class="tag">ADVERSARY PAIN</span>
-          <span class="tag">TTPs</span>
-        </div>
+      <div class="room-card-top">
+        <span class="room-num">02</span>
+        <span class="room-badge badge-done">✓ DONE</span>
+        <span class="room-difficulty" style="color:var(--green)">EASY</span>
+        <span class="room-check">✅</span>
       </div>
-      <span class="room-difficulty" style="color:var(--green)">EASY</span>
-      <span class="room-check">✅</span>
+      <div class="room-title">Pyramid of Pain</div>
+      <div class="room-module">MODULE 01 — Cyber Defence Frameworks</div>
+      <div class="room-desc">Understanding David Bianco's Pyramid of Pain — how blocking different IOC types causes varying levels of difficulty for adversaries. From Hash Values up to TTPs.</div>
+      <div class="room-tags">
+        <span class="tag">IOCs</span>
+        <span class="tag">THREAT INTEL</span>
+        <span class="tag">ADVERSARY PAIN</span>
+        <span class="tag">TTPs</span>
+      </div>
     </div>
 
     <div class="room-card fade-in" style="transition-delay:0.1s">
-      <span class="room-num">03</span>
-      <span class="room-badge badge-done">✓ DONE</span>
-      <div class="room-main">
-        <div class="room-title">Cyber Kill Chain</div>
-        <div class="room-module">MODULE 01 — Cyber Defence Frameworks</div>
-        <div class="room-desc">Lockheed Martin's 7-stage attack model: Reconnaissance → Weaponization → Delivery → Exploitation → Installation → C2 → Actions on Objectives. Learn to map real attacks to each phase.</div>
-        <div class="room-tags">
-          <span class="tag">KILL CHAIN</span>
-          <span class="tag">ATTACK STAGES</span>
-          <span class="tag">LOCKHEED MARTIN</span>
-          <span class="tag">C2</span>
-        </div>
+      <div class="room-card-top">
+        <span class="room-num">03</span>
+        <span class="room-badge badge-done">✓ DONE</span>
+        <span class="room-difficulty" style="color:var(--green)">EASY</span>
+        <span class="room-check">✅</span>
       </div>
-      <span class="room-difficulty" style="color:var(--green)">EASY</span>
-      <span class="room-check">✅</span>
+      <div class="room-title">Cyber Kill Chain</div>
+      <div class="room-module">MODULE 01 — Cyber Defence Frameworks</div>
+      <div class="room-desc">Lockheed Martin's 7-stage attack model: Reconnaissance → Weaponization → Delivery → Exploitation → Installation → C2 → Actions on Objectives. Learn to map real attacks to each phase.</div>
+      <div class="room-tags">
+        <span class="tag">KILL CHAIN</span>
+        <span class="tag">ATTACK STAGES</span>
+        <span class="tag">LOCKHEED MARTIN</span>
+        <span class="tag">C2</span>
+      </div>
     </div>
 
     <div class="room-card fade-in" style="transition-delay:0.15s">
-      <span class="room-num">04</span>
-      <span class="room-badge badge-done">✓ DONE</span>
-      <div class="room-main">
-        <div class="room-title">Unified Kill Chain</div>
-        <div class="room-module">MODULE 01 — Cyber Defence Frameworks</div>
-        <div class="room-desc">An extended 18-phase model combining Cyber Kill Chain and MITRE ATT&CK. Covers In, Through, and Out phases — providing a more complete picture of modern adversary behavior.</div>
-        <div class="room-tags">
-          <span class="tag">UNIFIED KILL CHAIN</span>
-          <span class="tag">18 PHASES</span>
-          <span class="tag">MITRE</span>
-          <span class="tag">APT</span>
-        </div>
+      <div class="room-card-top">
+        <span class="room-num">04</span>
+        <span class="room-badge badge-done">✓ DONE</span>
+        <span class="room-difficulty" style="color:var(--amber)">MEDIUM</span>
+        <span class="room-check">✅</span>
       </div>
-      <span class="room-difficulty" style="color:var(--amber)">MEDIUM</span>
-      <span class="room-check">✅</span>
+      <div class="room-title">Unified Kill Chain</div>
+      <div class="room-module">MODULE 01 — Cyber Defence Frameworks</div>
+      <div class="room-desc">An extended 18-phase model combining Cyber Kill Chain and MITRE ATT&CK. Covers In, Through, and Out phases — providing a more complete picture of modern adversary behavior.</div>
+      <div class="room-tags">
+        <span class="tag">UNIFIED KILL CHAIN</span>
+        <span class="tag">18 PHASES</span>
+        <span class="tag">MITRE</span>
+        <span class="tag">APT</span>
+      </div>
     </div>
 
-    <!-- UPCOMING ROOMS (LOCKED) -->
     <div class="room-card locked-room fade-in" style="transition-delay:0.2s">
-      <span class="room-num">05</span>
-      <span class="room-badge badge-locked">⬜ NEXT</span>
-      <div class="room-main">
-        <div class="room-title">Diamond Model</div>
-        <div class="room-module">MODULE 01 — Cyber Defence Frameworks</div>
-        <div class="room-desc">The Diamond Model of intrusion analysis — mapping events across Adversary, Infrastructure, Capability, and Victim to understand threat actor behavior.</div>
-        <div class="room-tags"><span class="tag">DIAMOND MODEL</span><span class="tag">INTRUSION ANALYSIS</span></div>
+      <div class="room-card-top">
+        <span class="room-num">05</span>
+        <span class="room-badge badge-locked">⬜ NEXT</span>
+        <span class="room-difficulty" style="color:var(--text3)">EASY</span>
       </div>
-      <span class="room-difficulty" style="color:var(--text3)">EASY</span>
-      <span class="room-check" style="opacity:0.3">⬜</span>
+      <div class="room-title">Diamond Model</div>
+      <div class="room-module">MODULE 01 — Cyber Defence Frameworks</div>
+      <div class="room-desc">The Diamond Model of intrusion analysis — mapping events across Adversary, Infrastructure, Capability, and Victim to understand threat actor behavior.</div>
+      <div class="room-tags"><span class="tag">DIAMOND MODEL</span><span class="tag">INTRUSION ANALYSIS</span></div>
     </div>
 
     <div class="room-card locked-room fade-in" style="transition-delay:0.25s">
-      <span class="room-num">06</span>
-      <span class="room-badge badge-locked">⬜ LOCKED</span>
-      <div class="room-main">
-        <div class="room-title">MITRE</div>
-        <div class="room-module">MODULE 01 — Cyber Defence Frameworks</div>
-        <div class="room-desc">Deep dive into the MITRE ATT&CK framework — techniques, tactics, sub-techniques, and how to use ATT&CK Navigator for threat mapping and detection engineering.</div>
-        <div class="room-tags"><span class="tag">MITRE ATT&CK</span><span class="tag">NAVIGATOR</span><span class="tag">TTPs</span></div>
+      <div class="room-card-top">
+        <span class="room-num">06</span>
+        <span class="room-badge badge-locked">⬜ LOCKED</span>
+        <span class="room-difficulty" style="color:var(--text3)">MEDIUM</span>
       </div>
-      <span class="room-difficulty" style="color:var(--text3)">MEDIUM</span>
-      <span class="room-check" style="opacity:0.3">⬜</span>
+      <div class="room-title">MITRE</div>
+      <div class="room-module">MODULE 01 — Cyber Defence Frameworks</div>
+      <div class="room-desc">Deep dive into the MITRE ATT&CK framework — techniques, tactics, sub-techniques, and how to use ATT&CK Navigator for threat mapping and detection engineering.</div>
+      <div class="room-tags"><span class="tag">MITRE ATT&CK</span><span class="tag">NAVIGATOR</span><span class="tag">TTPs</span></div>
     </div>
 
   </div>
